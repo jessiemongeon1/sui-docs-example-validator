@@ -25,8 +25,10 @@ jobs:
 
       - name: Install Sui CLI
         run: |
-          curl -fsSL https://sui.io/install.sh | bash
-          echo "$HOME/.sui/bin" >> $GITHUB_PATH
+          curl -fsSL https://raw.githubusercontent.com/MystenLabs/suiup/main/install.sh | bash
+          echo "$HOME/.suiup/bin" >> $GITHUB_PATH
+          suiup install sui
+          suiup install site-builder
 
       - uses: dtolnay/rust-toolchain@stable
 

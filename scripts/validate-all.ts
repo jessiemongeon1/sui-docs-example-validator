@@ -181,12 +181,17 @@ function validateRust(absRoot: string): StepResult[] {
     return steps;
   }
 
-  const build = run("cargo check 2>&1", absRoot, 600_000);
+  // Cap at 5 minutes per step — Rust deps can be very slow to compile
+  const RUST_TIMEOUT = 300_000;
+
+  console.log(`      Running cargo check (timeout ${RUST_TIMEOUT / 1000}s)...`);
+  const build = run("cargo check 2>&1", absRoot, RUST_TIMEOUT);
   steps.push({ command: "cargo check", status: build.ok ? "pass" : "fail", output: build.output, durationMs: build.durationMs });
 
   if (!build.ok) return steps;
 
-  const test = run("cargo test 2>&1", absRoot, 600_000);
+  console.log(`      Running cargo test (timeout ${RUST_TIMEOUT / 1000}s)...`);
+  const test = run("cargo test 2>&1", absRoot, RUST_TIMEOUT);
   steps.push({ command: "cargo test", status: test.ok ? "pass" : "fail", output: test.output, durationMs: test.durationMs });
 
   return steps;
@@ -204,6 +209,7 @@ function validateTypeScript(absRoot: string): StepResult[] {
 
   // Install
   const installCmd = pm === "pnpm" ? "pnpm install --no-frozen-lockfile 2>&1" : "npm install 2>&1";
+  console.log(`      Running ${pm} install...`);
   const install = run(installCmd, absRoot, 180_000);
   steps.push({ command: `${pm} install`, status: install.ok ? "pass" : "fail", output: install.output, durationMs: install.durationMs });
 
