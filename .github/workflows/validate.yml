@@ -1,0 +1,162 @@
+name: Validate Docs Examples
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Weekly on Monday at 6am UTC
+  workflow_dispatch:
+    inputs:
+      sui_branch:
+        description: 'Sui repo branch to validate against'
+        default: 'main'
+      filter_type:
+        description: 'Only validate specific type (move, rust, typescript, or all)'
+        default: 'all'
+
+env:
+  SUI_BRANCH: ${{ github.event.inputs.sui_branch || 'main' }}
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.discover.outputs.packages }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Clone sui repo (shallow)
+        run: |
+          git clone --depth 1 --branch ${{ env.SUI_BRANCH }} \
+            https://github.com/MystenLabs/sui.git /tmp/sui
+
+      - name: Run discovery
+        run: npx tsx scripts/discover.ts --sui-repo /tmp/sui --output manifest/
+
+      - name: Output manifest
+        id: discover
+        run: |
+          echo "packages=$(cat manifest/packages.json | jq -c .)" >> $GITHUB_OUTPUT
+
+      - name: Upload manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: manifest
+          path: manifest/
+
+  validate:
+    needs: discover
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJson(needs.discover.outputs.packages) }}
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install validator deps
+        run: npm ci
+
+      - name: Filter by type
+        if: env.FILTER_TYPE != 'all' && matrix.package.type != env.FILTER_TYPE
+        run: echo "SKIP=true" >> $GITHUB_ENV
+        env:
+          FILTER_TYPE: ${{ github.event.inputs.filter_type || 'all' }}
+
+      # --- Setup tools based on package type ---
+
+      - name: Install Sui CLI (Move packages)
+        if: matrix.package.type == 'move' && env.SKIP != 'true'
+        run: |
+          curl -fsSL https://sui.io/install.sh | bash
+          echo "$HOME/.sui/bin" >> $GITHUB_PATH
+
+      - name: Setup Rust (Rust packages)
+        if: matrix.package.type == 'rust' && env.SKIP != 'true'
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install pnpm (TypeScript packages)
+        if: matrix.package.type == 'typescript' && env.SKIP != 'true'
+        run: npm install -g pnpm
+
+      # --- Clone the source repo ---
+
+      - name: Clone source (internal)
+        if: matrix.package.source == 'internal' && env.SKIP != 'true'
+        run: |
+          git clone --depth 1 --branch ${{ env.SUI_BRANCH }} \
+            https://github.com/MystenLabs/sui.git /tmp/sui
+
+      - name: Clone source (external)
+        if: matrix.package.source == 'external' && env.SKIP != 'true'
+        run: |
+          git clone --depth 1 --branch ${{ matrix.package.branch }} \
+            https://github.com/${{ matrix.package.org }}/${{ matrix.package.repo }}.git \
+            /tmp/external/${{ matrix.package.repo }}
+
+      # --- Validate ---
+
+      - name: Validate package
+        if: env.SKIP != 'true'
+        id: validate
+        run: |
+          if [ "${{ matrix.package.source }}" = "internal" ]; then
+            ROOT="/tmp/sui/${{ matrix.package.packageRoot }}"
+          else
+            ROOT="/tmp/external/${{ matrix.package.repo }}/${{ matrix.package.packageRoot }}"
+          fi
+
+          mkdir -p results
+          npx tsx scripts/validate-package.ts \
+            --type ${{ matrix.package.type }} \
+            --root "$ROOT" \
+            > results/${{ strategy.job-index }}.json 2>&1 || true
+
+      - name: Upload result
+        if: env.SKIP != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: result-${{ strategy.job-index }}
+          path: results/
+
+  report:
+    needs: [discover, validate]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download all results
+        uses: actions/download-artifact@v4
+        with:
+          pattern: result-*
+          path: results/
+          merge-multiple: true
+
+      - name: Generate report
+        run: |
+          npx tsx scripts/report.ts --results results/ | tee report.md
+          cat report.md >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-report
+          path: report.md

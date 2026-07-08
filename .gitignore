@@ -1,0 +1,5 @@
+node_modules/
+manifest/
+*.js
+*.d.ts
+*.js.map

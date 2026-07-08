@@ -1,0 +1,16 @@
+{
+  "comment": "Packages to skip during validation. Workspace crates are validated by sui repo CI.",
+  "skip": [
+    { "pattern": "crates/shared-crypto", "reason": "sui workspace crate" },
+    { "pattern": "crates/sui-framework", "reason": "sui workspace crate — framework itself" },
+    { "pattern": "crates/sui-indexer-alt-framework", "reason": "sui workspace crate" },
+    { "pattern": "crates/sui-indexer-alt-framework-store-traits", "reason": "sui workspace crate" },
+    { "pattern": "crates/sui-indexer-alt-schema", "reason": "sui workspace crate" },
+    { "pattern": "crates/sui-indexer-alt-e2e-tests", "reason": "sui workspace crate" },
+    { "pattern": "crates/sui-kv-rpc", "reason": "sui workspace crate" },
+    { "pattern": "crates/sui-kvstore", "reason": "sui workspace crate" },
+    { "pattern": "crates/sui-pg-db", "reason": "sui workspace crate" },
+    { "pattern": "crates/sui-protocol-config", "reason": "sui workspace crate" },
+    { "pattern": "crates/sui-sdk", "reason": "sui workspace crate" }
+  ]
+}
