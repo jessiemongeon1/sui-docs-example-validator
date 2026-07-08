@@ -7,6 +7,7 @@
     "discover": "tsx scripts/discover.ts",
     "build-matrix": "tsx scripts/build-matrix.ts",
     "validate": "tsx scripts/validate-package.ts",
+    "validate-all": "tsx scripts/validate-all.ts",
     "report": "tsx scripts/report.ts"
   },
   "dependencies": {
