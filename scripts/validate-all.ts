@@ -81,7 +81,12 @@ function parseArgs() {
 
 function getVersion(cmd: string): string {
   try {
-    return execSync(cmd, { encoding: "utf-8", timeout: 10_000, stdio: ["pipe", "pipe", "pipe"] }).trim();
+    return execSync(cmd, {
+      encoding: "utf-8",
+      timeout: 10_000,
+      stdio: ["pipe", "pipe", "pipe"],
+      env: { ...process.env, PATH: EXTENDED_PATH },
+    }).trim();
   } catch {
     return "not installed";
   }
@@ -99,6 +104,9 @@ function collectToolVersions(): ToolVersions {
   };
 }
 
+// Ensure suiup-installed binaries are on PATH for child processes
+const EXTENDED_PATH = `${process.env.HOME}/.local/bin:${process.env.PATH}`;
+
 function run(cmd: string, cwd: string, timeoutMs = 300_000): { ok: boolean; output: string; durationMs: number } {
   const start = Date.now();
   try {
@@ -108,6 +116,7 @@ function run(cmd: string, cwd: string, timeoutMs = 300_000): { ok: boolean; outp
       stdio: ["pipe", "pipe", "pipe"],
       encoding: "utf-8",
       maxBuffer: 10 * 1024 * 1024,
+      env: { ...process.env, PATH: EXTENDED_PATH },
     });
     return { ok: true, output: output.slice(-3000), durationMs: Date.now() - start };
   } catch (err: any) {
@@ -148,6 +157,42 @@ function ensureExternalRepo(org: string, repo: string, branch: string, workDir: 
   }
   clonedRepos.set(key, dest);
   return dest;
+}
+
+// --- Resolve actual package root from filesystem ---
+
+/**
+ * Given a file path and base directory, walk upward to find the nearest
+ * Move.toml, Cargo.toml, or package.json. Returns the resolved absolute path.
+ */
+function resolveActualPackageRoot(filePath: string, baseDir: string): { absRoot: string; type: PackageEntry["type"] } | null {
+  const absFile = resolve(baseDir, filePath.replace(/^\/+/, ""));
+
+  // If the file itself doesn't exist, try the directory
+  let dir = existsSync(absFile) ? dirname(absFile) : absFile;
+  if (!existsSync(dir)) return null;
+
+  const stopAt = resolve(baseDir);
+
+  while (dir.length >= stopAt.length) {
+    if (existsSync(resolve(dir, "Move.toml"))) {
+      return { absRoot: dir, type: "move" };
+    }
+    if (existsSync(resolve(dir, "Cargo.toml"))) {
+      const content = readFileSync(resolve(dir, "Cargo.toml"), "utf-8");
+      if (!content.includes("[workspace]")) {
+        return { absRoot: dir, type: "rust" };
+      }
+    }
+    if (existsSync(resolve(dir, "package.json"))) {
+      return { absRoot: dir, type: "typescript" };
+    }
+    const parent = dirname(dir);
+    if (parent === dir) break;
+    dir = parent;
+  }
+
+  return null;
 }
 
 // --- Validators ---
@@ -408,8 +453,10 @@ async function main() {
         ? `MystenLabs/sui (internal)`
         : `${pkg.org}/${pkg.repo}@${pkg.branch}`;
 
-    // Resolve absolute path
+    // Resolve absolute path and actual package root
     let absRoot: string;
+    let resolvedType = pkg.type;
+
     if (pkg.source === "internal") {
       absRoot = resolve(suiRepo, pkg.packageRoot);
     } else {
@@ -429,12 +476,25 @@ async function main() {
         });
         continue;
       }
-      absRoot = resolve(repoDir, pkg.packageRoot);
+
+      // Re-resolve package root by walking the actual filesystem
+      // Use the first referenced file to find the real package root
+      const firstFile = pkg.files[0] || pkg.packageRoot;
+      const searchPath = firstFile.startsWith(pkg.packageRoot)
+        ? firstFile
+        : `${pkg.packageRoot}/${firstFile}`;
+      const resolved = resolveActualPackageRoot(searchPath, repoDir);
+      if (resolved) {
+        absRoot = resolved.absRoot;
+        resolvedType = resolved.type;
+      } else {
+        absRoot = resolve(repoDir, pkg.packageRoot);
+      }
     }
 
     // Run validation
     let steps: StepResult[];
-    switch (pkg.type) {
+    switch (resolvedType) {
       case "move":
         steps = validateMove(absRoot);
         break;
