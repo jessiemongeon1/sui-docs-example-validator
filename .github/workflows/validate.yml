@@ -23,12 +23,14 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Sui CLI
+      - name: Install suiup
+        run: curl -fsSL https://raw.githubusercontent.com/MystenLabs/suiup/main/install.sh | bash
+
+      - name: Install Sui CLI via suiup
         run: |
-          curl -fsSL https://raw.githubusercontent.com/MystenLabs/suiup/main/install.sh | bash
-          echo "$HOME/.suiup/bin" >> $GITHUB_PATH
+          export PATH="$HOME/.local/bin:$PATH"
           suiup install sui
-          suiup install site-builder
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - uses: dtolnay/rust-toolchain@stable
 
