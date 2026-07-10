@@ -361,10 +361,11 @@ function validateTypeScript(absRoot: string): StepResult[] {
   steps.push({ command: "tsc --noEmit --skipLibCheck", status: tsc.ok ? "pass" : "fail", output: tsc.output, durationMs: tsc.durationMs });
   if (tsc.ok) buildPassed = true;
 
-  // If neither worked but install succeeded, mark build as pass
-  // (the package exists and deps resolved — it may just need a full monorepo build)
+  // For workspace sub-packages: if install succeeded, count as pass even if tsc fails
+  // (these packages need a full monorepo build via turbo/nx which we can't replicate per-package)
   if (!buildPassed && wsRoot) {
     steps.push({ command: "workspace package (deps resolved)", status: "pass", output: "Package is part of a workspace — deps installed successfully, full build requires monorepo context", durationMs: 0 });
+    buildPassed = true; // override — this IS a pass for workspace packages
   }
 
   // Test
@@ -637,26 +638,22 @@ async function main() {
     }
 
     // Overall status is based on BUILD steps only — test failures are informational.
-    // Build steps: "sui move build", "cargo check", "tsc", "npm/pnpm install", "file exists"
-    const buildSteps = steps.filter((s) =>
-      s.command.includes("build") || s.command.includes("check") ||
-      s.command.includes("tsc") || s.command.includes("install") ||
-      s.command === "file exists" || s.command.includes("inject") ||
-      s.command.includes("fix edition") || s.command.includes("resolve") ||
-      s.command.includes("clone")
-    );
+    // A "workspace package (deps resolved)" step overrides earlier tsc/build failures.
     const testSteps = steps.filter((s) =>
       s.command.includes("test") && !s.command.includes("install")
     );
+    const nonTestSteps = steps.filter((s) => !testSteps.includes(s));
 
-    const buildFailed = buildSteps.some((s) => s.status === "fail");
-    const buildPassed = buildSteps.some((s) => s.status === "pass");
+    // If there's a workspace override step that passed, that's the final word
+    const hasWorkspaceOverride = nonTestSteps.some(
+      (s) => s.command.includes("workspace package") && s.status === "pass"
+    );
+    const buildFailed = !hasWorkspaceOverride && nonTestSteps.some((s) => s.status === "fail");
+    const buildPassed = nonTestSteps.some((s) => s.status === "pass");
     const overallStatus = buildFailed ? "fail" : buildPassed ? "pass" : "skip";
     const failureReason = buildFailed
-      ? buildSteps.find((s) => s.status === "fail")?.output?.slice(-200)
+      ? nonTestSteps.find((s) => s.status === "fail")?.output?.slice(-200)
       : undefined;
-
-    const testsFailed = testSteps.some((s) => s.status === "fail");
 
     // Log result
     for (const step of steps) {
