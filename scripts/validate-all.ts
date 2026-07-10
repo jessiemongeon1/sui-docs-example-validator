@@ -523,7 +523,7 @@ function generateReport(
   lines.push(`| Total packages validated | ${results.length} |`);
   lines.push(`| Passed | ${passed} |`);
   lines.push(`| Failed | ${failed} |`);
-  lines.push(`| Skipped | ${skipped} |`);
+  lines.push(`| N/A (no build file found) | ${skipped} |`);
   lines.push(`| Total duration | ${(totalDurationMs / 1000).toFixed(0)}s |`);
   lines.push("");
 
@@ -585,7 +585,7 @@ function generateReport(
       lines.push("**Steps:**");
       lines.push("");
       for (const step of r.steps) {
-        const icon = step.status === "pass" ? "PASS" : step.status === "fail" ? "FAIL" : "SKIP";
+        const icon = step.status === "pass" ? "PASS" : step.status === "fail" ? "FAIL" : "N/A";
         lines.push(`- \`${step.command}\` — **${icon}** (${(step.durationMs / 1000).toFixed(1)}s)`);
         if (step.status === "fail" && step.output) {
           lines.push("");
@@ -615,8 +615,8 @@ function generateReport(
     const buildStep = r.steps.find((s) => s.command.includes("build") || s.command.includes("check") || s.command.includes("tsc") || s.command === "file exists");
     const testStep = r.steps.find((s) => s.command.includes("test"));
 
-    const buildStatus = buildStep ? (buildStep.status === "pass" ? "PASS" : buildStep.status === "fail" ? "FAIL" : "SKIP") : "N/A";
-    const testStatus = testStep ? (testStep.status === "pass" ? "PASS" : testStep.status === "fail" ? "FAIL" : "SKIP") : "N/A";
+    const buildStatus = buildStep ? (buildStep.status === "pass" ? "PASS" : buildStep.status === "fail" ? "FAIL" : "N/A") : "N/A";
+    const testStatus = testStep ? (testStep.status === "pass" ? "PASS" : testStep.status === "fail" ? "FAIL" : "N/A") : "N/A";
     const totalMs = r.steps.reduce((sum, s) => sum + s.durationMs, 0);
 
     const shortId = r.id.length > 50 ? "..." + r.id.slice(-47) : r.id;
@@ -633,7 +633,7 @@ function generateReport(
   lines.push("## Detailed Results");
   lines.push("");
   for (const r of results) {
-    lines.push(`<details><summary>${r.overallStatus === "pass" ? "PASS" : r.overallStatus === "fail" ? "FAIL" : "SKIP"} — ${r.id} (${r.type})</summary>`);
+    lines.push(`<details><summary>${r.overallStatus === "pass" ? "PASS" : r.overallStatus === "fail" ? "FAIL" : "N/A"} — ${r.id} (${r.type})</summary>`);
     lines.push("");
     lines.push(`- **Origin**: ${r.origin}`);
     lines.push(`- **Package root**: \`${r.packageRoot}\``);
@@ -646,7 +646,7 @@ function generateReport(
     lines.push(`- **Referenced by**: ${r.referencedBy.map((f) => docsPageLinks(f)).join(", ")}`);
     lines.push("");
     for (const step of r.steps) {
-      const icon = step.status === "pass" ? "PASS" : step.status === "fail" ? "FAIL" : "SKIP";
+      const icon = step.status === "pass" ? "PASS" : step.status === "fail" ? "FAIL" : "N/A";
       lines.push(`**\`${step.command}\`** — ${icon} (${(step.durationMs / 1000).toFixed(1)}s)`);
       if (step.output && step.output !== "OK" && step.status !== "skip") {
         lines.push("");
@@ -830,7 +830,7 @@ async function main() {
 
     // Log result
     for (const step of steps) {
-      const icon = step.status === "pass" ? "PASS" : step.status === "fail" ? "FAIL" : "SKIP";
+      const icon = step.status === "pass" ? "PASS" : step.status === "fail" ? "FAIL" : "N/A";
       console.log(`    ${icon}  ${step.command} (${(step.durationMs / 1000).toFixed(1)}s)`);
     }
 
@@ -868,7 +868,7 @@ async function main() {
   const passed = results.filter((r) => r.overallStatus === "pass").length;
   const failed = results.filter((r) => r.overallStatus === "fail").length;
   const skipped = results.filter((r) => r.overallStatus === "skip").length;
-  console.log(`\nDone: ${passed} passed, ${failed} failed, ${skipped} skipped (${(totalDurationMs / 1000).toFixed(0)}s)`);
+  console.log(`\nDone: ${passed} passed, ${failed} failed, ${skipped} n/a (${(totalDurationMs / 1000).toFixed(0)}s)`);
 
   if (failed > 0) process.exit(1);
 }
