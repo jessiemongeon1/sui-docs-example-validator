@@ -12,6 +12,9 @@ on:
 env:
   SUI_BRANCH: ${{ github.event.inputs.sui_branch || 'main' }}
 
+permissions:
+  contents: write
+
 jobs:
   validate:
     runs-on: ubuntu-latest
