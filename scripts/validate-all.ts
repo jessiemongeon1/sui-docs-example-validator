@@ -476,6 +476,19 @@ function validateStatic(absRoot: string): StepResult[] {
   }];
 }
 
+// --- Helpers for report links ---
+
+/** Convert a docs MDX path to a GitHub source link and a live docs site link. */
+function docsPageLinks(mdxPath: string): string {
+  const ghUrl = `https://github.com/MystenLabs/sui/blob/main/${mdxPath}`;
+  // docs/content/develop/foo/bar.mdx → https://docs.sui.io/develop/foo/bar
+  const slug = mdxPath
+    .replace(/^docs\/content\//, "")
+    .replace(/\.mdx?$/, "");
+  const siteUrl = `https://docs.sui.io/${slug}`;
+  return `[${slug}](${siteUrl}) ([source](${ghUrl}))`;
+}
+
 // --- Report generation ---
 
 function generateReport(
@@ -554,7 +567,7 @@ function generateReport(
       lines.push(`- **Files referenced**: ${r.files.map((f) => `\`${f}\``).join(", ")}`);
       lines.push(`- **Referenced by docs pages**:`);
       for (const ref of r.referencedBy) {
-        lines.push(`  - \`${ref}\``);
+        lines.push(`  - ${docsPageLinks(ref)}`);
       }
       lines.push("");
       lines.push("**Steps:**");
@@ -618,7 +631,7 @@ function generateReport(
       lines.push(`- **Dependencies**: ${Object.entries(r.versionInfo.dependencies).map(([k, v]) => `\`${k}: ${v}\``).join(", ")}`);
     }
     lines.push(`- **Files**: ${r.files.map((f) => `\`${f}\``).join(", ")}`);
-    lines.push(`- **Referenced by**: ${r.referencedBy.map((f) => `\`${f}\``).join(", ")}`);
+    lines.push(`- **Referenced by**: ${r.referencedBy.map((f) => docsPageLinks(f)).join(", ")}`);
     lines.push("");
     for (const step of r.steps) {
       const icon = step.status === "pass" ? "PASS" : step.status === "fail" ? "FAIL" : "SKIP";
