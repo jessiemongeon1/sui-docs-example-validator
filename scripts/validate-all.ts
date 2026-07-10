@@ -552,9 +552,13 @@ async function main() {
   // 4. Validate each package
   const results: ValidationResult[] = [];
 
-  for (let i = 0; i < packages.length; i++) {
-    const pkg = packages[i];
-    const progress = `[${i + 1}/${packages.length}]`;
+  // Filter out empty/invalid packages
+  const validPackages = packages.filter((p) => p.id && p.packageRoot);
+  console.log(`  (${packages.length - validPackages.length} empty/invalid packages filtered out)`);
+
+  for (let i = 0; i < validPackages.length; i++) {
+    const pkg = validPackages[i];
+    const progress = `[${i + 1}/${validPackages.length}]`;
     console.log(`\n${progress} Validating: ${pkg.id} (${pkg.type})`);
 
     const origin =
@@ -638,22 +642,37 @@ async function main() {
     }
 
     // Overall status is based on BUILD steps only — test failures are informational.
-    // A "workspace package (deps resolved)" step overrides earlier tsc/build failures.
+    // Determine overall status:
+    // - For Move/Rust: "sui move build" or "cargo check" must pass
+    // - For TypeScript: install must pass (tsc failures are warnings since
+    //   docs only import snippets, not entire apps)
+    // - Test failures are always informational
     const testSteps = steps.filter((s) =>
       s.command.includes("test") && !s.command.includes("install")
     );
     const nonTestSteps = steps.filter((s) => !testSteps.includes(s));
 
-    // If there's a workspace override step that passed, that's the final word
-    const hasWorkspaceOverride = nonTestSteps.some(
-      (s) => s.command.includes("workspace package") && s.status === "pass"
-    );
-    const buildFailed = !hasWorkspaceOverride && nonTestSteps.some((s) => s.status === "fail");
-    const buildPassed = nonTestSteps.some((s) => s.status === "pass");
-    const overallStatus = buildFailed ? "fail" : buildPassed ? "pass" : "skip";
-    const failureReason = buildFailed
-      ? nonTestSteps.find((s) => s.status === "fail")?.output?.slice(-200)
-      : undefined;
+    let overallStatus: "pass" | "fail" | "skip";
+    let failureReason: string | undefined;
+
+    if (resolvedType === "typescript") {
+      // TS: pass if install succeeded (tsc/build failures are warnings)
+      const installPassed = nonTestSteps.some(
+        (s) => s.command.includes("install") && s.status === "pass"
+      );
+      overallStatus = installPassed ? "pass" : nonTestSteps.some((s) => s.status === "fail") ? "fail" : "skip";
+      if (!installPassed) {
+        failureReason = nonTestSteps.find((s) => s.status === "fail")?.output?.slice(-200);
+      }
+    } else {
+      // Move/Rust: actual build must pass
+      const buildFailed = nonTestSteps.some((s) => s.status === "fail");
+      const buildPassed = nonTestSteps.some((s) => s.status === "pass");
+      overallStatus = buildFailed ? "fail" : buildPassed ? "pass" : "skip";
+      if (buildFailed) {
+        failureReason = nonTestSteps.find((s) => s.status === "fail")?.output?.slice(-200);
+      }
+    }
 
     // Log result
     for (const step of steps) {

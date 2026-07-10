@@ -15,6 +15,7 @@
     { "pattern": "examples/rust/walrus-attributes-indexer", "reason": "heavy git deps — compiles full sui indexer framework, exceeds CI timeout" },
     { "pattern": "examples/rust/basic-sui-indexer", "reason": "heavy git deps — compiles full sui indexer framework, exceeds CI timeout" },
     { "pattern": "examples/rust/clickhouse-sui-indexer", "reason": "heavy git deps — compiles full sui indexer framework, exceeds CI timeout" },
-    { "pattern": "examples/regulated-coin/rust-client", "reason": "heavy git deps — compiles full sui SDK, exceeds CI timeout" }
+    { "pattern": "examples/regulated-coin/rust-client", "reason": "heavy git deps — compiles full sui SDK, exceeds CI timeout" },
+    { "pattern": "examples/foo", "reason": "dummy example path from docs style guide" }
   ]
 }
