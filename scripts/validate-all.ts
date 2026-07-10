@@ -54,6 +54,7 @@ interface ValidationResult {
 
 interface ToolVersions {
   sui: string;
+  mvr: string;
   node: string;
   npm: string;
   rustc: string;
@@ -102,6 +103,7 @@ function getVersion(cmd: string): string {
 function collectToolVersions(): ToolVersions {
   return {
     sui: getVersion("sui --version"),
+    mvr: getVersion("mvr --version"),
     node: getVersion("node --version"),
     npm: getVersion("npm --version"),
     rustc: getVersion("rustc --version"),
@@ -136,6 +138,14 @@ function run(cmd: string, cwd: string, timeoutMs = 300_000): { ok: boolean; outp
 function detectPackageManager(root: string): "pnpm" | "npm" {
   if (existsSync(resolve(root, "pnpm-lock.yaml")) || existsSync(resolve(root, "pnpm-workspace.yaml"))) {
     return "pnpm";
+  }
+  // Check if package.json has workspace: protocol deps (requires pnpm)
+  const pkgPath = resolve(root, "package.json");
+  if (existsSync(pkgPath)) {
+    try {
+      const content = readFileSync(pkgPath, "utf-8");
+      if (content.includes('"workspace:')) return "pnpm";
+    } catch {}
   }
   return "npm";
 }
@@ -289,9 +299,10 @@ function validateMove(absRoot: string): StepResult[] {
   // Check if Move.toml has dependencies — if not, inject the standard Sui framework dep
   const moveToml = readFileSync(resolve(absRoot, "Move.toml"), "utf-8");
   if (!moveToml.includes("[dependencies]")) {
-    const depBlock = `\n[dependencies]\nSui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "testnet" }\n`;
+    // Just add an empty [dependencies] section — the Sui CLI auto-resolves system deps
+    const depBlock = `\n[dependencies]\n`;
     writeFileSync(resolve(absRoot, "Move.toml"), moveToml + depBlock);
-    steps.push({ command: "inject Sui dependency", status: "pass", output: "Move.toml had no [dependencies] — injected standard Sui framework dep", durationMs: 0 });
+    steps.push({ command: "inject [dependencies]", status: "pass", output: "Move.toml had no [dependencies] — added empty section (Sui CLI auto-resolves system deps)", durationMs: 0 });
   }
 
   // Remove stale Move.lock so deps are re-fetched cleanly
@@ -522,6 +533,7 @@ function generateReport(
   lines.push("| Tool | Version |");
   lines.push("|------|---------|");
   lines.push(`| Sui CLI | ${versions.sui} |`);
+  lines.push(`| MVR | ${versions.mvr} |`);
   lines.push(`| Node.js | ${versions.node} |`);
   lines.push(`| npm | ${versions.npm} |`);
   lines.push(`| pnpm | ${versions.pnpm} |`);
@@ -761,7 +773,26 @@ async function main() {
         steps = validateStatic(absRoot);
         break;
       default:
-        steps = [{ command: "unknown type", status: "skip", output: `Unsupported type: ${pkg.type}`, durationMs: 0 }];
+        // Try to detect type from filesystem
+        if (existsSync(resolve(absRoot, "Move.toml"))) {
+          steps = validateMove(absRoot);
+        } else if (existsSync(resolve(absRoot, "Cargo.toml"))) {
+          steps = validateRust(absRoot);
+        } else if (existsSync(resolve(absRoot, "package.json"))) {
+          steps = validateTypeScript(absRoot);
+        } else {
+          // Check for build files in subdirectories
+          const findResult = run(`find "${absRoot}" -maxdepth 3 -name Move.toml -o -name Cargo.toml -o -name package.json 2>/dev/null | head -1`, absRoot, 5000);
+          if (findResult.ok && findResult.output.trim()) {
+            const found = findResult.output.trim();
+            const foundDir = dirname(found);
+            if (found.endsWith("Move.toml")) steps = validateMove(foundDir);
+            else if (found.endsWith("Cargo.toml")) steps = validateRust(foundDir);
+            else steps = validateTypeScript(foundDir);
+          } else {
+            steps = validateStatic(absRoot);
+          }
+        }
     }
 
     // Overall status is based on BUILD steps only — test failures are informational.

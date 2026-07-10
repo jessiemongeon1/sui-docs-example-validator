@@ -29,10 +29,11 @@ jobs:
       - name: Install suiup
         run: curl -fsSL https://raw.githubusercontent.com/MystenLabs/suiup/main/install.sh | bash
 
-      - name: Install Sui CLI via suiup
+      - name: Install Sui CLI and MVR via suiup
         run: |
           export PATH="$HOME/.local/bin:$PATH"
           suiup install sui -y
+          suiup install mvr -y
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - uses: dtolnay/rust-toolchain@stable
