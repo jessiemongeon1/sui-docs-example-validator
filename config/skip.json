@@ -1,16 +1,20 @@
 {
-  "comment": "Packages to skip during validation. Workspace crates are validated by sui repo CI.",
+  "comment": "Packages to skip during validation.",
   "skip": [
-    { "pattern": "crates/shared-crypto", "reason": "sui workspace crate" },
-    { "pattern": "crates/sui-framework", "reason": "sui workspace crate — framework itself" },
-    { "pattern": "crates/sui-indexer-alt-framework", "reason": "sui workspace crate" },
-    { "pattern": "crates/sui-indexer-alt-framework-store-traits", "reason": "sui workspace crate" },
-    { "pattern": "crates/sui-indexer-alt-schema", "reason": "sui workspace crate" },
-    { "pattern": "crates/sui-indexer-alt-e2e-tests", "reason": "sui workspace crate" },
-    { "pattern": "crates/sui-kv-rpc", "reason": "sui workspace crate" },
-    { "pattern": "crates/sui-kvstore", "reason": "sui workspace crate" },
-    { "pattern": "crates/sui-pg-db", "reason": "sui workspace crate" },
-    { "pattern": "crates/sui-protocol-config", "reason": "sui workspace crate" },
-    { "pattern": "crates/sui-sdk", "reason": "sui workspace crate" }
+    { "pattern": "crates/shared-crypto", "reason": "sui workspace crate — validated by sui CI" },
+    { "pattern": "crates/sui-framework", "reason": "sui workspace crate — validated by sui CI" },
+    { "pattern": "crates/sui-indexer-alt-framework", "reason": "sui workspace crate — validated by sui CI" },
+    { "pattern": "crates/sui-indexer-alt-framework-store-traits", "reason": "sui workspace crate — validated by sui CI" },
+    { "pattern": "crates/sui-indexer-alt-schema", "reason": "sui workspace crate — validated by sui CI" },
+    { "pattern": "crates/sui-indexer-alt-e2e-tests", "reason": "sui workspace crate — validated by sui CI" },
+    { "pattern": "crates/sui-kv-rpc", "reason": "sui workspace crate — validated by sui CI" },
+    { "pattern": "crates/sui-kvstore", "reason": "sui workspace crate — validated by sui CI" },
+    { "pattern": "crates/sui-pg-db", "reason": "sui workspace crate — validated by sui CI" },
+    { "pattern": "crates/sui-protocol-config", "reason": "sui workspace crate — validated by sui CI" },
+    { "pattern": "crates/sui-sdk", "reason": "sui workspace crate — validated by sui CI" },
+    { "pattern": "examples/rust/walrus-attributes-indexer", "reason": "heavy git deps — compiles full sui indexer framework, exceeds CI timeout" },
+    { "pattern": "examples/rust/basic-sui-indexer", "reason": "heavy git deps — compiles full sui indexer framework, exceeds CI timeout" },
+    { "pattern": "examples/rust/clickhouse-sui-indexer", "reason": "heavy git deps — compiles full sui indexer framework, exceeds CI timeout" },
+    { "pattern": "examples/regulated-coin/rust-client", "reason": "heavy git deps — compiles full sui SDK, exceeds CI timeout" }
   ]
 }

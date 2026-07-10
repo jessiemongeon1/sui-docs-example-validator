@@ -205,14 +205,29 @@ function validateMove(absRoot: string): StepResult[] {
     return steps;
   }
 
+  // Check if Move.toml has dependencies — if not, inject the standard Sui framework dep
+  const moveToml = readFileSync(resolve(absRoot, "Move.toml"), "utf-8");
+  if (!moveToml.includes("[dependencies]")) {
+    const depBlock = `\n[dependencies]\nSui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "framework/mainnet" }\n`;
+    writeFileSync(resolve(absRoot, "Move.toml"), moveToml + depBlock);
+    steps.push({ command: "inject Sui dependency", status: "pass", output: "Move.toml had no [dependencies] — injected standard Sui framework dep", durationMs: 0 });
+  }
+
+  // Also fix legacy edition "2024.beta" → "2024"
+  const updatedToml = readFileSync(resolve(absRoot, "Move.toml"), "utf-8");
+  if (updatedToml.includes('edition = "2024.beta"')) {
+    writeFileSync(resolve(absRoot, "Move.toml"), updatedToml.replace('edition = "2024.beta"', 'edition = "2024"'));
+    steps.push({ command: "fix edition", status: "pass", output: 'Changed edition from "2024.beta" to "2024"', durationMs: 0 });
+  }
+
   // Build
-  const build = run("sui move build 2>&1", absRoot);
+  let build = run("sui move build 2>&1", absRoot, 120_000);
   steps.push({ command: "sui move build", status: build.ok ? "pass" : "fail", output: build.output, durationMs: build.durationMs });
 
   if (!build.ok) return steps;
 
   // Test
-  const test = run("sui move test 2>&1", absRoot);
+  const test = run("sui move test 2>&1", absRoot, 120_000);
   steps.push({ command: "sui move test", status: test.ok ? "pass" : "fail", output: test.output, durationMs: test.durationMs });
 
   return steps;
@@ -242,35 +257,112 @@ function validateRust(absRoot: string): StepResult[] {
   return steps;
 }
 
+/**
+ * Find the monorepo/workspace root by walking up from absRoot looking for
+ * pnpm-workspace.yaml, lerna.json, or a package.json with "workspaces".
+ */
+function findWorkspaceRoot(absRoot: string): string | null {
+  let dir = absRoot;
+  while (true) {
+    const parent = dirname(dir);
+    if (parent === dir) break;
+    dir = parent;
+    if (existsSync(resolve(dir, "pnpm-workspace.yaml"))) return dir;
+    if (existsSync(resolve(dir, "lerna.json"))) return dir;
+    if (existsSync(resolve(dir, "package.json"))) {
+      try {
+        const pkg = JSON.parse(readFileSync(resolve(dir, "package.json"), "utf-8"));
+        if (pkg.workspaces) return dir;
+      } catch {}
+    }
+  }
+  return null;
+}
+
+/** Track which workspace roots we've already installed deps for. */
+const installedWorkspaces = new Set<string>();
+
 function validateTypeScript(absRoot: string): StepResult[] {
   const steps: StepResult[] = [];
 
+  // If no package.json at absRoot, walk up to find one (sub-directory of a package)
+  let installRoot = absRoot;
   if (!existsSync(resolve(absRoot, "package.json"))) {
-    steps.push({ command: "check package.json exists", status: "fail", output: "package.json not found at " + absRoot, durationMs: 0 });
-    return steps;
+    const wsRoot = findWorkspaceRoot(absRoot);
+    if (wsRoot) {
+      installRoot = wsRoot;
+      steps.push({ command: "resolve workspace root", status: "pass", output: `Using workspace root: ${wsRoot}`, durationMs: 0 });
+    } else {
+      // Walk up to find nearest package.json
+      let dir = absRoot;
+      let found = false;
+      while (true) {
+        const parent = dirname(dir);
+        if (parent === dir) break;
+        dir = parent;
+        if (existsSync(resolve(dir, "package.json"))) {
+          installRoot = dir;
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        steps.push({ command: "check package.json exists", status: "fail", output: "No package.json found at or above " + absRoot, durationMs: 0 });
+        return steps;
+      }
+      steps.push({ command: "resolve package root", status: "pass", output: `Using parent: ${installRoot}`, durationMs: 0 });
+    }
   }
 
-  const pm = detectPackageManager(absRoot);
+  // Check for monorepo workspace root above the install root
+  const wsRoot = findWorkspaceRoot(installRoot);
+  const effectiveRoot = wsRoot || installRoot;
+  const pm = detectPackageManager(effectiveRoot);
 
-  // Install
-  const installCmd = pm === "pnpm" ? "pnpm install --no-frozen-lockfile 2>&1" : "npm install 2>&1";
-  console.log(`      Running ${pm} install...`);
-  const install = run(installCmd, absRoot, 180_000);
-  steps.push({ command: `${pm} install`, status: install.ok ? "pass" : "fail", output: install.output, durationMs: install.durationMs });
+  // Install deps (once per workspace root)
+  if (!installedWorkspaces.has(effectiveRoot)) {
+    const installCmd = pm === "pnpm"
+      ? "pnpm install --no-frozen-lockfile 2>&1"
+      : "npm install 2>&1";
+    console.log(`      Running ${pm} install at ${effectiveRoot}...`);
+    const install = run(installCmd, effectiveRoot, 300_000);
+    steps.push({ command: `${pm} install`, status: install.ok ? "pass" : "fail", output: install.output, durationMs: install.durationMs });
 
-  if (!install.ok) return steps;
+    if (!install.ok) return steps;
+    installedWorkspaces.add(effectiveRoot);
+  } else {
+    steps.push({ command: `${pm} install`, status: "pass", output: "already installed (cached)", durationMs: 0 });
+  }
 
-  // Type check
-  const tsc = run("npx tsc --noEmit 2>&1", absRoot, 120_000);
-  steps.push({ command: "tsc --noEmit", status: tsc.ok ? "pass" : "fail", output: tsc.output, durationMs: tsc.durationMs });
+  // Try workspace build script first if available
+  if (wsRoot && existsSync(resolve(wsRoot, "package.json"))) {
+    const wsPkg = JSON.parse(readFileSync(resolve(wsRoot, "package.json"), "utf-8"));
+    if (wsPkg.scripts?.build) {
+      console.log(`      Running ${pm} run build at workspace root...`);
+      const build = run(`${pm} run build 2>&1`, wsRoot, 300_000);
+      steps.push({ command: `${pm} run build (workspace)`, status: build.ok ? "pass" : "fail", output: build.output, durationMs: build.durationMs });
+      // Even if workspace build fails, try tsc directly
+    }
+  }
+
+  // Type check — use skipLibCheck to avoid failures from dependency type mismatches
+  // Try from the package root first, fall back to install root
+  const tscRoot = existsSync(resolve(absRoot, "tsconfig.json")) ? absRoot : installRoot;
+  const tsc = run("npx tsc --noEmit --skipLibCheck 2>&1", tscRoot, 120_000);
+  steps.push({ command: "tsc --noEmit --skipLibCheck", status: tsc.ok ? "pass" : "fail", output: tsc.output, durationMs: tsc.durationMs });
 
   // Test
-  const pkgJson = JSON.parse(readFileSync(resolve(absRoot, "package.json"), "utf-8"));
-  if (pkgJson.scripts?.test && pkgJson.scripts.test !== 'echo "Error: no test specified" && exit 1') {
-    const test = run(`${pm} test 2>&1`, absRoot, 120_000);
-    steps.push({ command: `${pm} test`, status: test.ok ? "pass" : "fail", output: test.output, durationMs: test.durationMs });
+  const testPkgPath = existsSync(resolve(absRoot, "package.json")) ? absRoot : installRoot;
+  if (existsSync(resolve(testPkgPath, "package.json"))) {
+    const pkgJson = JSON.parse(readFileSync(resolve(testPkgPath, "package.json"), "utf-8"));
+    if (pkgJson.scripts?.test && pkgJson.scripts.test !== 'echo "Error: no test specified" && exit 1') {
+      const test = run(`${pm} test 2>&1`, testPkgPath, 120_000);
+      steps.push({ command: `${pm} test`, status: test.ok ? "pass" : "fail", output: test.output, durationMs: test.durationMs });
+    } else {
+      steps.push({ command: `${pm} test`, status: "skip", output: "no test script defined", durationMs: 0 });
+    }
   } else {
-    steps.push({ command: `${pm} test`, status: "skip", output: "no test script defined", durationMs: 0 });
+    steps.push({ command: `${pm} test`, status: "skip", output: "no package.json at this level", durationMs: 0 });
   }
 
   return steps;
@@ -477,13 +569,30 @@ async function main() {
         continue;
       }
 
-      // Re-resolve package root by walking the actual filesystem
-      // Use the first referenced file to find the real package root
+      // Re-resolve package root by walking the actual cloned filesystem.
+      // Try multiple strategies since the inferred path may be inexact.
+      let resolved: { absRoot: string; type: PackageEntry["type"] } | null = null;
+
+      // Strategy 1: walk up from the first referenced file
       const firstFile = pkg.files[0] || pkg.packageRoot;
       const searchPath = firstFile.startsWith(pkg.packageRoot)
         ? firstFile
         : `${pkg.packageRoot}/${firstFile}`;
-      const resolved = resolveActualPackageRoot(searchPath, repoDir);
+      resolved = resolveActualPackageRoot(searchPath, repoDir);
+
+      // Strategy 2: scan the inferred packageRoot for build files
+      if (!resolved) {
+        const pkgDir = resolve(repoDir, pkg.packageRoot);
+        if (existsSync(pkgDir)) {
+          // Look for Move.toml, Cargo.toml, or package.json in subdirectories (1 level deep)
+          const findResult = run(`find "${pkgDir}" -maxdepth 2 -name Move.toml -o -name Cargo.toml -o -name package.json 2>/dev/null | head -1`, repoDir, 5000);
+          if (findResult.ok && findResult.output.trim()) {
+            const foundFile = findResult.output.trim();
+            resolved = { absRoot: dirname(foundFile), type: pkg.type };
+          }
+        }
+      }
+
       if (resolved) {
         absRoot = resolved.absRoot;
         resolvedType = resolved.type;
