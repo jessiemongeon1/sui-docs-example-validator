@@ -135,17 +135,18 @@ function run(cmd: string, cwd: string, timeoutMs = 300_000): { ok: boolean; outp
   }
 }
 
-function detectPackageManager(root: string): "pnpm" | "npm" {
-  if (existsSync(resolve(root, "pnpm-lock.yaml")) || existsSync(resolve(root, "pnpm-workspace.yaml"))) {
-    return "pnpm";
-  }
-  // Check if package.json has workspace: protocol deps (requires pnpm)
-  const pkgPath = resolve(root, "package.json");
-  if (existsSync(pkgPath)) {
-    try {
-      const content = readFileSync(pkgPath, "utf-8");
-      if (content.includes('"workspace:')) return "pnpm";
-    } catch {}
+function detectPackageManager(...roots: string[]): "pnpm" | "npm" {
+  for (const root of roots) {
+    if (existsSync(resolve(root, "pnpm-lock.yaml")) || existsSync(resolve(root, "pnpm-workspace.yaml"))) {
+      return "pnpm";
+    }
+    const pkgPath = resolve(root, "package.json");
+    if (existsSync(pkgPath)) {
+      try {
+        const content = readFileSync(pkgPath, "utf-8");
+        if (content.includes('"workspace:')) return "pnpm";
+      } catch {}
+    }
   }
   return "npm";
 }
@@ -415,7 +416,7 @@ function validateTypeScript(absRoot: string): StepResult[] {
   // Check for monorepo workspace root above the install root
   const wsRoot = findWorkspaceRoot(installRoot);
   const effectiveRoot = wsRoot || installRoot;
-  const pm = detectPackageManager(effectiveRoot);
+  const pm = detectPackageManager(effectiveRoot, absRoot, installRoot);
 
   // Install deps (once per workspace root)
   if (!installedWorkspaces.has(effectiveRoot)) {
@@ -680,6 +681,18 @@ async function main() {
   const packages: PackageEntry[] = JSON.parse(readFileSync(manifest, "utf-8"));
   console.log(`\nLoaded ${packages.length} packages from manifest`);
 
+  // 2b. Load skip list
+  const skipConfig = JSON.parse(
+    readFileSync(resolve(import.meta.dirname!, "../config/skip.json"), "utf-8"),
+  );
+  const skipPatterns: { pattern: string; reason: string }[] = skipConfig.skip;
+  function shouldSkip(id: string): { skip: boolean; reason?: string } {
+    for (const s of skipPatterns) {
+      if (id.includes(s.pattern)) return { skip: true, reason: s.reason };
+    }
+    return { skip: false };
+  }
+
   // 3. Prepare working directory for external clones
   const workDir = resolve(dirname(output), ".external-repos");
   if (!existsSync(workDir)) mkdirSync(workDir, { recursive: true });
@@ -694,6 +707,14 @@ async function main() {
   for (let i = 0; i < validPackages.length; i++) {
     const pkg = validPackages[i];
     const progress = `[${i + 1}/${validPackages.length}]`;
+
+    // Check skip list
+    const skipCheck = shouldSkip(pkg.id);
+    if (skipCheck.skip) {
+      console.log(`\n${progress} Skipping: ${pkg.id} — ${skipCheck.reason}`);
+      continue;
+    }
+
     console.log(`\n${progress} Validating: ${pkg.id} (${pkg.type})`);
 
     const origin =

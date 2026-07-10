@@ -16,6 +16,7 @@
     { "pattern": "examples/rust/basic-sui-indexer", "reason": "heavy git deps — compiles full sui indexer framework, exceeds CI timeout" },
     { "pattern": "examples/rust/clickhouse-sui-indexer", "reason": "heavy git deps — compiles full sui indexer framework, exceeds CI timeout" },
     { "pattern": "examples/regulated-coin/rust-client", "reason": "heavy git deps — compiles full sui SDK, exceeds CI timeout" },
-    { "pattern": "examples/foo", "reason": "dummy example path from docs style guide" }
+    { "pattern": "examples/foo", "reason": "dummy example path from docs style guide" },
+    { "pattern": "MystenLabs/Nautilus", "reason": "heavy Rust crate with system deps — validated by Nautilus repo CI" }
   ]
 }
