@@ -4,12 +4,12 @@
 
 | Metric | Value |
 |--------|-------|
-| Date | 2026-07-10T20:58:03.358Z |
-| Total packages validated | 69 |
-| Passed | 67 |
-| Failed | 2 |
-| Skipped | 0 |
-| Total duration | 967s |
+| Date | 2026-07-10T21:17:21.122Z |
+| Total packages validated | 68 |
+| Passed | 68 |
+| Failed | 0 |
+| N/A (no build file found) | 0 |
+| Total duration | 783s |
 
 ## Tool Versions
 
@@ -25,144 +25,78 @@
 | tsx | tsx v4.23.0
 node v20.20.2 |
 
-## Failures
-
-### MystenLabs/sagat@main/api
-
-- **Failure category**: Dependency installation failed
-- **Type**: typescript
-- **Origin**: MystenLabs/sagat@main
-- **Package root**: `api`
-- **Key dependencies**: `@mysten/sagat: workspace:*`, `@mysten/sui: ^2.16.0`
-- **Files referenced**: `api/test/addresses.test.ts`, `api/test/multisig-api.test.ts`, `api/test/multisig.test.ts`, `api/test/proposal-business-logic.test.ts`
-- **Referenced by docs pages**:
-  - [sui-stack/sagat](https://docs.sui.io/sui-stack/sagat) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/sagat.mdx))
-
-**Steps:**
-
-- `npm install` — **FAIL** (9.2s)
-
-  <details><summary>Error output</summary>
-
-  ```
-  npm error code EUNSUPPORTEDPROTOCOL
-  npm error Unsupported URL Type "workspace:": workspace:*
-  npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-07-10T20_43_55_616Z-debug-0.log
-  ```
-
-  </details>
-
----
-
-### MystenLabs/Nautilus@main/src
-
-- **Failure category**: Missing Move dependency
-- **Type**: unknown
-- **Origin**: MystenLabs/Nautilus@main
-- **Package root**: `src`
-- **Files referenced**: `src/nautilus-server/src/apps/seal-example/seal_config.yaml`, `src/nautilus-server/src/apps/seal-example/endpoints.rs`
-- **Referenced by docs pages**:
-  - [sui-stack/nautilus/seal](https://docs.sui.io/sui-stack/nautilus/seal) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/nautilus/seal.mdx))
-
-**Steps:**
-
-- `cargo check` — **FAIL** (52.2s)
-
-  <details><summary>Error output</summary>
-
-  ```
-  king[0m axum v0.7.9
-  [1m[32m    Checking[0m uuid v1.18.1
-  [1m[32m    Checking[0m tower-http v0.6.6
-  [1m[32m   Compiling[0m serde_repr v0.1.20
-  [1m[32m    Checking[0m nautilus-server v0.1.0 (/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--Nautilus--main/src/nautilus-server)
-  [0m[1m[38;5;9merror[E0432][0m[0m[1m: unresolved import `nautilus_server::app::process_data`[0m
-  [0m [0m[0m[1m[38;5;12m--> [0m[0msrc/main.rs:7:5[0m
-  [0m  [0m[0m[1m[38;5;12m|[0m
-  [0m[1m[38;5;12m7[0m[0m [0m[0m[1m[38;5;12m|[0m[0m [0m[0muse nautilus_server::app::process_data;[0m
-  [0m  [0m[0m[1m[38;5;12m|[0m[0m     [0m[0m[1m[38;5;9m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m [0m[0m[1m[38;5;9mno `process_data` in `app`[0m
-  
-  [0m[1mFor more information about this error, try `rustc --explain E0432`.[0m
-  [1m[31merror[0m[1m:[0m could not compile `nautilus-server` (bin "nautilus-server") due to 1 previous error
-  ```
-
-  </details>
-
----
-
 ## All Results
 
 | # | Package | Type | Origin | Build | Test | Duration | Files |
 |---|---------|------|--------|-------|------|----------|-------|
-| 1 | examples/tic-tac-toe/move | move | MystenLabs/sui (internal) | PASS | FAIL | 7.5s | 1 |
-| 2 | examples/move/dynamic_fields | move | MystenLabs/sui (internal) | PASS | FAIL | 6.3s | 1 |
-| 3 | examples/move/nft | move | MystenLabs/sui (internal) | PASS | PASS | 5.4s | 1 |
-| 4 | examples/move/random/random_nft | move | MystenLabs/sui (internal) | PASS | FAIL | 5.8s | 1 |
-| 5 | examples/move/basics | move | MystenLabs/sui (internal) | PASS | FAIL | 5.6s | 2 |
-| 6 | examples/move/hero | move | MystenLabs/sui (internal) | PASS | FAIL | 6.9s | 1 |
-| 7 | examples/vesting | move | MystenLabs/sui (internal) | PASS | FAIL | 7.2s | 6 |
-| 8 | examples/move/coin | move | MystenLabs/sui (internal) | PASS | PASS | 5.2s | 3 |
-| 9 | examples/regulated-coin/move | move | MystenLabs/sui (internal) | PASS | PASS | 5.3s | 1 |
-| 10 | examples/regulated-coin/ts-client | typescript | MystenLabs/sui (internal) | FAIL | SKIP | 13.9s | 1 |
-| 11 | examples/move/nft-soulbound | move | MystenLabs/sui (internal) | PASS | PASS | 5.4s | 1 |
-| 12 | examples/move/nft-rental | move | MystenLabs/sui (internal) | PASS | FAIL | 21.5s | 1 |
-| 13 | examples/move/token | move | MystenLabs/sui (internal) | PASS | FAIL | 8.2s | 1 |
-| 14 | examples/trading/contracts/escrow | move | MystenLabs/sui (internal) | PASS | FAIL | 6.9s | 3 |
-| 15 | examples/move/color_object | move | MystenLabs/sui (internal) | PASS | FAIL | 6.4s | 1 |
-| 16 | MystenLabs/sagat@main/api | typescript | MystenLabs/sagat@main | N/A | N/A | 9.2s | 4 |
-| 17 | MystenLabs/sui-move-bootcamp@solution/K2/src | typescript | .../sui-move-bootcamp@solution | FAIL | SKIP | 11.6s | 5 |
-| 18 | MystenLabs/sui-move-bootcamp@solution/K2 | typescript | .../sui-move-bootcamp@solution | FAIL | SKIP | 7.9s | 1 |
-| 19 | MystenLabs/onlyfins-example-app@main/frontend | typescript | ...s/onlyfins-example-app@main | PASS | SKIP | 37.3s | 1 |
-| 20 | ...07-Walrus-SDK-upload-relay/hands-on-source-code | typescript | ...Labs/Walrus-Onboarding@main | PASS | FAIL | 24.5s | 2 |
-| 21 | MystenLabs/onlyfins-example-app@main/backend | typescript | ...s/onlyfins-example-app@main | PASS | SKIP | 3.0s | 3 |
-| 22 | MystenLabs/walrus-pocs@main/sdk | typescript | MystenLabs/walrus-pocs@main | PASS | SKIP | 5.9s | 3 |
-| 23 | MystenLabs/Walrus-Onboarding@main/11-Batch-storage | typescript | ...Labs/Walrus-Onboarding@main | PASS | SKIP | 5.8s | 2 |
-| 24 | MystenLabs/onlyfins-example-app@main/frontend/src | typescript | ...s/onlyfins-example-app@main | PASS | SKIP | 10.5s | 6 |
-| 25 | MystenLabs/ts-sdks@main/packages | typescript | MystenLabs/ts-sdks@main | FAIL | FAIL | 24.8s | 1 |
+| 1 | examples/tic-tac-toe/move | move | MystenLabs/sui (internal) | PASS | FAIL | 6.4s | 1 |
+| 2 | examples/move/dynamic_fields | move | MystenLabs/sui (internal) | PASS | FAIL | 5.0s | 1 |
+| 3 | examples/move/nft | move | MystenLabs/sui (internal) | PASS | PASS | 4.6s | 1 |
+| 4 | examples/move/random/random_nft | move | MystenLabs/sui (internal) | PASS | FAIL | 4.6s | 1 |
+| 5 | examples/move/basics | move | MystenLabs/sui (internal) | PASS | FAIL | 4.6s | 2 |
+| 6 | examples/move/hero | move | MystenLabs/sui (internal) | PASS | FAIL | 5.6s | 1 |
+| 7 | examples/vesting | move | MystenLabs/sui (internal) | PASS | FAIL | 6.0s | 6 |
+| 8 | examples/move/coin | move | MystenLabs/sui (internal) | PASS | PASS | 4.4s | 3 |
+| 9 | examples/regulated-coin/move | move | MystenLabs/sui (internal) | PASS | PASS | 4.4s | 1 |
+| 10 | examples/regulated-coin/ts-client | typescript | MystenLabs/sui (internal) | FAIL | N/A | 13.4s | 1 |
+| 11 | examples/move/nft-soulbound | move | MystenLabs/sui (internal) | PASS | PASS | 4.4s | 1 |
+| 12 | examples/move/nft-rental | move | MystenLabs/sui (internal) | PASS | FAIL | 23.7s | 1 |
+| 13 | examples/move/token | move | MystenLabs/sui (internal) | PASS | FAIL | 6.9s | 1 |
+| 14 | examples/trading/contracts/escrow | move | MystenLabs/sui (internal) | PASS | FAIL | 5.6s | 3 |
+| 15 | examples/move/color_object | move | MystenLabs/sui (internal) | PASS | FAIL | 5.3s | 1 |
+| 16 | MystenLabs/sagat@main/api | typescript | MystenLabs/sagat@main | FAIL | N/A | 5.1s | 4 |
+| 17 | MystenLabs/sui-move-bootcamp@solution/K2/src | typescript | .../sui-move-bootcamp@solution | FAIL | N/A | 9.3s | 5 |
+| 18 | MystenLabs/sui-move-bootcamp@solution/K2 | typescript | .../sui-move-bootcamp@solution | FAIL | N/A | 6.5s | 1 |
+| 19 | MystenLabs/onlyfins-example-app@main/frontend | typescript | ...s/onlyfins-example-app@main | PASS | N/A | 34.0s | 1 |
+| 20 | ...07-Walrus-SDK-upload-relay/hands-on-source-code | typescript | ...Labs/Walrus-Onboarding@main | PASS | FAIL | 23.2s | 2 |
+| 21 | MystenLabs/onlyfins-example-app@main/backend | typescript | ...s/onlyfins-example-app@main | PASS | N/A | 2.4s | 3 |
+| 22 | MystenLabs/walrus-pocs@main/sdk | typescript | MystenLabs/walrus-pocs@main | PASS | N/A | 3.8s | 3 |
+| 23 | MystenLabs/Walrus-Onboarding@main/11-Batch-storage | typescript | ...Labs/Walrus-Onboarding@main | PASS | N/A | 4.5s | 2 |
+| 24 | MystenLabs/onlyfins-example-app@main/frontend/src | typescript | ...s/onlyfins-example-app@main | PASS | N/A | 8.6s | 6 |
+| 25 | MystenLabs/ts-sdks@main/packages | typescript | MystenLabs/ts-sdks@main | FAIL | FAIL | 23.0s | 1 |
 | 26 | MystenLabs/walrus-sites@main/examples | unknown | MystenLabs/walrus-sites@main | PASS | N/A | 0.0s | 1 |
-| 27 | MystenLabs/messaging-sdk-example@main/frontend/src | typescript | .../messaging-sdk-example@main | PASS | SKIP | 23.4s | 1 |
-| 28 | MystenLabs/onlyfins-example-app@main/frontend/move | move | ...s/onlyfins-example-app@main | PASS | PASS | 7.4s | 1 |
-| 29 | ...enLabs/sui-move-bootcamp@main/K5/seal-demo/move | move | ...Labs/sui-move-bootcamp@main | PASS | PASS | 13.9s | 3 |
-| 30 | MystenLabs/walrus-pocs@main/walrus-seal/app/src | typescript | MystenLabs/walrus-pocs@main | PASS | SKIP | 29.0s | 4 |
-| 31 | MystenLabs/sui-move-bootcamp@main/K5/seal-demo/ts | typescript | ...Labs/sui-move-bootcamp@main | PASS | SKIP | 3.5s | 1 |
-| 32 | MystenLabs/Nautilus@main/src | unknown | MystenLabs/Nautilus@main | FAIL | N/A | 52.2s | 2 |
-| 33 | ...essaging@main/move/packages/sui_stack_messaging | move | ...bs/sui-stack-messaging@main | PASS | PASS | 18.9s | 3 |
-| 34 | MystenLabs/sui-stack-messaging@main/chat-app/src | typescript | ...bs/sui-stack-messaging@main | PASS | SKIP | 11.2s | 1 |
-| 35 | MystenLabs/ticketing-poc@main/move | move | MystenLabs/ticketing-poc@main | PASS | PASS | 6.2s | 3 |
-| 36 | MystenLabs/ticketing-poc@main/app/src/app | typescript | MystenLabs/ticketing-poc@main | PASS | SKIP | 81.3s | 1 |
-| 37 | MystenLabs/ticketing-poc@main/app | typescript | MystenLabs/ticketing-poc@main | PASS | SKIP | 45.8s | 1 |
-| 38 | MystenLabs/solitaire@main/move/solitaire | move | MystenLabs/solitaire@main | PASS | PASS | 6.4s | 1 |
-| 39 | MystenLabs/solitaire@main/app/src | typescript | MystenLabs/solitaire@main | PASS | SKIP | 65.9s | 2 |
-| 40 | MystenLabs/walrus-sdk-relay-example-app@main/src | typescript | ...-sdk-relay-example-app@main | PASS | SKIP | 16.0s | 1 |
-| 41 | MystenLabs/sui-move-bootcamp@solution/I1/silver | move | .../sui-move-bootcamp@solution | PASS | FAIL | 6.2s | 1 |
-| 42 | ...Labs/sui-move-bootcamp@solution/I3/king_credits | move | .../sui-move-bootcamp@solution | PASS | PASS | 6.1s | 2 |
-| 43 | ...Labs/sui-move-bootcamp@solution/I2/fixed_supply | move | .../sui-move-bootcamp@solution | PASS | PASS | 6.1s | 1 |
-| 44 | MystenLabs/ts-sdks@main/packages/deepbook-v3 | typescript | MystenLabs/ts-sdks@main | FAIL | PASS | 5.6s | 8 |
-| 45 | MystenLabs/sui-stack-hello-world@main/move | unknown | .../sui-stack-hello-world@main | PASS | PASS | 7.6s | 1 |
-| 46 | ...abs/sui-stack-hello-world@main/move/hello-world | move | .../sui-stack-hello-world@main | PASS | PASS | 7.5s | 1 |
-| 47 | MystenLabs/sui-stack-hello-world@main/ui | typescript | .../sui-stack-hello-world@main | PASS | SKIP | 10.9s | 5 |
-| 48 | MystenLabs/sui-move-bootcamp@solution/G1/scenario | move | .../sui-move-bootcamp@solution | PASS | PASS | 6.3s | 2 |
-| 49 | MystenLabs/sui-move-bootcamp@solution/G1 | move | .../sui-move-bootcamp@solution | PASS | PASS | 6.5s | 2 |
-| 50 | MystenLabs/plinko-poc@main/plinko | move | MystenLabs/plinko-poc@main | PASS | PASS | 6.0s | 2 |
-| 51 | MystenLabs/plinko-poc@main/app/src | typescript | MystenLabs/plinko-poc@main | PASS | SKIP | 65.8s | 1 |
-| 52 | MystenLabs/plinko-poc@main/app | typescript | MystenLabs/plinko-poc@main | PASS | SKIP | 22.3s | 1 |
-| 53 | ...-bootcamp@solution/F1/app/my-first-sui-dapp/src | typescript | .../sui-move-bootcamp@solution | FAIL | SKIP | 7.3s | 2 |
-| 54 | MystenLabs/CTF@main/contracts | move | MystenLabs/CTF@main | PASS | PASS | 13.1s | 1 |
-| 55 | MystenLabs/sui-move-bootcamp@main/K1/contract | move | ...Labs/sui-move-bootcamp@main | PASS | PASS | 5.6s | 1 |
-| 56 | MystenLabs/sui-move-bootcamp@main/K1 | typescript | ...Labs/sui-move-bootcamp@main | PASS | FAIL | 9.2s | 1 |
-| 57 | MystenLabs/sui-move-bootcamp@main/K1/backend | typescript | ...Labs/sui-move-bootcamp@main | PASS | FAIL | 4.1s | 1 |
-| 58 | ...-bootcamp@solution/C5/contracts/derived_objects | move | .../sui-move-bootcamp@solution | PASS | PASS | 5.8s | 1 |
-| 59 | MystenLabs/sui-move-bootcamp@solution/C5/ts | typescript | .../sui-move-bootcamp@solution | PASS | FAIL | 11.1s | 1 |
-| 60 | ...sui-move-bootcamp@solution/E2/my-first-sui-dapp | typescript | .../sui-move-bootcamp@solution | FAIL | SKIP | 7.4s | 3 |
-| 61 | ...move-bootcamp@solution/E2/my-first-sui-dapp/src | typescript | .../sui-move-bootcamp@solution | FAIL | SKIP | 5.2s | 1 |
-| 62 | MystenLabs/deepbookv3@main/packages/deepbook | move | MystenLabs/deepbookv3@main | PASS | PASS | 12.1s | 7 |
-| 63 | ...eepbookv3@predict-testnet-4-16/packages/predict | move | ...bookv3@predict-testnet-4-16 | PASS | PASS | 8.3s | 8 |
-| 64 | ...enLabs/deepbookv3@main/packages/deepbook_margin | move | MystenLabs/deepbookv3@main | PASS | PASS | 26.0s | 6 |
-| 65 | MystenLabs/ts-sdks@main/packages/enoki | typescript | MystenLabs/ts-sdks@main | FAIL | SKIP | 3.3s | 1 |
-| 66 | MystenLabs/ts-sdks@main/packages/sui | typescript | MystenLabs/ts-sdks@main | FAIL | FAIL | 14.0s | 2 |
-| 67 | MystenLabs/ts-sdks@main/packages/slush-wallet | typescript | MystenLabs/ts-sdks@main | FAIL | SKIP | 2.9s | 1 |
-| 68 | ...kages/dapp-kit-next/packages/dapp-kit-react/src | typescript | MystenLabs/ts-sdks@main | FAIL | FAIL | 8.9s | 6 |
-| 69 | ...n/packages/dapp-kit-next/packages/dapp-kit-core | typescript | MystenLabs/ts-sdks@main | FAIL | FAIL | 8.2s | 1 |
+| 27 | MystenLabs/messaging-sdk-example@main/frontend/src | typescript | .../messaging-sdk-example@main | PASS | N/A | 19.0s | 1 |
+| 28 | MystenLabs/onlyfins-example-app@main/frontend/move | move | ...s/onlyfins-example-app@main | PASS | PASS | 6.4s | 1 |
+| 29 | ...enLabs/sui-move-bootcamp@main/K5/seal-demo/move | move | ...Labs/sui-move-bootcamp@main | PASS | PASS | 12.3s | 3 |
+| 30 | MystenLabs/walrus-pocs@main/walrus-seal/app/src | typescript | MystenLabs/walrus-pocs@main | PASS | N/A | 25.0s | 4 |
+| 31 | MystenLabs/sui-move-bootcamp@main/K5/seal-demo/ts | typescript | ...Labs/sui-move-bootcamp@main | PASS | N/A | 2.8s | 1 |
+| 32 | ...essaging@main/move/packages/sui_stack_messaging | move | ...bs/sui-stack-messaging@main | PASS | PASS | 20.0s | 3 |
+| 33 | MystenLabs/sui-stack-messaging@main/chat-app/src | typescript | ...bs/sui-stack-messaging@main | PASS | N/A | 9.6s | 1 |
+| 34 | MystenLabs/ticketing-poc@main/move | move | MystenLabs/ticketing-poc@main | PASS | PASS | 5.0s | 3 |
+| 35 | MystenLabs/ticketing-poc@main/app/src/app | typescript | MystenLabs/ticketing-poc@main | PASS | N/A | 64.5s | 1 |
+| 36 | MystenLabs/ticketing-poc@main/app | typescript | MystenLabs/ticketing-poc@main | PASS | N/A | 35.6s | 1 |
+| 37 | MystenLabs/solitaire@main/move/solitaire | move | MystenLabs/solitaire@main | PASS | PASS | 5.4s | 1 |
+| 38 | MystenLabs/solitaire@main/app/src | typescript | MystenLabs/solitaire@main | PASS | N/A | 52.5s | 2 |
+| 39 | MystenLabs/walrus-sdk-relay-example-app@main/src | typescript | ...-sdk-relay-example-app@main | PASS | N/A | 13.4s | 1 |
+| 40 | MystenLabs/sui-move-bootcamp@solution/I1/silver | move | .../sui-move-bootcamp@solution | PASS | FAIL | 5.5s | 1 |
+| 41 | ...Labs/sui-move-bootcamp@solution/I3/king_credits | move | .../sui-move-bootcamp@solution | PASS | PASS | 5.1s | 2 |
+| 42 | ...Labs/sui-move-bootcamp@solution/I2/fixed_supply | move | .../sui-move-bootcamp@solution | PASS | PASS | 5.2s | 1 |
+| 43 | MystenLabs/ts-sdks@main/packages/deepbook-v3 | typescript | MystenLabs/ts-sdks@main | FAIL | PASS | 4.4s | 8 |
+| 44 | MystenLabs/sui-move-bootcamp@solution/G1/scenario | move | .../sui-move-bootcamp@solution | PASS | PASS | 5.6s | 2 |
+| 45 | MystenLabs/sui-move-bootcamp@solution/G1 | move | .../sui-move-bootcamp@solution | PASS | PASS | 5.5s | 2 |
+| 46 | MystenLabs/plinko-poc@main/plinko | move | MystenLabs/plinko-poc@main | PASS | PASS | 5.2s | 2 |
+| 47 | MystenLabs/plinko-poc@main/app/src | typescript | MystenLabs/plinko-poc@main | PASS | N/A | 55.1s | 1 |
+| 48 | MystenLabs/plinko-poc@main/app | typescript | MystenLabs/plinko-poc@main | PASS | N/A | 18.4s | 1 |
+| 49 | ...-bootcamp@solution/F1/app/my-first-sui-dapp/src | typescript | .../sui-move-bootcamp@solution | FAIL | N/A | 6.0s | 2 |
+| 50 | MystenLabs/CTF@main/contracts | move | MystenLabs/CTF@main | PASS | PASS | 12.7s | 1 |
+| 51 | MystenLabs/sui-move-bootcamp@main/K1/contract | move | ...Labs/sui-move-bootcamp@main | PASS | PASS | 5.0s | 1 |
+| 52 | MystenLabs/sui-move-bootcamp@main/K1 | typescript | ...Labs/sui-move-bootcamp@main | PASS | FAIL | 7.5s | 1 |
+| 53 | MystenLabs/sui-move-bootcamp@main/K1/backend | typescript | ...Labs/sui-move-bootcamp@main | PASS | FAIL | 3.6s | 1 |
+| 54 | ...-bootcamp@solution/C5/contracts/derived_objects | move | .../sui-move-bootcamp@solution | PASS | PASS | 5.2s | 1 |
+| 55 | MystenLabs/sui-move-bootcamp@solution/C5/ts | typescript | .../sui-move-bootcamp@solution | PASS | FAIL | 9.9s | 1 |
+| 56 | ...sui-move-bootcamp@solution/E2/my-first-sui-dapp | typescript | .../sui-move-bootcamp@solution | FAIL | N/A | 5.5s | 3 |
+| 57 | ...move-bootcamp@solution/E2/my-first-sui-dapp/src | typescript | .../sui-move-bootcamp@solution | FAIL | N/A | 4.2s | 1 |
+| 58 | MystenLabs/sui-stack-hello-world@main/move | unknown | .../sui-stack-hello-world@main | PASS | PASS | 6.7s | 1 |
+| 59 | ...abs/sui-stack-hello-world@main/move/hello-world | move | .../sui-stack-hello-world@main | PASS | PASS | 6.9s | 1 |
+| 60 | MystenLabs/sui-stack-hello-world@main/ui | typescript | .../sui-stack-hello-world@main | PASS | N/A | 8.9s | 5 |
+| 61 | MystenLabs/deepbookv3@main/packages/deepbook | move | MystenLabs/deepbookv3@main | PASS | PASS | 11.2s | 7 |
+| 62 | ...eepbookv3@predict-testnet-4-16/packages/predict | move | ...bookv3@predict-testnet-4-16 | PASS | PASS | 7.2s | 8 |
+| 63 | ...enLabs/deepbookv3@main/packages/deepbook_margin | move | MystenLabs/deepbookv3@main | PASS | PASS | 25.8s | 6 |
+| 64 | MystenLabs/ts-sdks@main/packages/enoki | typescript | MystenLabs/ts-sdks@main | FAIL | N/A | 2.7s | 1 |
+| 65 | MystenLabs/ts-sdks@main/packages/sui | typescript | MystenLabs/ts-sdks@main | FAIL | FAIL | 11.1s | 2 |
+| 66 | MystenLabs/ts-sdks@main/packages/slush-wallet | typescript | MystenLabs/ts-sdks@main | FAIL | N/A | 2.2s | 1 |
+| 67 | ...kages/dapp-kit-next/packages/dapp-kit-react/src | typescript | MystenLabs/ts-sdks@main | FAIL | FAIL | 7.1s | 6 |
+| 68 | ...n/packages/dapp-kit-next/packages/dapp-kit-core | typescript | MystenLabs/ts-sdks@main | FAIL | FAIL | 7.5s | 1 |
 
 ## Detailed Results
 
@@ -181,12 +115,12 @@ node v20.20.2 |
 Changed edition from "2024.beta" to "2024"
 ```
 
-**`sui move build`** — PASS (0.6s)
+**`sui move build`** — PASS (0.7s)
 
 ```
 No sui config found in `/home/runner/.sui/sui_config/client.yaml`, create one [Y/n]?
-Generated new keypair and alias for address with scheme "ed25519" [festive-ruby: 0xa5310713d3b6a01c01709bf2b5108ba75faed15f27cc80f0194c2674aae5c570]
-  secret recovery phrase : [voice blouse loud weekend easy derive rare element zoo gym ski credit]
+Generated new keypair and alias for address with scheme "ed25519" [funny-hematite: 0x1406dfb075c043105b1bb0ef088a23ba5b64e1435d634659b4fc8bf6d939650f]
+  secret recovery phrase : [biology bag rescue wall theory toy veteran love festival since black fantasy]
 Created "/home/runner/.sui/sui_config/client.yaml"
 Set active environment to testnet
 [NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
@@ -196,7 +130,7 @@ BUILDING tic_tac_toe
 
 ```
 
-**`sui move test`** — FAIL (6.9s)
+**`sui move test`** — FAIL (5.7s)
 
 ```
 t 'EWrongPlayer' originating in the module tic_tac_toe::shared but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::scratch rooted here
@@ -233,7 +167,7 @@ Test result: FAILED. Total tests: 16; passed: 0; failed: 16
 Changed edition from "2024.beta" to "2024"
 ```
 
-**`sui move build`** — PASS (0.9s)
+**`sui move build`** — PASS (0.4s)
 
 ```
 [NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
@@ -243,7 +177,7 @@ BUILDING dynamic_fields
 
 ```
 
-**`sui move test`** — FAIL (5.4s)
+**`sui move test`** — FAIL (4.6s)
 
 ```
 te ──────
@@ -283,7 +217,7 @@ Test result: FAILED. Total tests: 3; passed: 0; failed: 3
 Changed edition from "2024.beta" to "2024"
 ```
 
-**`sui move build`** — PASS (0.5s)
+**`sui move build`** — PASS (0.6s)
 
 ```
 [NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
@@ -294,7 +228,7 @@ Total number of linter warnings suppressed: 1 (unique lints: 1)
 
 ```
 
-**`sui move test`** — PASS (4.9s)
+**`sui move test`** — PASS (4.0s)
 
 ```
 [NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
@@ -324,7 +258,7 @@ Total number of linter warnings suppressed: 1 (unique lints: 1)
 Changed edition from "2024.beta" to "2024"
 ```
 
-**`sui move build`** — PASS (0.6s)
+**`sui move build`** — PASS (0.4s)
 
 ```
 [NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
@@ -334,12 +268,11 @@ BUILDING random_nft
 
 ```
 
-**`sui move test`** — FAIL (5.1s)
+**`sui move test`** — FAIL (4.2s)
 
 ```
-ed::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!
+4:39.347797Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!
 Error: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier("scratch") }), indices: [(FunctionHandle, 0)], offsets: [] }
-[ FAIL    ] random_nft::tests::test_e2e
 
 Test failures:
 
@@ -381,12 +314,11 @@ Total number of linter warnings suppressed: 1 (unique lints: 1)
 
 ```
 
-**`sui move test`** — FAIL (5.1s)
+**`sui move test`** — FAIL (4.1s)
 
 ```
-VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!
+3958Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!
 Error: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier("scratch") }), indices: [(FunctionHandle, 0)], offsets: [] }
-[ FAIL    ] basics::counter_test::test_counter
 
 Test failures:
 
@@ -417,7 +349,7 @@ Test result: FAILED. Total tests: 1; passed: 0; failed: 1
 Changed edition from "2024.beta" to "2024"
 ```
 
-**`sui move build`** — PASS (0.5s)
+**`sui move build`** — PASS (0.4s)
 
 ```
 [NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
@@ -427,7 +359,7 @@ BUILDING hero
 
 ```
 
-**`sui move test`** — FAIL (6.4s)
+**`sui move test`** — FAIL (5.2s)
 
 ```
 with code 5 originating in the module hero::example but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::scratch rooted here
@@ -463,7 +395,7 @@ Test result: FAILED. Total tests: 7; passed: 0; failed: 7
 Changed edition from "2024.beta" to "2024"
 ```
 
-**`sui move build`** — PASS (0.5s)
+**`sui move build`** — PASS (0.4s)
 
 ```
 [NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
@@ -473,7 +405,7 @@ BUILDING vesting
 
 ```
 
-**`sui move test`** — FAIL (6.7s)
+**`sui move test`** — FAIL (5.5s)
 
 ```
 riginating in the module sui::scratch rooted here
@@ -509,7 +441,7 @@ Test result: FAILED. Total tests: 16; passed: 0; failed: 16
 Changed edition from "2024.beta" to "2024"
 ```
 
-**`sui move build`** — PASS (0.5s)
+**`sui move build`** — PASS (0.4s)
 
 ```
 [NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
@@ -520,7 +452,7 @@ Total number of linter warnings suppressed: 1 (unique lints: 1)
 
 ```
 
-**`sui move test`** — PASS (4.7s)
+**`sui move test`** — PASS (4.0s)
 
 ```
 [NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
@@ -544,7 +476,7 @@ Total number of linter warnings suppressed: 1 (unique lints: 1)
 - **Files**: `sources/regulated_coin.move`
 - **Referenced by**: [onchain-finance/fungible-tokens/regulated-tokens](https://docs.sui.io/onchain-finance/fungible-tokens/regulated-tokens) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/fungible-tokens/regulated-tokens.mdx))
 
-**`sui move build`** — PASS (0.6s)
+**`sui move build`** — PASS (0.4s)
 
 ```
 [NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
@@ -554,7 +486,7 @@ BUILDING regulated_coin_example
 
 ```
 
-**`sui move test`** — PASS (4.7s)
+**`sui move test`** — PASS (4.0s)
 
 ```
 [NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
@@ -577,7 +509,7 @@ Test result: OK. Total tests: 0; passed: 0; failed: 0
 - **Files**: `src/main.ts`
 - **Referenced by**: [onchain-finance/fungible-tokens/regulated-tokens](https://docs.sui.io/onchain-finance/fungible-tokens/regulated-tokens) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/fungible-tokens/regulated-tokens.mdx))
 
-**`pnpm install`** — PASS (13.0s)
+**`pnpm install`** — PASS (12.7s)
 
 ```
 postinstall: Done
@@ -610,11 +542,11 @@ devDependencies:
 + typescript 5.8.3
 + unist-util-visit 5.1.0
 
-Done in 10.9s
+Done in 11.1s
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — FAIL (0.9s)
+**`tsc --noEmit --skipLibCheck`** — FAIL (0.7s)
 
 ```
 install type definitions for node? Try `npm i --save-dev @types/node`.
@@ -630,7 +562,7 @@ src/main.ts(14,30): error TS2792: Cannot find module '@mysten/sui/keypairs/ed255
 Package is part of a workspace — deps installed successfully, full build requires monorepo context
 ```
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -659,7 +591,7 @@ BUILDING testnet_soulbound_nft
 
 ```
 
-**`sui move test`** — PASS (4.9s)
+**`sui move test`** — PASS (4.0s)
 
 ```
 [NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
@@ -688,7 +620,7 @@ Test result: OK. Total tests: 0; passed: 0; failed: 0
 Changed edition from "2024.beta" to "2024"
 ```
 
-**`sui move build`** — PASS (10.8s)
+**`sui move build`** — PASS (14.6s)
 
 ```
 [NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
@@ -701,7 +633,7 @@ BUILDING nft_rental
 
 ```
 
-**`sui move test`** — FAIL (10.8s)
+**`sui move test`** — FAIL (9.1s)
 
 ```
 3 originating in the module nft_rental::rentables_ext but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::scratch rooted here
@@ -738,7 +670,7 @@ Test result: FAILED. Total tests: 27; passed: 0; failed: 27
 Changed edition from "2024.beta" to "2024"
 ```
 
-**`sui move build`** — PASS (0.7s)
+**`sui move build`** — PASS (0.4s)
 
 ```
 [NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
@@ -748,7 +680,7 @@ BUILDING Closed Loop Token
 
 ```
 
-**`sui move test`** — FAIL (7.5s)
+**`sui move test`** — FAIL (6.4s)
 
 ```
 instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::scratch rooted here
@@ -784,7 +716,7 @@ Test result: FAILED. Total tests: 22; passed: 0; failed: 22
 Changed edition from "2024.beta" to "2024"
 ```
 
-**`sui move build`** — PASS (0.5s)
+**`sui move build`** — PASS (0.4s)
 
 ```
 [NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
@@ -794,7 +726,7 @@ BUILDING escrow
 
 ```
 
-**`sui move test`** — FAIL (6.4s)
+**`sui move test`** — FAIL (5.2s)
 
 ```
  error as expected. Expected test to abort with code 1 originating in the module escrow::shared but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::scratch rooted here
@@ -832,7 +764,7 @@ Test result: FAILED. Total tests: 13; passed: 1; failed: 12
 Changed edition from "2024.beta" to "2024"
 ```
 
-**`sui move build`** — PASS (0.6s)
+**`sui move build`** — PASS (0.4s)
 
 ```
 [NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
@@ -842,7 +774,7 @@ BUILDING color_object
 
 ```
 
-**`sui move test`** — FAIL (5.8s)
+**`sui move test`** — FAIL (4.9s)
 
 ```
 ────
@@ -870,7 +802,7 @@ Test result: FAILED. Total tests: 5; passed: 0; failed: 5
 
 </details>
 
-<details><summary>FAIL — MystenLabs/sagat@main/api (typescript)</summary>
+<details><summary>PASS — MystenLabs/sagat@main/api (typescript)</summary>
 
 - **Origin**: MystenLabs/sagat@main
 - **Package root**: `api`
@@ -879,13 +811,63 @@ Test result: FAILED. Total tests: 5; passed: 0; failed: 5
 - **Files**: `api/test/addresses.test.ts`, `api/test/multisig-api.test.ts`, `api/test/multisig.test.ts`, `api/test/proposal-business-logic.test.ts`
 - **Referenced by**: [sui-stack/sagat](https://docs.sui.io/sui-stack/sagat) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/sagat.mdx))
 
-**`npm install`** — FAIL (9.2s)
+**`pnpm install`** — PASS (3.5s)
 
 ```
-npm error code EUNSUPPORTEDPROTOCOL
-npm error Unsupported URL Type "workspace:": workspace:*
-npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-07-10T20_43_55_616Z-debug-0.log
+rkspace.yaml" file instead.
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 44, reused 0, downloaded 36, added 0
+Progress: resolved 175, reused 0, downloaded 175, added 0
+Packages: +186
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 216, reused 0, downloaded 191, added 186, done
+
+devDependencies:
++ @eslint/compat 1.4.1 (2.1.0 is available)
++ @ianvs/prettier-plugin-sort-imports 4.7.1
++ @tony.ganchev/eslint-plugin-header 3.4.4
++ @typescript-eslint/eslint-plugin 8.63.0
++ @typescript-eslint/parser 8.63.0
++ concurrently 9.2.3 (10.0.3 is available)
++ eslint 9.39.5 (10.6.0 is available)
++ eslint-plugin-header 3.1.1
++ globals 16.5.0 (17.7.0 is available)
++ prettier 3.9.5
++ vitest 4.1.10
+
+Done in 3.4s using pnpm v10.34.5
+
 ```
+
+**`pnpm run build`** — FAIL (0.4s)
+
+```
+> sagat-api@ build /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--sagat--main/api
+> bun build src/index.ts --outdir dist --target bun
+
+sh: 1: bun: not found
+ ELIFECYCLE  Command failed.
+ WARN   Local package.json exists, but node_modules missing, did you mean to install?
+```
+
+**`tsc --noEmit --skipLibCheck`** — FAIL (1.3s)
+
+```
+07: Cannot find module '@mysten/sui/jsonRpc' or its corresponding type declarations.
+test/setup/sui-network.ts(13,37): error TS2307: Cannot find module '@mysten/sui/utils' or its corresponding type declarations.
+test/setup/test-db.ts(4,25): error TS2307: Cannot find module 'drizzle-orm/node-postgres' or its corresponding type declarations.
+test/setup/test-db.ts(5,25): error TS2307: Cannot find module 'drizzle-orm/node-postgres/migrator' or its corresponding type declarations.
+test/setup/test-db.ts(6,22): error TS2307: Cannot find module 'pg' or its corresponding type declarations.
+test/setup/test-db.ts(11,2): error TS2591: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig.
+```
+
+**`workspace package (deps resolved)`** — PASS (0.0s)
+
+```
+Package is part of a workspace — deps installed successfully, full build requires monorepo context
+```
+
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -898,7 +880,7 @@ npm error A complete log of this run can be found in: /home/runner/.npm/_logs/20
 - **Files**: `K2/src/hooks/useEphemeral.ts`, `K2/src/hooks/useOauthPopup.tsx`, `K2/src/hooks/useZkProof.ts`, `K2/src/hooks/useWallet.ts`, `K2/src/utils/zk.ts`
 - **Referenced by**: [sui-stack/zklogin-integration/zklogin-demo](https://docs.sui.io/sui-stack/zklogin-integration/zklogin-demo) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/zklogin-integration/zklogin-demo.mdx))
 
-**`pnpm install`** — PASS (3.6s)
+**`pnpm install`** — PASS (2.8s)
 
 ```
 19.2.3
@@ -918,11 +900,11 @@ npm error A complete log of this run can be found in: /home/runner/.npm/_logs/20
 │   to run scripts.                                                            │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
-Done in 3.5s using pnpm v10.34.5
+Done in 2.7s using pnpm v10.34.5
 
 ```
 
-**`pnpm run build`** — FAIL (4.1s)
+**`pnpm run build`** — FAIL (3.4s)
 
 ```
 > zklogin-demo-sui@0.0.0 build /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--sui-move-bootcamp--solution/K2
@@ -932,13 +914,13 @@ src/services/sui/writeClient.ts(1,28): error TS2307: Cannot find module '@mysten
  ELIFECYCLE  Command failed with exit code 1.
 ```
 
-**`tsc --noEmit --skipLibCheck`** — FAIL (3.9s)
+**`tsc --noEmit --skipLibCheck`** — FAIL (3.1s)
 
 ```
 src/services/sui/writeClient.ts(1,28): error TS2307: Cannot find module '@mysten/utils' or its corresponding type declarations.
 ```
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -957,7 +939,7 @@ src/services/sui/writeClient.ts(1,28): error TS2307: Cannot find module '@mysten
 already installed (cached)
 ```
 
-**`pnpm run build`** — FAIL (4.0s)
+**`pnpm run build`** — FAIL (3.4s)
 
 ```
 > zklogin-demo-sui@0.0.0 build /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--sui-move-bootcamp--solution/K2
@@ -967,13 +949,13 @@ src/services/sui/writeClient.ts(1,28): error TS2307: Cannot find module '@mysten
  ELIFECYCLE  Command failed with exit code 1.
 ```
 
-**`tsc --noEmit --skipLibCheck`** — FAIL (3.9s)
+**`tsc --noEmit --skipLibCheck`** — FAIL (3.1s)
 
 ```
 src/services/sui/writeClient.ts(1,28): error TS2307: Cannot find module '@mysten/utils' or its corresponding type declarations.
 ```
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -986,12 +968,12 @@ src/services/sui/writeClient.ts(1,28): error TS2307: Cannot find module '@mysten
 - **Files**: `frontend/src/constants.ts`
 - **Referenced by**: [sui-stack/walrus/sui-stack-walrus](https://docs.sui.io/sui-stack/walrus/sui-stack-walrus) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/walrus/sui-stack-walrus.mdx)), [sui-stack/seal/sui-stack-seal](https://docs.sui.io/sui-stack/seal/sui-stack-seal) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/seal/sui-stack-seal.mdx))
 
-**`npm install`** — PASS (27.0s)
+**`npm install`** — PASS (25.7s)
 
 ```
 npm warn deprecated uuid@9.0.1: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
 
-added 411 packages, and audited 412 packages in 27s
+added 411 packages, and audited 412 packages in 26s
 
 66 packages are looking for funding
   run `npm fund` for details
@@ -1008,7 +990,7 @@ Run `npm audit` for details.
 
 ```
 
-**`npm run build`** — PASS (7.1s)
+**`npm run build`** — PASS (5.7s)
 
 ```
 [39m
@@ -1023,13 +1005,13 @@ computing gzip size...
 - Using dynamic import() to code-split the application
 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
-[32m✓ built in 3.71s[39m
+[32m✓ built in 2.97s[39m
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (3.2s)
+**`tsc --noEmit --skipLibCheck`** — PASS (2.6s)
 
-**`npm test`** — SKIP (0.0s)
+**`npm test`** — N/A (0.0s)
 
 </details>
 
@@ -1042,11 +1024,11 @@ computing gzip size...
 - **Files**: `07-Walrus-SDK-upload-relay/hands-on-source-code/src/examples/basic-upload-example.ts`, `07-Walrus-SDK-upload-relay/hands-on-source-code/src/examples/basic-download-example.ts`
 - **Referenced by**: [sui-stack/walrus/sui-stack-walrus](https://docs.sui.io/sui-stack/walrus/sui-stack-walrus) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/walrus/sui-stack-walrus.mdx))
 
-**`npm install`** — PASS (1.9s)
+**`npm install`** — PASS (1.6s)
 
 ```
 
-added 49 packages, and audited 50 packages in 2s
+added 49 packages, and audited 50 packages in 1s
 
 8 packages are looking for funding
   run `npm fund` for details
@@ -1060,7 +1042,7 @@ Run `npm audit` for details.
 
 ```
 
-**`npm run build`** — PASS (1.8s)
+**`npm run build`** — PASS (1.4s)
 
 ```
 
@@ -1070,9 +1052,9 @@ Run `npm audit` for details.
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (1.9s)
+**`tsc --noEmit --skipLibCheck`** — PASS (1.5s)
 
-**`npm test`** — FAIL (18.9s)
+**`npm test`** — FAIL (18.8s)
 
 ```
 equired
@@ -1111,10 +1093,10 @@ Total Duration: 0.00s
 - **Files**: `backend/src/config.ts`, `backend/src/createPosts.ts`, `backend/src/encryptImages.ts`
 - **Referenced by**: [sui-stack/walrus/sui-stack-walrus](https://docs.sui.io/sui-stack/walrus/sui-stack-walrus) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/walrus/sui-stack-walrus.mdx)), [sui-stack/seal/sui-stack-seal](https://docs.sui.io/sui-stack/seal/sui-stack-seal) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/seal/sui-stack-seal.mdx))
 
-**`pnpm install`** — PASS (1.1s)
+**`pnpm install`** — PASS (0.9s)
 
 ```
- resolved 30, reused 19, downloaded 11, added 30, done
+solved 30, reused 19, downloaded 11, added 30, done
 
 dependencies:
 + @mysten/seal 0.9.6
@@ -1133,13 +1115,13 @@ devDependencies:
 │   to run scripts.                                                            │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
-Done in 1s using pnpm v10.34.5
+Done in 893ms using pnpm v10.34.5
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (1.9s)
+**`tsc --noEmit --skipLibCheck`** — PASS (1.5s)
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -1152,14 +1134,13 @@ Done in 1s using pnpm v10.34.5
 - **Files**: `sdk/src/write.ts`, `sdk/src/download.ts`, `sdk/src/delete.ts`
 - **Referenced by**: [sui-stack/walrus/sui-stack-walrus](https://docs.sui.io/sui-stack/walrus/sui-stack-walrus) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/walrus/sui-stack-walrus.mdx))
 
-**`pnpm install`** — PASS (4.0s)
+**`pnpm install`** — PASS (2.4s)
 
 ```
 Lockfile is up to date, resolution step is skipped
 Progress: resolved 1, reused 0, downloaded 0, added 0
 Packages: +42
 ++++++++++++++++++++++++++++++++++++++++++
-Progress: resolved 42, reused 13, downloaded 28, added 41
 Progress: resolved 42, reused 13, downloaded 29, added 42, done
 
 dependencies:
@@ -1173,13 +1154,13 @@ devDependencies:
 + ts-node 10.9.2
 + typescript 5.9.3
 
-Done in 2s using pnpm v10.11.1
+Done in 918ms using pnpm v10.11.1
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (1.9s)
+**`tsc --noEmit --skipLibCheck`** — PASS (1.5s)
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -1192,11 +1173,11 @@ Done in 2s using pnpm v10.11.1
 - **Files**: `11-Batch-storage/hands-on-source-code/03-creation-process/ts/03-create-simple.ts`, `11-Batch-storage/hands-on-source-code/04-retrieval-process/ts/01-get-files-identifiers.ts`
 - **Referenced by**: [sui-stack/walrus/sui-stack-walrus](https://docs.sui.io/sui-stack/walrus/sui-stack-walrus) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/walrus/sui-stack-walrus.mdx))
 
-**`npm install`** — PASS (1.7s)
+**`npm install`** — PASS (1.3s)
 
 ```
 
-added 32 packages, and audited 33 packages in 2s
+added 32 packages, and audited 33 packages in 1s
 
 8 packages are looking for funding
   run `npm fund` for details
@@ -1205,7 +1186,7 @@ found 0 vulnerabilities
 
 ```
 
-**`npm run build`** — PASS (2.0s)
+**`npm run build`** — PASS (1.6s)
 
 ```
 
@@ -1215,9 +1196,9 @@ found 0 vulnerabilities
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (2.1s)
+**`tsc --noEmit --skipLibCheck`** — PASS (1.6s)
 
-**`npm test`** — SKIP (0.0s)
+**`npm test`** — N/A (0.0s)
 
 </details>
 
@@ -1236,7 +1217,7 @@ found 0 vulnerabilities
 already installed (cached)
 ```
 
-**`npm run build`** — PASS (7.3s)
+**`npm run build`** — PASS (5.9s)
 
 ```
 [39m
@@ -1251,13 +1232,13 @@ computing gzip size...
 - Using dynamic import() to code-split the application
 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
-[32m✓ built in 3.78s[39m
+[32m✓ built in 3.09s[39m
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (3.2s)
+**`tsc --noEmit --skipLibCheck`** — PASS (2.7s)
 
-**`npm test`** — SKIP (0.0s)
+**`npm test`** — N/A (0.0s)
 
 </details>
 
@@ -1270,7 +1251,7 @@ computing gzip size...
 - **Files**: `packages/walrus/examples/basics/attributes.ts`
 - **Referenced by**: [sui-stack/walrus/sui-stack-walrus](https://docs.sui.io/sui-stack/walrus/sui-stack-walrus) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/walrus/sui-stack-walrus.mdx))
 
-**`pnpm install`** — PASS (16.5s)
+**`pnpm install`** — PASS (16.0s)
 
 ```
 e-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/walrus/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'
@@ -1297,7 +1278,7 @@ Done in 14.5s using pnpm v10.33.0
 
 ```
 
-**`pnpm run build`** — FAIL (2.7s)
+**`pnpm run build`** — FAIL (2.2s)
 
 ```
 s an 'any' type because expression of type 'any' can't be used to index type '{ RS2: number; RedStuff: number; }'.
@@ -1308,7 +1289,7 @@ src/wasm.ts(4,28): error TS2307: Cannot find module '@mysten/bcs' or its corresp
  ELIFECYCLE  Command failed with exit code 2.
 ```
 
-**`tsc --noEmit --skipLibCheck`** — FAIL (1.4s)
+**`tsc --noEmit --skipLibCheck`** — FAIL (1.1s)
 
 ```
 ts(79,22): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ RS2: number; RedStuff: number; }'.
@@ -1324,7 +1305,7 @@ src/wasm.ts(4,28): error TS2307: Cannot find module '@mysten/bcs' or its corresp
 Package is part of a workspace — deps installed successfully, full build requires monorepo context
 ```
 
-**`pnpm test`** — FAIL (4.2s)
+**`pnpm test`** — FAIL (3.6s)
 
 ```
  be used to index type '{ RS2: number; RedStuff: number; }'.
@@ -1358,12 +1339,12 @@ src/wasm.ts(4,28): error TS2307: Cannot find module '@mysten/bcs' or its corresp
 - **Files**: `frontend/src/hooks/useUserSubname.ts`
 - **Referenced by**: [sui-stack/suins/sui-stack-suins](https://docs.sui.io/sui-stack/suins/sui-stack-suins) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/suins/sui-stack-suins.mdx))
 
-**`npm install`** — PASS (12.8s)
+**`npm install`** — PASS (10.7s)
 
 ```
 npm warn deprecated uuid@9.0.1: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
 
-added 419 packages, and audited 420 packages in 13s
+added 419 packages, and audited 420 packages in 11s
 
 66 packages are looking for funding
   run `npm fund` for details
@@ -1380,7 +1361,7 @@ Run `npm audit` for details.
 
 ```
 
-**`npm run build`** — PASS (7.3s)
+**`npm run build`** — PASS (5.8s)
 
 ```
 [39m
@@ -1395,13 +1376,13 @@ computing gzip size...
 - Using dynamic import() to code-split the application
 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
-[32m✓ built in 3.88s[39m
+[32m✓ built in 3.00s[39m
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (3.3s)
+**`tsc --noEmit --skipLibCheck`** — PASS (2.6s)
 
-**`npm test`** — SKIP (0.0s)
+**`npm test`** — N/A (0.0s)
 
 </details>
 
@@ -1420,7 +1401,7 @@ computing gzip size...
 Changed edition from "2024.beta" to "2024"
 ```
 
-**`sui move build`** — PASS (2.5s)
+**`sui move build`** — PASS (2.3s)
 
 ```
 INCLUDING DEPENDENCY Sui
@@ -1439,7 +1420,7 @@ Please report feedback on the linter warnings at https://forums.sui.io
 
 ```
 
-**`sui move test`** — PASS (4.9s)
+**`sui move test`** — PASS (4.1s)
 
 ```
 ry` on a `public` function
@@ -1468,7 +1449,7 @@ Please report feedback on the linter warnings at https://forums.sui.io
 - **Files**: `K5/seal-demo/move/sources/private_seal.move`, `K5/seal-demo/move/sources/timelock_seal.move`, `K5/seal-demo/move/sources/allowlist_seal.move`
 - **Referenced by**: [sui-stack/seal/sui-stack-seal](https://docs.sui.io/sui-stack/seal/sui-stack-seal) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/seal/sui-stack-seal.mdx))
 
-**`sui move build`** — PASS (8.7s)
+**`sui move build`** — PASS (8.1s)
 
 ```
 fields, or passing it to another function.
@@ -1488,7 +1469,7 @@ Please report feedback on the linter warnings at https://forums.sui.io
 
 ```
 
-**`sui move test`** — PASS (5.2s)
+**`sui move test`** — PASS (4.2s)
 
 ```
 essed with '#[allow(lint(unused_object_with_fields))]' applied to the 'module' or module member ('const', 'fun', or 'struct')
@@ -1519,7 +1500,7 @@ Please report feedback on the linter warnings at https://forums.sui.io
 - **Files**: `walrus-seal/app/src/hooks/useSealEncrypt.ts`, `walrus-seal/app/src/utils/sealUtils.ts`, `walrus-seal/app/src/hooks/useSealSession.ts`, `walrus-seal/app/src/hooks/useSealDecrypt.ts`
 - **Referenced by**: [sui-stack/seal/sui-stack-seal](https://docs.sui.io/sui-stack/seal/sui-stack-seal) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/seal/sui-stack-seal.mdx))
 
-**`pnpm install`** — PASS (3.4s)
+**`pnpm install`** — PASS (4.7s)
 
 ```
 .0
@@ -1541,11 +1522,11 @@ devDependencies:
 │   to run scripts.                                                            │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
-Done in 3.3s using pnpm v10.34.5
+Done in 4.6s using pnpm v10.34.5
 
 ```
 
-**`pnpm run build`** — PASS (22.7s)
+**`pnpm run build`** — PASS (17.9s)
 
 ```
 nerating static pages (6/8) 
@@ -1573,9 +1554,9 @@ Route (app)                         Size  First Load JS
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (3.0s)
+**`tsc --noEmit --skipLibCheck`** — PASS (2.4s)
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -1588,7 +1569,7 @@ Route (app)                         Size  First Load JS
 - **Files**: `K5/seal-demo/ts/src/index.ts`
 - **Referenced by**: [sui-stack/seal/sui-stack-seal](https://docs.sui.io/sui-stack/seal/sui-stack-seal) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/seal/sui-stack-seal.mdx))
 
-**`npm install`** — PASS (1.6s)
+**`npm install`** — PASS (1.3s)
 
 ```
 npm warn EBADENGINE Unsupported engine {
@@ -1597,7 +1578,7 @@ npm warn EBADENGINE   required: { node: '>=22' },
 npm warn EBADENGINE   current: { node: 'v20.20.2', npm: '10.8.2' }
 npm warn EBADENGINE }
 
-added 30 packages, and audited 31 packages in 2s
+added 30 packages, and audited 31 packages in 1s
 
 9 packages are looking for funding
   run `npm fund` for details
@@ -1611,32 +1592,9 @@ Run `npm audit` for details.
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (1.9s)
+**`tsc --noEmit --skipLibCheck`** — PASS (1.4s)
 
-**`npm test`** — SKIP (0.0s)
-
-</details>
-
-<details><summary>FAIL — MystenLabs/Nautilus@main/src (unknown)</summary>
-
-- **Origin**: MystenLabs/Nautilus@main
-- **Package root**: `src`
-- **Files**: `src/nautilus-server/src/apps/seal-example/seal_config.yaml`, `src/nautilus-server/src/apps/seal-example/endpoints.rs`
-- **Referenced by**: [sui-stack/nautilus/seal](https://docs.sui.io/sui-stack/nautilus/seal) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/nautilus/seal.mdx))
-
-**`cargo check`** — FAIL (52.2s)
-
-```
-home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--Nautilus--main/src/nautilus-server)
-[0m[1m[38;5;9merror[E0432][0m[0m[1m: unresolved import `nautilus_server::app::process_data`[0m
-[0m [0m[0m[1m[38;5;12m--> [0m[0msrc/main.rs:7:5[0m
-[0m  [0m[0m[1m[38;5;12m|[0m
-[0m[1m[38;5;12m7[0m[0m [0m[0m[1m[38;5;12m|[0m[0m [0m[0muse nautilus_server::app::process_data;[0m
-[0m  [0m[0m[1m[38;5;12m|[0m[0m     [0m[0m[1m[38;5;9m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m [0m[0m[1m[38;5;9mno `process_data` in `app`[0m
-
-[0m[1mFor more information about this error, try `rustc --explain E0432`.[0m
-[1m[31merror[0m[1m:[0m could not compile `nautilus-server` (bin "nautilus-server") due to 1 previous error
-```
+**`npm test`** — N/A (0.0s)
 
 </details>
 
@@ -1649,7 +1607,7 @@ home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.
 - **Files**: `move/packages/sui_stack_messaging/sources/seal_policies.move`, `move/packages/sui_stack_messaging/sources/messaging.move`, `move/packages/sui_stack_messaging/sources/encryption_history.move`
 - **Referenced by**: [sui-stack/messaging/chat-app](https://docs.sui.io/sui-stack/messaging/chat-app) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/messaging/chat-app.mdx))
 
-**`sui move build`** — PASS (12.8s)
+**`sui move build`** — PASS (15.1s)
 
 ```
 Output from mvr:
@@ -1666,7 +1624,7 @@ BUILDING sui_stack_messaging
 
 ```
 
-**`sui move test`** — PASS (6.1s)
+**`sui move test`** — PASS (4.9s)
 
 ```
 cryption_history_fails
@@ -1693,10 +1651,10 @@ Test result: OK. Total tests: 38; passed: 38; failed: 0
 - **Files**: `chat-app/src/hooks/useMessages.ts`
 - **Referenced by**: [sui-stack/messaging/chat-app](https://docs.sui.io/sui-stack/messaging/chat-app) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/messaging/chat-app.mdx))
 
-**`pnpm install`** — PASS (3.1s)
+**`pnpm install`** — PASS (3.4s)
 
 ```
-en-incubation/dev-wallet 0.3.0
+-incubation/dev-wallet 0.3.0
 + @mysten-incubation/devstack 0.1.1
 + @mysten/signers 1.0.5
 + @types/react 19.2.14
@@ -1712,11 +1670,11 @@ en-incubation/dev-wallet 0.3.0
 │   to run scripts.                                                            │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
-Done in 3s using pnpm v10.34.5
+Done in 3.3s using pnpm v10.34.5
 
 ```
 
-**`pnpm run build`** — PASS (7.6s)
+**`pnpm run build`** — PASS (5.9s)
 
 ```
 ng...
@@ -1731,13 +1689,13 @@ computing gzip size...
 - Using dynamic import() to code-split the application
 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
-[32m✓ built in 3.50s[39m
+[32m✓ built in 2.74s[39m
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (0.5s)
+**`tsc --noEmit --skipLibCheck`** — PASS (0.4s)
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -1755,7 +1713,7 @@ computing gzip size...
 Changed edition from "2024.beta" to "2024"
 ```
 
-**`sui move build`** — PASS (0.8s)
+**`sui move build`** — PASS (0.7s)
 
 ```
 INCLUDING DEPENDENCY MoveStdlib
@@ -1764,19 +1722,19 @@ BUILDING ticketing-poc
 
 ```
 
-**`sui move test`** — PASS (5.4s)
+**`sui move test`** — PASS (4.4s)
 
 ```
-ts::mint_loyalty
-[ PASS    ] ticketing_poc::ticket_tests::creates_ticket
+ts::assert_sender_is_key_owner
+[ PASS    ] ticketing_poc::key_registry_tests::assert_sender_is_key_owner_fails
 [ PASS    ] ticketing_poc::loyalty_tests::updates_loyalty_points
-[ PASS    ] ticketing_poc::ticket_tests::creates_ticket_invalid_signature
 [ PASS    ] ticketing_poc::loyalty_tests::updates_loyalty_points_domain_mismatch
-[ PASS    ] ticketing_poc::ticket_tests::creates_ticket_nonce_already_used
+[ PASS    ] ticketing_poc::key_registry_tests::cleanup_nonces
 [ PASS    ] ticketing_poc::loyalty_tests::updates_loyalty_points_loyalty_id_mismatch
-[ PASS    ] ticketing_poc::ticket_tests::creates_ticket_permit_domain_mismatch
-[ PASS    ] ticketing_poc::ticket_tests::creates_ticket_permit_owner_mismatch
-[ PASS    ] ticketing_poc::ticket_tests::updates_ticket_stage
+[ PASS    ] ticketing_poc::key_registry_tests::cleanup_nonces_unauthorized
+[ PASS    ] ticketing_poc::key_registry_tests::derive_address_from_pk
+[ PASS    ] ticketing_poc::key_registry_tests::set_pk
+[ PASS    ] ticketing_poc::key_registry_tests::set_pk_invalid_length
 Test result: OK. Total tests: 17; passed: 17; failed: 0
 Please report feedback on the linter warnings at https://forums.sui.io
 
@@ -1794,7 +1752,7 @@ Please report feedback on the linter warnings at https://forums.sui.io
 - **Files**: `app/src/app/hooks/useMintTicket.tsx`
 - **Referenced by**: [sui-stack/enoki/ticketing-poc](https://docs.sui.io/sui-stack/enoki/ticketing-poc) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/enoki/ticketing-poc.mdx))
 
-**`pnpm install`** — PASS (5.4s)
+**`pnpm install`** — PASS (6.8s)
 
 ```
 types/react-slick 0.23.13
@@ -1811,11 +1769,11 @@ types/react-slick 0.23.13
 │   to run scripts.                                                            │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
-Done in 5.3s using pnpm v10.34.5
+Done in 6.7s using pnpm v10.34.5
 
 ```
 
-**`pnpm run build`** — PASS (71.1s)
+**`pnpm run build`** — PASS (53.8s)
 
 ```
 06 kB
@@ -1839,9 +1797,9 @@ Done in 5.3s using pnpm v10.34.5
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (4.8s)
+**`tsc --noEmit --skipLibCheck`** — PASS (3.9s)
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -1860,7 +1818,7 @@ Done in 5.3s using pnpm v10.34.5
 already installed (cached)
 ```
 
-**`pnpm run build`** — PASS (43.3s)
+**`pnpm run build`** — PASS (33.7s)
 
 ```
 06 kB
@@ -1884,9 +1842,9 @@ already installed (cached)
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (2.5s)
+**`tsc --noEmit --skipLibCheck`** — PASS (1.9s)
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -1921,7 +1879,7 @@ warning[W04037]: deprecated usage
 
 ```
 
-**`sui move test`** — PASS (5.7s)
+**`sui move test`** — PASS (4.6s)
 
 ```
 olitaire::test_solitaire::invalid_turn_deck_card
@@ -1949,7 +1907,7 @@ Test result: OK. Total tests: 58; passed: 58; failed: 0
 - **Files**: `app/src/components/gameBoard/GameBoard.tsx`, `app/src/hooks/useSolitaireActions.ts`
 - **Referenced by**: [sui-stack/enoki/solitaire](https://docs.sui.io/sui-stack/enoki/solitaire) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/enoki/solitaire.mdx))
 
-**`pnpm install`** — PASS (7.3s)
+**`pnpm install`** — PASS (8.1s)
 
 ```
 zod 4.1.7
@@ -1969,11 +1927,11 @@ devDependencies:
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
-Done in 5.3s using pnpm v10.10.0
+Done in 6.6s using pnpm v10.10.0
 
 ```
 
-**`pnpm run build`** — PASS (54.3s)
+**`pnpm run build`** — PASS (41.1s)
 
 ```
 
@@ -1999,9 +1957,9 @@ Route (app)                                 Size  First Load JS
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (4.3s)
+**`tsc --noEmit --skipLibCheck`** — PASS (3.3s)
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -2036,7 +1994,7 @@ Done in 3.1s using pnpm v10.34.5
 
 ```
 
-**`pnpm run build`** — PASS (9.5s)
+**`pnpm run build`** — PASS (7.5s)
 
 ```
 [22m[1m[22m[2m │ gzip:   0.78 kB[22m
@@ -2048,13 +2006,13 @@ Done in 3.1s using pnpm v10.34.5
 - Using dynamic import() to code-split the application
 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
-[32m✓ built in 5.39s[39m
+[32m✓ built in 4.19s[39m
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (3.3s)
+**`tsc --noEmit --skipLibCheck`** — PASS (2.7s)
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -2095,7 +2053,7 @@ warning[W09014]: unused mutable reference '&mut' parameter
 
 ```
 
-**`sui move test`** — FAIL (5.3s)
+**`sui move test`** — FAIL (4.6s)
 
 ```
 function in silver::silver
@@ -2145,7 +2103,7 @@ Test result: FAILED. Total tests: 3; passed: 0; failed: 3
 Move.toml had no [dependencies] — added empty section (Sui CLI auto-resolves system deps)
 ```
 
-**`sui move build`** — PASS (0.8s)
+**`sui move build`** — PASS (0.7s)
 
 ```
  < MAX_CROWN_COUNCIL_MEMBERS, EMaxCouncilMembers);
@@ -2164,7 +2122,7 @@ warning[W04037]: deprecated usage
 
 ```
 
-**`sui move test`** — PASS (5.3s)
+**`sui move test`** — PASS (4.4s)
 
 ```
  consistency.
@@ -2202,7 +2160,7 @@ Test result: OK. Total tests: 2; passed: 2; failed: 0
 Move.toml had no [dependencies] — added empty section (Sui CLI auto-resolves system deps)
 ```
 
-**`sui move build`** — PASS (0.8s)
+**`sui move build`** — PASS (0.6s)
 
 ```
 INCLUDING DEPENDENCY MoveStdlib
@@ -2219,7 +2177,7 @@ warning[W04037]: deprecated usage
 
 ```
 
-**`sui move test`** — PASS (5.3s)
+**`sui move test`** — PASS (4.7s)
 
 ```
  ^^^^^^^^^^^^^^^ The function 'sui::coin::create_currency' is deprecated: Use `coin_registry::new_currency_with_otw` instead
@@ -2257,7 +2215,7 @@ Test result: OK. Total tests: 1; passed: 1; failed: 0
 already installed (cached)
 ```
 
-**`pnpm run build`** — FAIL (2.9s)
+**`pnpm run build`** — FAIL (2.3s)
 
 ```
 tions/marginTPSL.ts(3,34): error TS2307: Cannot find module '@mysten/sui/transactions' or its corresponding type declarations.
@@ -2269,7 +2227,7 @@ src/utils/validation.ts(4,35): error TS2307: Cannot find module '@mysten/sui/uti
  ELIFECYCLE  Command failed with exit code 2.
 ```
 
-**`tsc --noEmit --skipLibCheck`** — FAIL (1.3s)
+**`tsc --noEmit --skipLibCheck`** — FAIL (1.0s)
 
 ```
 s corresponding type declarations.
@@ -2287,7 +2245,7 @@ src/utils/validation.ts(4,35): error TS2307: Cannot find module '@mysten/sui/uti
 Package is part of a workspace — deps installed successfully, full build requires monorepo context
 ```
 
-**`pnpm test`** — PASS (1.4s)
+**`pnpm test`** — PASS (1.1s)
 
 ```
 0.2","pnpm":"10.33.0"})
@@ -2298,144 +2256,15 @@ Package is part of a workspace — deps installed successfully, full build requi
 
 [1m[30m[46m RUN [49m[39m[22m [36mv4.1.8 [39m[90m/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/deepbook-v3[39m
 
- [32m✓[39m test/unit/utils/conversion.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m test/unit/utils/conversion.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 4[2mms[22m[39m
 
 [2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
 [2m      Tests [22m [1m[32m13 passed[39m[22m[90m (13)[39m
-[2m   Start at [22m 20:53:13
-[2m   Duration [22m 187ms[2m (transform 29ms, setup 0ms, import 42ms, tests 6ms, environment 0ms)[22m
+[2m   Start at [22m 21:13:09
+[2m   Duration [22m 154ms[2m (transform 26ms, setup 0ms, import 35ms, tests 4ms, environment 0ms)[22m
 
 
 ```
-
-</details>
-
-<details><summary>PASS — MystenLabs/sui-stack-hello-world@main/move (unknown)</summary>
-
-- **Origin**: MystenLabs/sui-stack-hello-world@main
-- **Package root**: `move`
-- **Move edition**: 2024
-- **Dependencies**: `Sui: framework/testnet`
-- **Files**: `move/hello-world/Move.toml`
-- **Referenced by**: [getting-started/onboarding/hello-world](https://docs.sui.io/getting-started/onboarding/hello-world) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/onboarding/hello-world.mdx))
-
-**`fix edition`** — PASS (0.0s)
-
-```
-Changed edition from "2024.beta" to "2024"
-```
-
-**`sui move build`** — PASS (2.5s)
-
-```
-[NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
-INCLUDING DEPENDENCY MoveStdlib
-INCLUDING DEPENDENCY Sui
-BUILDING hello_world
-
-```
-
-**`sui move test`** — PASS (5.1s)
-
-```
-[NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
-INCLUDING DEPENDENCY MoveStdlib
-INCLUDING DEPENDENCY Sui
-BUILDING hello_world
-Running Move unit tests
-Test result: OK. Total tests: 0; passed: 0; failed: 0
-
-```
-
-</details>
-
-<details><summary>PASS — MystenLabs/sui-stack-hello-world@main/move/hello-world (move)</summary>
-
-- **Origin**: MystenLabs/sui-stack-hello-world@main
-- **Package root**: `move/hello-world`
-- **Move edition**: 2024
-- **Dependencies**: `Sui: framework/testnet`
-- **Files**: `move/hello-world/sources/greeting.move`
-- **Referenced by**: [getting-started/onboarding/hello-world](https://docs.sui.io/getting-started/onboarding/hello-world) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/onboarding/hello-world.mdx))
-
-**`sui move build`** — PASS (2.6s)
-
-```
-[NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
-INCLUDING DEPENDENCY MoveStdlib
-INCLUDING DEPENDENCY Sui
-BUILDING hello_world
-
-```
-
-**`sui move test`** — PASS (4.9s)
-
-```
-[NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
-INCLUDING DEPENDENCY MoveStdlib
-INCLUDING DEPENDENCY Sui
-BUILDING hello_world
-Running Move unit tests
-Test result: OK. Total tests: 0; passed: 0; failed: 0
-
-```
-
-</details>
-
-<details><summary>PASS — MystenLabs/sui-stack-hello-world@main/ui (typescript)</summary>
-
-- **Origin**: MystenLabs/sui-stack-hello-world@main
-- **Package root**: `ui`
-- **Package manager**: pnpm
-- **Dependencies**: `@mysten/dapp-kit-core: ^1.0.4`, `@mysten/dapp-kit-react: ^1.0.2`, `@mysten/sui: 2.4.0`, `typescript: ^5.8.3`
-- **Files**: `ui/src/App.tsx`, `ui/src/CreateGreeting.tsx`, `ui/src/Greeting.tsx`, `ui/src/constants.ts`, `ui/src/networkConfig.ts`
-- **Referenced by**: [getting-started/onboarding/app-frontends](https://docs.sui.io/getting-started/onboarding/app-frontends) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/onboarding/app-frontends.mdx))
-
-**`pnpm install`** — PASS (1.9s)
-
-```
-escript-eslint/parser 8.41.0
-+ @vitejs/plugin-react-swc 3.11.0
-+ eslint 9.34.0
-+ eslint-plugin-react-hooks 5.2.0
-+ eslint-plugin-react-refresh 0.4.20
-+ prettier 3.6.2
-+ typescript 5.9.2
-+ vite 7.1.4
-
-╭ Warning ─────────────────────────────────────────────────────────────────────╮
-│                                                                              │
-│   Ignored build scripts: @swc/core@1.13.5, esbuild@0.25.9.                   │
-│   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
-│   to run scripts.                                                            │
-│                                                                              │
-╰──────────────────────────────────────────────────────────────────────────────╯
-Done in 1.8s using pnpm v10.34.5
-
-```
-
-**`pnpm run build`** — PASS (6.3s)
-
-```
-ng...
-[32m✓[39m 812 modules transformed.
-rendering chunks...
-computing gzip size...
-[2mdist/[22m[32mindex.html                 [39m[1m[2m  1.23 kB[22m[1m[22m[2m │ gzip:   0.64 kB[22m
-[2mdist/[22m[2massets/[22m[35mindex-Cs5nhfe8.css  [39m[1m[2m689.24 kB[22m[1m[22m[2m │ gzip:  80.92 kB[22m
-[2mdist/[22m[2massets/[22m[36mindex-Df_K52sv.js   [39m[1m[33m666.55 kB[39m[22m[2m │ gzip: 205.75 kB[22m
-[33m
-(!) Some chunks are larger than 500 kB after minification. Consider:
-- Using dynamic import() to code-split the application
-- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
-- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
-[32m✓ built in 3.20s[39m
-
-```
-
-**`tsc --noEmit --skipLibCheck`** — PASS (2.7s)
-
-**`pnpm test`** — SKIP (0.0s)
 
 </details>
 
@@ -2453,7 +2282,7 @@ computing gzip size...
 Move.toml had no [dependencies] — added empty section (Sui CLI auto-resolves system deps)
 ```
 
-**`sui move build`** — PASS (0.7s)
+**`sui move build`** — PASS (0.6s)
 
 ```
 INCLUDING DEPENDENCY MoveStdlib
@@ -2462,7 +2291,7 @@ BUILDING scenario
 
 ```
 
-**`sui move test`** — PASS (5.7s)
+**`sui move test`** — PASS (5.0s)
 
 ```
 precated usage
@@ -2474,14 +2303,14 @@ precated usage
    = This warning can be suppressed with '#[allow(deprecated_usage)]' applied to the 'module' or module member ('const', 'fun', or 'struct')
 
 Running Move unit tests
-[ PASS    ] scenario::xp_tome::test_new
-[ PASS    ] scenario::xp_tome_tests::test_new_xp_tome
-[ PASS    ] scenario::hero::test_level_up
-[ PASS    ] scenario::hero::test_mint
-[ PASS    ] scenario::acl_tests::test_add_admin
+[ PASS    ] scenario::acl::test_add_admin
 [ PASS    ] scenario::hero_tests::test_level_up
 [ PASS    ] scenario::hero_tests::test_mint
-[ PASS    ] scenario::acl::test_add_admin
+[ PASS    ] scenario::hero::test_level_up
+[ PASS    ] scenario::hero::test_mint
+[ PASS    ] scenario::xp_tome::test_new
+[ PASS    ] scenario::xp_tome_tests::test_new_xp_tome
+[ PASS    ] scenario::acl_tests::test_add_admin
 Test result: OK. Total tests: 8; passed: 8; failed: 0
 
 ```
@@ -2505,7 +2334,7 @@ BUILDING scenario
 
 ```
 
-**`sui move test`** — PASS (5.7s)
+**`sui move test`** — PASS (4.8s)
 
 ```
 precated usage
@@ -2517,14 +2346,14 @@ precated usage
    = This warning can be suppressed with '#[allow(deprecated_usage)]' applied to the 'module' or module member ('const', 'fun', or 'struct')
 
 Running Move unit tests
-[ PASS    ] scenario::xp_tome::test_new
+[ PASS    ] scenario::acl_tests::test_add_admin
+[ PASS    ] scenario::acl::test_add_admin
 [ PASS    ] scenario::hero_tests::test_level_up
 [ PASS    ] scenario::hero_tests::test_mint
+[ PASS    ] scenario::xp_tome::test_new
+[ PASS    ] scenario::xp_tome_tests::test_new_xp_tome
 [ PASS    ] scenario::hero::test_level_up
 [ PASS    ] scenario::hero::test_mint
-[ PASS    ] scenario::acl_tests::test_add_admin
-[ PASS    ] scenario::xp_tome_tests::test_new_xp_tome
-[ PASS    ] scenario::acl::test_add_admin
 Test result: OK. Total tests: 8; passed: 8; failed: 0
 
 ```
@@ -2545,7 +2374,7 @@ Test result: OK. Total tests: 8; passed: 8; failed: 0
 Move.toml had no [dependencies] — added empty section (Sui CLI auto-resolves system deps)
 ```
 
-**`sui move build`** — PASS (0.7s)
+**`sui move build`** — PASS (0.8s)
 
 ```
 INCLUDING DEPENDENCY MoveStdlib
@@ -2562,7 +2391,7 @@ warning[W04037]: deprecated usage
 
 ```
 
-**`sui move test`** — PASS (5.3s)
+**`sui move test`** — PASS (4.4s)
 
 ```
 , 'fun', or 'struct')
@@ -2596,7 +2425,7 @@ Test result: OK. Total tests: 13; passed: 13; failed: 0
 - **Files**: `app/src/hooks/moveTransactionCalls.ts/useCreateGame.ts`
 - **Referenced by**: [getting-started/examples/plinko](https://docs.sui.io/getting-started/examples/plinko) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/plinko.mdx))
 
-**`pnpm install`** — PASS (5.7s)
+**`pnpm install`** — PASS (6.2s)
 
 ```
 s:
@@ -2614,17 +2443,17 @@ s:
 │   to run scripts.                                                            │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
-Done in 5.6s using pnpm v10.34.5
+Done in 6.1s using pnpm v10.34.5
 
 ```
 
-**`pnpm run build`** — PASS (55.3s)
+**`pnpm run build`** — PASS (45.0s)
 
 ```
 irst Load JS shared by all              77.7 kB
   ├ chunks/849-c92b0b30eb228fed.js         25.2 kB
   ├ chunks/e9b4cd7a-ce9ab42d18b3907b.js    50.6 kB
-  ├ chunks/main-app-d260d02d69b2e256.js    212 B
+  ├ chunks/main-app-12dd827f65dddad1.js    215 B
   └ chunks/webpack-58feb7106e621104.js     1.75 kB
 
 Route (pages)                              Size     First Load JS
@@ -2641,9 +2470,9 @@ Route (pages)                              Size     First Load JS
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (4.8s)
+**`tsc --noEmit --skipLibCheck`** — PASS (3.9s)
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -2662,7 +2491,7 @@ Route (pages)                              Size     First Load JS
 already installed (cached)
 ```
 
-**`pnpm run build`** — PASS (19.2s)
+**`pnpm run build`** — PASS (16.2s)
 
 ```
 irst Load JS shared by all              77.7 kB
@@ -2685,9 +2514,9 @@ Route (pages)                              Size     First Load JS
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (3.0s)
+**`tsc --noEmit --skipLibCheck`** — PASS (2.2s)
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -2700,7 +2529,7 @@ Route (pages)                              Size     First Load JS
 - **Files**: `F1/app/my-first-sui-dapp/src/components/ui/CreateHeroForm.tsx`, `F1/app/my-first-sui-dapp/src/components/ui/HeroesList.tsx`
 - **Referenced by**: [getting-started/examples/nft-app](https://docs.sui.io/getting-started/examples/nft-app) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/nft-app.mdx))
 
-**`pnpm install`** — PASS (1.8s)
+**`pnpm install`** — PASS (1.5s)
 
 ```
 0
@@ -2722,11 +2551,11 @@ devDependencies:
 │   to run scripts.                                                            │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
-Done in 1.7s using pnpm v10.34.5
+Done in 1.4s using pnpm v10.34.5
 
 ```
 
-**`pnpm run build`** — FAIL (2.8s)
+**`pnpm run build`** — FAIL (2.3s)
 
 ```
 > my-first-sui-dapp@0.0.0 build /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--sui-move-bootcamp--solution/F1/app/my-first-sui-dapp
@@ -2736,13 +2565,13 @@ src/components/ui/HeroesList.tsx(46,36): error TS7006: Parameter 'i' implicitly 
  ELIFECYCLE  Command failed with exit code 2.
 ```
 
-**`tsc --noEmit --skipLibCheck`** — FAIL (2.7s)
+**`tsc --noEmit --skipLibCheck`** — FAIL (2.2s)
 
 ```
 src/components/ui/HeroesList.tsx(46,36): error TS7006: Parameter 'i' implicitly has an 'any' type.
 ```
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -2761,7 +2590,7 @@ src/components/ui/HeroesList.tsx(46,36): error TS7006: Parameter 'i' implicitly 
 Changed edition from "2024.beta" to "2024"
 ```
 
-**`sui move build`** — PASS (7.8s)
+**`sui move build`** — PASS (8.1s)
 
 ```
 Downloading from https://github.com/circlefin/stablecoin-sui.git
@@ -2775,7 +2604,7 @@ BUILDING ctf
 
 ```
 
-**`sui move test`** — PASS (5.3s)
+**`sui move test`** — PASS (4.5s)
 
 ```
 INCLUDING DEPENDENCY MoveStdlib
@@ -2808,7 +2637,7 @@ BUILDING indexer_sample
 
 ```
 
-**`sui move test`** — PASS (4.9s)
+**`sui move test`** — PASS (4.3s)
 
 ```
 INCLUDING DEPENDENCY MoveStdlib
@@ -2830,7 +2659,7 @@ Test result: OK. Total tests: 0; passed: 0; failed: 0
 - **Files**: `K1/backend/indexer.ts`
 - **Referenced by**: [getting-started/examples/event-indexer](https://docs.sui.io/getting-started/examples/event-indexer) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/event-indexer.mdx))
 
-**`npm install`** — PASS (4.5s)
+**`npm install`** — PASS (3.7s)
 
 ```
 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
@@ -2850,12 +2679,12 @@ Run `npm audit` for details.
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (1.8s)
+**`tsc --noEmit --skipLibCheck`** — PASS (1.5s)
 
-**`npm test`** — FAIL (2.8s)
+**`npm test`** — FAIL (2.3s)
 
 ```
-er (2 ms)
+ser (1 ms)
 
   ● User Registration Tests › should successfully register a new user
 
@@ -2874,7 +2703,7 @@ er (2 ms)
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.297 s
+Time:        1.87 s
 Ran all test suites.
 ```
 
@@ -2895,9 +2724,9 @@ Ran all test suites.
 already installed (cached)
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (1.8s)
+**`tsc --noEmit --skipLibCheck`** — PASS (1.4s)
 
-**`npm test`** — FAIL (2.3s)
+**`npm test`** — FAIL (2.2s)
 
 ```
 User Registration Tests › should successfully register a new user
@@ -2917,7 +2746,7 @@ User Registration Tests › should successfully register a new user
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        1.795 s, estimated 3 s
+Time:        1.461 s, estimated 2 s
 Ran all test suites.
 ```
 
@@ -2931,7 +2760,7 @@ Ran all test suites.
 - **Files**: `C5/contracts/derived_objects/sources/parent.move`
 - **Referenced by**: [getting-started/examples/derived-objects](https://docs.sui.io/getting-started/examples/derived-objects) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/derived-objects.mdx))
 
-**`sui move build`** — PASS (0.7s)
+**`sui move build`** — PASS (0.6s)
 
 ```
 INCLUDING DEPENDENCY MoveStdlib
@@ -2940,7 +2769,7 @@ BUILDING derived_objects
 
 ```
 
-**`sui move test`** — PASS (5.2s)
+**`sui move test`** — PASS (4.5s)
 
 ```
 INCLUDING DEPENDENCY MoveStdlib
@@ -2966,7 +2795,7 @@ Test result: OK. Total tests: 4; passed: 4; failed: 0
 - **Files**: `C5/ts/src/helpers/deriveObjectID.ts`
 - **Referenced by**: [getting-started/examples/derived-objects](https://docs.sui.io/getting-started/examples/derived-objects) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/derived-objects.mdx))
 
-**`npm install`** — PASS (8.4s)
+**`npm install`** — PASS (7.6s)
 
 ```
 npm warn EBADENGINE Unsupported engine {
@@ -2984,9 +2813,9 @@ found 0 vulnerabilities
 
 ```
 
-**`tsc --noEmit --skipLibCheck`** — PASS (1.8s)
+**`tsc --noEmit --skipLibCheck`** — PASS (1.5s)
 
-**`npm test`** — FAIL (0.9s)
+**`npm test`** — FAIL (0.8s)
 
 ```
 ils.ts:[2m4:1[22m[39m
@@ -2997,8 +2826,8 @@ ils.ts:[2m4:1[22m[39m
 
 [2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
 [2m      Tests [22m [2mno tests[22m
-[2m   Start at [22m 20:56:24
-[2m   Duration [22m 462ms[2m (transform 52ms, setup 0ms, import 0ms, tests 0ms, environment 0ms)[22m
+[2m   Start at [22m 21:15:30
+[2m   Duration [22m 396ms[2m (transform 49ms, setup 0ms, import 0ms, tests 0ms, environment 0ms)[22m
 
 
 ::error file=/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--sui-move-bootcamp--solution/C5/ts/src/suiClient.ts,title=tests/derive.test.ts,line=5,column=14::Error: Unknown network: undefined%0A ❯ getJsonRpcFullnodeUrl node_modules/@mysten/sui/src/jsonRpc/network.ts:15:9%0A ❯ src/suiClient.ts:5:14%0A ❯ tests/derive.utils.ts:4:1%0A ❯ tests/derive.test.ts:6:1%0A%0A
@@ -3015,7 +2844,7 @@ ils.ts:[2m4:1[22m[39m
 - **Files**: `E2/my-first-sui-dapp/src/dapp-kit.ts`, `E2/my-first-sui-dapp/src/OwnedObjects.tsx`, `E2/my-first-sui-dapp/src/main.tsx`
 - **Referenced by**: [getting-started/examples/dapp-kit-frontend](https://docs.sui.io/getting-started/examples/dapp-kit-frontend) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/dapp-kit-frontend.mdx))
 
-**`pnpm install`** — PASS (2.1s)
+**`pnpm install`** — PASS (1.3s)
 
 ```
 5.0
@@ -3037,11 +2866,11 @@ devDependencies:
 │   to run scripts.                                                            │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
-Done in 2.1s using pnpm v10.34.5
+Done in 1.2s using pnpm v10.34.5
 
 ```
 
-**`pnpm run build`** — FAIL (2.7s)
+**`pnpm run build`** — FAIL (2.1s)
 
 ```
 > my-first-sui-dapp@0.0.0 build /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--sui-move-bootcamp--solution/E2/my-first-sui-dapp
@@ -3051,13 +2880,13 @@ src/components/ui/MintNFTForm.tsx(1,47): error TS6133: 'useCurrentNetwork' is de
  ELIFECYCLE  Command failed with exit code 2.
 ```
 
-**`tsc --noEmit --skipLibCheck`** — FAIL (2.6s)
+**`tsc --noEmit --skipLibCheck`** — FAIL (2.1s)
 
 ```
 src/components/ui/MintNFTForm.tsx(1,47): error TS6133: 'useCurrentNetwork' is declared but its value is never read.
 ```
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -3076,7 +2905,7 @@ src/components/ui/MintNFTForm.tsx(1,47): error TS6133: 'useCurrentNetwork' is de
 already installed (cached)
 ```
 
-**`pnpm run build`** — FAIL (2.7s)
+**`pnpm run build`** — FAIL (2.2s)
 
 ```
 > my-first-sui-dapp@0.0.0 build /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--sui-move-bootcamp--solution/E2/my-first-sui-dapp
@@ -3086,13 +2915,142 @@ src/components/ui/MintNFTForm.tsx(1,47): error TS6133: 'useCurrentNetwork' is de
  ELIFECYCLE  Command failed with exit code 2.
 ```
 
-**`tsc --noEmit --skipLibCheck`** — FAIL (2.5s)
+**`tsc --noEmit --skipLibCheck`** — FAIL (2.0s)
 
 ```
 src/components/ui/MintNFTForm.tsx(1,47): error TS6133: 'useCurrentNetwork' is declared but its value is never read.
 ```
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
+
+</details>
+
+<details><summary>PASS — MystenLabs/sui-stack-hello-world@main/move (unknown)</summary>
+
+- **Origin**: MystenLabs/sui-stack-hello-world@main
+- **Package root**: `move`
+- **Move edition**: 2024
+- **Dependencies**: `Sui: framework/testnet`
+- **Files**: `move/hello-world/Move.toml`
+- **Referenced by**: [getting-started/onboarding/hello-world](https://docs.sui.io/getting-started/onboarding/hello-world) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/onboarding/hello-world.mdx))
+
+**`fix edition`** — PASS (0.0s)
+
+```
+Changed edition from "2024.beta" to "2024"
+```
+
+**`sui move build`** — PASS (2.4s)
+
+```
+[NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
+INCLUDING DEPENDENCY MoveStdlib
+INCLUDING DEPENDENCY Sui
+BUILDING hello_world
+
+```
+
+**`sui move test`** — PASS (4.3s)
+
+```
+[NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
+INCLUDING DEPENDENCY MoveStdlib
+INCLUDING DEPENDENCY Sui
+BUILDING hello_world
+Running Move unit tests
+Test result: OK. Total tests: 0; passed: 0; failed: 0
+
+```
+
+</details>
+
+<details><summary>PASS — MystenLabs/sui-stack-hello-world@main/move/hello-world (move)</summary>
+
+- **Origin**: MystenLabs/sui-stack-hello-world@main
+- **Package root**: `move/hello-world`
+- **Move edition**: 2024
+- **Dependencies**: `Sui: framework/testnet`
+- **Files**: `move/hello-world/sources/greeting.move`
+- **Referenced by**: [getting-started/onboarding/hello-world](https://docs.sui.io/getting-started/onboarding/hello-world) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/onboarding/hello-world.mdx))
+
+**`sui move build`** — PASS (2.7s)
+
+```
+[NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
+INCLUDING DEPENDENCY MoveStdlib
+INCLUDING DEPENDENCY Sui
+BUILDING hello_world
+
+```
+
+**`sui move test`** — PASS (4.2s)
+
+```
+[NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.
+INCLUDING DEPENDENCY MoveStdlib
+INCLUDING DEPENDENCY Sui
+BUILDING hello_world
+Running Move unit tests
+Test result: OK. Total tests: 0; passed: 0; failed: 0
+
+```
+
+</details>
+
+<details><summary>PASS — MystenLabs/sui-stack-hello-world@main/ui (typescript)</summary>
+
+- **Origin**: MystenLabs/sui-stack-hello-world@main
+- **Package root**: `ui`
+- **Package manager**: pnpm
+- **Dependencies**: `@mysten/dapp-kit-core: ^1.0.4`, `@mysten/dapp-kit-react: ^1.0.2`, `@mysten/sui: 2.4.0`, `typescript: ^5.8.3`
+- **Files**: `ui/src/App.tsx`, `ui/src/CreateGreeting.tsx`, `ui/src/Greeting.tsx`, `ui/src/constants.ts`, `ui/src/networkConfig.ts`
+- **Referenced by**: [getting-started/onboarding/app-frontends](https://docs.sui.io/getting-started/onboarding/app-frontends) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/onboarding/app-frontends.mdx))
+
+**`pnpm install`** — PASS (1.6s)
+
+```
+escript-eslint/parser 8.41.0
++ @vitejs/plugin-react-swc 3.11.0
++ eslint 9.34.0
++ eslint-plugin-react-hooks 5.2.0
++ eslint-plugin-react-refresh 0.4.20
++ prettier 3.6.2
++ typescript 5.9.2
++ vite 7.1.4
+
+╭ Warning ─────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│   Ignored build scripts: @swc/core@1.13.5, esbuild@0.25.9.                   │
+│   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+│   to run scripts.                                                            │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Done in 1.5s using pnpm v10.34.5
+
+```
+
+**`pnpm run build`** — PASS (5.1s)
+
+```
+ng...
+[32m✓[39m 812 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                 [39m[1m[2m  1.23 kB[22m[1m[22m[2m │ gzip:   0.64 kB[22m
+[2mdist/[22m[2massets/[22m[35mindex-Cs5nhfe8.css  [39m[1m[2m689.24 kB[22m[1m[22m[2m │ gzip:  80.92 kB[22m
+[2mdist/[22m[2massets/[22m[36mindex-Df_K52sv.js   [39m[1m[33m666.55 kB[39m[22m[2m │ gzip: 205.75 kB[22m
+[33m
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+[32m✓ built in 2.61s[39m
+
+```
+
+**`tsc --noEmit --skipLibCheck`** — PASS (2.1s)
+
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -3111,7 +3069,7 @@ src/components/ui/MintNFTForm.tsx(1,47): error TS6133: 'useCurrentNetwork' is de
 Changed edition from "2024.beta" to "2024"
 ```
 
-**`sui move build`** — PASS (2.9s)
+**`sui move build`** — PASS (3.1s)
 
 ```
 37]: deprecated usage
@@ -3133,7 +3091,7 @@ warning[W04037]: deprecated usage
 
 ```
 
-**`sui move test`** — PASS (9.2s)
+**`sui move test`** — PASS (8.1s)
 
 ```
 er_zero_base_out_ok
@@ -3168,7 +3126,7 @@ Test result: OK. Total tests: 381; passed: 381; failed: 0
 Changed edition from "2024.beta" to "2024"
 ```
 
-**`sui move build`** — PASS (1.9s)
+**`sui move build`** — PASS (1.8s)
 
 ```
 INCLUDING DEPENDENCY MoveStdlib
@@ -3189,7 +3147,7 @@ Please report feedback on the linter warnings at https://forums.sui.io
 
 ```
 
-**`sui move test`** — PASS (6.5s)
+**`sui move test`** — PASS (5.4s)
 
 ```
 ::rate_limiter_tests::third_large_withdrawal_blocked_without_refill
@@ -3217,7 +3175,7 @@ Please report feedback on the linter warnings at https://forums.sui.io
 - **Files**: `packages/deepbook_margin/sources/tpsl.move`, `packages/deepbook_margin/sources/margin_manager.move`, `packages/deepbook_margin/sources/margin_pool.move`, `packages/deepbook_margin/sources/margin_pool/protocol_fees.move`, `packages/deepbook_margin/sources/pool_proxy.move`, `packages/deepbook_margin/sources/margin_registry.move`
 - **Referenced by**: [onchain-finance/deepbook-margin/contract-information/tpsl](https://docs.sui.io/onchain-finance/deepbook-margin/contract-information/tpsl) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook-margin/contract-information/tpsl.mdx)), [onchain-finance/deepbook-margin/contract-information/supply-referral](https://docs.sui.io/onchain-finance/deepbook-margin/contract-information/supply-referral) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook-margin/contract-information/supply-referral.mdx)), [onchain-finance/deepbook-margin/contract-information/orders](https://docs.sui.io/onchain-finance/deepbook-margin/contract-information/orders) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook-margin/contract-information/orders.mdx)), [onchain-finance/deepbook-margin/contract-information/margin-pool](https://docs.sui.io/onchain-finance/deepbook-margin/contract-information/margin-pool) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook-margin/contract-information/margin-pool.mdx)), [onchain-finance/deepbook-margin/contract-information/margin-manager](https://docs.sui.io/onchain-finance/deepbook-margin/contract-information/margin-manager) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook-margin/contract-information/margin-manager.mdx)), [onchain-finance/deepbook-margin/contract-information/maintainer](https://docs.sui.io/onchain-finance/deepbook-margin/contract-information/maintainer) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook-margin/contract-information/maintainer.mdx))
 
-**`sui move build`** — PASS (15.9s)
+**`sui move build`** — PASS (16.8s)
 
 ```
 ^^^^^^^^^^^^ The method 'divide_and_round_up' resolves to the function 'std::u128::divide_and_round_up' which is deprecated: Renamed to `div_ceil` for consistency
@@ -3235,7 +3193,7 @@ warning[W04037]: deprecated usage
 
 ```
 
-**`sui move test`** — PASS (10.1s)
+**`sui move test`** — PASS (9.1s)
 
 ```
 ol_proxy_tests::test_tolerance_decrease_changes_bounds
@@ -3268,7 +3226,7 @@ Test result: OK. Total tests: 331; passed: 331; failed: 0
 already installed (cached)
 ```
 
-**`pnpm run build`** — FAIL (2.1s)
+**`pnpm run build`** — FAIL (1.7s)
 
 ```
  Binding element 'message' implicitly has an 'any' type.
@@ -3282,7 +3240,7 @@ src/wallet/wallet.ts(262,43): error TS7006: Parameter 'input' implicitly has an 
  ELIFECYCLE  Command failed with exit code 2.
 ```
 
-**`tsc --noEmit --skipLibCheck`** — FAIL (1.2s)
+**`tsc --noEmit --skipLibCheck`** — FAIL (1.0s)
 
 ```
 '.
@@ -3302,7 +3260,7 @@ src/wallet/wallet.ts(262,43): error TS7006: Parameter 'input' implicitly has an 
 Package is part of a workspace — deps installed successfully, full build requires monorepo context
 ```
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -3321,7 +3279,7 @@ Package is part of a workspace — deps installed successfully, full build requi
 already installed (cached)
 ```
 
-**`pnpm run build`** — FAIL (4.6s)
+**`pnpm run build`** — FAIL (3.6s)
 
 ```
  TS7006: Parameter 'typeParam' implicitly has an 'any' type.
@@ -3334,7 +3292,7 @@ src/zklogin/signature.ts(4,38): error TS2307: Cannot find module '@mysten/bcs' o
  ELIFECYCLE  Command failed with exit code 2.
 ```
 
-**`tsc --noEmit --skipLibCheck`** — FAIL (1.7s)
+**`tsc --noEmit --skipLibCheck`** — FAIL (1.4s)
 
 ```
 arations.
@@ -3353,7 +3311,7 @@ src/zklogin/signature.ts(4,38): error TS2307: Cannot find module '@mysten/bcs' o
 Package is part of a workspace — deps installed successfully, full build requires monorepo context
 ```
 
-**`pnpm test`** — FAIL (7.8s)
+**`pnpm test`** — FAIL (6.1s)
 
 ```
 mplicitly has an 'any' type.
@@ -3383,7 +3341,7 @@ test/unit/zklogin/signer.test.ts(4,43): error TS2307: Cannot find module '@myste
 already installed (cached)
 ```
 
-**`pnpm run build`** — FAIL (1.8s)
+**`pnpm run build`** — FAIL (1.4s)
 
 ```
 src/wallet/index.ts(254,64): error TS7031: Binding element 'message' implicitly has an 'any' type.
@@ -3397,7 +3355,7 @@ src/wallet/index.ts(354,40): error TS7006: Parameter 'wallet' implicitly has an 
  ELIFECYCLE  Command failed with exit code 2.
 ```
 
-**`tsc --noEmit --skipLibCheck`** — FAIL (1.1s)
+**`tsc --noEmit --skipLibCheck`** — FAIL (0.8s)
 
 ```
 element 'chain' implicitly has an 'any' type.
@@ -3417,7 +3375,7 @@ src/wallet/index.ts(354,40): error TS7006: Parameter 'wallet' implicitly has an 
 Package is part of a workspace — deps installed successfully, full build requires monorepo context
 ```
 
-**`pnpm test`** — SKIP (0.0s)
+**`pnpm test`** — N/A (0.0s)
 
 </details>
 
@@ -3440,24 +3398,25 @@ Using workspace root: /home/runner/work/sui-docs-example-validator/sui-docs-exam
 already installed (cached)
 ```
 
-**`pnpm run build`** — FAIL (3.8s)
+**`pnpm run build`** — FAIL (2.8s)
 
 ```
-ECYCLE  Command failed with exit code 1.
+js v20.20.2
+ ELIFECYCLE  Command failed.
 ::endgroup::
 ::error::@mysten/walrus#build:docs: command (/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/walrus) /home/runner/.local/share/pnpm/.tools/pnpm/10.33.0/bin/pnpm run build:docs exited (1)
  ERROR  @mysten/walrus#build:docs: command (/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/walrus) /home/runner/.local/share/pnpm/.tools/pnpm/10.33.0/bin/pnpm run build:docs exited (1)
 
- Tasks:    0 successful, 14 total
-Cached:    0 cached, 14 total
-  Time:    2.852s 
+ Tasks:    0 successful, 15 total
+Cached:    0 cached, 15 total
+  Time:    2.058s 
 Failed:    @mysten/walrus#build:docs
 
  ERROR  run failed: command  exited (1)
  ELIFECYCLE  Command failed with exit code 1.
 ```
 
-**`tsc --noEmit --skipLibCheck`** — FAIL (1.3s)
+**`tsc --noEmit --skipLibCheck`** — FAIL (1.0s)
 
 ```
 nstall type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig.
@@ -3467,18 +3426,19 @@ nstall type definitions for node? Try `npm i --save-dev @types/node` and then ad
 ../../../scripts/validate-package.ts(177,5): error TS2591: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig.
 ```
 
-**`pnpm test`** — FAIL (3.9s)
+**`pnpm test`** — FAIL (3.3s)
 
 ```
-rent: {"node":"v20.20.2","pnpm":"10.33.0"})
+ild:docs
+cache miss, executing 993a2757b1f9e153
 ::endgroup::
-::error::@mysten/seal#build:docs: command (/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/seal) /home/runner/.local/share/pnpm/.tools/pnpm/10.33.0/bin/pnpm run build:docs exited (1)
- ERROR  @mysten/seal#build:docs: command (/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/seal) /home/runner/.local/share/pnpm/.tools/pnpm/10.33.0/bin/pnpm run build:docs exited (1)
+::error::@mysten/bcs#build:docs: command (/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/bcs) /home/runner/.local/share/pnpm/.tools/pnpm/10.33.0/bin/pnpm run build:docs exited (1)
+ ERROR  @mysten/bcs#build:docs: command (/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/bcs) /home/runner/.local/share/pnpm/.tools/pnpm/10.33.0/bin/pnpm run build:docs exited (1)
 
  Tasks:    0 successful, 15 total
 Cached:    0 cached, 15 total
-  Time:    2.94s 
-Failed:    @mysten/seal#build:docs
+  Time:    2.528s 
+Failed:    @mysten/bcs#build:docs
 
  ERROR  run failed: command  exited (1)
  ELIFECYCLE  Test failed. See above for more details.
@@ -3505,23 +3465,25 @@ Using workspace root: /home/runner/work/sui-docs-example-validator/sui-docs-exam
 already installed (cached)
 ```
 
-**`pnpm run build`** — FAIL (3.1s)
+**`pnpm run build`** — FAIL (3.0s)
 
 ```
-:endgroup::
-::error::@mysten/dapp-kit#build:docs: command (/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/dapp-kit/packages/legacy) /home/runner/.local/share/pnpm/.tools/pnpm/10.33.0/bin/pnpm run build:docs exited (1)
- ERROR  @mysten/dapp-kit#build:docs: command (/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/dapp-kit/packages/legacy) /home/runner/.local/share/pnpm/.tools/pnpm/10.33.0/bin/pnpm run build:docs exited (1)
+s
+cache miss, executing 3d28a7af067603cc
+::endgroup::
+::error::@mysten/walrus#build:docs: command (/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/walrus) /home/runner/.local/share/pnpm/.tools/pnpm/10.33.0/bin/pnpm run build:docs exited (1)
+ ERROR  @mysten/walrus#build:docs: command (/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/walrus) /home/runner/.local/share/pnpm/.tools/pnpm/10.33.0/bin/pnpm run build:docs exited (1)
 
- Tasks:    0 successful, 15 total
-Cached:    0 cached, 15 total
-  Time:    2.225s 
-Failed:    @mysten/dapp-kit#build:docs
+ Tasks:    0 successful, 13 total
+Cached:    0 cached, 13 total
+  Time:    2.276s 
+Failed:    @mysten/walrus#build:docs
 
  ERROR  run failed: command  exited (1)
  ELIFECYCLE  Command failed with exit code 1.
 ```
 
-**`tsc --noEmit --skipLibCheck`** — FAIL (1.3s)
+**`tsc --noEmit --skipLibCheck`** — FAIL (1.0s)
 
 ```
 nstall type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig.
@@ -3531,20 +3493,18 @@ nstall type definitions for node? Try `npm i --save-dev @types/node` and then ad
 ../../../scripts/validate-package.ts(177,5): error TS2591: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig.
 ```
 
-**`pnpm test`** — FAIL (3.7s)
+**`pnpm test`** — FAIL (3.5s)
 
 ```
--docs.ts
-
- ELIFECYCLE  Command failed.
+d.
 ::endgroup::
-::error::@mysten/kiosk#build:docs: command (/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/kiosk) /home/runner/.local/share/pnpm/.tools/pnpm/10.33.0/bin/pnpm run build:docs exited (1)
- ERROR  @mysten/kiosk#build:docs: command (/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/kiosk) /home/runner/.local/share/pnpm/.tools/pnpm/10.33.0/bin/pnpm run build:docs exited (1)
+::error::@mysten/slush-wallet#build:docs: command (/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/slush-wallet) /home/runner/.local/share/pnpm/.tools/pnpm/10.33.0/bin/pnpm run build:docs exited (1)
+ ERROR  @mysten/slush-wallet#build:docs: command (/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/slush-wallet) /home/runner/.local/share/pnpm/.tools/pnpm/10.33.0/bin/pnpm run build:docs exited (1)
 
- Tasks:    0 successful, 14 total
-Cached:    0 cached, 14 total
-  Time:    2.82s 
-Failed:    @mysten/kiosk#build:docs
+ Tasks:    0 successful, 15 total
+Cached:    0 cached, 15 total
+  Time:    2.746s 
+Failed:    @mysten/slush-wallet#build:docs
 
  ERROR  run failed: command  exited (1)
  ELIFECYCLE  Test failed. See above for more details.
