@@ -32,6 +32,12 @@ interface StepResult {
   durationMs: number;
 }
 
+interface PackageVersionInfo {
+  edition?: string;       // Move edition
+  dependencies?: Record<string, string>; // key deps with versions
+  packageManager?: string; // npm/pnpm
+}
+
 interface ValidationResult {
   id: string;
   type: string;
@@ -43,6 +49,7 @@ interface ValidationResult {
   steps: StepResult[];
   overallStatus: "pass" | "fail" | "skip";
   failureReason?: string;
+  versionInfo?: PackageVersionInfo;
 }
 
 interface ToolVersions {
@@ -157,6 +164,80 @@ function ensureExternalRepo(org: string, repo: string, branch: string, workDir: 
   }
   clonedRepos.set(key, dest);
   return dest;
+}
+
+// --- Extract package version info ---
+
+function extractVersionInfo(absRoot: string, type: string): PackageVersionInfo {
+  const info: PackageVersionInfo = {};
+
+  if (type === "move") {
+    const tomlPath = resolve(absRoot, "Move.toml");
+    if (existsSync(tomlPath)) {
+      const content = readFileSync(tomlPath, "utf-8");
+      const editionMatch = content.match(/edition\s*=\s*"([^"]+)"/);
+      if (editionMatch) info.edition = editionMatch[1];
+
+      // Extract key dependencies
+      info.dependencies = {};
+      const depSection = content.match(/\[dependencies\]([\s\S]*?)(?:\[|$)/);
+      if (depSection) {
+        const depLines = depSection[1].split("\n").filter((l) => l.includes("="));
+        for (const line of depLines) {
+          const nameMatch = line.match(/^(\w+)\s*=/);
+          if (!nameMatch) continue;
+          const name = nameMatch[1];
+          const revMatch = line.match(/rev\s*=\s*"([^"]+)"/);
+          const gitMatch = line.match(/git\s*=\s*"([^"]+)"/);
+          const mvrMatch = line.match(/r\.mvr\s*=\s*"([^"]+)"/);
+          if (mvrMatch) info.dependencies[name] = `mvr:${mvrMatch[1]}`;
+          else if (revMatch) info.dependencies[name] = revMatch[1];
+          else if (gitMatch) info.dependencies[name] = gitMatch[1].split("/").pop() || "git";
+          else info.dependencies[name] = "local";
+        }
+      }
+    }
+  }
+
+  if (type === "typescript") {
+    const pkgPath = resolve(absRoot, "package.json");
+    if (existsSync(pkgPath)) {
+      try {
+        const pkg = JSON.parse(readFileSync(pkgPath, "utf-8"));
+        info.dependencies = {};
+        const allDeps = { ...pkg.dependencies, ...pkg.devDependencies };
+        // Extract key Sui/Mysten SDK versions
+        for (const key of Object.keys(allDeps)) {
+          if (key.startsWith("@mysten/") || key.startsWith("@sui/") || key === "typescript") {
+            info.dependencies[key] = allDeps[key];
+          }
+        }
+        info.packageManager = existsSync(resolve(absRoot, "pnpm-lock.yaml")) ? "pnpm" : "npm";
+      } catch {}
+    }
+  }
+
+  if (type === "rust") {
+    const cargoPath = resolve(absRoot, "Cargo.toml");
+    if (existsSync(cargoPath)) {
+      const content = readFileSync(cargoPath, "utf-8");
+      info.dependencies = {};
+      // Extract sui-related deps
+      const lines = content.split("\n");
+      for (const line of lines) {
+        if (line.match(/^(sui[-_]|mysten)/i)) {
+          const nameMatch = line.match(/^([\w-]+)\s*=/);
+          if (nameMatch) {
+            const branchMatch = line.match(/branch\s*=\s*"([^"]+)"/);
+            const revMatch = line.match(/rev\s*=\s*"([^"]+)"/);
+            info.dependencies[nameMatch[1]] = branchMatch?.[1] || revMatch?.[1] || "workspace";
+          }
+        }
+      }
+    }
+  }
+
+  return info;
 }
 
 // --- Resolve actual package root from filesystem ---
@@ -441,11 +522,35 @@ function generateReport(
     lines.push("## Failures");
     lines.push("");
     for (const r of results.filter((r) => r.overallStatus === "fail")) {
+      // Categorize the failure reason
+      const failStep = r.steps.find((s) => s.status === "fail");
+      let category = "Unknown";
+      if (failStep) {
+        const out = failStep.output.toLowerCase();
+        if (failStep.command.includes("install") && out.includes("enoent")) category = "Missing dependency / private registry";
+        else if (failStep.command.includes("install")) category = "Dependency installation failed";
+        else if (out.includes("unresolved") || out.includes("not found in scope")) category = "Missing Move dependency";
+        else if (out.includes("edition")) category = "Incompatible Move edition";
+        else if (out.includes("mvr") || out.includes("r.mvr")) category = "MVR (Move Registry) dependency — requires MVR resolver";
+        else if (out.includes("timeout") || out.includes("timed out")) category = "Build timeout";
+        else if (failStep.command.includes("tsc")) category = "TypeScript type errors";
+        else if (failStep.command.includes("move")) category = "Move compilation error";
+        else if (failStep.command.includes("cargo")) category = "Rust compilation error";
+        else if (failStep.command.includes("clone")) category = "Git clone failed (branch may not exist)";
+        else if (failStep.command.includes("exists")) category = "Build file not found";
+        else category = "Build error";
+      }
+
       lines.push(`### ${r.id}`);
       lines.push("");
+      lines.push(`- **Failure category**: ${category}`);
       lines.push(`- **Type**: ${r.type}`);
       lines.push(`- **Origin**: ${r.origin}`);
       lines.push(`- **Package root**: \`${r.packageRoot}\``);
+      if (r.versionInfo?.edition) lines.push(`- **Move edition**: ${r.versionInfo.edition}`);
+      if (r.versionInfo?.dependencies && Object.keys(r.versionInfo.dependencies).length > 0) {
+        lines.push(`- **Key dependencies**: ${Object.entries(r.versionInfo.dependencies).map(([k, v]) => `\`${k}: ${v}\``).join(", ")}`);
+      }
       lines.push(`- **Files referenced**: ${r.files.map((f) => `\`${f}\``).join(", ")}`);
       lines.push(`- **Referenced by docs pages**:`);
       for (const ref of r.referencedBy) {
@@ -507,6 +612,11 @@ function generateReport(
     lines.push("");
     lines.push(`- **Origin**: ${r.origin}`);
     lines.push(`- **Package root**: \`${r.packageRoot}\``);
+    if (r.versionInfo?.edition) lines.push(`- **Move edition**: ${r.versionInfo.edition}`);
+    if (r.versionInfo?.packageManager) lines.push(`- **Package manager**: ${r.versionInfo.packageManager}`);
+    if (r.versionInfo?.dependencies && Object.keys(r.versionInfo.dependencies).length > 0) {
+      lines.push(`- **Dependencies**: ${Object.entries(r.versionInfo.dependencies).map(([k, v]) => `\`${k}: ${v}\``).join(", ")}`);
+    }
     lines.push(`- **Files**: ${r.files.map((f) => `\`${f}\``).join(", ")}`);
     lines.push(`- **Referenced by**: ${r.referencedBy.map((f) => `\`${f}\``).join(", ")}`);
     lines.push("");
@@ -680,6 +790,9 @@ async function main() {
       console.log(`    ${icon}  ${step.command} (${(step.durationMs / 1000).toFixed(1)}s)`);
     }
 
+    // Extract version info from the package
+    const versionInfo = extractVersionInfo(absRoot, resolvedType);
+
     results.push({
       id: pkg.id,
       type: pkg.type,
@@ -691,6 +804,7 @@ async function main() {
       steps,
       overallStatus,
       failureReason,
+      versionInfo,
     });
   }
 
