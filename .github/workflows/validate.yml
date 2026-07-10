@@ -83,3 +83,16 @@ jobs:
           path: |
             results/
             manifest/
+
+      - name: Commit report to repo
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          mkdir -p reports
+          cp results/report.md "reports/report-$(date -u +%Y-%m-%d).md" 2>/dev/null || true
+          cp results/report.md reports/latest.md 2>/dev/null || true
+          cp results/report.json reports/latest.json 2>/dev/null || true
+          git add reports/
+          git diff --cached --quiet || git commit -m "report: validation run $(date -u +%Y-%m-%d)"
+          git push
