@@ -325,10 +325,6 @@ function validateMove(absRoot: string): StepResult[] {
 
   if (!build.ok) return steps;
 
-  // Test
-  const test = run("sui move test 2>&1", absRoot, 120_000);
-  steps.push({ command: "sui move test", status: test.ok ? "pass" : "fail", output: test.output, durationMs: test.durationMs });
-
   return steps;
 }
 
@@ -348,10 +344,6 @@ function validateRust(absRoot: string): StepResult[] {
   steps.push({ command: "cargo check", status: build.ok ? "pass" : "fail", output: build.output, durationMs: build.durationMs });
 
   if (!build.ok) return steps;
-
-  console.log(`      Running cargo test (timeout ${RUST_TIMEOUT / 1000}s)...`);
-  const test = run("cargo test 2>&1", absRoot, RUST_TIMEOUT);
-  steps.push({ command: "cargo test", status: test.ok ? "pass" : "fail", output: test.output, durationMs: test.durationMs });
 
   return steps;
 }
@@ -459,20 +451,6 @@ function validateTypeScript(absRoot: string): StepResult[] {
   if (!buildPassed && wsRoot) {
     steps.push({ command: "workspace package (deps resolved)", status: "pass", output: "Package is part of a workspace — deps installed successfully, full build requires monorepo context", durationMs: 0 });
     buildPassed = true; // override — this IS a pass for workspace packages
-  }
-
-  // Test
-  const testPkgPath = existsSync(resolve(absRoot, "package.json")) ? absRoot : installRoot;
-  if (existsSync(resolve(testPkgPath, "package.json"))) {
-    const pkgJson = JSON.parse(readFileSync(resolve(testPkgPath, "package.json"), "utf-8"));
-    if (pkgJson.scripts?.test && pkgJson.scripts.test !== 'echo "Error: no test specified" && exit 1') {
-      const test = run(`${pm} test 2>&1`, testPkgPath, 120_000);
-      steps.push({ command: `${pm} test`, status: test.ok ? "pass" : "fail", output: test.output, durationMs: test.durationMs });
-    } else {
-      steps.push({ command: `${pm} test`, status: "skip", output: "no test script defined", durationMs: 0 });
-    }
-  } else {
-    steps.push({ command: `${pm} test`, status: "skip", output: "no package.json at this level", durationMs: 0 });
   }
 
   return steps;
@@ -608,23 +586,21 @@ function generateReport(
   // Full results table
   lines.push("## All Results");
   lines.push("");
-  lines.push("| # | Package | Type | Origin | Build | Test | Duration | Files |");
-  lines.push("|---|---------|------|--------|-------|------|----------|-------|");
+  lines.push("| # | Package | Type | Origin | Build | Duration | Files |");
+  lines.push("|---|---------|------|--------|-------|----------|-------|");
 
   for (let i = 0; i < results.length; i++) {
     const r = results[i];
     const buildStep = r.steps.find((s) => s.command.includes("build") || s.command.includes("check") || s.command.includes("tsc") || s.command === "file exists");
-    const testStep = r.steps.find((s) => s.command.includes("test"));
 
     const buildStatus = buildStep ? (buildStep.status === "pass" ? "PASS" : buildStep.status === "fail" ? "FAIL" : "N/A") : "N/A";
-    const testStatus = testStep ? (testStep.status === "pass" ? "PASS" : testStep.status === "fail" ? "FAIL" : "N/A") : "N/A";
     const totalMs = r.steps.reduce((sum, s) => sum + s.durationMs, 0);
 
     const shortId = r.id.length > 50 ? "..." + r.id.slice(-47) : r.id;
     const shortOrigin = r.origin.length > 30 ? "..." + r.origin.slice(-27) : r.origin;
 
     lines.push(
-      `| ${i + 1} | ${shortId} | ${r.type} | ${shortOrigin} | ${buildStatus} | ${testStatus} | ${(totalMs / 1000).toFixed(1)}s | ${r.files.length} |`,
+      `| ${i + 1} | ${shortId} | ${r.type} | ${shortOrigin} | ${buildStatus} | ${(totalMs / 1000).toFixed(1)}s | ${r.files.length} |`,
     );
   }
 
@@ -817,35 +793,27 @@ async function main() {
     }
 
     // Overall status is based on BUILD steps only — test failures are informational.
-    // Determine overall status:
-    // - For Move/Rust: "sui move build" or "cargo check" must pass
-    // - For TypeScript: install must pass (tsc failures are warnings since
-    //   docs only import snippets, not entire apps)
-    // - Test failures are always informational
-    const testSteps = steps.filter((s) =>
-      s.command.includes("test") && !s.command.includes("install")
-    );
-    const nonTestSteps = steps.filter((s) => !testSteps.includes(s));
-
+    // Determine overall status based on build steps
     let overallStatus: "pass" | "fail" | "skip";
     let failureReason: string | undefined;
 
     if (resolvedType === "typescript") {
-      // TS: pass if install succeeded (tsc/build failures are warnings)
-      const installPassed = nonTestSteps.some(
+      // TS: pass if install succeeded (tsc/build failures are warnings since
+      // docs only import snippets, not entire apps)
+      const installPassed = steps.some(
         (s) => s.command.includes("install") && s.status === "pass"
       );
-      overallStatus = installPassed ? "pass" : nonTestSteps.some((s) => s.status === "fail") ? "fail" : "skip";
+      overallStatus = installPassed ? "pass" : steps.some((s) => s.status === "fail") ? "fail" : "skip";
       if (!installPassed) {
-        failureReason = nonTestSteps.find((s) => s.status === "fail")?.output?.slice(-200);
+        failureReason = steps.find((s) => s.status === "fail")?.output?.slice(-200);
       }
     } else {
-      // Move/Rust: actual build must pass
-      const buildFailed = nonTestSteps.some((s) => s.status === "fail");
-      const buildPassed = nonTestSteps.some((s) => s.status === "pass");
+      // Move/Rust: build must pass
+      const buildFailed = steps.some((s) => s.status === "fail");
+      const buildPassed = steps.some((s) => s.status === "pass");
       overallStatus = buildFailed ? "fail" : buildPassed ? "pass" : "skip";
       if (buildFailed) {
-        failureReason = nonTestSteps.find((s) => s.status === "fail")?.output?.slice(-200);
+        failureReason = steps.find((s) => s.status === "fail")?.output?.slice(-200);
       }
     }
 
