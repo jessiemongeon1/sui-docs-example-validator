@@ -38,8 +38,10 @@ jobs:
 
       - uses: dtolnay/rust-toolchain@stable
 
-      - name: Install pnpm
-        run: npm install -g pnpm
+      - name: Install pnpm and bun
+        run: |
+          npm install -g pnpm
+          npm install -g bun
 
       - name: Install project dependencies
         run: npm ci
@@ -51,6 +53,7 @@ jobs:
           node --version
           npm --version
           pnpm --version
+          bun --version || echo "bun not found"
           rustc --version
           cargo --version
 

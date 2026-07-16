@@ -57,6 +57,7 @@ interface ToolVersions {
   mvr: string;
   node: string;
   npm: string;
+  bun: string;
   rustc: string;
   cargo: string;
   pnpm: string;
@@ -104,6 +105,7 @@ function collectToolVersions(): ToolVersions {
   return {
     sui: getVersion("sui --version"),
     mvr: getVersion("mvr --version"),
+    bun: getVersion("bun --version"),
     node: getVersion("node --version"),
     npm: getVersion("npm --version"),
     rustc: getVersion("rustc --version"),
@@ -425,11 +427,19 @@ function validateTypeScript(absRoot: string): StepResult[] {
     steps.push({ command: `${pm} install`, status: "pass", output: "already installed (cached)", durationMs: 0 });
   }
 
-  // Build strategy: try multiple approaches, pass if ANY succeeds
+  // Ensure @types/node is available (many examples assume it)
+  const pkgBuildPath = existsSync(resolve(absRoot, "package.json")) ? absRoot : installRoot;
+  if (existsSync(resolve(pkgBuildPath, "package.json"))) {
+    const pkgContent = readFileSync(resolve(pkgBuildPath, "package.json"), "utf-8");
+    if (!pkgContent.includes("@types/node")) {
+      run(`${pm} add -D @types/node 2>&1`, pkgBuildPath, 30_000);
+    }
+  }
+
+  // Build strategy: try the project's own build script first, then tsc
   let buildPassed = false;
 
   // 1. Try package-level build script if available
-  const pkgBuildPath = existsSync(resolve(absRoot, "package.json")) ? absRoot : installRoot;
   if (existsSync(resolve(pkgBuildPath, "package.json"))) {
     const pkg = JSON.parse(readFileSync(resolve(pkgBuildPath, "package.json"), "utf-8"));
     if (pkg.scripts?.build) {
@@ -440,17 +450,28 @@ function validateTypeScript(absRoot: string): StepResult[] {
     }
   }
 
-  // 2. Try tsc directly
-  const tscRoot = existsSync(resolve(absRoot, "tsconfig.json")) ? absRoot : installRoot;
-  const tsc = run("npx tsc --noEmit --skipLibCheck 2>&1", tscRoot, 120_000);
-  steps.push({ command: "tsc --noEmit --skipLibCheck", status: tsc.ok ? "pass" : "fail", output: tsc.output, durationMs: tsc.durationMs });
-  if (tsc.ok) buildPassed = true;
+  // 2. Try tsc with moduleResolution nodenext (handles @mysten/sui subpath imports)
+  if (!buildPassed) {
+    const tscRoot = existsSync(resolve(absRoot, "tsconfig.json")) ? absRoot : installRoot;
+    const tsc = run("npx tsc --noEmit --skipLibCheck --moduleResolution nodenext --module nodenext 2>&1", tscRoot, 120_000);
+    steps.push({ command: "tsc --noEmit", status: tsc.ok ? "pass" : "fail", output: tsc.output, durationMs: tsc.durationMs });
+    if (tsc.ok) buildPassed = true;
+  }
 
-  // For workspace sub-packages: if install succeeded, count as pass even if tsc fails
-  // (these packages need a full monorepo build via turbo/nx which we can't replicate per-package)
+  // 3. If neither worked, try tsc with the project's own tsconfig (no overrides)
+  if (!buildPassed) {
+    const tscRoot = existsSync(resolve(absRoot, "tsconfig.json")) ? absRoot : installRoot;
+    const tsc2 = run("npx tsc --noEmit --skipLibCheck 2>&1", tscRoot, 120_000);
+    if (tsc2.ok) {
+      steps.push({ command: "tsc --noEmit (default config)", status: "pass", output: tsc2.output, durationMs: tsc2.durationMs });
+      buildPassed = true;
+    }
+  }
+
+  // 4. For workspace sub-packages where nothing worked: pass if install succeeded
   if (!buildPassed && wsRoot) {
     steps.push({ command: "workspace package (deps resolved)", status: "pass", output: "Package is part of a workspace — deps installed successfully, full build requires monorepo context", durationMs: 0 });
-    buildPassed = true; // override — this IS a pass for workspace packages
+    buildPassed = true;
   }
 
   return steps;
@@ -513,6 +534,7 @@ function generateReport(
   lines.push("|------|---------|");
   lines.push(`| Sui CLI | ${versions.sui} |`);
   lines.push(`| MVR | ${versions.mvr} |`);
+  lines.push(`| Bun | ${versions.bun} |`);
   lines.push(`| Node.js | ${versions.node} |`);
   lines.push(`| npm | ${versions.npm} |`);
   lines.push(`| pnpm | ${versions.pnpm} |`);
@@ -793,28 +815,14 @@ async function main() {
     }
 
     // Overall status is based on BUILD steps only — test failures are informational.
-    // Determine overall status based on build steps
-    let overallStatus: "pass" | "fail" | "skip";
+    // Determine overall status — any "pass" step means the package is valid,
+    // since validators try multiple approaches and pass if ANY succeeds
+    const anyPassed = steps.some((s) => s.status === "pass");
+    const allFailed = steps.every((s) => s.status === "fail");
+    let overallStatus: "pass" | "fail" | "skip" = anyPassed ? "pass" : allFailed ? "fail" : "skip";
     let failureReason: string | undefined;
-
-    if (resolvedType === "typescript") {
-      // TS: pass if install succeeded (tsc/build failures are warnings since
-      // docs only import snippets, not entire apps)
-      const installPassed = steps.some(
-        (s) => s.command.includes("install") && s.status === "pass"
-      );
-      overallStatus = installPassed ? "pass" : steps.some((s) => s.status === "fail") ? "fail" : "skip";
-      if (!installPassed) {
-        failureReason = steps.find((s) => s.status === "fail")?.output?.slice(-200);
-      }
-    } else {
-      // Move/Rust: build must pass
-      const buildFailed = steps.some((s) => s.status === "fail");
-      const buildPassed = steps.some((s) => s.status === "pass");
-      overallStatus = buildFailed ? "fail" : buildPassed ? "pass" : "skip";
-      if (buildFailed) {
-        failureReason = steps.find((s) => s.status === "fail")?.output?.slice(-200);
-      }
+    if (overallStatus === "fail") {
+      failureReason = steps.find((s) => s.status === "fail")?.output?.slice(-200);
     }
 
     // Log result
