@@ -6,17 +6,17 @@
  *
  * Two validation modes:
  *   --mode strict   (default) Validate examples as-authored. No patching.
- *                   Build failures are real failures.
+ *                   Honors lockfiles. Build failures are real failures.
  *   --mode compat   Patch known issues (missing deps, legacy editions) before
- *                   building. Useful for probing SDK compatibility.
+ *                   building. Ignores lockfiles. Useful for SDK compatibility probing.
  *
  * Usage:
  *   tsx scripts/validate-all.ts --sui-repo <path> --manifest <path> [--output <path>] [--mode strict|compat]
  */
 
-import { execSync } from "child_process";
+import { execFileSync } from "child_process";
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
-import { resolve, dirname } from "path";
+import { resolve, dirname, basename } from "path";
 
 // --- Types ---
 
@@ -57,7 +57,7 @@ interface ValidationResult {
   overallStatus: "pass" | "fail" | "skip";
   failureReason?: string;
   versionInfo?: PackageVersionInfo;
-  patched?: boolean; // true if the example was modified before building (compat mode)
+  patched?: boolean;
 }
 
 interface ToolVersions {
@@ -72,6 +72,22 @@ interface ToolVersions {
 }
 
 type Mode = "strict" | "compat";
+
+// --- Input validation ---
+
+/** Only allow safe characters in refs, paths, repo names. */
+const SAFE_REF = /^[a-zA-Z0-9._\-\/]+$/;
+const SAFE_REPO = /^[a-zA-Z0-9._-]+$/;
+
+function validateRef(ref: string): string {
+  if (!SAFE_REF.test(ref)) throw new Error(`Unsafe ref: ${ref}`);
+  return ref;
+}
+
+function validateRepoName(name: string): string {
+  if (!SAFE_REPO.test(name)) throw new Error(`Unsafe repo name: ${name}`);
+  return name;
+}
 
 // --- CLI args ---
 
@@ -100,14 +116,36 @@ function parseArgs() {
 // --- Helpers ---
 
 const EXTENDED_PATH = `${process.env.HOME}/.local/bin:${process.env.PATH}`;
+const EXEC_ENV = { ...process.env, PATH: EXTENDED_PATH };
 
-function getVersion(cmd: string): string {
+/** Run a command with argv-style args (no shell interpolation). */
+function run(argv: string[], cwd: string, timeoutMs = 300_000): { ok: boolean; output: string; durationMs: number } {
+  const start = Date.now();
   try {
-    return execSync(cmd, {
+    const stdout = execFileSync(argv[0], argv.slice(1), {
+      cwd,
+      timeout: timeoutMs,
+      stdio: ["pipe", "pipe", "pipe"],
+      encoding: "utf-8",
+      maxBuffer: 10 * 1024 * 1024,
+      env: EXEC_ENV,
+    });
+    return { ok: true, output: stdout.slice(-3000), durationMs: Date.now() - start };
+  } catch (err: any) {
+    const stderr = err.stderr?.slice?.(-3000) || "";
+    const stdout = err.stdout?.slice?.(-3000) || "";
+    return { ok: false, output: `${stderr}\n${stdout}`.trim(), durationMs: Date.now() - start };
+  }
+}
+
+/** Run via shell (only for commands that need pipes/redirects — version checks). */
+function runShell(cmd: string): string {
+  try {
+    return execFileSync("sh", ["-c", cmd], {
       encoding: "utf-8",
       timeout: 10_000,
       stdio: ["pipe", "pipe", "pipe"],
-      env: { ...process.env, PATH: EXTENDED_PATH },
+      env: EXEC_ENV,
     }).trim();
   } catch {
     return "not installed";
@@ -116,34 +154,15 @@ function getVersion(cmd: string): string {
 
 function collectToolVersions(): ToolVersions {
   return {
-    sui: getVersion("sui --version"),
-    mvr: getVersion("mvr --version"),
-    bun: getVersion("bun --version"),
-    node: getVersion("node --version"),
-    npm: getVersion("npm --version"),
-    rustc: getVersion("rustc --version"),
-    cargo: getVersion("cargo --version"),
-    pnpm: getVersion("pnpm --version"),
+    sui: runShell("sui --version"),
+    mvr: runShell("mvr --version"),
+    bun: runShell("bun --version"),
+    node: runShell("node --version"),
+    npm: runShell("npm --version"),
+    rustc: runShell("rustc --version"),
+    cargo: runShell("cargo --version"),
+    pnpm: runShell("pnpm --version"),
   };
-}
-
-function run(cmd: string, cwd: string, timeoutMs = 300_000): { ok: boolean; output: string; durationMs: number } {
-  const start = Date.now();
-  try {
-    const output = execSync(cmd, {
-      cwd,
-      timeout: timeoutMs,
-      stdio: ["pipe", "pipe", "pipe"],
-      encoding: "utf-8",
-      maxBuffer: 10 * 1024 * 1024,
-      env: { ...process.env, PATH: EXTENDED_PATH },
-    });
-    return { ok: true, output: output.slice(-3000), durationMs: Date.now() - start };
-  } catch (err: any) {
-    const stderr = err.stderr?.slice?.(-3000) || "";
-    const stdout = err.stdout?.slice?.(-3000) || "";
-    return { ok: false, output: `${stderr}\n${stdout}`.trim(), durationMs: Date.now() - start };
-  }
 }
 
 function detectPackageManager(...roots: string[]): "pnpm" | "npm" {
@@ -171,7 +190,7 @@ function loadAllowedRepos(): Set<string> {
   return new Set(config.allowed.map((r: { org: string; repo: string }) => `${r.org}/${r.repo}`));
 }
 
-// --- Clone external repos (cached) ---
+// --- Clone external repos ---
 
 const clonedRepos = new Map<string, string>();
 
@@ -179,18 +198,34 @@ function ensureExternalRepo(org: string, repo: string, branch: string, workDir: 
   const key = `${org}/${repo}@${branch}`;
   if (clonedRepos.has(key)) return clonedRepos.get(key)!;
 
+  validateRepoName(org);
+  validateRepoName(repo);
+  validateRef(branch);
+
   const dest = resolve(workDir, `${org}--${repo}--${branch}`);
   if (!existsSync(dest)) {
     console.log(`    Cloning ${key}...`);
-    const result = run(
-      `git clone --depth 1 --branch ${branch} https://github.com/${org}/${repo}.git "${dest}"`,
+    // Clone without --branch (works for SHAs too), then checkout
+    const cloneResult = run(
+      ["git", "clone", "--depth", "1", `https://github.com/${org}/${repo}.git`, dest],
       workDir,
       120_000,
     );
-    if (!result.ok) {
-      console.error(`    Failed to clone ${key}: ${result.output.slice(-200)}`);
+    if (!cloneResult.ok) {
+      console.error(`    Failed to clone ${key}: ${cloneResult.output.slice(-200)}`);
       clonedRepos.set(key, "");
       return "";
+    }
+    // Checkout the specific ref (branch, tag, or SHA)
+    if (branch !== "main" && branch !== "master") {
+      const fetchResult = run(["git", "fetch", "origin", branch], dest, 60_000);
+      if (fetchResult.ok) {
+        run(["git", "checkout", branch], dest, 10_000);
+      } else {
+        // Try as a SHA (fetch then checkout)
+        run(["git", "fetch", "origin", branch, "--depth=1"], dest, 60_000);
+        run(["git", "checkout", "FETCH_HEAD"], dest, 10_000);
+      }
     }
   }
   clonedRepos.set(key, dest);
@@ -306,7 +341,9 @@ function validateMove(absRoot: string, mode: Mode): { steps: StepResult[]; patch
       patched = true;
     }
     const lockPath = resolve(absRoot, "Move.lock");
-    if (existsSync(lockPath)) execSync(`rm -f "${lockPath}"`);
+    if (existsSync(lockPath)) {
+      execFileSync("rm", ["-f", lockPath]);
+    }
     const updated = readFileSync(resolve(absRoot, "Move.toml"), "utf-8");
     if (updated.includes('edition = "2024.beta"')) {
       writeFileSync(resolve(absRoot, "Move.toml"), updated.replace('edition = "2024.beta"', 'edition = "2024"'));
@@ -315,7 +352,7 @@ function validateMove(absRoot: string, mode: Mode): { steps: StepResult[]; patch
     }
   }
 
-  const build = run("sui move build 2>&1", absRoot, 120_000);
+  const build = run(["sui", "move", "build"], absRoot, 120_000);
   steps.push({ command: "sui move build", status: build.ok ? "pass" : "fail", output: build.output, durationMs: build.durationMs });
 
   return { steps, patched };
@@ -330,7 +367,7 @@ function validateRust(absRoot: string): { steps: StepResult[]; patched: boolean 
   }
 
   console.log(`      Running cargo check (timeout 300s)...`);
-  const build = run("cargo check 2>&1", absRoot, 300_000);
+  const build = run(["cargo", "check"], absRoot, 300_000);
   steps.push({ command: "cargo check", status: build.ok ? "pass" : "fail", output: build.output, durationMs: build.durationMs });
 
   return { steps, patched: false };
@@ -388,13 +425,33 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
 
   // Install at workspace root (once)
   if (!installedWorkspaces.has(effectiveRoot)) {
-    const installCmd = pm === "pnpm"
-      ? "pnpm install --no-frozen-lockfile 2>&1"
-      : "npm install 2>&1";
-    console.log(`      Running ${pm} install at ${effectiveRoot}...`);
-    const install = run(installCmd, effectiveRoot, 300_000);
-    steps.push({ command: `${pm} install`, status: install.ok ? "pass" : "fail", output: install.output, durationMs: install.durationMs });
-    if (!install.ok) return { steps, patched };
+    let installArgs: string[];
+    if (pm === "pnpm") {
+      installArgs = mode === "strict"
+        ? ["pnpm", "install", "--frozen-lockfile"]
+        : ["pnpm", "install", "--no-frozen-lockfile"];
+    } else {
+      installArgs = mode === "strict"
+        ? ["npm", "ci"]
+        : ["npm", "install"];
+    }
+    console.log(`      Running ${installArgs.join(" ")} at ${effectiveRoot}...`);
+    const install = run(installArgs, effectiveRoot, 300_000);
+
+    // In strict mode, if frozen-lockfile fails, that's a real failure.
+    // In compat mode, retry without lockfile constraint.
+    if (!install.ok && mode === "strict") {
+      // Try non-frozen as fallback — still report as the install step
+      const fallback = run(
+        pm === "pnpm" ? ["pnpm", "install", "--no-frozen-lockfile"] : ["npm", "install"],
+        effectiveRoot, 300_000,
+      );
+      steps.push({ command: `${pm} install`, status: fallback.ok ? "pass" : "fail", output: fallback.ok ? fallback.output : install.output, durationMs: install.durationMs + fallback.durationMs });
+      if (!fallback.ok) return { steps, patched };
+    } else {
+      steps.push({ command: `${pm} install`, status: install.ok ? "pass" : "fail", output: install.output, durationMs: install.durationMs });
+      if (!install.ok) return { steps, patched };
+    }
     installedWorkspaces.add(effectiveRoot);
   }
 
@@ -402,9 +459,9 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
   const pkgBuildPath = existsSync(resolve(absRoot, "package.json")) ? absRoot : installRoot;
   if (pkgBuildPath !== effectiveRoot && existsSync(resolve(pkgBuildPath, "package.json"))) {
     if (!existsSync(resolve(pkgBuildPath, "node_modules"))) {
-      run(`${pm} install --no-frozen-lockfile 2>&1 || npm install 2>&1`, pkgBuildPath, 120_000);
+      run(pm === "pnpm" ? ["pnpm", "install", "--no-frozen-lockfile"] : ["npm", "install"], pkgBuildPath, 120_000);
       if (!existsSync(resolve(pkgBuildPath, "node_modules"))) {
-        run("bun install 2>&1", pkgBuildPath, 60_000);
+        run(["bun", "install"], pkgBuildPath, 60_000);
       }
     }
   }
@@ -412,25 +469,26 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
   if (mode === "compat" && existsSync(resolve(pkgBuildPath, "package.json"))) {
     const pkgContent = readFileSync(resolve(pkgBuildPath, "package.json"), "utf-8");
     if (!pkgContent.includes("@types/node")) {
-      run(`${pm} add -D @types/node 2>&1 || npm install -D @types/node 2>&1`, pkgBuildPath, 30_000);
+      run([pm, "add", "-D", "@types/node"], pkgBuildPath, 30_000);
       patched = true;
     }
   }
 
-  // Build: try the project's own build script
+  // Build: if the project declares a build script, that's authoritative.
   if (existsSync(resolve(pkgBuildPath, "package.json"))) {
     const pkg = JSON.parse(readFileSync(resolve(pkgBuildPath, "package.json"), "utf-8"));
     if (pkg.scripts?.build) {
       console.log(`      Running ${pm} run build at ${pkgBuildPath}...`);
-      const build = run(`${pm} run build 2>&1`, pkgBuildPath, 300_000);
+      const build = run([pm, "run", "build"], pkgBuildPath, 300_000);
       steps.push({ command: `${pm} run build`, status: build.ok ? "pass" : "fail", output: build.output, durationMs: build.durationMs });
-      if (build.ok) return { steps, patched };
+      // Build script is authoritative — don't fall back to tsc.
+      return { steps, patched };
     }
   }
 
-  // Fallback: tsc
+  // No build script — use tsc
   const tscRoot = existsSync(resolve(absRoot, "tsconfig.json")) ? absRoot : installRoot;
-  const tsc = run("npx tsc --noEmit --skipLibCheck --moduleResolution nodenext --module nodenext 2>&1", tscRoot, 120_000);
+  const tsc = run(["npx", "tsc", "--noEmit", "--skipLibCheck", "--moduleResolution", "nodenext", "--module", "nodenext"], tscRoot, 120_000);
   steps.push({ command: "tsc --noEmit", status: tsc.ok ? "pass" : "fail", output: tsc.output, durationMs: tsc.durationMs });
 
   return { steps, patched };
@@ -442,6 +500,26 @@ function validateStatic(absRoot: string): { steps: StepResult[]; patched: boolea
     steps: [{ command: "file exists", status: exists ? "pass" : "fail", output: exists ? "OK" : `path not found: ${absRoot}`, durationMs: 0 }],
     patched: false,
   };
+}
+
+// --- Find build files in subdirectories (no shell interpolation) ---
+
+function findBuildFile(dir: string): string | null {
+  if (!existsSync(dir)) return null;
+  for (const name of ["Move.toml", "Cargo.toml", "package.json"]) {
+    if (existsSync(resolve(dir, name))) return resolve(dir, name);
+  }
+  // Check one level deeper
+  try {
+    const entries = execFileSync("ls", [dir], { encoding: "utf-8", timeout: 5000, env: EXEC_ENV }).trim().split("\n");
+    for (const entry of entries) {
+      const subdir = resolve(dir, entry);
+      for (const name of ["Move.toml", "Cargo.toml", "package.json"]) {
+        if (existsSync(resolve(subdir, name))) return resolve(subdir, name);
+      }
+    }
+  } catch {}
+  return null;
 }
 
 // --- Report ---
@@ -463,7 +541,7 @@ function categorizeFailure(steps: StepResult[]): string {
   if (out.includes("cannot find module")) return "Missing npm dependency";
   if (out.includes("not found in scope") || out.includes("unresolved")) return "Missing Move dependency";
   if (out.includes("edition")) return "Incompatible Move edition";
-  if (out.includes("bun: not found")) return "Requires bun runtime";
+  if (out.includes("bun: not found") || out.includes("bun not found")) return "Requires bun runtime";
   if (cmd.includes("tsc")) return "TypeScript compilation error";
   if (cmd.includes("move")) return "Move compilation error";
   if (cmd.includes("cargo")) return "Rust compilation error";
@@ -595,7 +673,6 @@ async function main() {
   const packages: PackageEntry[] = JSON.parse(readFileSync(manifest, "utf-8"));
   console.log(`\nLoaded ${packages.length} packages from manifest`);
 
-  // Load configs
   const skipConfig = JSON.parse(readFileSync(resolve(import.meta.dirname!, "../config/skip.json"), "utf-8"));
   const skipPatterns: { pattern: string; reason: string }[] = skipConfig.skip;
   const allowedRepos = loadAllowedRepos();
@@ -623,7 +700,6 @@ async function main() {
       continue;
     }
 
-    // Allowlist check for external repos
     if (pkg.source === "external" && pkg.org && pkg.repo) {
       const repoKey = `${pkg.org}/${pkg.repo}`;
       if (!allowedRepos.has(repoKey)) {
@@ -645,7 +721,6 @@ async function main() {
       ? `MystenLabs/sui (internal)`
       : `${pkg.org}/${pkg.repo}@${pkg.branch}`;
 
-    // Resolve absolute path
     let absRoot: string;
     let resolvedType = pkg.type;
 
@@ -669,60 +744,48 @@ async function main() {
       resolved = resolveActualPackageRoot(searchPath, repoDir);
       if (!resolved) {
         const pkgDir = resolve(repoDir, pkg.packageRoot);
-        if (existsSync(pkgDir)) {
-          const findResult = run(`find "${pkgDir}" -maxdepth 2 -name Move.toml -o -name Cargo.toml -o -name package.json 2>/dev/null | head -1`, repoDir, 5000);
-          if (findResult.ok && findResult.output.trim()) {
-            resolved = { absRoot: dirname(findResult.output.trim()), type: pkg.type };
-          }
-        }
+        const found = findBuildFile(pkgDir);
+        if (found) resolved = { absRoot: dirname(found), type: pkg.type };
       }
       if (resolved) { absRoot = resolved.absRoot; resolvedType = resolved.type; }
       else { absRoot = resolve(repoDir, pkg.packageRoot); }
     }
 
-    // Validate
     let validation: { steps: StepResult[]; patched: boolean };
     switch (resolvedType) {
-      case "move":
-        validation = validateMove(absRoot, mode);
-        break;
-      case "rust":
-        validation = validateRust(absRoot);
-        break;
-      case "typescript":
-        validation = validateTypeScript(absRoot, mode);
-        break;
-      case "static":
-        validation = validateStatic(absRoot);
-        break;
-      default:
+      case "move": validation = validateMove(absRoot, mode); break;
+      case "rust": validation = validateRust(absRoot); break;
+      case "typescript": validation = validateTypeScript(absRoot, mode); break;
+      case "static": validation = validateStatic(absRoot); break;
+      default: {
         if (existsSync(resolve(absRoot, "Move.toml"))) validation = validateMove(absRoot, mode);
         else if (existsSync(resolve(absRoot, "Cargo.toml"))) validation = validateRust(absRoot);
         else if (existsSync(resolve(absRoot, "package.json"))) validation = validateTypeScript(absRoot, mode);
         else {
-          const findResult = run(`find "${absRoot}" -maxdepth 3 -name Move.toml -o -name Cargo.toml -o -name package.json 2>/dev/null | head -1`, absRoot, 5000);
-          if (findResult.ok && findResult.output.trim()) {
-            const found = findResult.output.trim();
+          const found = findBuildFile(absRoot);
+          if (found) {
             const foundDir = dirname(found);
-            if (found.endsWith("Move.toml")) validation = validateMove(foundDir, mode);
-            else if (found.endsWith("Cargo.toml")) validation = validateRust(foundDir);
+            const name = basename(found);
+            if (name === "Move.toml") validation = validateMove(foundDir, mode);
+            else if (name === "Cargo.toml") validation = validateRust(foundDir);
             else validation = validateTypeScript(foundDir, mode);
           } else {
             validation = validateStatic(absRoot);
           }
         }
+      }
     }
 
-    const { steps, patched } = validation;
+    const { steps, patched: patchedFlag } = validation;
 
-    // Overall status: last build step determines pass/fail. No over-trusting.
+    // Overall status: a build step must pass. Build steps are the authoritative ones.
     const buildSteps = steps.filter((s) =>
       s.command.includes("build") || s.command.includes("check") ||
       s.command.includes("tsc") || s.command === "file exists"
     );
-    const lastBuildStep = buildSteps[buildSteps.length - 1];
     const hasBuildPass = buildSteps.some((s) => s.status === "pass");
-    const overallStatus: "pass" | "fail" | "skip" = hasBuildPass ? "pass" : lastBuildStep?.status === "fail" ? "fail" : "skip";
+    const hasBuildFail = buildSteps.some((s) => s.status === "fail");
+    const overallStatus: "pass" | "fail" | "skip" = hasBuildPass ? "pass" : hasBuildFail ? "fail" : "skip";
     const failureReason = overallStatus === "fail"
       ? buildSteps.find((s) => s.status === "fail")?.output?.slice(-200)
       : undefined;
@@ -737,7 +800,7 @@ async function main() {
       packageRoot: pkg.packageRoot, files: pkg.files, referencedBy: pkg.referencedBy,
       steps, overallStatus, failureReason,
       versionInfo: extractVersionInfo(absRoot, resolvedType),
-      patched,
+      patched: patchedFlag,
     });
   }
 

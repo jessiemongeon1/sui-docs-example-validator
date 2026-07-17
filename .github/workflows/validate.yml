@@ -65,8 +65,10 @@ jobs:
 
       - name: Clone sui repo
         run: |
-          git clone --depth 1 --branch ${{ env.SUI_REF }} \
-            https://github.com/MystenLabs/sui.git /tmp/sui
+          git clone --depth 1 https://github.com/MystenLabs/sui.git /tmp/sui
+          cd /tmp/sui
+          git fetch origin "${{ env.SUI_REF }}" --depth=1 || true
+          git checkout "${{ env.SUI_REF }}" || git checkout FETCH_HEAD
 
       - name: Discover examples
         run: npx tsx scripts/discover.ts --sui-repo /tmp/sui --output manifest/
