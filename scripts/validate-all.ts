@@ -412,7 +412,7 @@ function validateTypeScript(absRoot: string): StepResult[] {
   const effectiveRoot = wsRoot || installRoot;
   const pm = detectPackageManager(effectiveRoot, absRoot, installRoot);
 
-  // Install deps (once per workspace root)
+  // Install deps at workspace root (once)
   if (!installedWorkspaces.has(effectiveRoot)) {
     const installCmd = pm === "pnpm"
       ? "pnpm install --no-frozen-lockfile 2>&1"
@@ -427,12 +427,24 @@ function validateTypeScript(absRoot: string): StepResult[] {
     steps.push({ command: `${pm} install`, status: "pass", output: "already installed (cached)", durationMs: 0 });
   }
 
-  // Ensure @types/node is available (many examples assume it)
+  // Also install at the package level if it has its own package.json and node_modules is missing
   const pkgBuildPath = existsSync(resolve(absRoot, "package.json")) ? absRoot : installRoot;
+  if (pkgBuildPath !== effectiveRoot && existsSync(resolve(pkgBuildPath, "package.json"))) {
+    if (!existsSync(resolve(pkgBuildPath, "node_modules"))) {
+      console.log(`      Running ${pm} install at ${pkgBuildPath} (package-level)...`);
+      run(`${pm} install --no-frozen-lockfile 2>&1 || npm install 2>&1`, pkgBuildPath, 120_000);
+    }
+    // Also try bun install if bun is available (some projects use bun)
+    if (!existsSync(resolve(pkgBuildPath, "node_modules"))) {
+      run("bun install 2>&1", pkgBuildPath, 60_000);
+    }
+  }
+
+  // Ensure @types/node is available (many examples assume it)
   if (existsSync(resolve(pkgBuildPath, "package.json"))) {
     const pkgContent = readFileSync(resolve(pkgBuildPath, "package.json"), "utf-8");
     if (!pkgContent.includes("@types/node")) {
-      run(`${pm} add -D @types/node 2>&1`, pkgBuildPath, 30_000);
+      run(`${pm} add -D @types/node 2>&1 || npm install -D @types/node 2>&1`, pkgBuildPath, 30_000);
     }
   }
 
