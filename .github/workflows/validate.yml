@@ -8,17 +8,34 @@ on:
       sui_branch:
         description: 'Sui repo branch to validate against'
         default: 'main'
+      mode:
+        description: 'Validation mode'
+        type: choice
+        options:
+          - strict
+          - compat
+        default: 'strict'
+  workflow_call:
+    inputs:
+      sui_ref:
+        description: 'Sui repo ref (branch, tag, or SHA) to validate against'
+        type: string
+        required: true
+      mode:
+        description: 'Validation mode (strict or compat)'
+        type: string
+        default: 'strict'
 
 env:
-  SUI_BRANCH: ${{ github.event.inputs.sui_branch || 'main' }}
-
-permissions:
-  contents: write
+  SUI_REF: ${{ inputs.sui_ref || github.event.inputs.sui_branch || 'main' }}
+  MODE: ${{ inputs.mode || github.event.inputs.mode || 'strict' }}
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
 
@@ -46,20 +63,9 @@ jobs:
       - name: Install project dependencies
         run: npm ci
 
-      - name: Print tool versions
+      - name: Clone sui repo
         run: |
-          echo "=== Tool Versions ==="
-          sui --version || echo "sui not found"
-          node --version
-          npm --version
-          pnpm --version
-          bun --version || echo "bun not found"
-          rustc --version
-          cargo --version
-
-      - name: Clone sui repo (shallow)
-        run: |
-          git clone --depth 1 --branch ${{ env.SUI_BRANCH }} \
+          git clone --depth 1 --branch ${{ env.SUI_REF }} \
             https://github.com/MystenLabs/sui.git /tmp/sui
 
       - name: Discover examples
@@ -70,8 +76,8 @@ jobs:
           npx tsx scripts/validate-all.ts \
             --sui-repo /tmp/sui \
             --manifest manifest/packages.json \
-            --output results/report.md
-        continue-on-error: true
+            --output results/report.md \
+            --mode ${{ env.MODE }}
 
       - name: Post job summary
         if: always()
@@ -82,7 +88,7 @@ jobs:
             echo "## Validation did not produce a report" >> $GITHUB_STEP_SUMMARY
           fi
 
-      - name: Upload report artifacts
+      - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -91,8 +97,22 @@ jobs:
             results/
             manifest/
 
-      - name: Commit report to repo
-        if: always()
+  save-report:
+    needs: validate
+    if: always() && github.event_name != 'workflow_call'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download results
+        uses: actions/download-artifact@v4
+        with:
+          name: validation-results
+          path: results/
+
+      - name: Commit report
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

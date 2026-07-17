@@ -1,0 +1,22 @@
+{
+  "comment": "Allowlist of external org/repo refs. Only these repos will be cloned and have their code executed.",
+  "allowed": [
+    { "org": "MystenLabs", "repo": "ts-sdks" },
+    { "org": "MystenLabs", "repo": "deepbookv3" },
+    { "org": "MystenLabs", "repo": "sui-move-bootcamp" },
+    { "org": "MystenLabs", "repo": "sui-stack-hello-world" },
+    { "org": "MystenLabs", "repo": "sui-stack-messaging" },
+    { "org": "MystenLabs", "repo": "messaging-sdk-example" },
+    { "org": "MystenLabs", "repo": "onlyfins-example-app" },
+    { "org": "MystenLabs", "repo": "walrus-pocs" },
+    { "org": "MystenLabs", "repo": "walrus-sites" },
+    { "org": "MystenLabs", "repo": "walrus-sdk-relay-example-app" },
+    { "org": "MystenLabs", "repo": "Walrus-Onboarding" },
+    { "org": "MystenLabs", "repo": "sagat" },
+    { "org": "MystenLabs", "repo": "ticketing-poc" },
+    { "org": "MystenLabs", "repo": "solitaire" },
+    { "org": "MystenLabs", "repo": "plinko-poc" },
+    { "org": "MystenLabs", "repo": "CTF" },
+    { "org": "MystenLabs", "repo": "Nautilus" }
+  ]
+}
