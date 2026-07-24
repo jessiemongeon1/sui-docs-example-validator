@@ -463,26 +463,28 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
         if (wsPkg.scripts?.build) {
           console.log(`      Building workspace root at ${effectiveRoot}...`);
           const wsBuild = run([pm, "run", "build"], effectiveRoot, 600_000);
-          builtWorkspaces.set(effectiveRoot, {
-            command: `${pm} run build (workspace root)`,
-            status: wsBuild.ok ? "pass" : "fail",
-            output: wsBuild.output,
-            durationMs: wsBuild.durationMs,
-          });
+          if (wsBuild.ok) {
+            builtWorkspaces.set(effectiveRoot, {
+              command: `${pm} run build (workspace root)`,
+              status: "pass",
+              output: wsBuild.output,
+              durationMs: wsBuild.durationMs,
+            });
+          } else {
+            console.log(`      Workspace build failed — will try per-package builds`);
+          }
         }
       }
     }
   }
 
-  // If workspace was already built at the root, use that result
+  // If workspace was already built successfully, use that result
   const wsBuildResult = builtWorkspaces.get(effectiveRoot);
   if (wsBuildResult) {
     steps.push({
       command: `${pm} run build (workspace)`,
-      status: wsBuildResult.status,
-      output: wsBuildResult.status === "pass"
-        ? `Workspace build at ${effectiveRoot} succeeded`
-        : wsBuildResult.output,
+      status: "pass",
+      output: `Workspace build at ${effectiveRoot} succeeded`,
       durationMs: 0,
     });
     return { steps, patched };

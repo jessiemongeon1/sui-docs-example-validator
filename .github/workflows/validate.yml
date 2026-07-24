@@ -41,7 +41,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install suiup
         run: curl -fsSL https://raw.githubusercontent.com/MystenLabs/suiup/main/install.sh | bash
