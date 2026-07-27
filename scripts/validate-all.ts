@@ -553,9 +553,14 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
     }
   }
 
-  // No build script — use tsc
+  // No build script — use tsc. Respect the project's tsconfig if present;
+  // only add moduleResolution/module defaults when no tsconfig exists.
   const tscRoot = existsSync(resolve(absRoot, "tsconfig.json")) ? absRoot : installRoot;
-  const tsc = run(["npx", "tsc", "--noEmit", "--skipLibCheck", "--moduleResolution", "nodenext", "--module", "nodenext"], tscRoot, 120_000);
+  const hasTsconfig = existsSync(resolve(tscRoot, "tsconfig.json"));
+  const tscArgs = hasTsconfig
+    ? ["npx", "tsc", "--noEmit", "--skipLibCheck"]
+    : ["npx", "tsc", "--noEmit", "--skipLibCheck", "--moduleResolution", "nodenext", "--module", "nodenext"];
+  const tsc = run(tscArgs, tscRoot, 120_000);
   steps.push({ command: "tsc --noEmit", status: tsc.ok ? "pass" : "fail", output: tsc.output, durationMs: tsc.durationMs });
 
   return { steps, patched };
