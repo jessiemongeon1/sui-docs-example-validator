@@ -433,12 +433,18 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
   // Install at workspace root (once)
   if (!installedWorkspaces.has(effectiveRoot)) {
     // pnpm v11 blocks postinstall scripts unless explicitly approved.
-    // Approve all in CI so native deps (esbuild, swc, sharp, etc.) build correctly.
+    // Patch package.json to approve all builds so native deps (esbuild, swc, sharp, etc.)
+    // run their postinstall scripts. This is CI config, not a source change.
     if (pm === "pnpm") {
-      const npmrcPath = resolve(effectiveRoot, ".npmrc");
-      const existing = existsSync(npmrcPath) ? readFileSync(npmrcPath, "utf-8") : "";
-      if (!existing.includes("only-built-dependencies")) {
-        writeFileSync(npmrcPath, existing + "\nonly-built-dependencies[]=*\n");
+      const pkgJsonPath = resolve(effectiveRoot, "package.json");
+      if (existsSync(pkgJsonPath)) {
+        try {
+          const pkg = JSON.parse(readFileSync(pkgJsonPath, "utf-8"));
+          if (!pkg.pnpm?.onlyBuiltDependencies?.includes("*")) {
+            pkg.pnpm = { ...pkg.pnpm, onlyBuiltDependencies: ["*"] };
+            writeFileSync(pkgJsonPath, JSON.stringify(pkg, null, 2) + "\n");
+          }
+        } catch {}
       }
     }
 
