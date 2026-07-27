@@ -27,8 +27,8 @@
         {
           "command": "sui move build",
           "status": "pass",
-          "output": "No sui config found in `/home/runner/.sui/sui_config/client.yaml`, create one [Y/n]?\nGenerated new keypair and alias for address with scheme \"ed25519\" [vigilant-coral: 0xa71eea71c97cc91d001ae1cb027dc6757dcf689739ea3fd05aa597d511d4fb66]\n  secret recovery phrase : [forget legal cotton embark mixture close great spice evil three knock lobster]\nCreated \"/home/runner/.sui/sui_config/client.yaml\"\nSet active environment to testnet\n",
-          "durationMs": 667
+          "output": "No sui config found in `/home/runner/.sui/sui_config/client.yaml`, create one [Y/n]?\nGenerated new keypair and alias for address with scheme \"ed25519\" [affectionate-axinite: 0xadbdc1b6e8656002cb9d650cfac8718bbe03ebd107eb8f87e8392b611c6f59ed]\n  secret recovery phrase : [napkin arctic company glue tone nasty learn stereo coin agent chimney plate]\nCreated \"/home/runner/.sui/sui_config/client.yaml\"\nSet active environment to testnet\n",
+          "durationMs": 657
         }
       ],
       "overallStatus": "pass",
@@ -58,7 +58,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 457
+          "durationMs": 549
         }
       ],
       "overallStatus": "pass",
@@ -88,7 +88,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 467
+          "durationMs": 524
         }
       ],
       "overallStatus": "pass",
@@ -117,7 +117,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 528
+          "durationMs": 558
         }
       ],
       "overallStatus": "pass",
@@ -149,7 +149,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 543
+          "durationMs": 526
         }
       ],
       "overallStatus": "pass",
@@ -178,95 +178,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 548
-        }
-      ],
-      "overallStatus": "pass",
-      "versionInfo": {
-        "edition": "2024.beta",
-        "dependencies": {
-          "Sui": "local"
-        }
-      },
-      "patched": false
-    },
-    {
-      "id": "examples/move/nft-soulbound",
-      "type": "move",
-      "source": "internal",
-      "origin": "MystenLabs/sui (internal)",
-      "packageRoot": "examples/move/nft-soulbound",
-      "files": [
-        "sources/testnet_soulbound_nft.move"
-      ],
-      "referencedBy": [
-        "docs/content/onchain-finance/examples-patterns/soulbound-tokens.mdx"
-      ],
-      "steps": [
-        {
-          "command": "sui move build",
-          "status": "pass",
-          "output": "",
-          "durationMs": 486
-        }
-      ],
-      "overallStatus": "pass",
-      "versionInfo": {
-        "edition": "2024.beta",
-        "dependencies": {
-          "Sui": "local"
-        }
-      },
-      "patched": false
-    },
-    {
-      "id": "examples/move/nft-rental",
-      "type": "move",
-      "source": "internal",
-      "origin": "MystenLabs/sui (internal)",
-      "packageRoot": "examples/move/nft-rental",
-      "files": [
-        "sources/nft_rental.move"
-      ],
-      "referencedBy": [
-        "docs/content/onchain-finance/examples-patterns/nft-rental.mdx"
-      ],
-      "steps": [
-        {
-          "command": "sui move build",
-          "status": "pass",
-          "output": "",
-          "durationMs": 10269
-        }
-      ],
-      "overallStatus": "pass",
-      "versionInfo": {
-        "edition": "2024.beta",
-        "dependencies": {
-          "Sui": "local",
-          "Kiosk": "testnet"
-        }
-      },
-      "patched": false
-    },
-    {
-      "id": "examples/move/token",
-      "type": "move",
-      "source": "internal",
-      "origin": "MystenLabs/sui (internal)",
-      "packageRoot": "examples/move/token",
-      "files": [
-        "sources/loyalty.move"
-      ],
-      "referencedBy": [
-        "docs/content/onchain-finance/examples-patterns/loyalty-tokens.mdx"
-      ],
-      "steps": [
-        {
-          "command": "sui move build",
-          "status": "pass",
-          "output": "",
-          "durationMs": 481
+          "durationMs": 542
         }
       ],
       "overallStatus": "pass",
@@ -300,7 +212,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 459
+          "durationMs": 537
         }
       ],
       "overallStatus": "pass",
@@ -333,7 +245,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 460
+          "durationMs": 573
         }
       ],
       "overallStatus": "pass",
@@ -362,7 +274,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 448
+          "durationMs": 548
         }
       ],
       "overallStatus": "pass",
@@ -390,14 +302,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "solved 1300, reused 0, downloaded 47, added 49\nProgress: resolved 1300, reused 0, downloaded 333, added 386\nProgress: resolved 1300, reused 0, downloaded 550, added 629\nProgress: resolved 1300, reused 0, downloaded 650, added 735\nProgress: resolved 1300, reused 0, downloaded 1010, added 1095\nProgress: resolved 1300, reused 0, downloaded 1206, added 1299\nProgress: resolved 1300, reused 0, downloaded 1207, added 1300, done\n.../node_modules/@prisma/engines postinstall$ node scripts/postinstall.js\n.../node_modules/@swc/core postinstall$ node postinstall.js\n.../node_modules/unrs-resolver postinstall$ napi-postinstall unrs-resolver 1.7.2 check\n.../esbuild@0.25.4/node_modules/esbuild postinstall$ node install.js\n.../esbuild@0.21.5/node_modules/esbuild postinstall$ node install.js\n.../node_modules/@swc/core postinstall: Done\n.../node_modules/@parcel/watcher install$ node scripts/build-from-source.js\n.../esbuild@0.21.5/node_modules/esbuild postinstall: Done\n.../node_modules/unrs-resolver postinstall: Done\n.../node_modules/msgpackr-extract install$ node-gyp-build-optional-packages\n.../esbuild@0.25.4/node_modules/esbuild postinstall: Done\n.../node_modules/@parcel/watcher install: Done\n.../node_modules/msgpackr-extract install: Done\n.../node_modules/@prisma/engines postinstall: Done\n.../prisma@5.16.2/node_modules/prisma preinstall$ node scripts/preinstall-entry.js\n.../prisma@5.16.2/node_modules/prisma preinstall: Done\n.../.pnpm/lmdb@2.8.5/node_modules/lmdb install$ node-gyp-build-optional-packages\n.../node_modules/@prisma/client postinstall$ node scripts/postinstall.js\n.../.pnpm/lmdb@2.8.5/node_modules/lmdb install: Done\n.../node_modules/@prisma/client postinstall: prisma:warn We could not find your Prisma schema in the default locations (see: https://pris.ly/d/prisma-schema-location).\n.../node_modules/@prisma/client postinstall: If you have a Prisma schema file in a custom path, you will need to run\n.../node_modules/@prisma/client postinstall: `prisma generate --schema=./path/to/your/schema.prisma` to generate Prisma Client.\n.../node_modules/@prisma/client postinstall: If you do not have a Prisma schema file yet, you can ignore this message.\n.../node_modules/@prisma/client postinstall: Done\n\ndevDependencies:\n+ @changesets/cli 2.29.4\n+ @ianvs/prettier-plugin-sort-imports 4.4.1\n+ @manypkg/cli 0.21.4\n+ @mysten/prettier-plugin-move 0.3.5\n+ @tanstack/eslint-plugin-query 5.74.7\n+ @typescript-eslint/eslint-plugin 6.21.0\n+ @typescript-eslint/parser 6.21.0\n+ concurrently 8.2.2\n+ eslint 8.57.1\n+ eslint-config-prettier 8.10.0\n+ eslint-config-react-app 7.0.1\n+ eslint-import-resolver-typescript 3.10.1\n+ eslint-plugin-header 3.1.1\n+ eslint-plugin-import 2.31.0\n+ eslint-plugin-prettier 5.4.0\n+ eslint-plugin-require-extensions 0.1.3\n+ eslint-plugin-tsdoc 0.2.17\n+ eslint-plugin-unused-imports 3.2.0\n+ graphql-config 5.1.5\n+ js-yaml 4.1.1\n+ prettier 3.5.3\n+ prettier-plugin-tailwindcss 0.6.11\n+ tsx 4.19.4\n+ turbo 2.5.3\n+ typescript 5.8.3\n+ unist-util-visit 5.1.0\n\nDone in 8.8s\n",
-          "durationMs": 10163
+          "output": "resolved 1300, reused 0, downloaded 46, added 47\nProgress: resolved 1300, reused 0, downloaded 317, added 367\nProgress: resolved 1300, reused 0, downloaded 474, added 553\nProgress: resolved 1300, reused 0, downloaded 573, added 649\nProgress: resolved 1300, reused 0, downloaded 796, added 872\nProgress: resolved 1300, reused 0, downloaded 1130, added 1209\nProgress: resolved 1300, reused 0, downloaded 1207, added 1300, done\n.../node_modules/@prisma/engines postinstall$ node scripts/postinstall.js\n.../node_modules/@swc/core postinstall$ node postinstall.js\n.../node_modules/unrs-resolver postinstall$ napi-postinstall unrs-resolver 1.7.2 check\n.../esbuild@0.25.4/node_modules/esbuild postinstall$ node install.js\n.../esbuild@0.21.5/node_modules/esbuild postinstall$ node install.js\n.../node_modules/@swc/core postinstall: Done\n.../node_modules/@parcel/watcher install$ node scripts/build-from-source.js\n.../esbuild@0.25.4/node_modules/esbuild postinstall: Done\n.../esbuild@0.21.5/node_modules/esbuild postinstall: Done\n.../node_modules/unrs-resolver postinstall: Done\n.../node_modules/msgpackr-extract install$ node-gyp-build-optional-packages\n.../node_modules/@parcel/watcher install: Done\n.../node_modules/msgpackr-extract install: Done\n.../node_modules/@prisma/engines postinstall: Done\n.../prisma@5.16.2/node_modules/prisma preinstall$ node scripts/preinstall-entry.js\n.../prisma@5.16.2/node_modules/prisma preinstall: Done\n.../node_modules/@prisma/client postinstall$ node scripts/postinstall.js\n.../.pnpm/lmdb@2.8.5/node_modules/lmdb install$ node-gyp-build-optional-packages\n.../.pnpm/lmdb@2.8.5/node_modules/lmdb install: Done\n.../node_modules/@prisma/client postinstall: prisma:warn We could not find your Prisma schema in the default locations (see: https://pris.ly/d/prisma-schema-location).\n.../node_modules/@prisma/client postinstall: If you have a Prisma schema file in a custom path, you will need to run\n.../node_modules/@prisma/client postinstall: `prisma generate --schema=./path/to/your/schema.prisma` to generate Prisma Client.\n.../node_modules/@prisma/client postinstall: If you do not have a Prisma schema file yet, you can ignore this message.\n.../node_modules/@prisma/client postinstall: Done\n\ndevDependencies:\n+ @changesets/cli 2.29.4\n+ @ianvs/prettier-plugin-sort-imports 4.4.1\n+ @manypkg/cli 0.21.4\n+ @mysten/prettier-plugin-move 0.3.5\n+ @tanstack/eslint-plugin-query 5.74.7\n+ @typescript-eslint/eslint-plugin 6.21.0\n+ @typescript-eslint/parser 6.21.0\n+ concurrently 8.2.2\n+ eslint 8.57.1\n+ eslint-config-prettier 8.10.0\n+ eslint-config-react-app 7.0.1\n+ eslint-import-resolver-typescript 3.10.1\n+ eslint-plugin-header 3.1.1\n+ eslint-plugin-import 2.31.0\n+ eslint-plugin-prettier 5.4.0\n+ eslint-plugin-require-extensions 0.1.3\n+ eslint-plugin-tsdoc 0.2.17\n+ eslint-plugin-unused-imports 3.2.0\n+ graphql-config 5.1.5\n+ js-yaml 4.1.1\n+ prettier 3.5.3\n+ prettier-plugin-tailwindcss 0.6.11\n+ tsx 4.19.4\n+ turbo 2.5.3\n+ typescript 5.8.3\n+ unist-util-visit 5.1.0\n\nDone in 9.9s\n",
+          "durationMs": 11267
         },
         {
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1615
+          "durationMs": 1700
         }
       ],
       "overallStatus": "pass",
@@ -407,6 +319,94 @@
           "typescript": "^5.5.3"
         },
         "packageManager": "npm"
+      },
+      "patched": false
+    },
+    {
+      "id": "examples/move/nft-soulbound",
+      "type": "move",
+      "source": "internal",
+      "origin": "MystenLabs/sui (internal)",
+      "packageRoot": "examples/move/nft-soulbound",
+      "files": [
+        "sources/testnet_soulbound_nft.move"
+      ],
+      "referencedBy": [
+        "docs/content/onchain-finance/examples-patterns/soulbound-tokens.mdx"
+      ],
+      "steps": [
+        {
+          "command": "sui move build",
+          "status": "pass",
+          "output": "",
+          "durationMs": 520
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "edition": "2024.beta",
+        "dependencies": {
+          "Sui": "local"
+        }
+      },
+      "patched": false
+    },
+    {
+      "id": "examples/move/nft-rental",
+      "type": "move",
+      "source": "internal",
+      "origin": "MystenLabs/sui (internal)",
+      "packageRoot": "examples/move/nft-rental",
+      "files": [
+        "sources/nft_rental.move"
+      ],
+      "referencedBy": [
+        "docs/content/onchain-finance/examples-patterns/nft-rental.mdx"
+      ],
+      "steps": [
+        {
+          "command": "sui move build",
+          "status": "pass",
+          "output": "",
+          "durationMs": 9427
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "edition": "2024.beta",
+        "dependencies": {
+          "Sui": "local",
+          "Kiosk": "testnet"
+        }
+      },
+      "patched": false
+    },
+    {
+      "id": "examples/move/token",
+      "type": "move",
+      "source": "internal",
+      "origin": "MystenLabs/sui (internal)",
+      "packageRoot": "examples/move/token",
+      "files": [
+        "sources/loyalty.move"
+      ],
+      "referencedBy": [
+        "docs/content/onchain-finance/examples-patterns/loyalty-tokens.mdx"
+      ],
+      "steps": [
+        {
+          "command": "sui move build",
+          "status": "pass",
+          "output": "",
+          "durationMs": 558
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "edition": "2024.beta",
+        "dependencies": {
+          "Sui": "local"
+        }
       },
       "patched": false
     },
@@ -430,7 +430,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 535
+          "durationMs": 567
         }
       ],
       "overallStatus": "pass",
@@ -473,7 +473,7 @@
           "command": "pnpm run build",
           "status": "pass",
           "output": "\n> deepbook-spot-examples@0.0.1 build /tmp/sui/examples/deepbook-spot\n> tsc --noEmit\n\n",
-          "durationMs": 1881
+          "durationMs": 1983
         }
       ],
       "overallStatus": "pass",
@@ -516,7 +516,7 @@
           "command": "pnpm run build",
           "status": "pass",
           "output": "\n> deepbook-margin-examples@0.0.1 build /tmp/sui/examples/deepbook-margin\n> tsc --noEmit\n\n",
-          "durationMs": 1973
+          "durationMs": 2093
         }
       ],
       "overallStatus": "pass",
@@ -556,7 +556,7 @@
           "command": "pnpm run build",
           "status": "pass",
           "output": "\n> deepbook-predict-examples@0.0.1 build /tmp/sui/examples/deepbook-predict\n> tsc --noEmit\n\n",
-          "durationMs": 1961
+          "durationMs": 2027
         }
       ],
       "overallStatus": "pass",
@@ -587,7 +587,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 472
+          "durationMs": 528
         }
       ],
       "overallStatus": "pass",
@@ -618,8 +618,8 @@
         {
           "command": "bun install",
           "status": "pass",
-          "output": "bun install v1.3.14 (0d9b296a)\n\n+ @eslint/compat@1.4.1\n+ @ianvs/prettier-plugin-sort-imports@4.7.1\n+ @tony.ganchev/eslint-plugin-header@3.2.4\n+ @typescript-eslint/eslint-plugin@8.56.1\n+ @typescript-eslint/parser@8.56.1\n+ concurrently@9.2.1\n+ eslint@9.39.3\n+ eslint-plugin-header@3.1.1\n+ globals@16.5.0\n+ prettier@3.8.1\n+ vitest@4.0.18\n\n673 packages installed [2.36s]\n",
-          "durationMs": 2375
+          "output": "bun install v1.3.14 (0d9b296a)\n\n+ @eslint/compat@1.4.1\n+ @ianvs/prettier-plugin-sort-imports@4.7.1\n+ @tony.ganchev/eslint-plugin-header@3.2.4\n+ @typescript-eslint/eslint-plugin@8.56.1\n+ @typescript-eslint/parser@8.56.1\n+ concurrently@9.2.1\n+ eslint@9.39.3\n+ eslint-plugin-header@3.1.1\n+ globals@16.5.0\n+ prettier@3.8.1\n+ vitest@4.0.18\n\n673 packages installed [2.72s]\n",
+          "durationMs": 2733
         },
         {
           "command": "bun run build (workspace)",
@@ -659,7 +659,7 @@
           "command": "pnpm install",
           "status": "fail",
           "output": "? Verifying lockfile against supply-chain policies (281 entries)...\n✓ Lockfile passes supply-chain policies (281 entries in 2.4s)\n[ERR_PNPM_OUTDATED_LOCKFILE] Cannot install with \"frozen-lockfile\" because pnpm-lock.yaml is not up to date with <ROOT>/package.json\n\nNote that in CI environments this setting is true by default. If you still need to run install in such cases, use \"pnpm install --no-frozen-lockfile\"\n\n  Failure reason:\n  specifiers in the lockfile don't match specifiers in package.json:\n* 1 dependencies were added: zod@^4.3.6",
-          "durationMs": 3008
+          "durationMs": 3049
         }
       ],
       "overallStatus": "fail",
@@ -688,8 +688,8 @@
         {
           "command": "pnpm install",
           "status": "fail",
-          "output": "✓ Lockfile passes supply-chain policies (verified 534ms ago)\n[ERR_PNPM_OUTDATED_LOCKFILE] Cannot install with \"frozen-lockfile\" because pnpm-lock.yaml is not up to date with <ROOT>/package.json\n\nNote that in CI environments this setting is true by default. If you still need to run install in such cases, use \"pnpm install --no-frozen-lockfile\"\n\n  Failure reason:\n  specifiers in the lockfile don't match specifiers in package.json:\n* 1 dependencies were added: zod@^4.3.6",
-          "durationMs": 506
+          "output": "✓ Lockfile passes supply-chain policies (verified 562ms ago)\n[ERR_PNPM_OUTDATED_LOCKFILE] Cannot install with \"frozen-lockfile\" because pnpm-lock.yaml is not up to date with <ROOT>/package.json\n\nNote that in CI environments this setting is true by default. If you still need to run install in such cases, use \"pnpm install --no-frozen-lockfile\"\n\n  Failure reason:\n  specifiers in the lockfile don't match specifiers in package.json:\n* 1 dependencies were added: zod@^4.3.6",
+          "durationMs": 539
         }
       ],
       "overallStatus": "fail",
@@ -720,13 +720,13 @@
           "command": "npm install",
           "status": "pass",
           "output": "\nadded 411 packages, and audited 412 packages in 25s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n17 vulnerabilities (5 moderate, 12 high)\n\nTo address issues that do not require attention, run:\n  npm audit fix\n\nTo address all issues (including breaking changes), run:\n  npm audit fix --force\n\nRun `npm audit` for details.\n",
-          "durationMs": 25232
+          "durationMs": 24875
         },
         {
           "command": "npm run build",
           "status": "pass",
-          "output": "\n> frontend@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 888 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.57 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.80 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-JEqbeqXL.js   \u001b[39m\u001b[1m\u001b[33m797.37 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 265.47 kB\u001b[22m\n\u001b[32m✓ built in 3.43s\u001b[39m\n",
-          "durationMs": 6568
+          "output": "\n> frontend@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 888 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.57 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.80 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-JEqbeqXL.js   \u001b[39m\u001b[1m\u001b[33m797.37 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 265.47 kB\u001b[22m\n\u001b[32m✓ built in 3.73s\u001b[39m\n",
+          "durationMs": 7145
         }
       ],
       "overallStatus": "pass",
@@ -760,13 +760,13 @@
           "command": "npm install",
           "status": "pass",
           "output": "\nadded 49 packages, and audited 50 packages in 2s\n\n8 packages are looking for funding\n  run `npm fund` for details\n\n2 vulnerabilities (1 low, 1 moderate)\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
-          "durationMs": 2111
+          "durationMs": 2433
         },
         {
           "command": "npm run build",
           "status": "pass",
           "output": "\n> sdk-upload-relay-verification@1.0.0 build\n> tsc\n\n",
-          "durationMs": 1623
+          "durationMs": 1723
         }
       ],
       "overallStatus": "pass",
@@ -798,12 +798,18 @@
       "steps": [
         {
           "command": "pnpm install",
-          "status": "fail",
-          "output": "[reinstall after approve-builds also failed]\n[WARN] The \"pnpm\" field in package.json is no longer read by pnpm. The following keys were ignored: \"pnpm.onlyBuiltDependencies\". See https://pnpm.io/settings for the new home of each setting.\n\n✓ Lockfile passes supply-chain policies (verified 566ms ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n[ERR_PNPM_IGNORED_BUILDS] Ignored build scripts: esbuild@0.27.1\n\nRun \"pnpm approve-builds\" to pick which dependencies should be allowed to run scripts.",
-          "durationMs": 2329
+          "status": "pass",
+          "output": "✓ Lockfile passes supply-chain policies (verified 609ms ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../esbuild@0.27.1/node_modules/esbuild postinstall$ node install.js\n.../esbuild@0.27.1/node_modules/esbuild postinstall: Done\nDone in 779ms using pnpm v11.17.0\n",
+          "durationMs": 2573
+        },
+        {
+          "command": "tsc --noEmit",
+          "status": "pass",
+          "output": "",
+          "durationMs": 1868
         }
       ],
-      "overallStatus": "fail",
+      "overallStatus": "pass",
       "versionInfo": {
         "dependencies": {
           "@mysten/seal": "^0.9.6",
@@ -832,14 +838,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +42\n++++++++++++++++++++++++++++++++++++++++++\nProgress: resolved 42, reused 0, downloaded 42, added 42, done\n\ndependencies:\n+ @mysten/sui 1.38.0\n+ @mysten/walrus 0.7.0\n+ dotenv 17.2.3\n+ undici 7.16.0\n\ndevDependencies:\n+ @types/node 24.6.1\n+ ts-node 10.9.2\n+ typescript 5.9.3\n\nDone in 1s using pnpm v10.11.1\n",
-          "durationMs": 2318
+          "output": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +42\n++++++++++++++++++++++++++++++++++++++++++\nProgress: resolved 42, reused 0, downloaded 42, added 42, done\n\ndependencies:\n+ @mysten/sui 1.38.0\n+ @mysten/walrus 0.7.0\n+ dotenv 17.2.3\n+ undici 7.16.0\n\ndevDependencies:\n+ @types/node 24.6.1\n+ ts-node 10.9.2\n+ typescript 5.9.3\n\nDone in 1.1s using pnpm v10.11.1\n",
+          "durationMs": 2378
         },
         {
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1665
+          "durationMs": 1774
         }
       ],
       "overallStatus": "pass",
@@ -871,13 +877,13 @@
           "command": "npm install",
           "status": "pass",
           "output": "\nadded 32 packages, and audited 33 packages in 2s\n\n8 packages are looking for funding\n  run `npm fund` for details\n\n1 moderate severity vulnerability\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
-          "durationMs": 1836
+          "durationMs": 2074
         },
         {
           "command": "npm run build",
           "status": "pass",
           "output": "\n> walrus-quilts-hands-on@1.0.0 build\n> tsc\n\n",
-          "durationMs": 1803
+          "durationMs": 1951
         }
       ],
       "overallStatus": "pass",
@@ -914,8 +920,8 @@
         {
           "command": "npm run build",
           "status": "pass",
-          "output": "\n> frontend@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 888 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.57 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.80 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-JEqbeqXL.js   \u001b[39m\u001b[1m\u001b[33m797.37 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 265.47 kB\u001b[22m\n\u001b[32m✓ built in 3.55s\u001b[39m\n",
-          "durationMs": 6496
+          "output": "\n> frontend@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 888 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.57 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.80 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-JEqbeqXL.js   \u001b[39m\u001b[1m\u001b[33m797.37 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 265.47 kB\u001b[22m\n\u001b[32m✓ built in 3.77s\u001b[39m\n",
+          "durationMs": 6886
         }
       ],
       "overallStatus": "pass",
@@ -947,8 +953,8 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/payment-kit/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/payment-kit/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/suins/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/suins/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/walrus/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/walrus/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/cli.mjs'\n\ndevDependencies:\n+ @arethetypeswrong/cli 0.18.3\n+ @changesets/cli 2.31.0\n+ @ianvs/prettier-plugin-sort-imports 4.7.1\n+ @manypkg/cli 0.25.1\n+ @testcontainers/postgresql 12.0.2\n+ concurrently 10.0.3\n+ graphql-config 5.1.6\n+ oxlint 1.47.0\n+ oxlint-tsgolint 0.23.0\n+ prettier 3.8.4\n+ prettier-plugin-tailwindcss 0.8.0\n+ testcontainers 12.0.2\n+ tsdown 0.22.2\n+ tsx 4.22.4\n+ turbo 2.9.18\n+ typescript 6.0.3\n\nDone in 12.4s using pnpm v10.33.0\n",
-          "durationMs": 13798
+          "output": "s/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/payment-kit/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/payment-kit/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/suins/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/suins/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/walrus/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/walrus/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n\ndevDependencies:\n+ @arethetypeswrong/cli 0.18.3\n+ @changesets/cli 2.31.0\n+ @ianvs/prettier-plugin-sort-imports 4.7.1\n+ @manypkg/cli 0.25.1\n+ @testcontainers/postgresql 12.0.2\n+ concurrently 10.0.3\n+ graphql-config 5.1.6\n+ oxlint 1.47.0\n+ oxlint-tsgolint 0.23.0\n+ prettier 3.8.4\n+ prettier-plugin-tailwindcss 0.8.0\n+ testcontainers 12.0.2\n+ tsdown 0.22.2\n+ tsx 4.22.4\n+ turbo 2.9.18\n+ typescript 6.0.3\n\nDone in 13s using pnpm v10.33.0\n",
+          "durationMs": 14277
         },
         {
           "command": "pnpm run build (workspace)",
@@ -1012,14 +1018,14 @@
         {
           "command": "npm install",
           "status": "pass",
-          "output": "\nadded 419 packages, and audited 420 packages in 12s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n20 vulnerabilities (5 moderate, 15 high)\n\nTo address issues that do not require attention, run:\n  npm audit fix\n\nTo address all issues possible (including breaking changes), run:\n  npm audit fix --force\n\nSome issues need review, and may require choosing\na different dependency.\n\nRun `npm audit` for details.\n",
-          "durationMs": 12560
+          "output": "\nadded 419 packages, and audited 420 packages in 14s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n20 vulnerabilities (5 moderate, 15 high)\n\nTo address issues that do not require attention, run:\n  npm audit fix\n\nTo address all issues possible (including breaking changes), run:\n  npm audit fix --force\n\nSome issues need review, and may require choosing\na different dependency.\n\nRun `npm audit` for details.\n",
+          "durationMs": 13921
         },
         {
           "command": "npm run build",
           "status": "pass",
-          "output": "\n> messaging-sdk-example@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 910 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.40 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.73 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-CGRm6a5C.js   \u001b[39m\u001b[1m\u001b[33m826.04 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 269.60 kB\u001b[22m\n\u001b[32m✓ built in 3.57s\u001b[39m\n",
-          "durationMs": 6761
+          "output": "\n> messaging-sdk-example@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 910 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.40 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.73 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-CGRm6a5C.js   \u001b[39m\u001b[1m\u001b[33m826.04 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 269.60 kB\u001b[22m\n\u001b[32m✓ built in 3.73s\u001b[39m\n",
+          "durationMs": 7157
         }
       ],
       "overallStatus": "pass",
@@ -1056,7 +1062,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 1289
+          "durationMs": 1845
         }
       ],
       "overallStatus": "pass",
@@ -1087,7 +1093,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 4775
+          "durationMs": 6365
         }
       ],
       "overallStatus": "pass",
@@ -1115,12 +1121,18 @@
       "steps": [
         {
           "command": "pnpm install",
-          "status": "fail",
-          "output": "[reinstall after approve-builds also failed]\n[WARN] The \"pnpm\" field in package.json is no longer read by pnpm. The following keys were ignored: \"pnpm.onlyBuiltDependencies\". See https://pnpm.io/settings for the new home of each setting.\n\n✓ Lockfile passes supply-chain policies (verified 1s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n[ERR_PNPM_IGNORED_BUILDS] Ignored build scripts: @tailwindcss/oxide@4.1.14, sharp@0.34.4\n\nRun \"pnpm approve-builds\" to pick which dependencies should be allowed to run scripts.",
-          "durationMs": 5036
+          "status": "pass",
+          "output": "✓ Lockfile passes supply-chain policies (verified 1s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../node_modules/@tailwindcss/oxide postinstall$ node ./scripts/install.js\n.../sharp@0.34.4/node_modules/sharp install$ node install/check.js\n.../node_modules/@tailwindcss/oxide postinstall: Done\n.../sharp@0.34.4/node_modules/sharp install: Done\nDone in 1.1s using pnpm v11.17.0\n",
+          "durationMs": 5688
+        },
+        {
+          "command": "pnpm run build",
+          "status": "pass",
+          "output": "⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache\nAttention: Next.js now collects completely anonymous telemetry regarding usage.\nThis information is used to shape Next.js' roadmap and prioritize features.\nYou can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:\nhttps://nextjs.org/telemetry\n\n   ▲ Next.js 15.5.4 (Turbopack)\n   - Experiments (use with caution):\n     · serverComponentsExternalPackages\n\n   Creating an optimized production build ...\n ✓ Finished writing to disk in 14ms\n ✓ Compiled successfully in 6.2s\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/8) ...\n   Generating static pages (2/8) \r\n   Generating static pages (4/8) \r\n   Generating static pages (6/8) \r\n ✓ Generating static pages (8/8)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                         Size  First Load JS\n┌ ○ /                            41.3 kB         742 kB\n├ ○ /_not-found                      0 B         700 kB\n├ ƒ /api/store-encrypted-blob        0 B            0 B\n├ ƒ /api/test-nacl-session           0 B            0 B\n└ ○ /test-nacl-seal-session      5.17 kB         705 kB\n+ First Load JS shared by all     709 kB\n  ├ chunks/0348a51373c2a3cf.js   59.2 kB\n  ├ chunks/041a31ac94f24ce5.js    583 kB\n  ├ chunks/0d10da20dfdd0930.js   20.6 kB\n  ├ chunks/7d4cb355fdb07a3d.js   17.2 kB\n  └ other shared chunks (total)    29 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+          "durationMs": 23902
         }
       ],
-      "overallStatus": "fail",
+      "overallStatus": "pass",
       "versionInfo": {
         "dependencies": {
           "@mysten/bcs": "^1.8.0",
@@ -1150,13 +1162,13 @@
           "command": "npm install",
           "status": "pass",
           "output": "\nadded 30 packages, and audited 31 packages in 2s\n\n9 packages are looking for funding\n  run `npm fund` for details\n\n2 vulnerabilities (1 low, 1 moderate)\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
-          "durationMs": 1642
+          "durationMs": 1840
         },
         {
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1738
+          "durationMs": 1850
         }
       ],
       "overallStatus": "pass",
@@ -1190,7 +1202,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 10615
+          "durationMs": 14868
         }
       ],
       "overallStatus": "pass",
@@ -1218,12 +1230,18 @@
       "steps": [
         {
           "command": "pnpm install",
-          "status": "fail",
-          "output": "[reinstall after approve-builds also failed]\n[WARN] The \"pnpm\" field in package.json is no longer read by pnpm. The following keys were ignored: \"pnpm.onlyBuiltDependencies\". See https://pnpm.io/settings for the new home of each setting.\n\n✓ Lockfile passes supply-chain policies (verified 1s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n[ERR_PNPM_IGNORED_BUILDS] Ignored build scripts: esbuild@0.25.12, msgpackr-extract@3.0.4, protobufjs@7.6.2\n\nRun \"pnpm approve-builds\" to pick which dependencies should be allowed to run scripts.",
-          "durationMs": 5908
+          "status": "pass",
+          "output": "✓ Lockfile passes supply-chain policies (verified 1s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../esbuild@0.25.12/node_modules/esbuild postinstall$ node install.js\n.../node_modules/protobufjs postinstall$ node scripts/postinstall\n.../node_modules/msgpackr-extract install$ node-gyp-build-optional-packages\n.../node_modules/protobufjs postinstall: Done\n.../esbuild@0.25.12/node_modules/esbuild postinstall: Done\n.../node_modules/msgpackr-extract install: Done\nDone in 1.5s using pnpm v11.17.0\n",
+          "durationMs": 6696
+        },
+        {
+          "command": "pnpm run build",
+          "status": "pass",
+          "output": "\u001b[36mvite v6.4.1 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 722 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  0.40 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.27 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CmLFi6yS.css  \u001b[39m\u001b[1m\u001b[2m 25.04 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   5.17 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-C7z-chHA.js   \u001b[39m\u001b[1m\u001b[33m932.75 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 280.50 kB\u001b[22m\n\u001b[32m✓ built in 3.38s\u001b[39m\n",
+          "durationMs": 7476
         }
       ],
-      "overallStatus": "fail",
+      "overallStatus": "pass",
       "versionInfo": {
         "dependencies": {
           "@mysten/bcs": "^2.0.3",
@@ -1259,7 +1277,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 5406
+          "durationMs": 7772
         }
       ],
       "overallStatus": "pass",
@@ -1284,12 +1302,18 @@
       "steps": [
         {
           "command": "pnpm install",
-          "status": "fail",
-          "output": "[reinstall after approve-builds also failed]\n[WARN] The \"pnpm\" field in package.json is no longer read by pnpm. The following keys were ignored: \"pnpm.onlyBuiltDependencies\". See https://pnpm.io/settings for the new home of each setting.\n\n✓ Lockfile passes supply-chain policies (verified 3s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n[ERR_PNPM_IGNORED_BUILDS] Ignored build scripts: protobufjs@7.5.4, sharp@0.33.5, unrs-resolver@1.11.1\n\nRun \"pnpm approve-builds\" to pick which dependencies should be allowed to run scripts.",
-          "durationMs": 9819
+          "status": "pass",
+          "output": "✓ Lockfile passes supply-chain policies (verified 2s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../node_modules/protobufjs postinstall$ node scripts/postinstall\n.../sharp@0.33.5/node_modules/sharp install$ node install/check\n.../node_modules/unrs-resolver postinstall$ napi-postinstall unrs-resolver 1.11.1 check\n.../node_modules/protobufjs postinstall: Done\n.../node_modules/unrs-resolver postinstall: Done\n.../sharp@0.33.5/node_modules/sharp install: Done\nDone in 2.5s using pnpm v11.17.0\n",
+          "durationMs": 11213
+        },
+        {
+          "command": "pnpm run build",
+          "status": "pass",
+          "output": "c/app/hooks/useNotifyForTicketUpdates.ts\n49:6  Warning: React Hook useEffect has missing dependencies: 'handleChooseTicketForUpdate' and 'handleNotifyTicketUpdate'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/app/hooks/useUpdateTicketStage.ts\n48:6  Warning: React Hook useEffect has missing dependencies: 'searchParams' and 'ticket.stage'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n48:7  Warning: React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked.  react-hooks/exhaustive-deps\n\n./src/app/profile/page.tsx\n57:6  Warning: React Hook useEffect has missing dependencies: 'searchParams' and 'tabs'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n57:7  Warning: React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked.  react-hooks/exhaustive-deps\n\ninfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules\n   Collecting page data ...\n   Generating static pages (0/18) ...\n   Generating static pages (4/18) \r\n   Generating static pages (8/18) \r\n   Generating static pages (13/18) \r\n ✓ Generating static pages (18/18)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                              Size     First Load JS\n┌ ○ /                                    24.9 kB         258 kB\n├ ○ /_not-found                          983 B           107 kB\n├ ƒ /api/accounts                        160 B           106 kB\n├ ƒ /api/clear                           160 B           106 kB\n├ ƒ /api/execute                         160 B           106 kB\n├ ƒ /api/health                          160 B           106 kB\n├ ƒ /api/permit/mint-point               160 B           106 kB\n├ ƒ /api/permit/mint-ticket              160 B           106 kB\n├ ƒ /api/sponsor                         160 B           106 kB\n├ ƒ /api/stage/mint                      160 B           106 kB\n├ ƒ /api/userinfo/get/salt               160 B           106 kB\n├ ƒ /api/visits                          160 B           106 kB\n├ ○ /auth                                553 B           185 kB\n├ ƒ /events/[id]                         4.88 kB         140 kB\n├ ƒ /events/[id]/seats                   8.97 kB         248 kB\n├ ○ /profile                             8.69 kB         257 kB\n├ ○ /search                              4.56 kB         207 kB\n├ ○ /tickets                             5.18 kB         223 kB\n└ ƒ /tickets/[id]                        9.11 kB         260 kB\n+ First Load JS shared by all            106 kB\n  ├ chunks/1152a06d-b2755ba54cb884a3.js  52.9 kB\n  ├ chunks/587-673b3d4453d44bf5.js       50.8 kB\n  └ other shared chunks (total)          1.95 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+          "durationMs": 72690
         }
       ],
-      "overallStatus": "fail",
+      "overallStatus": "pass",
       "versionInfo": {
         "dependencies": {
           "@mysten/bcs": "^1.7.0",
@@ -1317,13 +1341,13 @@
       ],
       "steps": [
         {
-          "command": "pnpm install",
-          "status": "fail",
-          "output": "[reinstall after approve-builds also failed]\n[WARN] The \"pnpm\" field in package.json is no longer read by pnpm. The following keys were ignored: \"pnpm.onlyBuiltDependencies\". See https://pnpm.io/settings for the new home of each setting.\n\n✓ Lockfile passes supply-chain policies (verified 5s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n[ERR_PNPM_IGNORED_BUILDS] Ignored build scripts: protobufjs@7.5.4, sharp@0.33.5, unrs-resolver@1.11.1\n\nRun \"pnpm approve-builds\" to pick which dependencies should be allowed to run scripts.",
-          "durationMs": 2295
+          "command": "pnpm run build",
+          "status": "pass",
+          "output": "c/app/hooks/useNotifyForTicketUpdates.ts\n49:6  Warning: React Hook useEffect has missing dependencies: 'handleChooseTicketForUpdate' and 'handleNotifyTicketUpdate'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/app/hooks/useUpdateTicketStage.ts\n48:6  Warning: React Hook useEffect has missing dependencies: 'searchParams' and 'ticket.stage'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n48:7  Warning: React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked.  react-hooks/exhaustive-deps\n\n./src/app/profile/page.tsx\n57:6  Warning: React Hook useEffect has missing dependencies: 'searchParams' and 'tabs'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n57:7  Warning: React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked.  react-hooks/exhaustive-deps\n\ninfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules\n   Collecting page data ...\n   Generating static pages (0/18) ...\n   Generating static pages (4/18) \r\n   Generating static pages (8/18) \r\n   Generating static pages (13/18) \r\n ✓ Generating static pages (18/18)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                              Size     First Load JS\n┌ ○ /                                    24.9 kB         258 kB\n├ ○ /_not-found                          983 B           107 kB\n├ ƒ /api/accounts                        160 B           106 kB\n├ ƒ /api/clear                           160 B           106 kB\n├ ƒ /api/execute                         160 B           106 kB\n├ ƒ /api/health                          160 B           106 kB\n├ ƒ /api/permit/mint-point               160 B           106 kB\n├ ƒ /api/permit/mint-ticket              160 B           106 kB\n├ ƒ /api/sponsor                         160 B           106 kB\n├ ƒ /api/stage/mint                      160 B           106 kB\n├ ƒ /api/userinfo/get/salt               160 B           106 kB\n├ ƒ /api/visits                          160 B           106 kB\n├ ○ /auth                                553 B           185 kB\n├ ƒ /events/[id]                         4.88 kB         140 kB\n├ ƒ /events/[id]/seats                   8.97 kB         248 kB\n├ ○ /profile                             8.69 kB         257 kB\n├ ○ /search                              4.56 kB         207 kB\n├ ○ /tickets                             5.18 kB         223 kB\n└ ƒ /tickets/[id]                        9.11 kB         260 kB\n+ First Load JS shared by all            106 kB\n  ├ chunks/1152a06d-b2755ba54cb884a3.js  52.9 kB\n  ├ chunks/587-673b3d4453d44bf5.js       50.8 kB\n  └ other shared chunks (total)          1.95 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+          "durationMs": 45737
         }
       ],
-      "overallStatus": "fail",
+      "overallStatus": "pass",
       "versionInfo": {
         "dependencies": {
           "@mysten/bcs": "^1.7.0",
@@ -1354,7 +1378,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 648
+          "durationMs": 782
         }
       ],
       "overallStatus": "pass",
@@ -1381,14 +1405,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +910\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\nProgress: resolved 910, reused 287, downloaded 57, added 25\nProgress: resolved 910, reused 287, downloaded 305, added 209\nProgress: resolved 910, reused 287, downloaded 396, added 257\nProgress: resolved 910, reused 287, downloaded 567, added 348\nProgress: resolved 910, reused 287, downloaded 620, added 909\nProgress: resolved 910, reused 287, downloaded 621, added 910, done\n\ndependencies:\n+ @dnd-kit/core 6.3.1\n+ @hookform/resolvers 5.2.1\n+ @mysten/codegen 0.5.0\n+ @mysten/dapp-kit 0.17.7\n+ @mysten/enoki 0.12.0\n+ @mysten/sui 1.38.0\n+ @radix-ui/react-accordion 1.2.12\n+ @radix-ui/react-dialog 1.1.15\n+ @radix-ui/react-dropdown-menu 2.1.16\n+ @radix-ui/react-icons 1.3.2\n+ @radix-ui/react-label 2.1.7\n+ @radix-ui/react-radio-group 1.3.8\n+ @radix-ui/react-scroll-area 1.2.10\n+ @radix-ui/react-select 2.2.6\n+ @radix-ui/react-slot 1.2.3\n+ @tanstack/react-query 5.87.4\n+ @types/node 24.3.0\n+ @types/react 19.1.12\n+ @types/react-dom 19.1.9\n+ axios 1.11.0\n+ bignumber.js 9.3.1\n+ bufferutil 4.0.9\n+ class-variance-authority 0.7.1\n+ clsx 2.1.1\n+ encoding 0.1.13\n+ eslint 9.34.0\n+ eslint-config-next 15.5.15\n+ jwt-decode 4.0.0\n+ lucide-react 0.542.0\n+ next 15.5.15\n+ next-pwa 5.6.0\n+ react 19.1.1\n+ react-dom 19.1.1\n+ react-hook-form 7.62.0\n+ react-hot-toast 2.6.0\n+ react-slick 0.31.0\n+ server-only 0.0.1\n+ slick-carousel 1.8.1\n+ tailwind-merge 3.3.1\n+ tailwindcss-animate 1.0.7\n+ typescript 5.9.2\n+ utf-8-validate 6.0.5\n+ zod 4.1.7\n\ndevDependencies:\n+ @types/react-slick 0.23.13\n+ autoprefixer 10.4.21\n+ postcss 8.5.6\n+ tailwindcss 3.4.17\n\n╭ Warning ─────────────────────────────────────────────────────────────────────╮\n│                                                                              │\n│   Ignored build scripts: bufferutil, protobufjs, sharp, unrs-resolver,       │\n│   utf-8-validate.                                                            │\n│   Run \"pnpm approve-builds\" to pick which dependencies should be allowed     │\n│   to run scripts.                                                            │\n│                                                                              │\n╰──────────────────────────────────────────────────────────────────────────────╯\n\nDone in 6s using pnpm v10.10.0\n",
-          "durationMs": 7223
+          "output": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +910\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\nProgress: resolved 910, reused 287, downloaded 44, added 17\nProgress: resolved 910, reused 287, downloaded 289, added 175\nProgress: resolved 910, reused 287, downloaded 330, added 192\nProgress: resolved 910, reused 287, downloaded 528, added 311\nProgress: resolved 910, reused 287, downloaded 620, added 859\nProgress: resolved 910, reused 287, downloaded 621, added 910, done\n\ndependencies:\n+ @dnd-kit/core 6.3.1\n+ @hookform/resolvers 5.2.1\n+ @mysten/codegen 0.5.0\n+ @mysten/dapp-kit 0.17.7\n+ @mysten/enoki 0.12.0\n+ @mysten/sui 1.38.0\n+ @radix-ui/react-accordion 1.2.12\n+ @radix-ui/react-dialog 1.1.15\n+ @radix-ui/react-dropdown-menu 2.1.16\n+ @radix-ui/react-icons 1.3.2\n+ @radix-ui/react-label 2.1.7\n+ @radix-ui/react-radio-group 1.3.8\n+ @radix-ui/react-scroll-area 1.2.10\n+ @radix-ui/react-select 2.2.6\n+ @radix-ui/react-slot 1.2.3\n+ @tanstack/react-query 5.87.4\n+ @types/node 24.3.0\n+ @types/react 19.1.12\n+ @types/react-dom 19.1.9\n+ axios 1.11.0\n+ bignumber.js 9.3.1\n+ bufferutil 4.0.9\n+ class-variance-authority 0.7.1\n+ clsx 2.1.1\n+ encoding 0.1.13\n+ eslint 9.34.0\n+ eslint-config-next 15.5.15\n+ jwt-decode 4.0.0\n+ lucide-react 0.542.0\n+ next 15.5.15\n+ next-pwa 5.6.0\n+ react 19.1.1\n+ react-dom 19.1.1\n+ react-hook-form 7.62.0\n+ react-hot-toast 2.6.0\n+ react-slick 0.31.0\n+ server-only 0.0.1\n+ slick-carousel 1.8.1\n+ tailwind-merge 3.3.1\n+ tailwindcss-animate 1.0.7\n+ typescript 5.9.2\n+ utf-8-validate 6.0.5\n+ zod 4.1.7\n\ndevDependencies:\n+ @types/react-slick 0.23.13\n+ autoprefixer 10.4.21\n+ postcss 8.5.6\n+ tailwindcss 3.4.17\n\n╭ Warning ─────────────────────────────────────────────────────────────────────╮\n│                                                                              │\n│   Ignored build scripts: bufferutil, protobufjs, sharp, unrs-resolver,       │\n│   utf-8-validate.                                                            │\n│   Run \"pnpm approve-builds\" to pick which dependencies should be allowed     │\n│   to run scripts.                                                            │\n│                                                                              │\n╰──────────────────────────────────────────────────────────────────────────────╯\n\nDone in 6.3s using pnpm v10.10.0\n",
+          "durationMs": 7683
         },
         {
           "command": "pnpm run build",
           "status": "pass",
-          "output": "ap and prioritize features.\nYou can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:\nhttps://nextjs.org/telemetry\n\n   ▲ Next.js 15.5.15\n\n   Creating an optimized production build ...\n> [PWA] Compile server\n> [PWA] Compile server\n> [PWA] Compile client (static)\n> [PWA] Auto register service worker with: /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--solitaire--main/app/node_modules/.pnpm/next-pwa@5.6.0_@babel+core@7.28.4_next@15.5.15_@babel+core@7.28.4_react-dom@19.1.1_reac_ca58a66723231942211cd6498f0cd02d/node_modules/next-pwa/register.js\n> [PWA] Service worker: /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--solitaire--main/app/public/sw.js\n> [PWA]   url: /sw.js\n> [PWA]   scope: /\n ✓ Compiled successfully in 23.8s\n   Linting and checking validity of types ...\n\n./src/app/game/layout.tsx\n21:6  Warning: React Hook useEffect has a missing dependency: 'router'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/forms/LoginForm.tsx\n29:6  Warning: React Hook useEffect has a missing dependency: 'router'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/gameBoard/GameBoard.tsx\n84:6  Warning: React Hook useEffect has a missing dependency: 'wonModal'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/gameBoard/WonModal.tsx\n90:6  Warning: React Hook useEffect has missing dependencies: 'gameId' and 'suiClient'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n\ninfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules\n   Collecting page data ...\n   Generating static pages (0/8) ...\n   Generating static pages (2/8) \r\nlayout.tsx is on server: false\nlayout.tsx is on server: false\npage.tsx is on server: false\nlayout.tsx is on server: false\n   Generating static pages (4/8) \r\n   Generating static pages (6/8) \r\n ✓ Generating static pages (8/8)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                                 Size  First Load JS\n┌ ○ /                                      842 B         243 kB\n├ ○ /_not-found                            137 B         103 kB\n├ ƒ /api/execute                           137 B         103 kB\n├ ƒ /api/health                            137 B         103 kB\n├ ƒ /api/sponsor                           137 B         103 kB\n└ ○ /game                                39.8 kB         280 kB\n+ First Load JS shared by all             102 kB\n  ├ chunks/207-27a5d686923a4f91.js       46.3 kB\n  ├ chunks/f3bdebb4-750393fb459063d0.js  54.2 kB\n  └ other shared chunks (total)          1.93 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
-          "durationMs": 46445
+          "output": "ap and prioritize features.\nYou can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:\nhttps://nextjs.org/telemetry\n\n   ▲ Next.js 15.5.15\n\n   Creating an optimized production build ...\n> [PWA] Compile server\n> [PWA] Compile server\n> [PWA] Compile client (static)\n> [PWA] Auto register service worker with: /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--solitaire--main/app/node_modules/.pnpm/next-pwa@5.6.0_@babel+core@7.28.4_next@15.5.15_@babel+core@7.28.4_react-dom@19.1.1_reac_ca58a66723231942211cd6498f0cd02d/node_modules/next-pwa/register.js\n> [PWA] Service worker: /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--solitaire--main/app/public/sw.js\n> [PWA]   url: /sw.js\n> [PWA]   scope: /\n ✓ Compiled successfully in 28.4s\n   Linting and checking validity of types ...\n\n./src/app/game/layout.tsx\n21:6  Warning: React Hook useEffect has a missing dependency: 'router'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/forms/LoginForm.tsx\n29:6  Warning: React Hook useEffect has a missing dependency: 'router'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/gameBoard/GameBoard.tsx\n84:6  Warning: React Hook useEffect has a missing dependency: 'wonModal'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/gameBoard/WonModal.tsx\n90:6  Warning: React Hook useEffect has missing dependencies: 'gameId' and 'suiClient'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n\ninfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules\n   Collecting page data ...\n   Generating static pages (0/8) ...\n   Generating static pages (2/8) \r\nlayout.tsx is on server: false\nlayout.tsx is on server: false\npage.tsx is on server: false\nlayout.tsx is on server: false\n   Generating static pages (4/8) \r\n   Generating static pages (6/8) \r\n ✓ Generating static pages (8/8)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                                 Size  First Load JS\n┌ ○ /                                      842 B         243 kB\n├ ○ /_not-found                            137 B         103 kB\n├ ƒ /api/execute                           137 B         103 kB\n├ ƒ /api/health                            137 B         103 kB\n├ ƒ /api/sponsor                           137 B         103 kB\n└ ○ /game                                39.8 kB         280 kB\n+ First Load JS shared by all             102 kB\n  ├ chunks/207-27a5d686923a4f91.js       46.3 kB\n  ├ chunks/f3bdebb4-750393fb459063d0.js  54.2 kB\n  └ other shared chunks (total)          1.93 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+          "durationMs": 55011
         }
       ],
       "overallStatus": "pass",
@@ -1419,12 +1443,18 @@
       "steps": [
         {
           "command": "pnpm install",
-          "status": "fail",
-          "output": "[reinstall after approve-builds also failed]\n[WARN] The \"pnpm\" field in package.json is no longer read by pnpm. The following keys were ignored: \"pnpm.onlyBuiltDependencies\". See https://pnpm.io/settings for the new home of each setting.\n\n✓ Lockfile passes supply-chain policies (verified 1s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n[ERR_PNPM_IGNORED_BUILDS] Ignored build scripts: @swc/core@1.12.6, @tailwindcss/oxide@4.1.10, esbuild@0.25.5\n\nRun \"pnpm approve-builds\" to pick which dependencies should be allowed to run scripts.",
-          "durationMs": 6590
+          "status": "pass",
+          "output": "✓ Lockfile passes supply-chain policies (verified 1s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../node_modules/@swc/core postinstall$ node postinstall.js\n.../esbuild@0.25.5/node_modules/esbuild postinstall$ node install.js\n.../node_modules/@tailwindcss/oxide postinstall$ node ./scripts/install.js\n.../node_modules/@swc/core postinstall: Done\n.../esbuild@0.25.5/node_modules/esbuild postinstall: Done\n.../node_modules/@tailwindcss/oxide postinstall: Done\nDone in 2.2s using pnpm v11.17.0\n",
+          "durationMs": 8156
+        },
+        {
+          "command": "pnpm run build",
+          "status": "pass",
+          "output": "\u001b[36mvite v6.3.5 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 2322 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                           \u001b[39m\u001b[1m\u001b[2m    1.51 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.78 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[32mwalrus_wasm_bg-KCYZ1fvy.wasm  \u001b[39m\u001b[1m\u001b[2m  558.13 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip: 304.78 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CGERj4EO.css            \u001b[39m\u001b[1m\u001b[2m  725.73 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  88.92 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-BtoI2cod.js             \u001b[39m\u001b[1m\u001b[33m1,173.23 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 289.16 kB\u001b[22m\n\u001b[32m✓ built in 5.19s\u001b[39m\n",
+          "durationMs": 9469
         }
       ],
-      "overallStatus": "fail",
+      "overallStatus": "pass",
       "versionInfo": {
         "dependencies": {
           "@mysten/dapp-kit": "^0.17.1",
@@ -1433,6 +1463,33 @@
           "typescript": "^5.8.3"
         },
         "packageManager": "pnpm"
+      },
+      "patched": false
+    },
+    {
+      "id": "MystenLabs/sui-move-bootcamp@solution/I1/silver",
+      "type": "move",
+      "source": "external",
+      "origin": "MystenLabs/sui-move-bootcamp@solution",
+      "packageRoot": "I1/silver",
+      "files": [
+        "I1/silver/sources/silver.move"
+      ],
+      "referencedBy": [
+        "docs/content/onchain-finance/fungible-tokens/create-a-fungible-token-coin.mdx"
+      ],
+      "steps": [
+        {
+          "command": "sui move build",
+          "status": "pass",
+          "output": "",
+          "durationMs": 7195
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "edition": "2024",
+        "dependencies": {}
       },
       "patched": false
     },
@@ -1454,7 +1511,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 4613
+          "durationMs": 738
         }
       ],
       "overallStatus": "pass",
@@ -1481,134 +1538,13 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 621
+          "durationMs": 829
         }
       ],
       "overallStatus": "pass",
       "versionInfo": {
         "edition": "2024",
         "dependencies": {}
-      },
-      "patched": false
-    },
-    {
-      "id": "MystenLabs/sui-move-bootcamp@solution/I1/silver",
-      "type": "move",
-      "source": "external",
-      "origin": "MystenLabs/sui-move-bootcamp@solution",
-      "packageRoot": "I1/silver",
-      "files": [
-        "I1/silver/sources/silver.move"
-      ],
-      "referencedBy": [
-        "docs/content/onchain-finance/fungible-tokens/create-a-fungible-token-coin.mdx"
-      ],
-      "steps": [
-        {
-          "command": "sui move build",
-          "status": "pass",
-          "output": "",
-          "durationMs": 574
-        }
-      ],
-      "overallStatus": "pass",
-      "versionInfo": {
-        "edition": "2024",
-        "dependencies": {}
-      },
-      "patched": false
-    },
-    {
-      "id": "MystenLabs/sui-stack-hello-world@main/move",
-      "type": "unknown",
-      "source": "external",
-      "origin": "MystenLabs/sui-stack-hello-world@main",
-      "packageRoot": "move",
-      "files": [
-        "move/hello-world/Move.toml"
-      ],
-      "referencedBy": [
-        "docs/content/getting-started/onboarding/hello-world.mdx"
-      ],
-      "steps": [
-        {
-          "command": "sui move build",
-          "status": "pass",
-          "output": "",
-          "durationMs": 4783
-        }
-      ],
-      "overallStatus": "pass",
-      "versionInfo": {
-        "edition": "2024.beta",
-        "dependencies": {
-          "Sui": "framework/testnet"
-        }
-      },
-      "patched": false
-    },
-    {
-      "id": "MystenLabs/sui-stack-hello-world@main/move/hello-world",
-      "type": "move",
-      "source": "external",
-      "origin": "MystenLabs/sui-stack-hello-world@main",
-      "packageRoot": "move/hello-world",
-      "files": [
-        "move/hello-world/sources/greeting.move"
-      ],
-      "referencedBy": [
-        "docs/content/getting-started/onboarding/hello-world.mdx"
-      ],
-      "steps": [
-        {
-          "command": "sui move build",
-          "status": "pass",
-          "output": "",
-          "durationMs": 641
-        }
-      ],
-      "overallStatus": "pass",
-      "versionInfo": {
-        "edition": "2024.beta",
-        "dependencies": {
-          "Sui": "framework/testnet"
-        }
-      },
-      "patched": false
-    },
-    {
-      "id": "MystenLabs/sui-stack-hello-world@main/ui",
-      "type": "typescript",
-      "source": "external",
-      "origin": "MystenLabs/sui-stack-hello-world@main",
-      "packageRoot": "ui",
-      "files": [
-        "ui/src/App.tsx",
-        "ui/src/CreateGreeting.tsx",
-        "ui/src/Greeting.tsx",
-        "ui/src/constants.ts",
-        "ui/src/networkConfig.ts"
-      ],
-      "referencedBy": [
-        "docs/content/getting-started/onboarding/app-frontends.mdx"
-      ],
-      "steps": [
-        {
-          "command": "pnpm install",
-          "status": "fail",
-          "output": "[reinstall after approve-builds also failed]\n[WARN] The \"pnpm\" field in package.json is no longer read by pnpm. The following keys were ignored: \"pnpm.onlyBuiltDependencies\". See https://pnpm.io/settings for the new home of each setting.\n\n✓ Lockfile passes supply-chain policies (verified 1s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n[ERR_PNPM_IGNORED_BUILDS] Ignored build scripts: @swc/core@1.13.5, esbuild@0.25.9\n\nRun \"pnpm approve-builds\" to pick which dependencies should be allowed to run scripts.",
-          "durationMs": 4902
-        }
-      ],
-      "overallStatus": "fail",
-      "versionInfo": {
-        "dependencies": {
-          "@mysten/dapp-kit-core": "^1.0.4",
-          "@mysten/dapp-kit-react": "^1.0.2",
-          "@mysten/sui": "2.4.0",
-          "typescript": "^5.8.3"
-        },
-        "packageManager": "pnpm"
       },
       "patched": false
     },
@@ -1630,7 +1566,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 574
+          "durationMs": 713
         }
       ],
       "overallStatus": "pass",
@@ -1658,7 +1594,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 578
+          "durationMs": 700
         }
       ],
       "overallStatus": "pass",
@@ -1686,7 +1622,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 659
+          "durationMs": 778
         }
       ],
       "overallStatus": "pass",
@@ -1711,12 +1647,18 @@
       "steps": [
         {
           "command": "pnpm install",
-          "status": "fail",
-          "output": "[reinstall after approve-builds also failed]\n[WARN] The \"pnpm\" field in package.json is no longer read by pnpm. The following keys were ignored: \"pnpm.onlyBuiltDependencies\". See https://pnpm.io/settings for the new home of each setting.\n\n✓ Lockfile passes supply-chain policies (verified 3s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n[ERR_PNPM_IGNORED_BUILDS] Ignored build scripts: bufferutil@4.0.8, protobufjs@7.5.4, utf-8-validate@5.0.10\n\nRun \"pnpm approve-builds\" to pick which dependencies should be allowed to run scripts.",
-          "durationMs": 8447
+          "status": "pass",
+          "output": "✓ Lockfile passes supply-chain policies (verified 4s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../node_modules/protobufjs postinstall$ node scripts/postinstall\n.../node_modules/utf-8-validate install$ node-gyp-build\n.../node_modules/bufferutil install$ node-gyp-build\n.../node_modules/protobufjs postinstall: Done\n.../node_modules/bufferutil install: Done\n.../node_modules/utf-8-validate install: Done\nDone in 2.8s using pnpm v11.17.0\n",
+          "durationMs": 10632
+        },
+        {
+          "command": "pnpm run build",
+          "status": "pass",
+          "output": " them or remove the dependency array.  react-hooks/exhaustive-deps\n488:6  Warning: React Hook useEffect has missing dependencies: 'bucketColors', 'multipliersNumbers', and 'setPopupIsVisible'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n504:6  Warning: React Hook useEffect has a missing dependency: 'expectedMultipliers'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/PlinkoSettings.tsx\n184:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element\n\n./src/components/PopUpPicker.tsx\n76:6  Warning: React Hook useEffect has missing dependencies: 'betSizeOptions', 'halfVisibleItems', and 'numberOfBallsOptions'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/contexts/BalanceContext.tsx\n49:6  Warning: React Hook useEffect has a missing dependency: 'handleRefreshBalance'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\ninfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules\n- info Collecting page data...\n- info Generating static pages (0/10)\n- info Generating static pages (2/10)\n- info Generating static pages (4/10)\n- info Generating static pages (7/10)\n- info Generating static pages (10/10)\n- info Finalizing page optimization...\n\nRoute (app)                                Size     First Load JS\n┌ ○ /                                      1.2 kB          181 kB\n├ ○ /_not-found                            0 B                0 B\n├ λ /api/execute                           0 B                0 B\n├ λ /api/game/plinko/end                   0 B                0 B\n├ ○ /api/health                            0 B                0 B\n├ λ /api/sponsor                           0 B                0 B\n├ λ /api/visits                            0 B                0 B\n└ ○ /play                                  34.7 kB         197 kB\n+ First Load JS shared by all              77.7 kB\n  ├ chunks/849-c92b0b30eb228fed.js         25.2 kB\n  ├ chunks/e9b4cd7a-ce9ab42d18b3907b.js    50.6 kB\n  ├ chunks/main-app-61ea3e5f5d082a85.js    215 B\n  └ chunks/webpack-58feb7106e621104.js     1.75 kB\n\nRoute (pages)                              Size     First Load JS\n─ ○ /404                                   180 B          77.8 kB\n+ First Load JS shared by all              77.6 kB\n  ├ chunks/framework-510ec8ffd65e1d01.js   45 kB\n  ├ chunks/main-b598a46d5a99b69c.js        30.6 kB\n  ├ chunks/pages/_app-08c50647b1f4665f.js  194 B\n  └ chunks/webpack-58feb7106e621104.js     1.75 kB\n\nλ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)\n○  (Static)  automatically rendered as static HTML (uses no initial props)\n\n",
+          "durationMs": 54913
         }
       ],
-      "overallStatus": "fail",
+      "overallStatus": "pass",
       "versionInfo": {
         "dependencies": {
           "@mysten/codegen": "^0.8.4",
@@ -1744,13 +1686,13 @@
       ],
       "steps": [
         {
-          "command": "pnpm install",
-          "status": "fail",
-          "output": "[reinstall after approve-builds also failed]\n[WARN] The \"pnpm\" field in package.json is no longer read by pnpm. The following keys were ignored: \"pnpm.onlyBuiltDependencies\". See https://pnpm.io/settings for the new home of each setting.\n\n✓ Lockfile passes supply-chain policies (verified 6s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n[ERR_PNPM_IGNORED_BUILDS] Ignored build scripts: bufferutil@4.0.8, protobufjs@7.5.4, utf-8-validate@5.0.10\n\nRun \"pnpm approve-builds\" to pick which dependencies should be allowed to run scripts.",
-          "durationMs": 2274
+          "command": "pnpm run build",
+          "status": "pass",
+          "output": " them or remove the dependency array.  react-hooks/exhaustive-deps\n488:6  Warning: React Hook useEffect has missing dependencies: 'bucketColors', 'multipliersNumbers', and 'setPopupIsVisible'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n504:6  Warning: React Hook useEffect has a missing dependency: 'expectedMultipliers'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/PlinkoSettings.tsx\n184:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element\n\n./src/components/PopUpPicker.tsx\n76:6  Warning: React Hook useEffect has missing dependencies: 'betSizeOptions', 'halfVisibleItems', and 'numberOfBallsOptions'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/contexts/BalanceContext.tsx\n49:6  Warning: React Hook useEffect has a missing dependency: 'handleRefreshBalance'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\ninfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules\n- info Collecting page data...\n- info Generating static pages (0/10)\n- info Generating static pages (2/10)\n- info Generating static pages (4/10)\n- info Generating static pages (7/10)\n- info Generating static pages (10/10)\n- info Finalizing page optimization...\n\nRoute (app)                                Size     First Load JS\n┌ ○ /                                      1.2 kB          181 kB\n├ ○ /_not-found                            0 B                0 B\n├ λ /api/execute                           0 B                0 B\n├ λ /api/game/plinko/end                   0 B                0 B\n├ ○ /api/health                            0 B                0 B\n├ λ /api/sponsor                           0 B                0 B\n├ λ /api/visits                            0 B                0 B\n└ ○ /play                                  34.7 kB         197 kB\n+ First Load JS shared by all              77.7 kB\n  ├ chunks/849-c92b0b30eb228fed.js         25.2 kB\n  ├ chunks/e9b4cd7a-ce9ab42d18b3907b.js    50.6 kB\n  ├ chunks/main-app-2be74fb973cc61e4.js    212 B\n  └ chunks/webpack-58feb7106e621104.js     1.75 kB\n\nRoute (pages)                              Size     First Load JS\n─ ○ /404                                   180 B          77.8 kB\n+ First Load JS shared by all              77.6 kB\n  ├ chunks/framework-510ec8ffd65e1d01.js   45 kB\n  ├ chunks/main-b598a46d5a99b69c.js        30.6 kB\n  ├ chunks/pages/_app-08c50647b1f4665f.js  194 B\n  └ chunks/webpack-58feb7106e621104.js     1.75 kB\n\nλ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)\n○  (Static)  automatically rendered as static HTML (uses no initial props)\n\n",
+          "durationMs": 19550
         }
       ],
-      "overallStatus": "fail",
+      "overallStatus": "pass",
       "versionInfo": {
         "dependencies": {
           "@mysten/codegen": "^0.8.4",
@@ -1781,14 +1723,14 @@
         {
           "command": "npm install",
           "status": "pass",
-          "output": "\nadded 24 packages, and audited 25 packages in 786ms\n\n6 packages are looking for funding\n  run `npm fund` for details\n\n1 high severity vulnerability\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
-          "durationMs": 855
+          "output": "\nadded 24 packages, and audited 25 packages in 887ms\n\n6 packages are looking for funding\n  run `npm fund` for details\n\n1 high severity vulnerability\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
+          "durationMs": 961
         },
         {
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1473
+          "durationMs": 1585
         }
       ],
       "overallStatus": "pass",
@@ -1812,7 +1754,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 566
+          "durationMs": 650
         }
       ],
       "overallStatus": "pass",
@@ -1838,14 +1780,14 @@
         {
           "command": "npm install",
           "status": "pass",
-          "output": "\nadded 354 packages, and audited 355 packages in 4s\n\n52 packages are looking for funding\n  run `npm fund` for details\n\n10 vulnerabilities (2 low, 7 high, 1 critical)\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
-          "durationMs": 4123
+          "output": "\nadded 354 packages, and audited 355 packages in 5s\n\n52 packages are looking for funding\n  run `npm fund` for details\n\n10 vulnerabilities (2 low, 7 high, 1 critical)\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
+          "durationMs": 4880
         },
         {
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1733
+          "durationMs": 1807
         }
       ],
       "overallStatus": "pass",
@@ -1875,7 +1817,7 @@
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1528
+          "durationMs": 1711
         }
       ],
       "overallStatus": "pass",
@@ -1905,7 +1847,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 626
+          "durationMs": 732
         }
       ],
       "overallStatus": "pass",
@@ -1931,14 +1873,14 @@
         {
           "command": "npm install",
           "status": "pass",
-          "output": "\nadded 69 packages, and audited 70 packages in 7s\n\n22 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n",
-          "durationMs": 6687
+          "output": "\nadded 69 packages, and audited 70 packages in 6s\n\n22 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n",
+          "durationMs": 6373
         },
         {
           "command": "tsc --noEmit",
           "status": "fail",
           "output": "tests/derive.test.ts(3,42): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../src/helpers/deriveObjectID.js'?\ntests/derive.test.ts(4,27): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../src/helpers/getSigner.js'?\ntests/derive.test.ts(5,27): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../src/helpers/typeTags.js'?\ntests/derive.test.ts(6,27): error TS2307: Cannot find module './derive.utils' or its corresponding type declarations.\ntests/derive.test.ts(8,27): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../src/suiClient.js'?\ntests/derive.test.ts(124,61): error TS7006: Parameter 'obj' implicitly has an 'any' type.\ntests/derive.utils.ts(3,27): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../src/helpers/getSigner.js'?\ntests/derive.utils.ts(4,27): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../src/suiClient.js'?",
-          "durationMs": 1644
+          "durationMs": 1799
         }
       ],
       "overallStatus": "fail",
@@ -1970,7 +1912,7 @@
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1324
+          "durationMs": 1458
         }
       ],
       "overallStatus": "pass",
@@ -1994,11 +1936,111 @@
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1331
+          "durationMs": 1486
         }
       ],
       "overallStatus": "pass",
       "versionInfo": {},
+      "patched": false
+    },
+    {
+      "id": "MystenLabs/sui-stack-hello-world@main/move",
+      "type": "unknown",
+      "source": "external",
+      "origin": "MystenLabs/sui-stack-hello-world@main",
+      "packageRoot": "move",
+      "files": [
+        "move/hello-world/Move.toml"
+      ],
+      "referencedBy": [
+        "docs/content/getting-started/onboarding/hello-world.mdx"
+      ],
+      "steps": [
+        {
+          "command": "sui move build",
+          "status": "pass",
+          "output": "",
+          "durationMs": 6230
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "edition": "2024.beta",
+        "dependencies": {
+          "Sui": "framework/testnet"
+        }
+      },
+      "patched": false
+    },
+    {
+      "id": "MystenLabs/sui-stack-hello-world@main/move/hello-world",
+      "type": "move",
+      "source": "external",
+      "origin": "MystenLabs/sui-stack-hello-world@main",
+      "packageRoot": "move/hello-world",
+      "files": [
+        "move/hello-world/sources/greeting.move"
+      ],
+      "referencedBy": [
+        "docs/content/getting-started/onboarding/hello-world.mdx"
+      ],
+      "steps": [
+        {
+          "command": "sui move build",
+          "status": "pass",
+          "output": "",
+          "durationMs": 741
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "edition": "2024.beta",
+        "dependencies": {
+          "Sui": "framework/testnet"
+        }
+      },
+      "patched": false
+    },
+    {
+      "id": "MystenLabs/sui-stack-hello-world@main/ui",
+      "type": "typescript",
+      "source": "external",
+      "origin": "MystenLabs/sui-stack-hello-world@main",
+      "packageRoot": "ui",
+      "files": [
+        "ui/src/App.tsx",
+        "ui/src/CreateGreeting.tsx",
+        "ui/src/Greeting.tsx",
+        "ui/src/constants.ts",
+        "ui/src/networkConfig.ts"
+      ],
+      "referencedBy": [
+        "docs/content/getting-started/onboarding/app-frontends.mdx"
+      ],
+      "steps": [
+        {
+          "command": "pnpm install",
+          "status": "pass",
+          "output": "✓ Lockfile passes supply-chain policies (verified 1s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../node_modules/@swc/core postinstall$ node postinstall.js\n.../esbuild@0.25.9/node_modules/esbuild postinstall$ node install.js\n.../node_modules/@swc/core postinstall: Done\n.../esbuild@0.25.9/node_modules/esbuild postinstall: Done\nDone in 1.7s using pnpm v11.17.0\n",
+          "durationMs": 5551
+        },
+        {
+          "command": "pnpm run build",
+          "status": "pass",
+          "output": "\u001b[36mvite v7.1.4 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 812 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.23 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.64 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-Cs5nhfe8.css  \u001b[39m\u001b[1m\u001b[2m689.24 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  80.92 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-Df_K52sv.js   \u001b[39m\u001b[1m\u001b[33m666.55 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 205.75 kB\u001b[22m\n\u001b[32m✓ built in 3.25s\u001b[39m\n",
+          "durationMs": 6467
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "dependencies": {
+          "@mysten/dapp-kit-core": "^1.0.4",
+          "@mysten/dapp-kit-react": "^1.0.2",
+          "@mysten/sui": "2.4.0",
+          "typescript": "^5.8.3"
+        },
+        "packageManager": "pnpm"
+      },
       "patched": false
     },
     {
@@ -2080,7 +2122,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 1379
+          "durationMs": 2315
         }
       ],
       "overallStatus": "pass",
@@ -2122,7 +2164,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 10649
+          "durationMs": 17833
         }
       ],
       "overallStatus": "pass",
@@ -2153,7 +2195,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 11144
+          "durationMs": 16957
         }
       ],
       "overallStatus": "pass",
@@ -2348,7 +2390,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 9049
+          "durationMs": 11968
         }
       ],
       "overallStatus": "pass",
@@ -2367,5 +2409,5 @@
       "patched": false
     }
   ],
-  "totalDurationMs": 517715
+  "totalDurationMs": 838676
 }
