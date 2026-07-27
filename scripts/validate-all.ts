@@ -447,10 +447,9 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
     console.log(`      Running ${installArgs.join(" ")} at ${effectiveRoot}...`);
     const install = run(installArgs, effectiveRoot, 300_000);
 
-    // In strict mode, if frozen-lockfile fails, that's a real failure.
-    // In compat mode, retry without lockfile constraint.
-    if (!install.ok && mode === "strict") {
-      // Try non-frozen as fallback — still report as the install step
+    // In compat mode, retry without lockfile constraint if frozen install fails.
+    // In strict mode, a failed install is a real failure — no fallback.
+    if (!install.ok && mode === "compat") {
       const fallback = run(
         pm === "bun" ? ["bun", "install"] : pm === "pnpm" ? ["pnpm", "install", "--no-frozen-lockfile"] : ["npm", "install"],
         effectiveRoot, 300_000,
@@ -579,7 +578,7 @@ function categorizeFailure(steps: StepResult[]): string {
   const out = failStep.output.toLowerCase();
   const cmd = failStep.command;
   if (cmd.includes("install") && out.includes("workspace:")) return "Workspace protocol requires pnpm";
-  if (cmd.includes("install") && out.includes("ignored_builds")) return "pnpm build scripts not approved (run pnpm approve-builds)";
+  if (cmd.includes("install") && (out.includes("ignored_builds") || out.includes("ignored build"))) return "pnpm build scripts not approved (run pnpm approve-builds)";
   if (cmd.includes("install")) return "Dependency installation failed";
   if (out.includes("mvr") || out.includes("r.mvr")) return "MVR dependency — requires MVR resolver";
   if (out.includes("cannot find module")) return "Missing npm dependency";
