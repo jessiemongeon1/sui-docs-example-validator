@@ -59,6 +59,9 @@ jobs:
         run: |
           npm install -g pnpm
           npm install -g bun
+          # pnpm v11 blocks postinstall scripts by default; approve all globally
+          # so native deps (esbuild, swc, sharp, etc.) build correctly in CI.
+          echo 'only-built-dependencies[]=*' >> ~/.npmrc
 
       - name: Install project dependencies
         run: npm ci
