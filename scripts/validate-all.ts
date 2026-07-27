@@ -458,16 +458,13 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
       !/ERR_PNPM_(?!IGNORED_BUILDS)/.test(install.output);
 
     if (ignoredBuildsOnly) {
-      // pnpm v11 blocks both install postscripts AND pnpm run until builds are approved.
-      // Patch package.json and reinstall without frozen-lockfile to reset pnpm's state.
+      // pnpm v11 moved build approval to pnpm-workspace.yaml (not package.json).
+      // Set dangerouslyAllowAllBuilds so native deps build correctly in CI.
       console.log(`      Approving pnpm build scripts and reinstalling...`);
-      const pkgJsonPath = resolve(effectiveRoot, "package.json");
-      if (existsSync(pkgJsonPath)) {
-        try {
-          const pkg = JSON.parse(readFileSync(pkgJsonPath, "utf-8"));
-          pkg.pnpm = { ...pkg.pnpm, onlyBuiltDependencies: ["*"] };
-          writeFileSync(pkgJsonPath, JSON.stringify(pkg, null, 2) + "\n");
-        } catch {}
+      const wsYamlPath = resolve(effectiveRoot, "pnpm-workspace.yaml");
+      const existingYaml = existsSync(wsYamlPath) ? readFileSync(wsYamlPath, "utf-8") : "";
+      if (!existingYaml.includes("dangerouslyAllowAllBuilds")) {
+        writeFileSync(wsYamlPath, existingYaml + "\ndangerouslyAllowAllBuilds: true\n");
       }
       const reinstall = run(["pnpm", "install", "--no-frozen-lockfile"], effectiveRoot, 300_000);
       if (!reinstall.ok) {
