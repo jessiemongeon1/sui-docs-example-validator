@@ -165,8 +165,11 @@ function collectToolVersions(): ToolVersions {
   };
 }
 
-function detectPackageManager(...roots: string[]): "pnpm" | "npm" {
+function detectPackageManager(...roots: string[]): "bun" | "pnpm" | "npm" {
   for (const root of roots) {
+    if (existsSync(resolve(root, "bun.lock")) || existsSync(resolve(root, "bun.lockb"))) {
+      return "bun";
+    }
     if (existsSync(resolve(root, "pnpm-lock.yaml")) || existsSync(resolve(root, "pnpm-workspace.yaml"))) {
       return "pnpm";
     }
@@ -274,7 +277,8 @@ function extractVersionInfo(absRoot: string, type: string): PackageVersionInfo {
             info.dependencies[key] = allDeps[key];
           }
         }
-        info.packageManager = existsSync(resolve(absRoot, "pnpm-lock.yaml")) ? "pnpm" : "npm";
+        info.packageManager = existsSync(resolve(absRoot, "bun.lock")) || existsSync(resolve(absRoot, "bun.lockb")) ? "bun"
+          : existsSync(resolve(absRoot, "pnpm-lock.yaml")) ? "pnpm" : "npm";
       } catch {}
     }
   }
@@ -427,7 +431,11 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
   // Install at workspace root (once)
   if (!installedWorkspaces.has(effectiveRoot)) {
     let installArgs: string[];
-    if (pm === "pnpm") {
+    if (pm === "bun") {
+      installArgs = mode === "strict"
+        ? ["bun", "install", "--frozen-lockfile"]
+        : ["bun", "install"];
+    } else if (pm === "pnpm") {
       installArgs = mode === "strict"
         ? ["pnpm", "install", "--frozen-lockfile"]
         : ["pnpm", "install", "--no-frozen-lockfile"];
@@ -444,7 +452,7 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
     if (!install.ok && mode === "strict") {
       // Try non-frozen as fallback — still report as the install step
       const fallback = run(
-        pm === "pnpm" ? ["pnpm", "install", "--no-frozen-lockfile"] : ["npm", "install"],
+        pm === "bun" ? ["bun", "install"] : pm === "pnpm" ? ["pnpm", "install", "--no-frozen-lockfile"] : ["npm", "install"],
         effectiveRoot, 300_000,
       );
       steps.push({ command: `${pm} install`, status: fallback.ok ? "pass" : "fail", output: fallback.ok ? fallback.output : install.output, durationMs: install.durationMs + fallback.durationMs });
@@ -494,7 +502,7 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
   const pkgBuildPath = existsSync(resolve(absRoot, "package.json")) ? absRoot : installRoot;
   if (pkgBuildPath !== effectiveRoot && existsSync(resolve(pkgBuildPath, "package.json"))) {
     if (!existsSync(resolve(pkgBuildPath, "node_modules"))) {
-      run(pm === "pnpm" ? ["pnpm", "install", "--no-frozen-lockfile"] : ["npm", "install"], pkgBuildPath, 120_000);
+      run(pm === "bun" ? ["bun", "install"] : pm === "pnpm" ? ["pnpm", "install", "--no-frozen-lockfile"] : ["npm", "install"], pkgBuildPath, 120_000);
       if (!existsSync(resolve(pkgBuildPath, "node_modules"))) {
         run(["bun", "install"], pkgBuildPath, 60_000);
       }
@@ -571,6 +579,7 @@ function categorizeFailure(steps: StepResult[]): string {
   const out = failStep.output.toLowerCase();
   const cmd = failStep.command;
   if (cmd.includes("install") && out.includes("workspace:")) return "Workspace protocol requires pnpm";
+  if (cmd.includes("install") && out.includes("ignored_builds")) return "pnpm build scripts not approved (run pnpm approve-builds)";
   if (cmd.includes("install")) return "Dependency installation failed";
   if (out.includes("mvr") || out.includes("r.mvr")) return "MVR dependency — requires MVR resolver";
   if (out.includes("cannot find module")) return "Missing npm dependency";
@@ -589,6 +598,7 @@ function generateReport(results: ValidationResult[], versions: ToolVersions, tot
   const lines: string[] = [];
   const passed = results.filter((r) => r.overallStatus === "pass").length;
   const failed = results.filter((r) => r.overallStatus === "fail").length;
+  const skipped = results.filter((r) => r.overallStatus === "skip").length;
   const patchedCount = results.filter((r) => r.patched).length;
 
   lines.push("# Sui Docs Example Validation Report");
@@ -603,6 +613,7 @@ function generateReport(results: ValidationResult[], versions: ToolVersions, tot
   lines.push(`| Packages validated | ${results.length} |`);
   lines.push(`| Passed | ${passed} |`);
   lines.push(`| Failed | ${failed} |`);
+  if (skipped > 0) lines.push(`| Skipped | ${skipped} |`);
   if (patchedCount > 0) lines.push(`| Patched (compat mode) | ${patchedCount} |`);
   lines.push(`| Duration | ${(totalDurationMs / 1000).toFixed(0)}s |`);
   lines.push("");
@@ -656,7 +667,7 @@ function generateReport(results: ValidationResult[], versions: ToolVersions, tot
     const totalMs = r.steps.reduce((sum, s) => sum + s.durationMs, 0);
     const shortId = r.id.length > 50 ? "..." + r.id.slice(-47) : r.id;
     const shortOrigin = r.origin.length > 30 ? "..." + r.origin.slice(-27) : r.origin;
-    const status = r.overallStatus === "pass" ? (r.patched ? "PASS (patched)" : "PASS") : "**FAIL**";
+    const status = r.overallStatus === "pass" ? (r.patched ? "PASS (patched)" : "PASS") : r.overallStatus === "fail" ? "**FAIL**" : "SKIP";
     lines.push(`| ${i + 1} | ${shortId} | ${r.type} | ${shortOrigin} | ${status} | ${(totalMs / 1000).toFixed(1)}s | ${r.files.length} |`);
   }
 
@@ -819,8 +830,8 @@ async function main() {
       s.command.includes("tsc") || s.command === "file exists"
     );
     const hasBuildPass = buildSteps.some((s) => s.status === "pass");
-    const hasBuildFail = buildSteps.some((s) => s.status === "fail");
-    const overallStatus: "pass" | "fail" | "skip" = hasBuildPass ? "pass" : hasBuildFail ? "fail" : "skip";
+    const anyFail = steps.some((s) => s.status === "fail");
+    const overallStatus: "pass" | "fail" | "skip" = hasBuildPass ? "pass" : anyFail ? "fail" : "skip";
     const failureReason = overallStatus === "fail"
       ? buildSteps.find((s) => s.status === "fail")?.output?.slice(-200)
       : undefined;
