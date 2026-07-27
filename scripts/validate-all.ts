@@ -451,7 +451,17 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
     console.log(`      Running ${installArgs.join(" ")} at ${effectiveRoot}...`);
     const install = run(installArgs, effectiveRoot, 300_000);
 
-    if (!install.ok && mode === "compat") {
+    // pnpm v11: ERR_PNPM_IGNORED_BUILDS means deps ARE installed but postinstall
+    // scripts were blocked. Treat as success and rebuild native deps explicitly.
+    const ignoredBuildsOnly = !install.ok && pm === "pnpm" &&
+      install.output.includes("ERR_PNPM_IGNORED_BUILDS") &&
+      !/ERR_PNPM_(?!IGNORED_BUILDS)/.test(install.output);
+
+    if (ignoredBuildsOnly) {
+      console.log(`      Rebuilding native deps blocked by pnpm build approval...`);
+      run(["pnpm", "rebuild"], effectiveRoot, 120_000);
+      steps.push({ command: `${pm} install`, status: "pass", output: install.output, durationMs: install.durationMs });
+    } else if (!install.ok && mode === "compat") {
       // In compat mode, retry without lockfile constraint if frozen install fails.
       const fallback = run(
         pm === "bun" ? ["bun", "install"] : pm === "pnpm" ? ["pnpm", "install", "--no-frozen-lockfile"] : ["npm", "install"],
