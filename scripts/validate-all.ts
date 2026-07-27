@@ -458,9 +458,20 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
       !/ERR_PNPM_(?!IGNORED_BUILDS)/.test(install.output);
 
     if (ignoredBuildsOnly) {
-      console.log(`      Rebuilding native deps blocked by pnpm build approval...`);
-      run(["pnpm", "rebuild"], effectiveRoot, 120_000);
-      steps.push({ command: `${pm} install`, status: "pass", output: install.output, durationMs: install.durationMs });
+      // pnpm v11 blocks both install postscripts AND pnpm run until builds are approved.
+      // Patch package.json and reinstall without frozen-lockfile to reset pnpm's state.
+      console.log(`      Approving pnpm build scripts and reinstalling...`);
+      const pkgJsonPath = resolve(effectiveRoot, "package.json");
+      if (existsSync(pkgJsonPath)) {
+        try {
+          const pkg = JSON.parse(readFileSync(pkgJsonPath, "utf-8"));
+          pkg.pnpm = { ...pkg.pnpm, onlyBuiltDependencies: ["*"] };
+          writeFileSync(pkgJsonPath, JSON.stringify(pkg, null, 2) + "\n");
+        } catch {}
+      }
+      const reinstall = run(["pnpm", "install", "--no-frozen-lockfile"], effectiveRoot, 300_000);
+      steps.push({ command: `${pm} install`, status: reinstall.ok ? "pass" : "fail", output: reinstall.ok ? reinstall.output : install.output, durationMs: install.durationMs + reinstall.durationMs });
+      if (!reinstall.ok) return { steps, patched };
     } else if (!install.ok && mode === "compat") {
       // In compat mode, retry without lockfile constraint if frozen install fails.
       const fallback = run(
