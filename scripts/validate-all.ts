@@ -470,8 +470,12 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
         } catch {}
       }
       const reinstall = run(["pnpm", "install", "--no-frozen-lockfile"], effectiveRoot, 300_000);
-      steps.push({ command: `${pm} install`, status: reinstall.ok ? "pass" : "fail", output: reinstall.ok ? reinstall.output : install.output, durationMs: install.durationMs + reinstall.durationMs });
-      if (!reinstall.ok) return { steps, patched };
+      if (!reinstall.ok) {
+        console.log(`      Reinstall also failed at ${effectiveRoot}`);
+        steps.push({ command: `${pm} install`, status: "fail", output: `[reinstall after approve-builds also failed]\n${reinstall.output}`, durationMs: install.durationMs + reinstall.durationMs });
+        return { steps, patched };
+      }
+      steps.push({ command: `${pm} install`, status: "pass", output: reinstall.output, durationMs: install.durationMs + reinstall.durationMs });
     } else if (!install.ok && mode === "compat") {
       // In compat mode, retry without lockfile constraint if frozen install fails.
       const fallback = run(
