@@ -1,0 +1,59 @@
+name: Check Sui Releases
+
+on:
+  schedule:
+    - cron: '0 */6 * * *' # Every 6 hours
+  workflow_dispatch:
+
+jobs:
+  check-and-trigger:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for new Sui testnet release
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          LATEST=$(gh api repos/MystenLabs/sui/releases \
+            --jq '[.[] | select(.tag_name | startswith("testnet-"))][0].tag_name')
+          echo "Latest testnet release: $LATEST"
+
+          LAST_VALIDATED=""
+          if [ -f .github/last-validated-release.txt ]; then
+            LAST_VALIDATED=$(cat .github/last-validated-release.txt)
+          fi
+          echo "Last validated: $LAST_VALIDATED"
+
+          if [ "$LATEST" != "$LAST_VALIDATED" ] && [ -n "$LATEST" ]; then
+            echo "new_release=true" >> "$GITHUB_OUTPUT"
+            echo "release_tag=$LATEST" >> "$GITHUB_OUTPUT"
+            echo "New release detected: $LATEST"
+          else
+            echo "new_release=false" >> "$GITHUB_OUTPUT"
+            echo "No new release"
+          fi
+
+      - name: Trigger validation
+        if: steps.check.outputs.new_release == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "Triggering validation for ${{ steps.check.outputs.release_tag }}"
+          gh workflow run validate.yml \
+            -f sui_branch="${{ steps.check.outputs.release_tag }}" \
+            -f mode=strict
+
+      - name: Update marker
+        if: steps.check.outputs.new_release == 'true'
+        run: |
+          echo "${{ steps.check.outputs.release_tag }}" > .github/last-validated-release.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .github/last-validated-release.txt
+          git commit -m "ci: validated against ${{ steps.check.outputs.release_tag }}"
+          git push
