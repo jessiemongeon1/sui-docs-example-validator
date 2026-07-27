@@ -6,11 +6,11 @@
 
 | Metric | Value |
 |--------|-------|
-| Date | 2026-07-27T21:59:45.041Z |
+| Date | 2026-07-27T22:26:39.960Z |
 | Packages validated | 71 |
 | Passed | 68 |
 | Failed | 3 |
-| Duration | 839s |
+| Duration | 784s |
 
 ## Tool Versions
 
@@ -27,6 +27,26 @@
 
 ## Failures
 
+### examples/regulated-coin/ts-client
+
+- **Failure**: Missing npm dependency
+- **Type**: typescript | **Origin**: MystenLabs/sui (internal)
+- **Dependencies**: `@mysten/sui: ^1.18.0`, `typescript: ^5.5.3`
+- **Docs pages**: [onchain-finance/fungible-tokens/regulated-tokens](https://docs.sui.io/onchain-finance/fungible-tokens/regulated-tokens) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/fungible-tokens/regulated-tokens.mdx))
+
+**`tsc --noEmit`** — FAIL (0.9s)
+
+```
+S2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/config.ts(21,26): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/main.ts(4,25): error TS2792: Cannot find module '@mysten/sui/client'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?
+src/main.ts(12,27): error TS2792: Cannot find module '@mysten/sui/transactions'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?
+src/main.ts(13,23): error TS2792: Cannot find module 'commander'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?
+src/main.ts(14,30): error TS2792: Cannot find module '@mysten/sui/keypairs/ed25519'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?
+```
+
+---
+
 ### MystenLabs/sui-move-bootcamp@solution/K2/src
 
 - **Failure**: Stale lockfile (run pnpm install to update)
@@ -34,11 +54,11 @@
 - **Dependencies**: `@mysten/sui: ^1.38.0`, `typescript: ~5.8.3`
 - **Docs pages**: [sui-stack/zklogin-integration/zklogin-demo](https://docs.sui.io/sui-stack/zklogin-integration/zklogin-demo) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/zklogin-integration/zklogin-demo.mdx))
 
-**`pnpm install`** — FAIL (3.0s)
+**`pnpm install`** — FAIL (3.1s)
 
 ```
 ? Verifying lockfile against supply-chain policies (281 entries)...
-✓ Lockfile passes supply-chain policies (281 entries in 2.4s)
+✓ Lockfile passes supply-chain policies (281 entries in 2.5s)
 [ERR_PNPM_OUTDATED_LOCKFILE] Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/package.json
 
 Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
@@ -60,7 +80,7 @@ Note that in CI environments this setting is true by default. If you still need 
 **`pnpm install`** — FAIL (0.5s)
 
 ```
-✓ Lockfile passes supply-chain policies (verified 562ms ago)
+✓ Lockfile passes supply-chain policies (verified 548ms ago)
 [ERR_PNPM_OUTDATED_LOCKFILE] Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/package.json
 
 Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
@@ -72,101 +92,81 @@ Note that in CI environments this setting is true by default. If you still need 
 
 ---
 
-### MystenLabs/sui-move-bootcamp@solution/C5/ts
-
-- **Failure**: Missing npm dependency
-- **Type**: typescript | **Origin**: MystenLabs/sui-move-bootcamp@solution
-- **Dependencies**: `@mysten/sui: ^2.6.0`
-- **Docs pages**: [getting-started/examples/derived-objects](https://docs.sui.io/getting-started/examples/derived-objects) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/derived-objects.mdx))
-
-**`tsc --noEmit`** — FAIL (1.8s)
-
-```
-lative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../src/helpers/typeTags.js'?
-tests/derive.test.ts(6,27): error TS2307: Cannot find module './derive.utils' or its corresponding type declarations.
-tests/derive.test.ts(8,27): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../src/suiClient.js'?
-tests/derive.test.ts(124,61): error TS7006: Parameter 'obj' implicitly has an 'any' type.
-tests/derive.utils.ts(3,27): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../src/helpers/getSigner.js'?
-tests/derive.utils.ts(4,27): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../src/suiClient.js'?
-```
-
----
-
 ## All Results
 
 | # | Package | Type | Origin | Status | Duration | Files |
 |---|---------|------|--------|--------|----------|-------|
 | 1 | examples/tic-tac-toe/move | move | MystenLabs/sui (internal) | PASS | 0.7s | 1 |
-| 2 | examples/move/dynamic_fields | move | MystenLabs/sui (internal) | PASS | 0.5s | 1 |
+| 2 | examples/move/dynamic_fields | move | MystenLabs/sui (internal) | PASS | 0.4s | 1 |
 | 3 | examples/move/nft | move | MystenLabs/sui (internal) | PASS | 0.5s | 1 |
-| 4 | examples/move/random/random_nft | move | MystenLabs/sui (internal) | PASS | 0.6s | 1 |
-| 5 | examples/move/basics | move | MystenLabs/sui (internal) | PASS | 0.5s | 2 |
-| 6 | examples/move/hero | move | MystenLabs/sui (internal) | PASS | 0.5s | 1 |
-| 7 | examples/vesting | move | MystenLabs/sui (internal) | PASS | 0.5s | 6 |
-| 8 | examples/move/coin | move | MystenLabs/sui (internal) | PASS | 0.6s | 3 |
-| 9 | examples/regulated-coin/move | move | MystenLabs/sui (internal) | PASS | 0.5s | 1 |
-| 10 | examples/regulated-coin/ts-client | typescript | MystenLabs/sui (internal) | PASS | 13.0s | 1 |
-| 11 | examples/move/nft-soulbound | move | MystenLabs/sui (internal) | PASS | 0.5s | 1 |
-| 12 | examples/move/nft-rental | move | MystenLabs/sui (internal) | PASS | 9.4s | 1 |
-| 13 | examples/move/token | move | MystenLabs/sui (internal) | PASS | 0.6s | 1 |
-| 14 | examples/trading/contracts/escrow | move | MystenLabs/sui (internal) | PASS | 0.6s | 3 |
+| 4 | examples/move/random/random_nft | move | MystenLabs/sui (internal) | PASS | 0.4s | 1 |
+| 5 | examples/move/basics | move | MystenLabs/sui (internal) | PASS | 0.4s | 2 |
+| 6 | examples/move/hero | move | MystenLabs/sui (internal) | PASS | 0.4s | 1 |
+| 7 | examples/vesting | move | MystenLabs/sui (internal) | PASS | 0.4s | 6 |
+| 8 | examples/move/coin | move | MystenLabs/sui (internal) | PASS | 0.5s | 3 |
+| 9 | examples/regulated-coin/move | move | MystenLabs/sui (internal) | PASS | 0.4s | 1 |
+| 10 | examples/regulated-coin/ts-client | typescript | MystenLabs/sui (internal) | **FAIL** | 12.1s | 1 |
+| 11 | examples/move/nft-soulbound | move | MystenLabs/sui (internal) | PASS | 0.4s | 1 |
+| 12 | examples/move/nft-rental | move | MystenLabs/sui (internal) | PASS | 5.9s | 1 |
+| 13 | examples/move/token | move | MystenLabs/sui (internal) | PASS | 0.5s | 1 |
+| 14 | examples/trading/contracts/escrow | move | MystenLabs/sui (internal) | PASS | 0.5s | 3 |
 | 15 | examples/deepbook-spot | typescript | MystenLabs/sui (internal) | PASS | 2.0s | 13 |
 | 16 | examples/deepbook-margin | typescript | MystenLabs/sui (internal) | PASS | 2.1s | 11 |
 | 17 | examples/deepbook-predict | typescript | MystenLabs/sui (internal) | PASS | 2.0s | 9 |
-| 18 | examples/move/color_object | move | MystenLabs/sui (internal) | PASS | 0.5s | 1 |
-| 19 | MystenLabs/sagat@main/api | typescript | MystenLabs/sagat@main | PASS | 2.7s | 4 |
-| 20 | MystenLabs/sui-move-bootcamp@solution/K2/src | typescript | .../sui-move-bootcamp@solution | **FAIL** | 3.0s | 5 |
+| 18 | examples/move/color_object | move | MystenLabs/sui (internal) | PASS | 0.4s | 1 |
+| 19 | MystenLabs/sagat@main/api | typescript | MystenLabs/sagat@main | PASS | 3.1s | 4 |
+| 20 | MystenLabs/sui-move-bootcamp@solution/K2/src | typescript | .../sui-move-bootcamp@solution | **FAIL** | 3.1s | 5 |
 | 21 | MystenLabs/sui-move-bootcamp@solution/K2 | typescript | .../sui-move-bootcamp@solution | **FAIL** | 0.5s | 1 |
-| 22 | MystenLabs/onlyfins-example-app@main/frontend | typescript | ...s/onlyfins-example-app@main | PASS | 32.0s | 1 |
-| 23 | ...07-Walrus-SDK-upload-relay/hands-on-source-code | typescript | ...Labs/Walrus-Onboarding@main | PASS | 4.2s | 2 |
-| 24 | MystenLabs/onlyfins-example-app@main/backend | typescript | ...s/onlyfins-example-app@main | PASS | 4.4s | 3 |
+| 22 | MystenLabs/onlyfins-example-app@main/frontend | typescript | ...s/onlyfins-example-app@main | PASS | 34.8s | 1 |
+| 23 | ...07-Walrus-SDK-upload-relay/hands-on-source-code | typescript | ...Labs/Walrus-Onboarding@main | PASS | 4.0s | 2 |
+| 24 | MystenLabs/onlyfins-example-app@main/backend | typescript | ...s/onlyfins-example-app@main | PASS | 4.3s | 3 |
 | 25 | MystenLabs/walrus-pocs@main/sdk | typescript | MystenLabs/walrus-pocs@main | PASS | 4.2s | 3 |
 | 26 | MystenLabs/Walrus-Onboarding@main/11-Batch-storage | typescript | ...Labs/Walrus-Onboarding@main | PASS | 4.0s | 2 |
 | 27 | MystenLabs/onlyfins-example-app@main/frontend/src | typescript | ...s/onlyfins-example-app@main | PASS | 6.9s | 6 |
-| 28 | MystenLabs/ts-sdks@main/packages | typescript | MystenLabs/ts-sdks@main | PASS | 14.3s | 1 |
+| 28 | MystenLabs/ts-sdks@main/packages | typescript | MystenLabs/ts-sdks@main | PASS | 14.9s | 1 |
 | 29 | MystenLabs/walrus-sites@main/examples | unknown | MystenLabs/walrus-sites@main | PASS | 0.0s | 1 |
-| 30 | MystenLabs/messaging-sdk-example@main/frontend/src | typescript | .../messaging-sdk-example@main | PASS | 21.1s | 1 |
-| 31 | MystenLabs/onlyfins-example-app@main/frontend/move | move | ...s/onlyfins-example-app@main | PASS | 1.8s | 1 |
-| 32 | ...enLabs/sui-move-bootcamp@main/K5/seal-demo/move | move | ...Labs/sui-move-bootcamp@main | PASS | 6.4s | 3 |
-| 33 | MystenLabs/walrus-pocs@main/walrus-seal/app/src | typescript | MystenLabs/walrus-pocs@main | PASS | 29.6s | 4 |
-| 34 | MystenLabs/sui-move-bootcamp@main/K5/seal-demo/ts | typescript | ...Labs/sui-move-bootcamp@main | PASS | 3.7s | 1 |
-| 35 | ...essaging@main/move/packages/sui_stack_messaging | move | ...bs/sui-stack-messaging@main | PASS | 14.9s | 3 |
-| 36 | MystenLabs/sui-stack-messaging@main/chat-app/src | typescript | ...bs/sui-stack-messaging@main | PASS | 14.2s | 1 |
-| 37 | MystenLabs/ticketing-poc@main/move | move | MystenLabs/ticketing-poc@main | PASS | 7.8s | 3 |
-| 38 | MystenLabs/ticketing-poc@main/app/src/app | typescript | MystenLabs/ticketing-poc@main | PASS | 83.9s | 1 |
-| 39 | MystenLabs/ticketing-poc@main/app | typescript | MystenLabs/ticketing-poc@main | PASS | 45.7s | 1 |
-| 40 | MystenLabs/solitaire@main/move/solitaire | move | MystenLabs/solitaire@main | PASS | 0.8s | 1 |
-| 41 | MystenLabs/solitaire@main/app/src | typescript | MystenLabs/solitaire@main | PASS | 62.7s | 2 |
-| 42 | MystenLabs/walrus-sdk-relay-example-app@main/src | typescript | ...-sdk-relay-example-app@main | PASS | 17.6s | 1 |
-| 43 | MystenLabs/sui-move-bootcamp@solution/I1/silver | move | .../sui-move-bootcamp@solution | PASS | 7.2s | 1 |
-| 44 | ...Labs/sui-move-bootcamp@solution/I3/king_credits | move | .../sui-move-bootcamp@solution | PASS | 0.7s | 2 |
-| 45 | ...Labs/sui-move-bootcamp@solution/I2/fixed_supply | move | .../sui-move-bootcamp@solution | PASS | 0.8s | 1 |
-| 46 | MystenLabs/sui-move-bootcamp@solution/G1/scenario | move | .../sui-move-bootcamp@solution | PASS | 0.7s | 2 |
-| 47 | MystenLabs/sui-move-bootcamp@solution/G1 | move | .../sui-move-bootcamp@solution | PASS | 0.7s | 2 |
-| 48 | MystenLabs/plinko-poc@main/plinko | move | MystenLabs/plinko-poc@main | PASS | 0.8s | 2 |
-| 49 | MystenLabs/plinko-poc@main/app/src | typescript | MystenLabs/plinko-poc@main | PASS | 65.5s | 1 |
-| 50 | MystenLabs/plinko-poc@main/app | typescript | MystenLabs/plinko-poc@main | PASS | 19.6s | 1 |
-| 51 | ...-bootcamp@solution/F1/app/my-first-sui-dapp/src | typescript | .../sui-move-bootcamp@solution | PASS | 2.5s | 2 |
-| 52 | MystenLabs/sui-move-bootcamp@main/K1/contract | move | ...Labs/sui-move-bootcamp@main | PASS | 0.7s | 1 |
-| 53 | MystenLabs/sui-move-bootcamp@main/K1 | typescript | ...Labs/sui-move-bootcamp@main | PASS | 6.7s | 1 |
-| 54 | MystenLabs/sui-move-bootcamp@main/K1/backend | typescript | ...Labs/sui-move-bootcamp@main | PASS | 1.7s | 1 |
-| 55 | ...-bootcamp@solution/C5/contracts/derived_objects | move | .../sui-move-bootcamp@solution | PASS | 0.7s | 1 |
-| 56 | MystenLabs/sui-move-bootcamp@solution/C5/ts | typescript | .../sui-move-bootcamp@solution | **FAIL** | 8.2s | 1 |
-| 57 | ...sui-move-bootcamp@solution/E2/my-first-sui-dapp | typescript | .../sui-move-bootcamp@solution | PASS | 1.5s | 3 |
-| 58 | ...move-bootcamp@solution/E2/my-first-sui-dapp/src | typescript | .../sui-move-bootcamp@solution | PASS | 1.5s | 1 |
-| 59 | MystenLabs/sui-stack-hello-world@main/move | unknown | .../sui-stack-hello-world@main | PASS | 6.2s | 1 |
-| 60 | ...abs/sui-stack-hello-world@main/move/hello-world | move | .../sui-stack-hello-world@main | PASS | 0.7s | 1 |
-| 61 | MystenLabs/sui-stack-hello-world@main/ui | typescript | .../sui-stack-hello-world@main | PASS | 12.0s | 5 |
+| 30 | MystenLabs/messaging-sdk-example@main/frontend/src | typescript | .../messaging-sdk-example@main | PASS | 20.8s | 1 |
+| 31 | MystenLabs/onlyfins-example-app@main/frontend/move | move | ...s/onlyfins-example-app@main | PASS | 1.1s | 1 |
+| 32 | ...enLabs/sui-move-bootcamp@main/K5/seal-demo/move | move | ...Labs/sui-move-bootcamp@main | PASS | 4.9s | 3 |
+| 33 | MystenLabs/walrus-pocs@main/walrus-seal/app/src | typescript | MystenLabs/walrus-pocs@main | PASS | 28.9s | 4 |
+| 34 | MystenLabs/sui-move-bootcamp@main/K5/seal-demo/ts | typescript | ...Labs/sui-move-bootcamp@main | PASS | 3.6s | 1 |
+| 35 | ...essaging@main/move/packages/sui_stack_messaging | move | ...bs/sui-stack-messaging@main | PASS | 10.3s | 3 |
+| 36 | MystenLabs/sui-stack-messaging@main/chat-app/src | typescript | ...bs/sui-stack-messaging@main | PASS | 14.1s | 1 |
+| 37 | MystenLabs/ticketing-poc@main/move | move | MystenLabs/ticketing-poc@main | PASS | 5.3s | 3 |
+| 38 | MystenLabs/ticketing-poc@main/app/src/app | typescript | MystenLabs/ticketing-poc@main | PASS | 80.3s | 1 |
+| 39 | MystenLabs/ticketing-poc@main/app | typescript | MystenLabs/ticketing-poc@main | PASS | 42.7s | 1 |
+| 40 | MystenLabs/solitaire@main/move/solitaire | move | MystenLabs/solitaire@main | PASS | 0.7s | 1 |
+| 41 | MystenLabs/solitaire@main/app/src | typescript | MystenLabs/solitaire@main | PASS | 59.3s | 2 |
+| 42 | MystenLabs/walrus-sdk-relay-example-app@main/src | typescript | ...-sdk-relay-example-app@main | PASS | 16.9s | 1 |
+| 43 | MystenLabs/sui-move-bootcamp@solution/I1/silver | move | .../sui-move-bootcamp@solution | PASS | 4.6s | 1 |
+| 44 | ...Labs/sui-move-bootcamp@solution/I3/king_credits | move | .../sui-move-bootcamp@solution | PASS | 0.6s | 2 |
+| 45 | ...Labs/sui-move-bootcamp@solution/I2/fixed_supply | move | .../sui-move-bootcamp@solution | PASS | 0.7s | 1 |
+| 46 | MystenLabs/sui-stack-hello-world@main/move | unknown | .../sui-stack-hello-world@main | PASS | 4.7s | 1 |
+| 47 | ...abs/sui-stack-hello-world@main/move/hello-world | move | .../sui-stack-hello-world@main | PASS | 0.6s | 1 |
+| 48 | MystenLabs/sui-stack-hello-world@main/ui | typescript | .../sui-stack-hello-world@main | PASS | 11.8s | 5 |
+| 49 | MystenLabs/sui-move-bootcamp@solution/G1/scenario | move | .../sui-move-bootcamp@solution | PASS | 0.6s | 2 |
+| 50 | MystenLabs/sui-move-bootcamp@solution/G1 | move | .../sui-move-bootcamp@solution | PASS | 0.6s | 2 |
+| 51 | MystenLabs/plinko-poc@main/plinko | move | MystenLabs/plinko-poc@main | PASS | 0.6s | 2 |
+| 52 | MystenLabs/plinko-poc@main/app/src | typescript | MystenLabs/plinko-poc@main | PASS | 64.3s | 1 |
+| 53 | MystenLabs/plinko-poc@main/app | typescript | MystenLabs/plinko-poc@main | PASS | 31.2s | 1 |
+| 54 | ...-bootcamp@solution/F1/app/my-first-sui-dapp/src | typescript | .../sui-move-bootcamp@solution | PASS | 2.5s | 2 |
+| 55 | MystenLabs/sui-move-bootcamp@main/K1/contract | move | ...Labs/sui-move-bootcamp@main | PASS | 0.8s | 1 |
+| 56 | MystenLabs/sui-move-bootcamp@main/K1 | typescript | ...Labs/sui-move-bootcamp@main | PASS | 6.3s | 1 |
+| 57 | MystenLabs/sui-move-bootcamp@main/K1/backend | typescript | ...Labs/sui-move-bootcamp@main | PASS | 1.6s | 1 |
+| 58 | ...-bootcamp@solution/C5/contracts/derived_objects | move | .../sui-move-bootcamp@solution | PASS | 0.7s | 1 |
+| 59 | MystenLabs/sui-move-bootcamp@solution/C5/ts | typescript | .../sui-move-bootcamp@solution | PASS | 8.7s | 1 |
+| 60 | ...sui-move-bootcamp@solution/E2/my-first-sui-dapp | typescript | .../sui-move-bootcamp@solution | PASS | 1.4s | 3 |
+| 61 | ...move-bootcamp@solution/E2/my-first-sui-dapp/src | typescript | .../sui-move-bootcamp@solution | PASS | 1.4s | 1 |
 | 62 | MystenLabs/ts-sdks@main/packages/deepbook-v3 | typescript | MystenLabs/ts-sdks@main | PASS | 0.0s | 8 |
-| 63 | MystenLabs/deepbookv3@main/packages/deepbook | move | MystenLabs/deepbookv3@main | PASS | 2.3s | 8 |
-| 64 | ...enLabs/deepbookv3@main/packages/deepbook_margin | move | MystenLabs/deepbookv3@main | PASS | 17.8s | 7 |
-| 65 | ...abs/deepbookv3@main/packages/margin_liquidation | move | MystenLabs/deepbookv3@main | PASS | 17.0s | 1 |
+| 63 | MystenLabs/deepbookv3@main/packages/deepbook | move | MystenLabs/deepbookv3@main | PASS | 1.3s | 8 |
+| 64 | ...enLabs/deepbookv3@main/packages/deepbook_margin | move | MystenLabs/deepbookv3@main | PASS | 12.2s | 7 |
+| 65 | ...abs/deepbookv3@main/packages/margin_liquidation | move | MystenLabs/deepbookv3@main | PASS | 9.0s | 1 |
 | 66 | MystenLabs/ts-sdks@main/packages/enoki | typescript | MystenLabs/ts-sdks@main | PASS | 0.0s | 1 |
 | 67 | MystenLabs/ts-sdks@main/packages/sui | typescript | MystenLabs/ts-sdks@main | PASS | 0.0s | 2 |
 | 68 | MystenLabs/ts-sdks@main/packages/slush-wallet | typescript | MystenLabs/ts-sdks@main | PASS | 0.0s | 1 |
 | 69 | ...kages/dapp-kit-next/packages/dapp-kit-react/src | typescript | MystenLabs/ts-sdks@main | PASS | 0.0s | 6 |
 | 70 | ...n/packages/dapp-kit-next/packages/dapp-kit-core | typescript | MystenLabs/ts-sdks@main | PASS | 0.0s | 1 |
-| 71 | ...eepbookv3@predict-testnet-4-16/packages/predict | move | ...bookv3@predict-testnet-4-16 | PASS | 12.0s | 8 |
+| 71 | ...eepbookv3@predict-testnet-4-16/packages/predict | move | ...bookv3@predict-testnet-4-16 | PASS | 7.5s | 8 |
 
 ## Detailed Results
 
@@ -183,8 +183,8 @@ tests/derive.utils.ts(4,27): error TS2835: Relative import paths need explicit f
 
 ```
 No sui config found in `/home/runner/.sui/sui_config/client.yaml`, create one [Y/n]?
-Generated new keypair and alias for address with scheme "ed25519" [affectionate-axinite: 0xadbdc1b6e8656002cb9d650cfac8718bbe03ebd107eb8f87e8392b611c6f59ed]
-  secret recovery phrase : [napkin arctic company glue tone nasty learn stereo coin agent chimney plate]
+Generated new keypair and alias for address with scheme "ed25519" [suspicious-avanturine: 0xd29bd5e2274b3f5db801b9f1f3db8bdd8a4a3ec318ccede548ea739086415cb8]
+  secret recovery phrase : [potato curtain story fruit spike alter effort exit valve sauce answer build]
 Created "/home/runner/.sui/sui_config/client.yaml"
 Set active environment to testnet
 
@@ -201,7 +201,7 @@ Set active environment to testnet
 - **Files**: `sources/example.move`
 - **Referenced by**: [references/gaming](https://docs.sui.io/references/gaming) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/references/gaming.mdx)), [develop/objects/dynamic-fields](https://docs.sui.io/develop/objects/dynamic-fields) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/develop/objects/dynamic-fields.mdx))
 
-**`sui move build`** — PASS (0.5s)
+**`sui move build`** — PASS (0.4s)
 
 </details>
 
@@ -227,7 +227,7 @@ Set active environment to testnet
 - **Files**: `sources/example.move`
 - **Referenced by**: [sui-stack/on-chain-primitives/randomness-onchain](https://docs.sui.io/sui-stack/on-chain-primitives/randomness-onchain) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/on-chain-primitives/randomness-onchain.mdx))
 
-**`sui move build`** — PASS (0.6s)
+**`sui move build`** — PASS (0.4s)
 
 </details>
 
@@ -240,7 +240,7 @@ Set active environment to testnet
 - **Files**: `sources/clock.move`, `sources/object_basics.move`
 - **Referenced by**: [sui-stack/on-chain-primitives/access-time](https://docs.sui.io/sui-stack/on-chain-primitives/access-time) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/on-chain-primitives/access-time.mdx)), [develop/objects/object-ownership/party](https://docs.sui.io/develop/objects/object-ownership/party) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/develop/objects/object-ownership/party.mdx)), [develop/objects/object-ownership/address-owned](https://docs.sui.io/develop/objects/object-ownership/address-owned) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/develop/objects/object-ownership/address-owned.mdx))
 
-**`sui move build`** — PASS (0.5s)
+**`sui move build`** — PASS (0.4s)
 
 </details>
 
@@ -253,7 +253,7 @@ Set active environment to testnet
 - **Files**: `sources/example.move`
 - **Referenced by**: [references/contribute/mdx-components](https://docs.sui.io/references/contribute/mdx-components) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/references/contribute/mdx-components.mdx))
 
-**`sui move build`** — PASS (0.5s)
+**`sui move build`** — PASS (0.4s)
 
 </details>
 
@@ -266,7 +266,7 @@ Set active environment to testnet
 - **Files**: `sources/cliff.move`, `sources/hybrid.move`, `sources/backloaded.move`, `sources/milestone.move`, `sources/linear.move`, `tests/immediate_tests.move`
 - **Referenced by**: [onchain-finance/fungible-tokens/token-vesting-strategies](https://docs.sui.io/onchain-finance/fungible-tokens/token-vesting-strategies) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/fungible-tokens/token-vesting-strategies.mdx))
 
-**`sui move build`** — PASS (0.5s)
+**`sui move build`** — PASS (0.4s)
 
 </details>
 
@@ -279,7 +279,7 @@ Set active environment to testnet
 - **Files**: `sources/regcoin_new.move`, `sources/non_otw_currency.move`, `sources/my_coin_new.move`
 - **Referenced by**: [onchain-finance/fungible-tokens/regulated-tokens](https://docs.sui.io/onchain-finance/fungible-tokens/regulated-tokens) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/fungible-tokens/regulated-tokens.mdx)), [onchain-finance/fungible-tokens/currency](https://docs.sui.io/onchain-finance/fungible-tokens/currency) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/fungible-tokens/currency.mdx)), [onchain-finance/fungible-tokens/create-a-fungible-token](https://docs.sui.io/onchain-finance/fungible-tokens/create-a-fungible-token) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/fungible-tokens/create-a-fungible-token.mdx))
 
-**`sui move build`** — PASS (0.6s)
+**`sui move build`** — PASS (0.5s)
 
 </details>
 
@@ -292,11 +292,11 @@ Set active environment to testnet
 - **Files**: `sources/regulated_coin.move`
 - **Referenced by**: [onchain-finance/fungible-tokens/regulated-tokens](https://docs.sui.io/onchain-finance/fungible-tokens/regulated-tokens) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/fungible-tokens/regulated-tokens.mdx))
 
-**`sui move build`** — PASS (0.5s)
+**`sui move build`** — PASS (0.4s)
 
 </details>
 
-<details><summary>PASS — examples/regulated-coin/ts-client (typescript)</summary>
+<details><summary>FAIL — examples/regulated-coin/ts-client (typescript)</summary>
 
 - **Origin**: MystenLabs/sui (internal)
 - **Package root**: `examples/regulated-coin/ts-client`
@@ -304,7 +304,7 @@ Set active environment to testnet
 - **Files**: `src/main.ts`
 - **Referenced by**: [onchain-finance/fungible-tokens/regulated-tokens](https://docs.sui.io/onchain-finance/fungible-tokens/regulated-tokens) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/fungible-tokens/regulated-tokens.mdx))
 
-**`pnpm install`** — PASS (11.3s)
+**`pnpm install`** — PASS (11.2s)
 
 ```
  postinstall: Done
@@ -337,11 +337,19 @@ devDependencies:
 + typescript 5.8.3
 + unist-util-visit 5.1.0
 
-Done in 9.9s
+Done in 9.6s
 
 ```
 
-**`tsc --noEmit`** — PASS (1.7s)
+**`tsc --noEmit`** — FAIL (0.9s)
+
+```
+install type definitions for node? Try `npm i --save-dev @types/node`.
+src/main.ts(4,25): error TS2792: Cannot find module '@mysten/sui/client'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?
+src/main.ts(12,27): error TS2792: Cannot find module '@mysten/sui/transactions'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?
+src/main.ts(13,23): error TS2792: Cannot find module 'commander'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?
+src/main.ts(14,30): error TS2792: Cannot find module '@mysten/sui/keypairs/ed25519'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?
+```
 
 </details>
 
@@ -354,7 +362,7 @@ Done in 9.9s
 - **Files**: `sources/testnet_soulbound_nft.move`
 - **Referenced by**: [onchain-finance/examples-patterns/soulbound-tokens](https://docs.sui.io/onchain-finance/examples-patterns/soulbound-tokens) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/examples-patterns/soulbound-tokens.mdx))
 
-**`sui move build`** — PASS (0.5s)
+**`sui move build`** — PASS (0.4s)
 
 </details>
 
@@ -367,7 +375,7 @@ Done in 9.9s
 - **Files**: `sources/nft_rental.move`
 - **Referenced by**: [onchain-finance/examples-patterns/nft-rental](https://docs.sui.io/onchain-finance/examples-patterns/nft-rental) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/examples-patterns/nft-rental.mdx))
 
-**`sui move build`** — PASS (9.4s)
+**`sui move build`** — PASS (5.9s)
 
 </details>
 
@@ -380,7 +388,7 @@ Done in 9.9s
 - **Files**: `sources/loyalty.move`
 - **Referenced by**: [onchain-finance/examples-patterns/loyalty-tokens](https://docs.sui.io/onchain-finance/examples-patterns/loyalty-tokens) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/examples-patterns/loyalty-tokens.mdx))
 
-**`sui move build`** — PASS (0.6s)
+**`sui move build`** — PASS (0.5s)
 
 </details>
 
@@ -393,7 +401,7 @@ Done in 9.9s
 - **Files**: `sources/owned.move`, `sources/shared.move`, `sources/lock.move`
 - **Referenced by**: [develop/publish-upgrade-packages/versioning](https://docs.sui.io/develop/publish-upgrade-packages/versioning) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/develop/publish-upgrade-packages/versioning.mdx)), [develop/accessing-data/using-events](https://docs.sui.io/develop/accessing-data/using-events) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/develop/accessing-data/using-events.mdx))
 
-**`sui move build`** — PASS (0.6s)
+**`sui move build`** — PASS (0.5s)
 
 </details>
 
@@ -466,7 +474,7 @@ Done in 9.9s
 - **Files**: `sources/example.move`
 - **Referenced by**: [develop/objects/object-ownership/immutable](https://docs.sui.io/develop/objects/object-ownership/immutable) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/develop/objects/object-ownership/immutable.mdx)), [develop/objects/object-ownership/address-owned](https://docs.sui.io/develop/objects/object-ownership/address-owned) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/develop/objects/object-ownership/address-owned.mdx))
 
-**`sui move build`** — PASS (0.5s)
+**`sui move build`** — PASS (0.4s)
 
 </details>
 
@@ -478,7 +486,7 @@ Done in 9.9s
 - **Files**: `api/test/addresses.test.ts`, `api/test/multisig-api.test.ts`, `api/test/multisig.test.ts`, `api/test/proposal-business-logic.test.ts`
 - **Referenced by**: [sui-stack/sagat](https://docs.sui.io/sui-stack/sagat) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/sagat.mdx))
 
-**`bun install`** — PASS (2.7s)
+**`bun install`** — PASS (3.1s)
 
 ```
 bun install v1.3.14 (0d9b296a)
@@ -495,7 +503,7 @@ bun install v1.3.14 (0d9b296a)
 + prettier@3.8.1
 + vitest@4.0.18
 
-673 packages installed [2.72s]
+673 packages installed [3.05s]
 
 ```
 
@@ -515,11 +523,11 @@ Workspace build at /home/runner/work/sui-docs-example-validator/sui-docs-example
 - **Files**: `K2/src/hooks/useEphemeral.ts`, `K2/src/hooks/useOauthPopup.tsx`, `K2/src/hooks/useZkProof.ts`, `K2/src/hooks/useWallet.ts`, `K2/src/utils/zk.ts`
 - **Referenced by**: [sui-stack/zklogin-integration/zklogin-demo](https://docs.sui.io/sui-stack/zklogin-integration/zklogin-demo) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/zklogin-integration/zklogin-demo.mdx))
 
-**`pnpm install`** — FAIL (3.0s)
+**`pnpm install`** — FAIL (3.1s)
 
 ```
 ? Verifying lockfile against supply-chain policies (281 entries)...
-✓ Lockfile passes supply-chain policies (281 entries in 2.4s)
+✓ Lockfile passes supply-chain policies (281 entries in 2.5s)
 [ERR_PNPM_OUTDATED_LOCKFILE] Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/package.json
 
 Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
@@ -542,7 +550,7 @@ Note that in CI environments this setting is true by default. If you still need 
 **`pnpm install`** — FAIL (0.5s)
 
 ```
-✓ Lockfile passes supply-chain policies (verified 562ms ago)
+✓ Lockfile passes supply-chain policies (verified 548ms ago)
 [ERR_PNPM_OUTDATED_LOCKFILE] Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/package.json
 
 Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
@@ -562,11 +570,11 @@ Note that in CI environments this setting is true by default. If you still need 
 - **Files**: `frontend/src/constants.ts`
 - **Referenced by**: [sui-stack/walrus/sui-stack-walrus](https://docs.sui.io/sui-stack/walrus/sui-stack-walrus) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/walrus/sui-stack-walrus.mdx)), [sui-stack/seal/sui-stack-seal](https://docs.sui.io/sui-stack/seal/sui-stack-seal) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/seal/sui-stack-seal.mdx))
 
-**`npm install`** — PASS (24.9s)
+**`npm install`** — PASS (27.8s)
 
 ```
 
-added 411 packages, and audited 412 packages in 25s
+added 411 packages, and audited 412 packages in 28s
 
 66 packages are looking for funding
   run `npm fund` for details
@@ -583,7 +591,7 @@ Run `npm audit` for details.
 
 ```
 
-**`npm run build`** — PASS (7.1s)
+**`npm run build`** — PASS (6.9s)
 
 ```
 
@@ -598,7 +606,7 @@ computing gzip size...
 [2mdist/[22m[32mindex.html                 [39m[1m[2m  1.57 kB[22m[1m[22m[2m │ gzip:   0.80 kB[22m
 [2mdist/[22m[2massets/[22m[35mindex-CHsczsYp.css  [39m[1m[2m706.71 kB[22m[1m[22m[2m │ gzip:  84.18 kB[22m
 [2mdist/[22m[2massets/[22m[36mindex-JEqbeqXL.js   [39m[1m[33m797.37 kB[39m[22m[2m │ gzip: 265.47 kB[22m
-[32m✓ built in 3.73s[39m
+[32m✓ built in 3.64s[39m
 
 ```
 
@@ -612,7 +620,7 @@ computing gzip size...
 - **Files**: `07-Walrus-SDK-upload-relay/hands-on-source-code/src/examples/basic-upload-example.ts`, `07-Walrus-SDK-upload-relay/hands-on-source-code/src/examples/basic-download-example.ts`
 - **Referenced by**: [sui-stack/walrus/sui-stack-walrus](https://docs.sui.io/sui-stack/walrus/sui-stack-walrus) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/walrus/sui-stack-walrus.mdx))
 
-**`npm install`** — PASS (2.4s)
+**`npm install`** — PASS (2.3s)
 
 ```
 
@@ -650,20 +658,20 @@ Run `npm audit` for details.
 - **Files**: `backend/src/config.ts`, `backend/src/createPosts.ts`, `backend/src/encryptImages.ts`
 - **Referenced by**: [sui-stack/walrus/sui-stack-walrus](https://docs.sui.io/sui-stack/walrus/sui-stack-walrus) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/walrus/sui-stack-walrus.mdx)), [sui-stack/seal/sui-stack-seal](https://docs.sui.io/sui-stack/seal/sui-stack-seal) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/seal/sui-stack-seal.mdx))
 
-**`pnpm install`** — PASS (2.6s)
+**`pnpm install`** — PASS (2.5s)
 
 ```
-✓ Lockfile passes supply-chain policies (verified 609ms ago)
+✓ Lockfile passes supply-chain policies (verified 600ms ago)
 Lockfile is up to date, resolution step is skipped
 Already up to date
 
 .../esbuild@0.27.1/node_modules/esbuild postinstall$ node install.js
 .../esbuild@0.27.1/node_modules/esbuild postinstall: Done
-Done in 779ms using pnpm v11.17.0
+Done in 765ms using pnpm v11.17.0
 
 ```
 
-**`tsc --noEmit`** — PASS (1.9s)
+**`tsc --noEmit`** — PASS (1.8s)
 
 </details>
 
@@ -699,7 +707,7 @@ Done in 1.1s using pnpm v10.11.1
 
 ```
 
-**`tsc --noEmit`** — PASS (1.8s)
+**`tsc --noEmit`** — PASS (1.7s)
 
 </details>
 
@@ -711,7 +719,7 @@ Done in 1.1s using pnpm v10.11.1
 - **Files**: `11-Batch-storage/hands-on-source-code/03-creation-process/ts/03-create-simple.ts`, `11-Batch-storage/hands-on-source-code/04-retrieval-process/ts/01-get-files-identifiers.ts`
 - **Referenced by**: [sui-stack/walrus/sui-stack-walrus](https://docs.sui.io/sui-stack/walrus/sui-stack-walrus) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/walrus/sui-stack-walrus.mdx))
 
-**`npm install`** — PASS (2.1s)
+**`npm install`** — PASS (2.0s)
 
 ```
 
@@ -729,7 +737,7 @@ Run `npm audit` for details.
 
 ```
 
-**`npm run build`** — PASS (2.0s)
+**`npm run build`** — PASS (1.9s)
 
 ```
 
@@ -764,7 +772,7 @@ computing gzip size...
 [2mdist/[22m[32mindex.html                 [39m[1m[2m  1.57 kB[22m[1m[22m[2m │ gzip:   0.80 kB[22m
 [2mdist/[22m[2massets/[22m[35mindex-CHsczsYp.css  [39m[1m[2m706.71 kB[22m[1m[22m[2m │ gzip:  84.18 kB[22m
 [2mdist/[22m[2massets/[22m[36mindex-JEqbeqXL.js   [39m[1m[33m797.37 kB[39m[22m[2m │ gzip: 265.47 kB[22m
-[32m✓ built in 3.77s[39m
+[32m✓ built in 3.69s[39m
 
 ```
 
@@ -778,10 +786,10 @@ computing gzip size...
 - **Files**: `packages/walrus/examples/basics/attributes.ts`
 - **Referenced by**: [sui-stack/walrus/sui-stack-walrus](https://docs.sui.io/sui-stack/walrus/sui-stack-walrus) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/walrus/sui-stack-walrus.mdx))
 
-**`pnpm install`** — PASS (14.3s)
+**`pnpm install`** — PASS (14.9s)
 
 ```
-ple-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/walrus/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'
+e-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/walrus/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'
 
 devDependencies:
 + @arethetypeswrong/cli 0.18.3
@@ -801,7 +809,7 @@ devDependencies:
 + turbo 2.9.18
 + typescript 6.0.3
 
-Done in 13s using pnpm v10.33.0
+Done in 13.6s using pnpm v10.33.0
 
 ```
 
@@ -832,7 +840,7 @@ Workspace build at /home/runner/work/sui-docs-example-validator/sui-docs-example
 - **Files**: `frontend/src/hooks/useUserSubname.ts`
 - **Referenced by**: [sui-stack/suins/sui-stack-suins](https://docs.sui.io/sui-stack/suins/sui-stack-suins) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/suins/sui-stack-suins.mdx))
 
-**`npm install`** — PASS (13.9s)
+**`npm install`** — PASS (13.7s)
 
 ```
 
@@ -856,7 +864,7 @@ Run `npm audit` for details.
 
 ```
 
-**`npm run build`** — PASS (7.2s)
+**`npm run build`** — PASS (7.1s)
 
 ```
 
@@ -871,7 +879,7 @@ computing gzip size...
 [2mdist/[22m[32mindex.html                 [39m[1m[2m  1.40 kB[22m[1m[22m[2m │ gzip:   0.73 kB[22m
 [2mdist/[22m[2massets/[22m[35mindex-CHsczsYp.css  [39m[1m[2m706.71 kB[22m[1m[22m[2m │ gzip:  84.18 kB[22m
 [2mdist/[22m[2massets/[22m[36mindex-CGRm6a5C.js   [39m[1m[33m826.04 kB[39m[22m[2m │ gzip: 269.60 kB[22m
-[32m✓ built in 3.73s[39m
+[32m✓ built in 3.78s[39m
 
 ```
 
@@ -886,7 +894,7 @@ computing gzip size...
 - **Files**: `frontend/move/sources/posts.move`
 - **Referenced by**: [sui-stack/seal/sui-stack-seal](https://docs.sui.io/sui-stack/seal/sui-stack-seal) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/seal/sui-stack-seal.mdx))
 
-**`sui move build`** — PASS (1.8s)
+**`sui move build`** — PASS (1.1s)
 
 </details>
 
@@ -898,7 +906,7 @@ computing gzip size...
 - **Files**: `K5/seal-demo/move/sources/private_seal.move`, `K5/seal-demo/move/sources/timelock_seal.move`, `K5/seal-demo/move/sources/allowlist_seal.move`
 - **Referenced by**: [sui-stack/seal/sui-stack-seal](https://docs.sui.io/sui-stack/seal/sui-stack-seal) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/seal/sui-stack-seal.mdx))
 
-**`sui move build`** — PASS (6.4s)
+**`sui move build`** — PASS (4.9s)
 
 </details>
 
@@ -910,7 +918,7 @@ computing gzip size...
 - **Files**: `walrus-seal/app/src/hooks/useSealEncrypt.ts`, `walrus-seal/app/src/utils/sealUtils.ts`, `walrus-seal/app/src/hooks/useSealSession.ts`, `walrus-seal/app/src/hooks/useSealDecrypt.ts`
 - **Referenced by**: [sui-stack/seal/sui-stack-seal](https://docs.sui.io/sui-stack/seal/sui-stack-seal) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/seal/sui-stack-seal.mdx))
 
-**`pnpm install`** — PASS (5.7s)
+**`pnpm install`** — PASS (5.5s)
 
 ```
 ✓ Lockfile passes supply-chain policies (verified 1s ago)
@@ -925,7 +933,7 @@ Done in 1.1s using pnpm v11.17.0
 
 ```
 
-**`pnpm run build`** — PASS (23.9s)
+**`pnpm run build`** — PASS (23.4s)
 
 ```
 nerating static pages (6/8) 
@@ -981,7 +989,7 @@ Run `npm audit` for details.
 
 ```
 
-**`tsc --noEmit`** — PASS (1.9s)
+**`tsc --noEmit`** — PASS (1.8s)
 
 </details>
 
@@ -994,7 +1002,7 @@ Run `npm audit` for details.
 - **Files**: `move/packages/sui_stack_messaging/sources/seal_policies.move`, `move/packages/sui_stack_messaging/sources/messaging.move`, `move/packages/sui_stack_messaging/sources/encryption_history.move`
 - **Referenced by**: [sui-stack/messaging/chat-app](https://docs.sui.io/sui-stack/messaging/chat-app) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/messaging/chat-app.mdx))
 
-**`sui move build`** — PASS (14.9s)
+**`sui move build`** — PASS (10.3s)
 
 </details>
 
@@ -1013,17 +1021,17 @@ Run `npm audit` for details.
 Lockfile is up to date, resolution step is skipped
 Already up to date
 
-.../esbuild@0.25.12/node_modules/esbuild postinstall$ node install.js
 .../node_modules/protobufjs postinstall$ node scripts/postinstall
+.../esbuild@0.25.12/node_modules/esbuild postinstall$ node install.js
 .../node_modules/msgpackr-extract install$ node-gyp-build-optional-packages
 .../node_modules/protobufjs postinstall: Done
 .../esbuild@0.25.12/node_modules/esbuild postinstall: Done
 .../node_modules/msgpackr-extract install: Done
-Done in 1.5s using pnpm v11.17.0
+Done in 1.4s using pnpm v11.17.0
 
 ```
 
-**`pnpm run build`** — PASS (7.5s)
+**`pnpm run build`** — PASS (7.4s)
 
 ```
 [36mvite v6.4.1 [32mbuilding for production...[36m[39m
@@ -1034,7 +1042,7 @@ computing gzip size...
 [2mdist/[22m[32mindex.html                 [39m[1m[2m  0.40 kB[22m[1m[22m[2m │ gzip:   0.27 kB[22m
 [2mdist/[22m[2massets/[22m[35mindex-CmLFi6yS.css  [39m[1m[2m 25.04 kB[22m[1m[22m[2m │ gzip:   5.17 kB[22m
 [2mdist/[22m[2massets/[22m[36mindex-C7z-chHA.js   [39m[1m[33m932.75 kB[39m[22m[2m │ gzip: 280.50 kB[22m
-[32m✓ built in 3.38s[39m
+[32m✓ built in 3.28s[39m
 
 ```
 
@@ -1048,7 +1056,7 @@ computing gzip size...
 - **Files**: `move/sources/ticket.move`, `move/sources/ticket_stage.move`, `move/sources/key_registry.move`
 - **Referenced by**: [sui-stack/enoki/ticketing-poc](https://docs.sui.io/sui-stack/enoki/ticketing-poc) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/enoki/ticketing-poc.mdx))
 
-**`sui move build`** — PASS (7.8s)
+**`sui move build`** — PASS (5.3s)
 
 </details>
 
@@ -1060,7 +1068,7 @@ computing gzip size...
 - **Files**: `app/src/app/hooks/useMintTicket.tsx`
 - **Referenced by**: [sui-stack/enoki/ticketing-poc](https://docs.sui.io/sui-stack/enoki/ticketing-poc) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/enoki/ticketing-poc.mdx))
 
-**`pnpm install`** — PASS (11.2s)
+**`pnpm install`** — PASS (11.1s)
 
 ```
 ✓ Lockfile passes supply-chain policies (verified 2s ago)
@@ -1068,16 +1076,16 @@ Lockfile is up to date, resolution step is skipped
 Already up to date
 
 .../node_modules/protobufjs postinstall$ node scripts/postinstall
-.../sharp@0.33.5/node_modules/sharp install$ node install/check
 .../node_modules/unrs-resolver postinstall$ napi-postinstall unrs-resolver 1.11.1 check
+.../sharp@0.33.5/node_modules/sharp install$ node install/check
 .../node_modules/protobufjs postinstall: Done
 .../node_modules/unrs-resolver postinstall: Done
 .../sharp@0.33.5/node_modules/sharp install: Done
-Done in 2.5s using pnpm v11.17.0
+Done in 2.4s using pnpm v11.17.0
 
 ```
 
-**`pnpm run build`** — PASS (72.7s)
+**`pnpm run build`** — PASS (69.2s)
 
 ```
 06 kB
@@ -1111,7 +1119,7 @@ Done in 2.5s using pnpm v11.17.0
 - **Files**: `app/src/app/api/permit/mint-ticket/route.ts`
 - **Referenced by**: [sui-stack/enoki/ticketing-poc](https://docs.sui.io/sui-stack/enoki/ticketing-poc) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/enoki/ticketing-poc.mdx))
 
-**`pnpm run build`** — PASS (45.7s)
+**`pnpm run build`** — PASS (42.7s)
 
 ```
 06 kB
@@ -1145,7 +1153,7 @@ Done in 2.5s using pnpm v11.17.0
 - **Files**: `move/solitaire/sources/solitaire.move`
 - **Referenced by**: [sui-stack/enoki/solitaire](https://docs.sui.io/sui-stack/enoki/solitaire) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/enoki/solitaire.mdx))
 
-**`sui move build`** — PASS (0.8s)
+**`sui move build`** — PASS (0.7s)
 
 </details>
 
@@ -1157,7 +1165,7 @@ Done in 2.5s using pnpm v11.17.0
 - **Files**: `app/src/components/gameBoard/GameBoard.tsx`, `app/src/hooks/useSolitaireActions.ts`
 - **Referenced by**: [sui-stack/enoki/solitaire](https://docs.sui.io/sui-stack/enoki/solitaire) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/sui-stack/enoki/solitaire.mdx))
 
-**`pnpm install`** — PASS (7.7s)
+**`pnpm install`** — PASS (7.5s)
 
 ```
 zod 4.1.7
@@ -1177,11 +1185,11 @@ devDependencies:
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
-Done in 6.3s using pnpm v10.10.0
+Done in 6.2s using pnpm v10.10.0
 
 ```
 
-**`pnpm run build`** — PASS (55.0s)
+**`pnpm run build`** — PASS (51.8s)
 
 ```
 
@@ -1217,24 +1225,24 @@ Route (app)                                 Size  First Load JS
 - **Files**: `src/lib/walrus.ts`
 - **Referenced by**: [references/contribute/style-guide](https://docs.sui.io/references/contribute/style-guide) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/references/contribute/style-guide.mdx))
 
-**`pnpm install`** — PASS (8.2s)
+**`pnpm install`** — PASS (7.8s)
 
 ```
 ✓ Lockfile passes supply-chain policies (verified 1s ago)
 Lockfile is up to date, resolution step is skipped
 Already up to date
 
-.../node_modules/@swc/core postinstall$ node postinstall.js
-.../esbuild@0.25.5/node_modules/esbuild postinstall$ node install.js
 .../node_modules/@tailwindcss/oxide postinstall$ node ./scripts/install.js
+.../esbuild@0.25.5/node_modules/esbuild postinstall$ node install.js
+.../node_modules/@swc/core postinstall$ node postinstall.js
 .../node_modules/@swc/core postinstall: Done
 .../esbuild@0.25.5/node_modules/esbuild postinstall: Done
 .../node_modules/@tailwindcss/oxide postinstall: Done
-Done in 2.2s using pnpm v11.17.0
+Done in 2.1s using pnpm v11.17.0
 
 ```
 
-**`pnpm run build`** — PASS (9.5s)
+**`pnpm run build`** — PASS (9.1s)
 
 ```
 [36mvite v6.3.5 [32mbuilding for production...[36m[39m
@@ -1246,7 +1254,7 @@ computing gzip size...
 [2mdist/[22m[2massets/[22m[32mwalrus_wasm_bg-KCYZ1fvy.wasm  [39m[1m[2m  558.13 kB[22m[1m[22m[2m │ gzip: 304.78 kB[22m
 [2mdist/[22m[2massets/[22m[35mindex-CGERj4EO.css            [39m[1m[2m  725.73 kB[22m[1m[22m[2m │ gzip:  88.92 kB[22m
 [2mdist/[22m[2massets/[22m[36mindex-BtoI2cod.js             [39m[1m[33m1,173.23 kB[39m[22m[2m │ gzip: 289.16 kB[22m
-[32m✓ built in 5.19s[39m
+[32m✓ built in 4.96s[39m
 
 ```
 
@@ -1260,7 +1268,7 @@ computing gzip size...
 - **Files**: `I1/silver/sources/silver.move`
 - **Referenced by**: [onchain-finance/fungible-tokens/create-a-fungible-token-coin](https://docs.sui.io/onchain-finance/fungible-tokens/create-a-fungible-token-coin) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/fungible-tokens/create-a-fungible-token-coin.mdx))
 
-**`sui move build`** — PASS (7.2s)
+**`sui move build`** — PASS (4.6s)
 
 </details>
 
@@ -1272,7 +1280,7 @@ computing gzip size...
 - **Files**: `I3/king_credits/sources/king_credits.move`, `I3/king_credits/sources/crown_council_rule.move`
 - **Referenced by**: [onchain-finance/examples-patterns/in-game-currency](https://docs.sui.io/onchain-finance/examples-patterns/in-game-currency) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/examples-patterns/in-game-currency.mdx))
 
-**`sui move build`** — PASS (0.7s)
+**`sui move build`** — PASS (0.6s)
 
 </details>
 
@@ -1284,7 +1292,73 @@ computing gzip size...
 - **Files**: `I2/fixed_supply/sources/silver.move`
 - **Referenced by**: [onchain-finance/examples-patterns/fixed-supply](https://docs.sui.io/onchain-finance/examples-patterns/fixed-supply) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/examples-patterns/fixed-supply.mdx))
 
-**`sui move build`** — PASS (0.8s)
+**`sui move build`** — PASS (0.7s)
+
+</details>
+
+<details><summary>PASS — MystenLabs/sui-stack-hello-world@main/move (unknown)</summary>
+
+- **Origin**: MystenLabs/sui-stack-hello-world@main
+- **Package root**: `move`
+- **Move edition**: 2024.beta
+- **Dependencies**: `Sui: framework/testnet`
+- **Files**: `move/hello-world/Move.toml`
+- **Referenced by**: [getting-started/onboarding/hello-world](https://docs.sui.io/getting-started/onboarding/hello-world) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/onboarding/hello-world.mdx))
+
+**`sui move build`** — PASS (4.7s)
+
+</details>
+
+<details><summary>PASS — MystenLabs/sui-stack-hello-world@main/move/hello-world (move)</summary>
+
+- **Origin**: MystenLabs/sui-stack-hello-world@main
+- **Package root**: `move/hello-world`
+- **Move edition**: 2024.beta
+- **Dependencies**: `Sui: framework/testnet`
+- **Files**: `move/hello-world/sources/greeting.move`
+- **Referenced by**: [getting-started/onboarding/hello-world](https://docs.sui.io/getting-started/onboarding/hello-world) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/onboarding/hello-world.mdx))
+
+**`sui move build`** — PASS (0.6s)
+
+</details>
+
+<details><summary>PASS — MystenLabs/sui-stack-hello-world@main/ui (typescript)</summary>
+
+- **Origin**: MystenLabs/sui-stack-hello-world@main
+- **Package root**: `ui`
+- **Dependencies**: `@mysten/dapp-kit-core: ^1.0.4`, `@mysten/dapp-kit-react: ^1.0.2`, `@mysten/sui: 2.4.0`, `typescript: ^5.8.3`
+- **Files**: `ui/src/App.tsx`, `ui/src/CreateGreeting.tsx`, `ui/src/Greeting.tsx`, `ui/src/constants.ts`, `ui/src/networkConfig.ts`
+- **Referenced by**: [getting-started/onboarding/app-frontends](https://docs.sui.io/getting-started/onboarding/app-frontends) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/onboarding/app-frontends.mdx))
+
+**`pnpm install`** — PASS (5.5s)
+
+```
+✓ Lockfile passes supply-chain policies (verified 1s ago)
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+.../esbuild@0.25.9/node_modules/esbuild postinstall$ node install.js
+.../node_modules/@swc/core postinstall$ node postinstall.js
+.../node_modules/@swc/core postinstall: Done
+.../esbuild@0.25.9/node_modules/esbuild postinstall: Done
+Done in 1.6s using pnpm v11.17.0
+
+```
+
+**`pnpm run build`** — PASS (6.3s)
+
+```
+[36mvite v7.1.4 [32mbuilding for production...[36m[39m
+transforming...
+[32m✓[39m 812 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                 [39m[1m[2m  1.23 kB[22m[1m[22m[2m │ gzip:   0.64 kB[22m
+[2mdist/[22m[2massets/[22m[35mindex-Cs5nhfe8.css  [39m[1m[2m689.24 kB[22m[1m[22m[2m │ gzip:  80.92 kB[22m
+[2mdist/[22m[2massets/[22m[36mindex-Df_K52sv.js   [39m[1m[33m666.55 kB[39m[22m[2m │ gzip: 205.75 kB[22m
+[32m✓ built in 3.11s[39m
+
+```
 
 </details>
 
@@ -1296,7 +1370,7 @@ computing gzip size...
 - **Files**: `G1/scenario/sources/acl.move`, `G1/scenario/sources/hero.move`
 - **Referenced by**: [getting-started/examples/scenario-testing](https://docs.sui.io/getting-started/examples/scenario-testing) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/scenario-testing.mdx))
 
-**`sui move build`** — PASS (0.7s)
+**`sui move build`** — PASS (0.6s)
 
 </details>
 
@@ -1308,7 +1382,7 @@ computing gzip size...
 - **Files**: `G1/scenario/tests/hero_tests.move`, `G1/scenario/tests/acl_tests.move`
 - **Referenced by**: [getting-started/examples/scenario-testing](https://docs.sui.io/getting-started/examples/scenario-testing) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/scenario-testing.mdx))
 
-**`sui move build`** — PASS (0.7s)
+**`sui move build`** — PASS (0.6s)
 
 </details>
 
@@ -1320,7 +1394,7 @@ computing gzip size...
 - **Files**: `plinko/sources/plinko.move`, `plinko/sources/house_data.move`
 - **Referenced by**: [getting-started/examples/plinko](https://docs.sui.io/getting-started/examples/plinko) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/plinko.mdx))
 
-**`sui move build`** — PASS (0.8s)
+**`sui move build`** — PASS (0.6s)
 
 </details>
 
@@ -1332,7 +1406,7 @@ computing gzip size...
 - **Files**: `app/src/hooks/moveTransactionCalls.ts/useCreateGame.ts`
 - **Referenced by**: [getting-started/examples/plinko](https://docs.sui.io/getting-started/examples/plinko) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/plinko.mdx))
 
-**`pnpm install`** — PASS (10.6s)
+**`pnpm install`** — PASS (10.3s)
 
 ```
 ✓ Lockfile passes supply-chain policies (verified 4s ago)
@@ -1343,19 +1417,19 @@ Already up to date
 .../node_modules/utf-8-validate install$ node-gyp-build
 .../node_modules/bufferutil install$ node-gyp-build
 .../node_modules/protobufjs postinstall: Done
-.../node_modules/bufferutil install: Done
 .../node_modules/utf-8-validate install: Done
-Done in 2.8s using pnpm v11.17.0
+.../node_modules/bufferutil install: Done
+Done in 2.4s using pnpm v11.17.0
 
 ```
 
-**`pnpm run build`** — PASS (54.9s)
+**`pnpm run build`** — PASS (54.0s)
 
 ```
 irst Load JS shared by all              77.7 kB
   ├ chunks/849-c92b0b30eb228fed.js         25.2 kB
   ├ chunks/e9b4cd7a-ce9ab42d18b3907b.js    50.6 kB
-  ├ chunks/main-app-61ea3e5f5d082a85.js    215 B
+  ├ chunks/main-app-d260d02d69b2e256.js    212 B
   └ chunks/webpack-58feb7106e621104.js     1.75 kB
 
 Route (pages)                              Size     First Load JS
@@ -1382,7 +1456,7 @@ Route (pages)                              Size     First Load JS
 - **Files**: `app/src/app/api/services/PlinkoGameService.ts`
 - **Referenced by**: [getting-started/examples/plinko](https://docs.sui.io/getting-started/examples/plinko) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/plinko.mdx))
 
-**`pnpm run build`** — PASS (19.6s)
+**`pnpm run build`** — PASS (31.2s)
 
 ```
 irst Load JS shared by all              77.7 kB
@@ -1414,11 +1488,11 @@ Route (pages)                              Size     First Load JS
 - **Files**: `F1/app/my-first-sui-dapp/src/components/ui/CreateHeroForm.tsx`, `F1/app/my-first-sui-dapp/src/components/ui/HeroesList.tsx`
 - **Referenced by**: [getting-started/examples/nft-app](https://docs.sui.io/getting-started/examples/nft-app) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/nft-app.mdx))
 
-**`npm install`** — PASS (1.0s)
+**`npm install`** — PASS (0.9s)
 
 ```
 
-added 24 packages, and audited 25 packages in 887ms
+added 24 packages, and audited 25 packages in 849ms
 
 6 packages are looking for funding
   run `npm fund` for details
@@ -1432,7 +1506,7 @@ Run `npm audit` for details.
 
 ```
 
-**`tsc --noEmit`** — PASS (1.6s)
+**`tsc --noEmit`** — PASS (1.5s)
 
 </details>
 
@@ -1444,7 +1518,7 @@ Run `npm audit` for details.
 - **Files**: `K1/contract/sources/indexer_sample.move`
 - **Referenced by**: [getting-started/examples/event-indexer](https://docs.sui.io/getting-started/examples/event-indexer) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/event-indexer.mdx))
 
-**`sui move build`** — PASS (0.7s)
+**`sui move build`** — PASS (0.8s)
 
 </details>
 
@@ -1456,11 +1530,11 @@ Run `npm audit` for details.
 - **Files**: `K1/backend/indexer.ts`
 - **Referenced by**: [getting-started/examples/event-indexer](https://docs.sui.io/getting-started/examples/event-indexer) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/event-indexer.mdx))
 
-**`npm install`** — PASS (4.9s)
+**`npm install`** — PASS (4.6s)
 
 ```
 
-added 354 packages, and audited 355 packages in 5s
+added 354 packages, and audited 355 packages in 4s
 
 52 packages are looking for funding
   run `npm fund` for details
@@ -1474,7 +1548,7 @@ Run `npm audit` for details.
 
 ```
 
-**`tsc --noEmit`** — PASS (1.8s)
+**`tsc --noEmit`** — PASS (1.7s)
 
 </details>
 
@@ -1486,7 +1560,7 @@ Run `npm audit` for details.
 - **Files**: `K1/backend/utils/parseEvent.ts`
 - **Referenced by**: [getting-started/examples/event-indexer](https://docs.sui.io/getting-started/examples/event-indexer) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/event-indexer.mdx))
 
-**`tsc --noEmit`** — PASS (1.7s)
+**`tsc --noEmit`** — PASS (1.6s)
 
 </details>
 
@@ -1502,7 +1576,7 @@ Run `npm audit` for details.
 
 </details>
 
-<details><summary>FAIL — MystenLabs/sui-move-bootcamp@solution/C5/ts (typescript)</summary>
+<details><summary>PASS — MystenLabs/sui-move-bootcamp@solution/C5/ts (typescript)</summary>
 
 - **Origin**: MystenLabs/sui-move-bootcamp@solution
 - **Package root**: `C5/ts`
@@ -1510,11 +1584,11 @@ Run `npm audit` for details.
 - **Files**: `C5/ts/src/helpers/deriveObjectID.ts`
 - **Referenced by**: [getting-started/examples/derived-objects](https://docs.sui.io/getting-started/examples/derived-objects) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/derived-objects.mdx))
 
-**`npm install`** — PASS (6.4s)
+**`npm install`** — PASS (7.0s)
 
 ```
 
-added 69 packages, and audited 70 packages in 6s
+added 69 packages, and audited 70 packages in 7s
 
 22 packages are looking for funding
   run `npm fund` for details
@@ -1523,15 +1597,7 @@ found 0 vulnerabilities
 
 ```
 
-**`tsc --noEmit`** — FAIL (1.8s)
-
-```
-r TS2307: Cannot find module './derive.utils' or its corresponding type declarations.
-tests/derive.test.ts(8,27): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../src/suiClient.js'?
-tests/derive.test.ts(124,61): error TS7006: Parameter 'obj' implicitly has an 'any' type.
-tests/derive.utils.ts(3,27): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../src/helpers/getSigner.js'?
-tests/derive.utils.ts(4,27): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../src/suiClient.js'?
-```
+**`tsc --noEmit`** — PASS (1.7s)
 
 </details>
 
@@ -1542,7 +1608,7 @@ tests/derive.utils.ts(4,27): error TS2835: Relative import paths need explicit f
 - **Files**: `E2/my-first-sui-dapp/src/dapp-kit.ts`, `E2/my-first-sui-dapp/src/OwnedObjects.tsx`, `E2/my-first-sui-dapp/src/main.tsx`
 - **Referenced by**: [getting-started/examples/dapp-kit-frontend](https://docs.sui.io/getting-started/examples/dapp-kit-frontend) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/dapp-kit-frontend.mdx))
 
-**`tsc --noEmit`** — PASS (1.5s)
+**`tsc --noEmit`** — PASS (1.4s)
 
 </details>
 
@@ -1553,73 +1619,7 @@ tests/derive.utils.ts(4,27): error TS2835: Relative import paths need explicit f
 - **Files**: `E2/my-first-sui-dapp/src/components/ui/MintNFTForm.tsx`
 - **Referenced by**: [getting-started/examples/dapp-kit-frontend](https://docs.sui.io/getting-started/examples/dapp-kit-frontend) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/examples/dapp-kit-frontend.mdx))
 
-**`tsc --noEmit`** — PASS (1.5s)
-
-</details>
-
-<details><summary>PASS — MystenLabs/sui-stack-hello-world@main/move (unknown)</summary>
-
-- **Origin**: MystenLabs/sui-stack-hello-world@main
-- **Package root**: `move`
-- **Move edition**: 2024.beta
-- **Dependencies**: `Sui: framework/testnet`
-- **Files**: `move/hello-world/Move.toml`
-- **Referenced by**: [getting-started/onboarding/hello-world](https://docs.sui.io/getting-started/onboarding/hello-world) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/onboarding/hello-world.mdx))
-
-**`sui move build`** — PASS (6.2s)
-
-</details>
-
-<details><summary>PASS — MystenLabs/sui-stack-hello-world@main/move/hello-world (move)</summary>
-
-- **Origin**: MystenLabs/sui-stack-hello-world@main
-- **Package root**: `move/hello-world`
-- **Move edition**: 2024.beta
-- **Dependencies**: `Sui: framework/testnet`
-- **Files**: `move/hello-world/sources/greeting.move`
-- **Referenced by**: [getting-started/onboarding/hello-world](https://docs.sui.io/getting-started/onboarding/hello-world) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/onboarding/hello-world.mdx))
-
-**`sui move build`** — PASS (0.7s)
-
-</details>
-
-<details><summary>PASS — MystenLabs/sui-stack-hello-world@main/ui (typescript)</summary>
-
-- **Origin**: MystenLabs/sui-stack-hello-world@main
-- **Package root**: `ui`
-- **Dependencies**: `@mysten/dapp-kit-core: ^1.0.4`, `@mysten/dapp-kit-react: ^1.0.2`, `@mysten/sui: 2.4.0`, `typescript: ^5.8.3`
-- **Files**: `ui/src/App.tsx`, `ui/src/CreateGreeting.tsx`, `ui/src/Greeting.tsx`, `ui/src/constants.ts`, `ui/src/networkConfig.ts`
-- **Referenced by**: [getting-started/onboarding/app-frontends](https://docs.sui.io/getting-started/onboarding/app-frontends) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/getting-started/onboarding/app-frontends.mdx))
-
-**`pnpm install`** — PASS (5.6s)
-
-```
-✓ Lockfile passes supply-chain policies (verified 1s ago)
-Lockfile is up to date, resolution step is skipped
-Already up to date
-
-.../node_modules/@swc/core postinstall$ node postinstall.js
-.../esbuild@0.25.9/node_modules/esbuild postinstall$ node install.js
-.../node_modules/@swc/core postinstall: Done
-.../esbuild@0.25.9/node_modules/esbuild postinstall: Done
-Done in 1.7s using pnpm v11.17.0
-
-```
-
-**`pnpm run build`** — PASS (6.5s)
-
-```
-[36mvite v7.1.4 [32mbuilding for production...[36m[39m
-transforming...
-[32m✓[39m 812 modules transformed.
-rendering chunks...
-computing gzip size...
-[2mdist/[22m[32mindex.html                 [39m[1m[2m  1.23 kB[22m[1m[22m[2m │ gzip:   0.64 kB[22m
-[2mdist/[22m[2massets/[22m[35mindex-Cs5nhfe8.css  [39m[1m[2m689.24 kB[22m[1m[22m[2m │ gzip:  80.92 kB[22m
-[2mdist/[22m[2massets/[22m[36mindex-Df_K52sv.js   [39m[1m[33m666.55 kB[39m[22m[2m │ gzip: 205.75 kB[22m
-[32m✓ built in 3.25s[39m
-
-```
+**`tsc --noEmit`** — PASS (1.4s)
 
 </details>
 
@@ -1648,7 +1648,7 @@ Workspace build at /home/runner/work/sui-docs-example-validator/sui-docs-example
 - **Files**: `packages/deepbook/sources/state/trade_params.move`, `packages/deepbook/sources/pool.move`, `packages/deepbook/sources/balance_manager.move`, `packages/deepbook/sources/helper/constants.move`, `packages/deepbook/sources/book/order_info.move`, `packages/deepbook/sources/vault/deep_price.move`, `packages/deepbook/sources/book/fill.move`, `packages/deepbook/sources/book/order.move`
 - **Referenced by**: [onchain-finance/deepbook/deepbookv3/fees-and-funding](https://docs.sui.io/onchain-finance/deepbook/deepbookv3/fees-and-funding) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbookv3/fees-and-funding.mdx)), [onchain-finance/deepbook/deepbookv3/contract-information/swaps](https://docs.sui.io/onchain-finance/deepbook/deepbookv3/contract-information/swaps) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbookv3/contract-information/swaps.mdx)), [onchain-finance/deepbook/deepbookv3/contract-information/staking-governance](https://docs.sui.io/onchain-finance/deepbook/deepbookv3/contract-information/staking-governance) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbookv3/contract-information/staking-governance.mdx)), [onchain-finance/deepbook/deepbookv3/contract-information/referral](https://docs.sui.io/onchain-finance/deepbook/deepbookv3/contract-information/referral) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbookv3/contract-information/referral.mdx)), [onchain-finance/deepbook/deepbookv3/contract-information/query-the-pool](https://docs.sui.io/onchain-finance/deepbook/deepbookv3/contract-information/query-the-pool) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbookv3/contract-information/query-the-pool.mdx)), [onchain-finance/deepbook/deepbookv3/contract-information/permissionless-pool](https://docs.sui.io/onchain-finance/deepbook/deepbookv3/contract-information/permissionless-pool) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbookv3/contract-information/permissionless-pool.mdx)), [onchain-finance/deepbook/deepbookv3/contract-information/orders](https://docs.sui.io/onchain-finance/deepbook/deepbookv3/contract-information/orders) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbookv3/contract-information/orders.mdx)), [onchain-finance/deepbook/deepbookv3/contract-information/flash-loans](https://docs.sui.io/onchain-finance/deepbook/deepbookv3/contract-information/flash-loans) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbookv3/contract-information/flash-loans.mdx)), [onchain-finance/deepbook/deepbookv3/contract-information/balance-manager](https://docs.sui.io/onchain-finance/deepbook/deepbookv3/contract-information/balance-manager) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbookv3/contract-information/balance-manager.mdx))
 
-**`sui move build`** — PASS (2.3s)
+**`sui move build`** — PASS (1.3s)
 
 </details>
 
@@ -1661,7 +1661,7 @@ Workspace build at /home/runner/work/sui-docs-example-validator/sui-docs-example
 - **Files**: `packages/deepbook_margin/sources/margin_manager.move`, `packages/deepbook_margin/sources/helper/margin_constants.move`, `packages/deepbook_margin/sources/tpsl.move`, `packages/deepbook_margin/sources/margin_pool.move`, `packages/deepbook_margin/sources/margin_pool/protocol_fees.move`, `packages/deepbook_margin/sources/pool_proxy.move`, `packages/deepbook_margin/sources/margin_registry.move`
 - **Referenced by**: [onchain-finance/deepbook/deepbook-margin/margin-integration](https://docs.sui.io/onchain-finance/deepbook/deepbook-margin/margin-integration) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbook-margin/margin-integration.mdx)), [onchain-finance/deepbook/deepbook-margin/leveraged-workflow](https://docs.sui.io/onchain-finance/deepbook/deepbook-margin/leveraged-workflow) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbook-margin/leveraged-workflow.mdx)), [onchain-finance/deepbook/deepbook-margin/contract-information/tpsl](https://docs.sui.io/onchain-finance/deepbook/deepbook-margin/contract-information/tpsl) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbook-margin/contract-information/tpsl.mdx)), [onchain-finance/deepbook/deepbook-margin/contract-information/supply-referral](https://docs.sui.io/onchain-finance/deepbook/deepbook-margin/contract-information/supply-referral) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbook-margin/contract-information/supply-referral.mdx)), [onchain-finance/deepbook/deepbook-margin/contract-information/orders](https://docs.sui.io/onchain-finance/deepbook/deepbook-margin/contract-information/orders) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbook-margin/contract-information/orders.mdx)), [onchain-finance/deepbook/deepbook-margin/contract-information/margin-pool](https://docs.sui.io/onchain-finance/deepbook/deepbook-margin/contract-information/margin-pool) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbook-margin/contract-information/margin-pool.mdx)), [onchain-finance/deepbook/deepbook-margin/contract-information/margin-manager](https://docs.sui.io/onchain-finance/deepbook/deepbook-margin/contract-information/margin-manager) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbook-margin/contract-information/margin-manager.mdx)), [onchain-finance/deepbook/deepbook-margin/contract-information/maintainer](https://docs.sui.io/onchain-finance/deepbook/deepbook-margin/contract-information/maintainer) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbook-margin/contract-information/maintainer.mdx))
 
-**`sui move build`** — PASS (17.8s)
+**`sui move build`** — PASS (12.2s)
 
 </details>
 
@@ -1674,7 +1674,7 @@ Workspace build at /home/runner/work/sui-docs-example-validator/sui-docs-example
 - **Files**: `packages/margin_liquidation/sources/liquidation_vault.move`
 - **Referenced by**: [onchain-finance/deepbook/deepbook-margin/leveraged-workflow](https://docs.sui.io/onchain-finance/deepbook/deepbook-margin/leveraged-workflow) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbook-margin/leveraged-workflow.mdx))
 
-**`sui move build`** — PASS (17.0s)
+**`sui move build`** — PASS (9.0s)
 
 </details>
 
@@ -1765,6 +1765,6 @@ Workspace build at /home/runner/work/sui-docs-example-validator/sui-docs-example
 - **Files**: `packages/predict/sources/vault/vault.move`, `packages/predict/sources/vault/plp.move`, `packages/predict/sources/registry.move`, `packages/predict/sources/predict.move`, `packages/predict/sources/predict_manager.move`, `packages/predict/sources/oracle.move`, `packages/predict/sources/market_key/market_key.move`, `packages/predict/sources/market_key/range_key.move`
 - **Referenced by**: [onchain-finance/deepbook/deepbook-predict/contract-information/vault](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/vault) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbook-predict/contract-information/vault.mdx)), [onchain-finance/deepbook/deepbook-predict/contract-information/registry](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/registry) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbook-predict/contract-information/registry.mdx)), [onchain-finance/deepbook/deepbook-predict/contract-information/predict](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/predict) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbook-predict/contract-information/predict.mdx)), [onchain-finance/deepbook/deepbook-predict/contract-information/predict-manager](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/predict-manager) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbook-predict/contract-information/predict-manager.mdx)), [onchain-finance/deepbook/deepbook-predict/contract-information/oracle](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/oracle) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbook-predict/contract-information/oracle.mdx)), [onchain-finance/deepbook/deepbook-predict/contract-information/market-keys](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/market-keys) ([source](https://github.com/MystenLabs/sui/blob/main/docs/content/onchain-finance/deepbook/deepbook-predict/contract-information/market-keys.mdx))
 
-**`sui move build`** — PASS (12.0s)
+**`sui move build`** — PASS (7.5s)
 
 </details>
