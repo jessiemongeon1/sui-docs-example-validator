@@ -447,9 +447,16 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
     console.log(`      Running ${installArgs.join(" ")} at ${effectiveRoot}...`);
     const install = run(installArgs, effectiveRoot, 300_000);
 
-    // In compat mode, retry without lockfile constraint if frozen install fails.
-    // In strict mode, a failed install is a real failure — no fallback.
-    if (!install.ok && mode === "compat") {
+    // pnpm v11 exits non-zero when build scripts aren't approved, but deps ARE installed.
+    // Treat ERR_PNPM_IGNORED_BUILDS as non-fatal unless there are other pnpm errors.
+    const hasIgnoredBuilds = install.output.includes("ERR_PNPM_IGNORED_BUILDS");
+    const hasOtherPnpmErrors = /ERR_PNPM_(?!IGNORED_BUILDS)/.test(install.output);
+    const ignoredBuildsOnly = !install.ok && pm === "pnpm" && hasIgnoredBuilds && !hasOtherPnpmErrors;
+
+    if (ignoredBuildsOnly) {
+      steps.push({ command: `${pm} install`, status: "pass", output: install.output, durationMs: install.durationMs });
+    } else if (!install.ok && mode === "compat") {
+      // In compat mode, retry without lockfile constraint if frozen install fails.
       const fallback = run(
         pm === "bun" ? ["bun", "install"] : pm === "pnpm" ? ["pnpm", "install", "--no-frozen-lockfile"] : ["npm", "install"],
         effectiveRoot, 300_000,
@@ -457,6 +464,7 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
       steps.push({ command: `${pm} install`, status: fallback.ok ? "pass" : "fail", output: fallback.ok ? fallback.output : install.output, durationMs: install.durationMs + fallback.durationMs });
       if (!fallback.ok) return { steps, patched };
     } else {
+      // In strict mode, a failed install is a real failure — no fallback.
       steps.push({ command: `${pm} install`, status: install.ok ? "pass" : "fail", output: install.output, durationMs: install.durationMs });
       if (!install.ok) return { steps, patched };
     }
@@ -579,6 +587,8 @@ function categorizeFailure(steps: StepResult[]): string {
   const cmd = failStep.command;
   if (cmd.includes("install") && out.includes("workspace:")) return "Workspace protocol requires pnpm";
   if (cmd.includes("install") && (out.includes("ignored_builds") || out.includes("ignored build"))) return "pnpm build scripts not approved (run pnpm approve-builds)";
+  if (cmd.includes("install") && out.includes("outdated_lockfile")) return "Stale lockfile (run pnpm install to update)";
+  if (cmd.includes("install") && out.includes("frozen-lockfile")) return "Stale lockfile (lockfile does not match package.json)";
   if (cmd.includes("install")) return "Dependency installation failed";
   if (out.includes("mvr") || out.includes("r.mvr")) return "MVR dependency — requires MVR resolver";
   if (out.includes("cannot find module")) return "Missing npm dependency";
