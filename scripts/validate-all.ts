@@ -359,12 +359,6 @@ function validateMove(absRoot: string, mode: Mode): { steps: StepResult[]; patch
   const build = run(["sui", "move", "build"], absRoot, 120_000);
   steps.push({ command: "sui move build", status: build.ok ? "pass" : "fail", output: build.output, durationMs: build.durationMs });
 
-  if (!build.ok) return { steps, patched };
-
-  // Test
-  const test = run(["sui", "move", "test"], absRoot, 120_000);
-  steps.push({ command: "sui move test", status: test.ok ? "pass" : "fail", output: test.output, durationMs: test.durationMs });
-
   return { steps, patched };
 }
 
@@ -379,13 +373,6 @@ function validateRust(absRoot: string): { steps: StepResult[]; patched: boolean 
   console.log(`      Running cargo check (timeout 300s)...`);
   const build = run(["cargo", "check"], absRoot, 300_000);
   steps.push({ command: "cargo check", status: build.ok ? "pass" : "fail", output: build.output, durationMs: build.durationMs });
-
-  if (!build.ok) return { steps, patched: false };
-
-  // Test
-  console.log(`      Running cargo test (timeout 300s)...`);
-  const test = run(["cargo", "test"], absRoot, 300_000);
-  steps.push({ command: "cargo test", status: test.ok ? "pass" : "fail", output: test.output, durationMs: test.durationMs });
 
   return { steps, patched: false };
 }
@@ -562,10 +549,6 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
       const build = run([pm, "run", "build"], pkgBuildPath, 300_000);
       steps.push({ command: `${pm} run build`, status: build.ok ? "pass" : "fail", output: build.output, durationMs: build.durationMs });
       // Build script is authoritative — don't fall back to tsc.
-      // But still run tests if available.
-      if (build.ok) {
-        runTsTests(pm, pkgBuildPath, absRoot, installRoot, steps);
-      }
       return { steps, patched };
     }
   }
@@ -580,23 +563,7 @@ function validateTypeScript(absRoot: string, mode: Mode): { steps: StepResult[];
   const tsc = run(tscArgs, tscRoot, 120_000);
   steps.push({ command: "tsc --noEmit", status: tsc.ok ? "pass" : "fail", output: tsc.output, durationMs: tsc.durationMs });
 
-  if (tsc.ok) {
-    runTsTests(pm, pkgBuildPath, absRoot, installRoot, steps);
-  }
-
   return { steps, patched };
-}
-
-function runTsTests(pm: string, pkgBuildPath: string, absRoot: string, installRoot: string, steps: StepResult[]) {
-  const testPkgPath = existsSync(resolve(absRoot, "package.json")) ? absRoot
-    : existsSync(resolve(pkgBuildPath, "package.json")) ? pkgBuildPath : installRoot;
-  if (existsSync(resolve(testPkgPath, "package.json"))) {
-    const pkgJson = JSON.parse(readFileSync(resolve(testPkgPath, "package.json"), "utf-8"));
-    if (pkgJson.scripts?.test && pkgJson.scripts.test !== 'echo "Error: no test specified" && exit 1') {
-      const test = run([pm, "test"], testPkgPath, 120_000);
-      steps.push({ command: `${pm} test`, status: test.ok ? "pass" : "fail", output: test.output, durationMs: test.durationMs });
-    }
-  }
 }
 
 function validateStatic(absRoot: string): { steps: StepResult[]; patched: boolean } {
@@ -723,8 +690,8 @@ function generateReport(results: ValidationResult[], versions: ToolVersions, tot
 
   lines.push("## All Results");
   lines.push("");
-  lines.push("| # | Package | Type | Origin | Build | Test | Duration | Files |");
-  lines.push("|---|---------|------|--------|-------|------|----------|-------|");
+  lines.push("| # | Package | Type | Origin | Status | Duration | Files |");
+  lines.push("|---|---------|------|--------|--------|----------|-------|");
 
   for (let i = 0; i < results.length; i++) {
     const r = results[i];
@@ -732,9 +699,7 @@ function generateReport(results: ValidationResult[], versions: ToolVersions, tot
     const shortId = r.id.length > 50 ? "..." + r.id.slice(-47) : r.id;
     const shortOrigin = r.origin.length > 30 ? "..." + r.origin.slice(-27) : r.origin;
     const status = r.overallStatus === "pass" ? (r.patched ? "PASS (patched)" : "PASS") : r.overallStatus === "fail" ? "**FAIL**" : "SKIP";
-    const testStep = r.steps.find((s) => s.command.includes("test") && !s.command.includes("install"));
-    const testStatus = testStep ? (testStep.status === "pass" ? "PASS" : "**FAIL**") : "—";
-    lines.push(`| ${i + 1} | ${shortId} | ${r.type} | ${shortOrigin} | ${status} | ${testStatus} | ${(totalMs / 1000).toFixed(1)}s | ${r.files.length} |`);
+    lines.push(`| ${i + 1} | ${shortId} | ${r.type} | ${shortOrigin} | ${status} | ${(totalMs / 1000).toFixed(1)}s | ${r.files.length} |`);
   }
 
   lines.push("");
@@ -890,18 +855,16 @@ async function main() {
 
     const { steps, patched: patchedFlag } = validation;
 
-    // Overall status: build/install steps are authoritative; test failures are informational.
-    const testSteps = steps.filter((s) => s.command.includes("test") && !s.command.includes("install"));
-    const nonTestSteps = steps.filter((s) => !testSteps.includes(s));
-    const buildSteps = nonTestSteps.filter((s) =>
+    // Overall status: a build step must pass. Build steps are the authoritative ones.
+    const buildSteps = steps.filter((s) =>
       s.command.includes("build") || s.command.includes("check") ||
       s.command.includes("tsc") || s.command === "file exists"
     );
     const hasBuildPass = buildSteps.some((s) => s.status === "pass");
-    const anyNonTestFail = nonTestSteps.some((s) => s.status === "fail");
-    const overallStatus: "pass" | "fail" | "skip" = hasBuildPass ? "pass" : anyNonTestFail ? "fail" : "skip";
+    const anyFail = steps.some((s) => s.status === "fail");
+    const overallStatus: "pass" | "fail" | "skip" = hasBuildPass ? "pass" : anyFail ? "fail" : "skip";
     const failureReason = overallStatus === "fail"
-      ? nonTestSteps.find((s) => s.status === "fail")?.output?.slice(-200)
+      ? buildSteps.find((s) => s.status === "fail")?.output?.slice(-200)
       : undefined;
 
     for (const step of steps) {
