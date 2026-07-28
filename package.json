@@ -9,7 +9,8 @@
     "validate": "tsx scripts/validate-package.ts",
     "validate-all": "tsx scripts/validate-all.ts",
     "report": "tsx scripts/report.ts",
-    "discover-snippets": "tsx scripts/discover-snippets.ts"
+    "discover-snippets": "tsx scripts/discover-snippets.ts",
+    "validate-snippets": "tsx scripts/validate-snippets.ts"
   },
   "dependencies": {
     "glob": "^11.0.0"

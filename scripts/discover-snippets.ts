@@ -34,6 +34,23 @@ interface Snippet {
   covered: boolean;
   /** If covered, which package covers it (fuzzy match) */
   coveredBy?: string;
+  /** Whether this snippet has a full module declaration (Move) */
+  hasModule: boolean;
+  /** Whether this snippet appears to be pseudo-code */
+  isPseudoCode: boolean;
+  /** Parsed module name (e.g., "flash::loan") */
+  moduleName?: string;
+  /** Whether it uses Sui framework imports */
+  usesSuiFramework: boolean;
+  /** Validation annotation metadata, if present */
+  annotation?: SnippetAnnotation;
+}
+
+interface SnippetAnnotation {
+  validate: boolean;
+  novalidate: boolean;
+  deps: string[];
+  edition?: string;
 }
 
 interface SnippetReport {
@@ -88,6 +105,52 @@ function normalizeLanguage(lang: string): Snippet["type"] {
   return "other";
 }
 
+// --- Annotation parsing ---
+
+/** Parse annotation metadata from a code fence's full metadata string */
+function parseAnnotation(metadata: string): { language: string; annotation?: SnippetAnnotation } {
+  const tokens = metadata.match(/^(\S+)\s+(.*)/);
+  if (!tokens) return { language: metadata || "(none)" };
+
+  const language = tokens[1];
+  const rest = tokens[2].trim();
+  if (!rest) return { language };
+
+  const hasValidate = /\bvalidate\b/.test(rest);
+  const hasNovalidate = /\bnovalidate\b/.test(rest);
+  if (!hasValidate && !hasNovalidate) return { language };
+
+  const depsMatch = rest.match(/deps="([^"]*)"/);
+  const editionMatch = rest.match(/edition="([^"]*)"/);
+
+  return {
+    language,
+    annotation: {
+      validate: hasValidate,
+      novalidate: hasNovalidate,
+      deps: depsMatch ? depsMatch[1].split(",").map((d) => d.trim()) : [],
+      edition: editionMatch?.[1],
+    },
+  };
+}
+
+// --- Snippet classification ---
+
+function classifySnippet(snippet: Snippet): void {
+  const code = snippet.code;
+
+  // Module declaration: "module addr::name {" or "module addr::name;"
+  const moduleMatch = code.match(/^\s*module\s+([\w]+::\w+)\s*[{;]/m);
+  snippet.hasModule = !!moduleMatch;
+  snippet.moduleName = moduleMatch?.[1];
+
+  // Pseudo-code: contains ellipsis or placeholder comments
+  snippet.isPseudoCode = /\.\.\.|\/\/\s*\.\.\.|<\.\.\.>/.test(code);
+
+  // Sui framework usage
+  snippet.usesSuiFramework = /use\s+sui::/.test(code);
+}
+
 // --- Code block extraction ---
 
 /** Extract all fenced code blocks from MDX content */
@@ -104,31 +167,38 @@ function extractSnippets(content: string, mdxFile: string): Snippet[] {
     const line = lines[i];
 
     if (!inBlock) {
-      // Match opening fence: ```lang or ~~~lang
-      const openMatch = line.match(/^(`{3,}|~{3,})\s*(\S*)/);
-      if (openMatch) {
+      // Match opening fence: ```lang metadata or ~~~lang metadata
+      const openMatch = line.match(/^(`{3,}|~{3,})\s*(.*)/);
+      if (openMatch && openMatch[2] !== undefined) {
         inBlock = true;
-        blockLang = openMatch[2];
+        blockLang = openMatch[2].trim();
         blockStart = i + 1; // 1-indexed
         blockLines = [];
       }
     } else {
       // Match closing fence
       if (line.match(/^(`{3,}|~{3,})\s*$/)) {
-        const type = normalizeLanguage(blockLang);
+        const { language, annotation } = parseAnnotation(blockLang);
+        const type = normalizeLanguage(language);
         const code = blockLines.join("\n").trim();
 
         // Skip empty blocks and very short ones (single-line commands)
         if (code.length > 0 && blockLines.length > 0) {
-          snippets.push({
+          const snippet: Snippet = {
             mdxFile,
-            language: blockLang || "(none)",
+            language,
             type,
             line: blockStart,
             code,
             lineCount: blockLines.length,
             covered: false,
-          });
+            hasModule: false,
+            isPseudoCode: false,
+            usesSuiFramework: false,
+            annotation,
+          };
+          classifySnippet(snippet);
+          snippets.push(snippet);
         }
         inBlock = false;
         blockLang = "";
@@ -254,6 +324,14 @@ async function main() {
   for (const [type, count] of Object.entries(byType)) {
     console.log(`  ${type}: ${count}`);
   }
+
+  // Classification stats
+  const moveSnippets = allSnippets.filter((s) => s.type === "move");
+  const withModule = moveSnippets.filter((s) => s.hasModule);
+  const validatable = withModule.filter((s) => !s.isPseudoCode);
+  const annotated = allSnippets.filter((s) => s.annotation?.validate);
+  console.log(`\nMove classification: ${moveSnippets.length} total, ${withModule.length} with module, ${validatable.length} compilable (no pseudo-code)`);
+  if (annotated.length > 0) console.log(`Annotated for validation: ${annotated.length}`);
 
   // 5. Check coverage — does each snippet appear in a validated source file?
   const compilableSnippets = allSnippets.filter(

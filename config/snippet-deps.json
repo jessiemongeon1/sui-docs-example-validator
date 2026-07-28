@@ -1,0 +1,23 @@
+{
+  "comment": "Dependency templates for Move snippet scaffolding. Keys match deps= annotation values.",
+  "Sui": {
+    "git": "https://github.com/MystenLabs/sui.git",
+    "subdir": "crates/sui-framework/packages/sui-framework",
+    "rev": "framework/mainnet"
+  },
+  "MoveStdlib": {
+    "git": "https://github.com/MystenLabs/sui.git",
+    "subdir": "crates/sui-framework/packages/move-stdlib",
+    "rev": "framework/mainnet"
+  },
+  "SuiSystem": {
+    "git": "https://github.com/MystenLabs/sui.git",
+    "subdir": "crates/sui-framework/packages/sui-system",
+    "rev": "framework/mainnet"
+  },
+  "DeepBook": {
+    "git": "https://github.com/MystenLabs/sui.git",
+    "subdir": "crates/sui-framework/packages/deepbook",
+    "rev": "framework/mainnet"
+  }
+}
