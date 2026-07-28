@@ -174,37 +174,93 @@ function classifySnippet(snippet: Snippet): void {
     const lines = code.split("\n");
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
-      // struct without visibility (pre-2024 edition)
-      if (/^\s*struct\s+\w+/.test(line) && !line.startsWith("public") && !line.startsWith("//")) {
-        warnings.push(`L${i + 1}: struct missing 'public' visibility (2024 edition requires it)`);
+      const lineNum = snippet.line + i;
+
+      // struct/enum without visibility (pre-2024 edition)
+      if (/^struct\s+\w+/.test(line)) {
+        const name = line.match(/^struct\s+(\w+)/)?.[1];
+        warnings.push(`struct-visibility|L${lineNum}|struct ${name}|Add \`public\` visibility: \`public struct ${name}\``);
       }
-      // Old function-call syntax for vector/option
+
+      // Old function-call syntax for vector
       if (/vector::empty\s*</.test(line)) {
-        warnings.push(`L${i + 1}: use 'vector[]' instead of 'vector::empty<T>()'`);
+        warnings.push(`legacy-vector|L${lineNum}|vector::empty<T>()|Replace with \`vector[]\``);
       }
-      if (/option::none\s*</.test(line)) {
-        warnings.push(`L${i + 1}: use 'option::none()' method syntax`);
+      if (/vector::push_back\s*\(/.test(line)) {
+        warnings.push(`legacy-vector|L${lineNum}|vector::push_back()|Replace with \`.push_back()\` method syntax`);
+      }
+      if (/vector::length\s*\(/.test(line)) {
+        warnings.push(`legacy-vector|L${lineNum}|vector::length()|Replace with \`.length()\` method syntax`);
+      }
+      if (/vector::contains\s*\(/.test(line)) {
+        warnings.push(`legacy-vector|L${lineNum}|vector::contains()|Replace with \`.contains()\` method syntax`);
+      }
+
+      // Old option syntax
+      if (/option::none\s*[<(]/.test(line)) {
+        warnings.push(`legacy-option|L${lineNum}|option::none()|Replace with \`option::none()\` method syntax or \`none\``);
       }
       if (/option::some\s*\(/.test(line) && !line.includes(".some(")) {
-        warnings.push(`L${i + 1}: use '.some()' method syntax instead of 'option::some()'`);
+        warnings.push(`legacy-option|L${lineNum}|option::some()|Replace with \`.some()\` method syntax`);
       }
-      // Old string literal syntax
-      if (/b"[^"]*"/.test(line) && /string::utf8\(b"/.test(line)) {
-        warnings.push(`L${i + 1}: use string literal b"..." directly instead of 'string::utf8(b"...")'`);
+      if (/option::is_some\s*\(/.test(line)) {
+        warnings.push(`legacy-option|L${lineNum}|option::is_some()|Replace with \`.is_some()\` method syntax`);
       }
-      // transfer::share_object instead of transfer::public_share_object (or vice versa in 2024)
-      if (/transfer::share_object\(/.test(line)) {
-        warnings.push(`L${i + 1}: use 'transfer::public_share_object' for objects with 'store'`);
+      if (/option::is_none\s*\(/.test(line)) {
+        warnings.push(`legacy-option|L${lineNum}|option::is_none()|Replace with \`.is_none()\` method syntax`);
       }
-      if (/transfer::freeze_object\(/.test(line)) {
-        warnings.push(`L${i + 1}: use 'transfer::public_freeze_object' for objects with 'store'`);
+      if (/option::extract\s*\(/.test(line)) {
+        warnings.push(`legacy-option|L${lineNum}|option::extract()|Replace with \`.extract()\` method syntax`);
       }
-      // Old tx_context pattern
-      if (/&mut TxContext/.test(line) && /ctx\s*$/.test(line)) {
-        // Fine, just noting for awareness
+      if (/option::borrow\s*\(/.test(line)) {
+        warnings.push(`legacy-option|L${lineNum}|option::borrow()|Replace with \`.borrow()\` method syntax`);
       }
+
+      // Old string construction
+      if (/string::utf8\s*\(b"/.test(line)) {
+        warnings.push(`legacy-string|L${lineNum}|string::utf8(b"...")|Use string literal \`b"..."\` directly`);
+      }
+
+      // Deprecated transfer functions
+      if (/transfer::share_object\s*\(/.test(line)) {
+        warnings.push(`deprecated-transfer|L${lineNum}|transfer::share_object|Use \`transfer::public_share_object\` for objects with \`store\``);
+      }
+      if (/transfer::freeze_object\s*\(/.test(line)) {
+        warnings.push(`deprecated-transfer|L${lineNum}|transfer::freeze_object|Use \`transfer::public_freeze_object\` for objects with \`store\``);
+      }
+      if (/transfer::transfer\s*\(/.test(line) && !line.includes("public_transfer")) {
+        warnings.push(`deprecated-transfer|L${lineNum}|transfer::transfer|Use \`transfer::public_transfer\` for objects with \`store\``);
+      }
+
+      // Old object::new usage (deprecated in favor of object::new with ctx)
+      if (/object::id\s*\(/.test(line) && !line.includes("object::id_from")) {
+        // object::id(&obj) → obj.id() in some contexts, but not always wrong
+      }
+
     }
     if (warnings.length > 0) snippet.lintWarnings = warnings;
+  }
+
+  // TypeScript lint checks
+  if (snippet.type === "typescript" && !snippet.isPseudoCode) {
+    const warnings: string[] = [];
+    for (let i = 0; i < code.split("\n").length; i++) {
+      const line = code.split("\n")[i];
+      const lineNum = snippet.line + i;
+      if (/@mysten\/sui\.js/.test(line)) {
+        warnings.push(`deprecated-import|L${lineNum}|@mysten/sui.js|Use \`@mysten/sui\` (sui.js is deprecated)`);
+      }
+      if (/@mysten\/sui\/providers/.test(line)) {
+        warnings.push(`deprecated-import|L${lineNum}|@mysten/sui/providers|Use \`@mysten/sui/client\``);
+      }
+      if (/JsonRpcProvider/.test(line)) {
+        warnings.push(`deprecated-api|L${lineNum}|JsonRpcProvider|Use \`SuiClient\` instead`);
+      }
+      if (/SignableTransaction/.test(line)) {
+        warnings.push(`deprecated-api|L${lineNum}|SignableTransaction|Use \`Transaction\` instead`);
+      }
+    }
+    if (warnings.length > 0) snippet.lintWarnings = (snippet.lintWarnings || []).concat(warnings);
   }
 
   // TypeScript import detection
@@ -502,20 +558,83 @@ async function main() {
     }
   }
 
-  // Lint warnings section
-  if (withLintWarnings.length > 0) {
+  // Lint report — actionable, grouped by rule
+  const allWarnings: { rule: string; line: string; found: string; fix: string; mdxFile: string; snippetLine: number }[] = [];
+  for (const s of allSnippets) {
+    if (!s.lintWarnings) continue;
+    for (const w of s.lintWarnings) {
+      const [rule, line, found, fix] = w.split("|");
+      allWarnings.push({ rule, line, found, fix, mdxFile: s.mdxFile, snippetLine: s.line });
+    }
+  }
+
+  if (allWarnings.length > 0) {
     mdLines.push("");
-    mdLines.push("## Move Lint Warnings");
+    mdLines.push("## Lint Report");
     mdLines.push("");
-    mdLines.push("Snippets with Move 2024 edition style issues:");
+    mdLines.push(`**${allWarnings.length} issues** across ${withLintWarnings.length} snippets`);
     mdLines.push("");
-    mdLines.push("| # | File | Line | Warnings |");
-    mdLines.push("|---|------|------|----------|");
-    for (let i = 0; i < withLintWarnings.length; i++) {
-      const s = withLintWarnings[i];
-      const slug = s.mdxFile.replace(/^docs\/content\//, "").replace(/\.mdx?$/, "");
-      const warnings = s.lintWarnings!.map((w) => w.replace(/\|/g, "\\|")).join("; ");
-      mdLines.push(`| ${i + 1} | [${slug}](https://docs.sui.io/${slug}) | L${s.line} | ${warnings} |`);
+
+    // Group by rule
+    const byRule = new Map<string, typeof allWarnings>();
+    for (const w of allWarnings) {
+      const arr = byRule.get(w.rule) || [];
+      arr.push(w);
+      byRule.set(w.rule, arr);
+    }
+
+    const ruleDescriptions: Record<string, { title: string; what: string; fix: string }> = {
+      "struct-visibility": {
+        title: "Missing `public` visibility on struct/enum",
+        what: "Move 2024 edition requires explicit visibility on all struct declarations.",
+        fix: "Add `public` before `struct`: `public struct MyStruct has key { ... }`",
+      },
+      "legacy-vector": {
+        title: "Legacy `vector::` function-call syntax",
+        what: "Move 2024 edition supports method syntax and `vector[]` literal.",
+        fix: "`vector::empty<T>()` → `vector[]`, `vector::push_back(&mut v, x)` → `v.push_back(x)`",
+      },
+      "legacy-option": {
+        title: "Legacy `option::` function-call syntax",
+        what: "Move 2024 edition supports method syntax on Option.",
+        fix: "`option::some(x)` → `x.some()`, `option::is_some(&o)` → `o.is_some()`",
+      },
+      "legacy-string": {
+        title: "Legacy `string::utf8()` constructor",
+        what: "Move 2024 edition supports string literals directly.",
+        fix: "`string::utf8(b\"hello\")` → `b\"hello\"` (auto-converts to String)",
+      },
+      "deprecated-transfer": {
+        title: "Deprecated `transfer::` function",
+        what: "Objects with `store` ability should use `public_*` variants.",
+        fix: "`transfer::transfer` → `transfer::public_transfer`, `transfer::share_object` → `transfer::public_share_object`",
+      },
+      "deprecated-import": {
+        title: "Deprecated npm package import",
+        what: "The `@mysten/sui.js` package was renamed to `@mysten/sui`.",
+        fix: "Replace `@mysten/sui.js` with `@mysten/sui` in imports",
+      },
+      "deprecated-api": {
+        title: "Deprecated SDK API",
+        what: "Older SDK classes/types have been replaced.",
+        fix: "`JsonRpcProvider` → `SuiClient`, `SignableTransaction` → `Transaction`",
+      },
+    };
+
+    for (const [rule, warnings] of byRule) {
+      const desc = ruleDescriptions[rule] || { title: rule, what: "", fix: "" };
+      mdLines.push(`### ${desc.title} (${warnings.length} occurrences)`);
+      mdLines.push("");
+      if (desc.what) mdLines.push(`> ${desc.what}`);
+      if (desc.fix) mdLines.push(`> **Fix**: ${desc.fix}`);
+      mdLines.push("");
+      mdLines.push("| File | Line | Found |");
+      mdLines.push("|------|------|-------|");
+      for (const w of warnings) {
+        const slug = w.mdxFile.replace(/^docs\/content\//, "").replace(/\.mdx?$/, "");
+        mdLines.push(`| [${slug}](https://docs.sui.io/${slug}) | ${w.line} | \`${w.found.replace(/\|/g, "\\|")}\` |`);
+      }
+      mdLines.push("");
     }
   }
 

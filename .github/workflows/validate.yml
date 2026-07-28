@@ -88,14 +88,6 @@ jobs:
             --output results/report.md \
             --mode ${{ env.MODE }}
 
-      - name: Validate inline snippets
-        if: always()
-        continue-on-error: true
-        run: |
-          npx tsx scripts/validate-snippets.ts \
-            --manifest manifest/snippets.json \
-            --output results/snippet-report.md
-
       - name: Post job summary
         if: always()
         run: |
@@ -104,10 +96,7 @@ jobs:
           else
             echo "## Validation did not produce a report" >> $GITHUB_STEP_SUMMARY
           fi
-          if [ -f results/snippet-report.md ]; then
-            echo "" >> $GITHUB_STEP_SUMMARY
-            cat results/snippet-report.md >> $GITHUB_STEP_SUMMARY
-          elif [ -f manifest/snippets.md ]; then
+          if [ -f manifest/snippets.md ]; then
             echo "" >> $GITHUB_STEP_SUMMARY
             cat manifest/snippets.md >> $GITHUB_STEP_SUMMARY
           fi
@@ -145,8 +134,7 @@ jobs:
           cp results/report.md "reports/report-$(date -u +%Y-%m-%d).md" 2>/dev/null || true
           cp results/report.md reports/latest.md 2>/dev/null || true
           cp results/report.json reports/latest.json 2>/dev/null || true
-          cp manifest/snippets.md reports/snippets-coverage.md 2>/dev/null || true
-          cp results/snippet-report.md reports/snippets-latest.md 2>/dev/null || true
+          cp manifest/snippets.md reports/snippets-lint.md 2>/dev/null || true
           git add reports/
           git diff --cached --quiet || git commit -m "report: validation run $(date -u +%Y-%m-%d)"
           git push
