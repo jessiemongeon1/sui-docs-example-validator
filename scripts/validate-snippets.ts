@@ -116,19 +116,32 @@ function loadDepTemplates(): Record<string, DepTemplate> {
 
 const RESERVED_ADDRESSES = new Set(["sui", "std", "sui_system", "bridge", "deepbook"]);
 
-// Common Sui framework imports for wrapping Move partials
-const COMMON_SUI_IMPORTS = [
-  "use sui::object::UID;",
-  "use sui::tx_context::TxContext;",
-  "use sui::transfer;",
-  "use sui::coin::{Self, Coin};",
-  "use sui::sui::SUI;",
-  "use sui::event;",
-  "use sui::clock::Clock;",
-  "use sui::balance::Balance;",
-  "use sui::table::Table;",
-  "use sui::bag::Bag;",
-  "use std::string::String;",
+// Common Sui framework imports for wrapping Move partials.
+// Each entry maps a type/module name to its import statement.
+const COMMON_SUI_IMPORTS: { trigger: string; import: string }[] = [
+  { trigger: "UID", import: "use sui::object::UID;" },
+  { trigger: "TxContext", import: "use sui::tx_context::TxContext;" },
+  { trigger: "transfer", import: "use sui::transfer;" },
+  { trigger: "Coin", import: "use sui::coin::{Self, Coin};" },
+  { trigger: "SUI", import: "use sui::sui::SUI;" },
+  { trigger: "event", import: "use sui::event;" },
+  { trigger: "Clock", import: "use sui::clock::Clock;" },
+  { trigger: "Balance", import: "use sui::balance::{Self, Balance};" },
+  { trigger: "Table", import: "use sui::table::{Self, Table};" },
+  { trigger: "Bag", import: "use sui::bag::{Self, Bag};" },
+  { trigger: "String", import: "use std::string::String;" },
+  { trigger: "Token", import: "use sui::token::{Self, Token};" },
+  { trigger: "TokenPolicy", import: "use sui::token::TokenPolicy;" },
+  { trigger: "ActionRequest", import: "use sui::token::ActionRequest;" },
+  { trigger: "TransferPolicy", import: "use sui::transfer_policy::{Self, TransferPolicy, TransferRequest};" },
+  { trigger: "Kiosk", import: "use sui::kiosk::{Self, Kiosk, KioskOwnerCap};" },
+  { trigger: "Publisher", import: "use sui::package::Publisher;" },
+  { trigger: "Display", import: "use sui::display::{Self, Display};" },
+  { trigger: "Url", import: "use sui::url::Url;" },
+  { trigger: "VecMap", import: "use sui::vec_map::VecMap;" },
+  { trigger: "VecSet", import: "use sui::vec_set::VecSet;" },
+  { trigger: "Random", import: "use sui::random::{Self, Random};" },
+  { trigger: "Option", import: "use std::option;" },
 ];
 
 // --- Move scaffolding ---
@@ -190,24 +203,21 @@ function scaffoldMovePartial(
   mkdirSync(resolve(dir, "sources"), { recursive: true });
 
   const addr = "snippet_wrapper";
-  const deps = snippet.usesSuiFramework ? ["Sui"] : [];
+  const code = snippet.code;
+  const needsSui = snippet.usesSuiFramework ||
+    /\b(UID|TxContext|Coin|Balance|Table|Bag|Clock|Token|TransferPolicy|Kiosk)\b/.test(code);
+  const deps = needsSui ? ["Sui"] : [];
   const edition = snippet.annotation?.edition || "2024";
 
   writeFileSync(resolve(dir, "Move.toml"), generateMoveToml(addr, deps, edition, depTemplates));
 
   // Build imports based on what the snippet references
-  const code = snippet.code;
   const imports: string[] = [];
-  if (snippet.usesSuiFramework) {
-    // Only include imports that the snippet actually uses
-    for (const imp of COMMON_SUI_IMPORTS) {
-      // Extract the type/module name from the import
-      const match = imp.match(/use\s+\w+::(\w+)/);
-      if (match && code.includes(match[1])) {
-        imports.push(`    ${imp}`);
-      }
+  // Auto-detect needed imports from type names in the code
+  for (const { trigger, import: imp } of COMMON_SUI_IMPORTS) {
+    if (code.includes(trigger)) {
+      imports.push(`    ${imp}`);
     }
-    // Also include any explicit `use` lines from the snippet itself
   }
 
   // Extract any `use` lines from the snippet and separate them from the body
@@ -425,6 +435,144 @@ function generateReport(results: SnippetResult[], totalSnippets: number, duratio
   return lines.join("\n");
 }
 
+// --- Same-page concatenation ---
+
+/**
+ * Group Move partials from the same MDX file, concatenate into a single module,
+ * and try to compile. Returns the set of mdxFiles that passed page-level build.
+ */
+function validatePageConcatenated(
+  snippets: Snippet[],
+  depTemplates: Record<string, DepTemplate>,
+  results: SnippetResult[],
+): Set<string> {
+  // Group Move partials by MDX file
+  const byFile = new Map<string, Snippet[]>();
+  for (const s of snippets) {
+    if (s.type !== "move" || s.isPseudoCode) continue;
+    if (s.hasModule) continue; // full modules are validated individually
+    if (!s.partialKind || s.partialKind === "use" || s.partialKind === "other") continue;
+
+    const existing = byFile.get(s.mdxFile) || [];
+    existing.push(s);
+    byFile.set(s.mdxFile, existing);
+  }
+
+  // Only attempt pages with 2+ partials (single partials are handled individually)
+  const pagesToTry = [...byFile.entries()].filter(([, snips]) => snips.length >= 2);
+  if (pagesToTry.length === 0) return new Set();
+
+  console.log(`\n--- Page-level concatenation: ${pagesToTry.length} pages with 2+ Move partials ---\n`);
+
+  const passedPages = new Set<string>();
+
+  for (const [mdxFile, pageSnippets] of pagesToTry) {
+    const dir = resolve(tmpdir(), "snippet-validate", randomUUID());
+    mkdirSync(resolve(dir, "sources"), { recursive: true });
+
+    // Detect if any snippet uses Sui framework (explicit imports or common type names)
+    const combinedCode = pageSnippets.map((s) => s.code).join("\n");
+    const usesSui = pageSnippets.some((s) => s.usesSuiFramework) ||
+      /\b(UID|TxContext|Coin|Balance|Table|Bag|Clock|Token|TransferPolicy|Kiosk)\b/.test(combinedCode);
+    const deps = usesSui ? ["Sui"] : [];
+    const addr = "page_snippets";
+
+    writeFileSync(resolve(dir, "Move.toml"), generateMoveToml(addr, deps, "2024", depTemplates));
+
+    // Check for duplicate type/function names — skip if conflicts exist
+    const declaredNames = new Set<string>();
+    let hasConflict = false;
+    for (const s of pageSnippets) {
+      for (const line of s.code.split("\n")) {
+        const structMatch = line.match(/\b(?:public\s+)?(?:struct|enum)\s+(\w+)/);
+        if (structMatch) {
+          if (declaredNames.has(structMatch[1])) { hasConflict = true; break; }
+          declaredNames.add(structMatch[1]);
+        }
+        const funMatch = line.match(/\b(?:public\s+)?(?:entry\s+)?fun\s+(\w+)/);
+        if (funMatch) {
+          if (declaredNames.has(`fun:${funMatch[1]}`)) { hasConflict = true; break; }
+          declaredNames.add(`fun:${funMatch[1]}`);
+        }
+      }
+      if (hasConflict) break;
+    }
+
+    if (hasConflict) {
+      const shortFile = mdxFile.replace(/^docs\/content\//, "");
+      console.log(`  ${shortFile}: skipped (duplicate struct/function names)`);
+      continue;
+    }
+
+    // Collect all use statements and body code
+    const allUseLines = new Set<string>();
+    const bodyParts: string[] = [];
+
+    for (const s of pageSnippets) {
+      bodyParts.push(`    // --- ${s.mdxFile}:L${s.line} ---`);
+      for (const line of s.code.split("\n")) {
+        const trimmed = line.trim();
+        if (trimmed.startsWith("use ")) {
+          allUseLines.add(`    ${trimmed}`);
+        } else if (trimmed.match(/^(?:public\s+)?(?:entry\s+)?fun\s+\w+.*;\s*$/)) {
+          // Function signature without body — add empty body stub
+          bodyParts.push(`    ${trimmed.replace(/;\s*$/, " { abort 0 }")}`);
+        } else {
+          bodyParts.push(`    ${line}`);
+        }
+      }
+      bodyParts.push("");
+    }
+
+    // Auto-detect needed Sui imports from type names
+    const autoImports: string[] = [];
+    if (usesSui) {
+      for (const { trigger, import: imp } of COMMON_SUI_IMPORTS) {
+        if (combinedCode.includes(trigger)) {
+          autoImports.push(`    ${imp}`);
+        }
+      }
+    }
+
+    const allImports = [...new Set([...autoImports, ...allUseLines])];
+    const wrappedCode = [
+      `module ${addr}::combined {`,
+      ...allImports,
+      ``,
+      ...bodyParts,
+      `}`,
+    ].join("\n");
+
+    writeFileSync(resolve(dir, "sources", "snippet.move"), wrappedCode + "\n");
+
+    const shortFile = mdxFile.replace(/^docs\/content\//, "");
+    console.log(`  ${shortFile} (${pageSnippets.length} partials)...`);
+    const build = run(["sui", "move", "build"], dir, 120_000);
+
+    const icon = build.ok ? "PASS" : "FAIL";
+    console.log(`    ${icon} (${(build.durationMs / 1000).toFixed(1)}s)`);
+
+    if (build.ok) {
+      passedPages.add(mdxFile);
+      // Record pass for all snippets in this page
+      for (const s of pageSnippets) {
+        results.push({
+          mdxFile: s.mdxFile, line: s.line, language: s.language,
+          moduleName: s.moduleName, lineCount: s.lineCount,
+          kind: "move-page", status: "pass",
+          durationMs: build.durationMs / pageSnippets.length,
+        });
+      }
+    }
+    // If page-level fails, individual snippets will be tried below
+
+    try { rmSync(dir, { recursive: true, force: true }); } catch {}
+  }
+
+  console.log(`\nPage-level: ${passedPages.size}/${pagesToTry.length} pages passed\n`);
+  return passedPages;
+}
+
 // --- Main ---
 
 async function main() {
@@ -445,9 +593,19 @@ async function main() {
 
   const depTemplates = loadDepTemplates();
   const results: SnippetResult[] = [];
+
+  // Phase 1: Try page-level concatenation for Move partials
+  const passedPages = validatePageConcatenated(snippets, depTemplates, results);
+  const alreadyValidated = new Set(results.map((r) => `${r.mdxFile}:${r.line}`));
+
+  // Phase 2: Validate remaining snippets individually
+  console.log("--- Individual snippet validation ---\n");
   let validated = 0;
 
   for (const snippet of snippets) {
+    // Skip if already validated via page concatenation
+    if (alreadyValidated.has(`${snippet.mdxFile}:${snippet.line}`)) continue;
+
     const { validate, kind, reason } = shouldValidate(snippet);
 
     if (!validate) {
@@ -489,7 +647,6 @@ async function main() {
     let buildResult: { ok: boolean; output: string; durationMs: number };
 
     if (kind === "typescript") {
-      // Install deps then type-check
       const install = run(["npm", "install", "--ignore-scripts"], dir, 60_000);
       if (!install.ok) {
         buildResult = install;
@@ -497,7 +654,6 @@ async function main() {
         buildResult = run(["npx", "tsc", "--noEmit"], dir, 30_000);
       }
     } else {
-      // Move: build
       buildResult = run(["sui", "move", "build"], dir, 120_000);
     }
 
