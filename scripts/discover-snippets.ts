@@ -44,6 +44,12 @@ interface Snippet {
   usesSuiFramework: boolean;
   /** Validation annotation metadata, if present */
   annotation?: SnippetAnnotation;
+  /** For Move partials: what kind of content ("struct", "function", "struct+function", "use", "other") */
+  partialKind?: string;
+  /** For TS: auto-detected package imports */
+  detectedImports?: string[];
+  /** Lint warnings for best-practices violations */
+  lintWarnings?: string[];
 }
 
 interface SnippetAnnotation {
@@ -149,6 +155,70 @@ function classifySnippet(snippet: Snippet): void {
 
   // Sui framework usage
   snippet.usesSuiFramework = /use\s+sui::/.test(code);
+
+  // Move partial classification
+  if (snippet.type === "move" && !snippet.hasModule && !snippet.isPseudoCode) {
+    const hasStruct = /\b(struct|enum)\s/.test(code);
+    const hasFun = /\bfun\s/.test(code);
+    const isUseOnly = code.trim().startsWith("use ");
+    if (hasStruct && hasFun) snippet.partialKind = "struct+function";
+    else if (hasStruct) snippet.partialKind = "struct";
+    else if (hasFun) snippet.partialKind = "function";
+    else if (isUseOnly) snippet.partialKind = "use";
+    else snippet.partialKind = "other";
+  }
+
+  // Move edition lint checks (2024 edition best practices)
+  if (snippet.type === "move" && !snippet.isPseudoCode) {
+    const warnings: string[] = [];
+    const lines = code.split("\n");
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      // struct without visibility (pre-2024 edition)
+      if (/^\s*struct\s+\w+/.test(line) && !line.startsWith("public") && !line.startsWith("//")) {
+        warnings.push(`L${i + 1}: struct missing 'public' visibility (2024 edition requires it)`);
+      }
+      // Old function-call syntax for vector/option
+      if (/vector::empty\s*</.test(line)) {
+        warnings.push(`L${i + 1}: use 'vector[]' instead of 'vector::empty<T>()'`);
+      }
+      if (/option::none\s*</.test(line)) {
+        warnings.push(`L${i + 1}: use 'option::none()' method syntax`);
+      }
+      if (/option::some\s*\(/.test(line) && !line.includes(".some(")) {
+        warnings.push(`L${i + 1}: use '.some()' method syntax instead of 'option::some()'`);
+      }
+      // Old string literal syntax
+      if (/b"[^"]*"/.test(line) && /string::utf8\(b"/.test(line)) {
+        warnings.push(`L${i + 1}: use string literal b"..." directly instead of 'string::utf8(b"...")'`);
+      }
+      // transfer::share_object instead of transfer::public_share_object (or vice versa in 2024)
+      if (/transfer::share_object\(/.test(line)) {
+        warnings.push(`L${i + 1}: use 'transfer::public_share_object' for objects with 'store'`);
+      }
+      if (/transfer::freeze_object\(/.test(line)) {
+        warnings.push(`L${i + 1}: use 'transfer::public_freeze_object' for objects with 'store'`);
+      }
+      // Old tx_context pattern
+      if (/&mut TxContext/.test(line) && /ctx\s*$/.test(line)) {
+        // Fine, just noting for awareness
+      }
+    }
+    if (warnings.length > 0) snippet.lintWarnings = warnings;
+  }
+
+  // TypeScript import detection
+  if (snippet.type === "typescript" && !snippet.isPseudoCode) {
+    const imports: string[] = [];
+    for (const line of code.split("\n")) {
+      const m = line.match(/(?:import|from)\s+['"]([^'"]+)['"]/);
+      if (m) {
+        const pkg = m[1].startsWith("@") ? m[1].split("/").slice(0, 2).join("/") : m[1].split("/")[0];
+        if (!imports.includes(pkg)) imports.push(pkg);
+      }
+    }
+    if (imports.length > 0) snippet.detectedImports = imports;
+  }
 }
 
 // --- Code block extraction ---
@@ -330,7 +400,9 @@ async function main() {
   const withModule = moveSnippets.filter((s) => s.hasModule);
   const validatable = withModule.filter((s) => !s.isPseudoCode);
   const annotated = allSnippets.filter((s) => s.annotation?.validate);
+  const withLintWarnings = moveSnippets.filter((s) => s.lintWarnings && s.lintWarnings.length > 0);
   console.log(`\nMove classification: ${moveSnippets.length} total, ${withModule.length} with module, ${validatable.length} compilable (no pseudo-code)`);
+  if (withLintWarnings.length > 0) console.log(`Move lint warnings: ${withLintWarnings.length} snippets with style issues`);
   if (annotated.length > 0) console.log(`Annotated for validation: ${annotated.length}`);
 
   // 5. Check coverage — does each snippet appear in a validated source file?
@@ -427,6 +499,23 @@ async function main() {
       const s = coveredSnippets[i];
       const slug = s.mdxFile.replace(/^docs\/content\//, "").replace(/\.mdx?$/, "");
       mdLines.push(`| ${i + 1} | [${slug}](https://docs.sui.io/${slug}) | L${s.line} | ${s.language} | ${s.coveredBy} |`);
+    }
+  }
+
+  // Lint warnings section
+  if (withLintWarnings.length > 0) {
+    mdLines.push("");
+    mdLines.push("## Move Lint Warnings");
+    mdLines.push("");
+    mdLines.push("Snippets with Move 2024 edition style issues:");
+    mdLines.push("");
+    mdLines.push("| # | File | Line | Warnings |");
+    mdLines.push("|---|------|------|----------|");
+    for (let i = 0; i < withLintWarnings.length; i++) {
+      const s = withLintWarnings[i];
+      const slug = s.mdxFile.replace(/^docs\/content\//, "").replace(/\.mdx?$/, "");
+      const warnings = s.lintWarnings!.map((w) => w.replace(/\|/g, "\\|")).join("; ");
+      mdLines.push(`| ${i + 1} | [${slug}](https://docs.sui.io/${slug}) | L${s.line} | ${warnings} |`);
     }
   }
 
