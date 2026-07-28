@@ -27,14 +27,8 @@
         {
           "command": "sui move build",
           "status": "pass",
-          "output": "No sui config found in `/home/runner/.sui/sui_config/client.yaml`, create one [Y/n]?\nGenerated new keypair and alias for address with scheme \"ed25519\" [nifty-malachite: 0xa40cf15bed38a9d41160b2211cd170bace21e5b1d4a908271253559454464f55]\n  secret recovery phrase : [park news oxygen affair cube element secret practice firm recycle pole legend]\nCreated \"/home/runner/.sui/sui_config/client.yaml\"\nSet active environment to testnet\n",
-          "durationMs": 678
-        },
-        {
-          "command": "sui move test",
-          "status": "fail",
-          "output": "tate: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:21.059033Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:21.187441Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:21.292582Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:21.344869Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:21.501971Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:21.522924Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n\n UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── x_wins ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\nFailures in tic_tac_toe::shared_tests:\n\n┌── already_finished ──────\n│ Test did not error as expected. Expected test to abort with error constant 'EAlreadyFinished' originating in the module tic_tac_toe::shared but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── already_marked ──────\n│ Test did not error as expected. Expected test to abort with error constant 'EAlreadyFilled' originating in the module tic_tac_toe::shared but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── burn_unfinished_game ──────\n│ Test did not error as expected. Expected test to abort with error constant 'ENotFinished' originating in the module tic_tac_toe::shared but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── draw ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── location_out_of_bounds ──────\n│ Test did not error as expected. Expected test to abort with error constant 'EInvalidLocation' originating in the module tic_tac_toe::shared but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── o_wins ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── random_player ──────\n│ Test did not error as expected. Expected test to abort with error constant 'EWrongPlayer' originating in the module tic_tac_toe::shared but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── wrong_player ──────\n│ Test did not error as expected. Expected test to abort with error constant 'EWrongPlayer' originating in the module tic_tac_toe::shared but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── x_wins ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\nTest result: FAILED. Total tests: 16; passed: 0; failed: 16",
-          "durationMs": 5415
+          "output": "No sui config found in `/home/runner/.sui/sui_config/client.yaml`, create one [Y/n]?\nGenerated new keypair and alias for address with scheme \"ed25519\" [serene-topaz: 0xb7da84fa89965ca90ab182026256513f7e98fc9dd3769e04fd6c96ac7e141d29]\n  secret recovery phrase : [clock knock badge kidney fancy thing message vicious lesson guess elegant story]\nCreated \"/home/runner/.sui/sui_config/client.yaml\"\nSet active environment to testnet\n",
+          "durationMs": 841
         }
       ],
       "overallStatus": "pass",
@@ -64,13 +58,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 512
-        },
-        {
-          "command": "sui move test",
-          "status": "fail",
-          "output": "[NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.\n2026-07-28T14:00:26.375295Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:26.528619Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:26.681749Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n\nINCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING dynamic_fields\nRunning Move unit tests\n[ FAIL    ] dynamic_fields::example::test_add_delete\n[ FAIL    ] dynamic_fields::example::test_add_reclaim\n[ FAIL    ] dynamic_fields::example::test_delete_with_child_attached\n\nTest failures:\n\nFailures in dynamic_fields::example:\n\n┌── test_add_delete ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_add_reclaim ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_delete_with_child_attached ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\nTest result: FAILED. Total tests: 3; passed: 0; failed: 3",
-          "durationMs": 4645
+          "durationMs": 601
         }
       ],
       "overallStatus": "pass",
@@ -100,13 +88,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 389
-        },
-        {
-          "command": "sui move test",
-          "status": "pass",
-          "output": "INCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING testnet_nft\nRunning Move unit tests\nTest result: OK. Total tests: 0; passed: 0; failed: 0\n",
-          "durationMs": 4006
+          "durationMs": 484
         }
       ],
       "overallStatus": "pass",
@@ -135,13 +117,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 797
-        },
-        {
-          "command": "sui move test",
-          "status": "fail",
-          "output": "[NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.\n2026-07-28T14:00:36.119091Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n\nINCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING random_nft\nRunning Move unit tests\n[ FAIL    ] random_nft::tests::test_e2e\n\nTest failures:\n\nFailures in random_nft::tests:\n\n┌── test_e2e ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\nTest result: FAILED. Total tests: 1; passed: 0; failed: 1",
-          "durationMs": 4246
+          "durationMs": 457
         }
       ],
       "overallStatus": "pass",
@@ -173,13 +149,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 471
-        },
-        {
-          "command": "sui move test",
-          "status": "fail",
-          "output": "[NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.\n2026-07-28T14:00:40.538563Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n\nINCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING Basics\nRunning Move unit tests\n[ FAIL    ] basics::counter_test::test_counter\n\nTest failures:\n\nFailures in basics::counter_test:\n\n┌── test_counter ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\nTest result: FAILED. Total tests: 1; passed: 0; failed: 1",
-          "durationMs": 3947
+          "durationMs": 432
         }
       ],
       "overallStatus": "pass",
@@ -208,13 +178,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 640
-        },
-        {
-          "command": "sui move test",
-          "status": "fail",
-          "output": "tate: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:45.324630Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:45.478097Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:45.631807Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:45.784864Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:45.939511Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:46.092994Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n\nINCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING hero\nRunning Move unit tests\n[ FAIL    ] hero::example::slay_boar_test\n[ FAIL    ] hero::example::test_boar_win\n[ FAIL    ] hero::example::test_equip_already_equipped\n[ FAIL    ] hero::example::test_hero_tired\n[ FAIL    ] hero::example::test_insufficient_funds\n[ FAIL    ] hero::example::test_unequip_empty\n[ FAIL    ] hero::example::test_wrong_game\n\nTest failures:\n\nFailures in hero::example:\n\n┌── slay_boar_test ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_boar_win ──────\n│ Test did not error as expected. Expected test to abort with code 1 originating in the module hero::example but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_equip_already_equipped ──────\n│ Test did not error as expected. Expected test to abort with code 6 originating in the module hero::example but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_hero_tired ──────\n│ Test did not error as expected. Expected test to abort with code 2 originating in the module hero::example but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_insufficient_funds ──────\n│ Test did not error as expected. Expected test to abort with code 5 originating in the module hero::example but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_unequip_empty ──────\n│ Test did not error as expected. Expected test to abort with code 7 originating in the module hero::example but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_wrong_game ──────\n│ Test did not error as expected. Expected test to abort with code 0 originating in the module hero::example but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\nTest result: FAILED. Total tests: 7; passed: 0; failed: 7",
-          "durationMs": 4917
+          "durationMs": 537
         }
       ],
       "overallStatus": "pass",
@@ -248,13 +212,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 421
-        },
-        {
-          "command": "sui move test",
-          "status": "fail",
-          "output": "tate: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:51.237700Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:51.319222Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:51.393821Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:51.476206Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:51.632798Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:00:51.789676Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n\n 2017) error originating in the module sui::object rooted here\n└──────────────────\n\nFailures in vesting::immediate_tests:\n\n┌── test_immediate_vesting ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\nFailures in vesting::linear_tests:\n\n┌── test_invalid_start_time ──────\n│ Test did not error as expected. Expected test to abort with error constant 'EInvalidStartTime' originating in the module vesting::linear but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_linear_vesting ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\nFailures in vesting::milestone_tests:\n\n┌── test_claim_by_unauthorized_owner ──────\n│ Test did not error as expected. Expected test to abort with error constant 'EUnauthorizedOwner' originating in the module vesting::milestone but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_milestone_based_vesting ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_new_invalid_milestone_percentage ──────\n│ Test did not error as expected. Expected test to abort with error constant 'EInvalidNewMilestone' originating in the module vesting::milestone but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_new_invalid_milestone_percentage_range ──────\n│ Test did not error as expected. Expected test to abort with error constant 'EMilestonePercentageRange' originating in the module vesting::milestone but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_new_milestone_by_unathorized_controller ──────\n│ Test did not error as expected. Expected test to abort with error constant 'EUnauthorizedMilestoneController' originating in the module vesting::milestone but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_owner_is_controller ──────\n│ Test did not error as expected. Expected test to abort with error constant 'EOwnerIsController' originating in the module vesting::milestone but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\nTest result: FAILED. Total tests: 16; passed: 0; failed: 16",
-          "durationMs": 5279
+          "durationMs": 683
         }
       ],
       "overallStatus": "pass",
@@ -287,13 +245,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 448
-        },
-        {
-          "command": "sui move test",
-          "status": "pass",
-          "output": "INCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING Coins\nRunning Move unit tests\nTest result: OK. Total tests: 0; passed: 0; failed: 0\n",
-          "durationMs": 3961
+          "durationMs": 860
         }
       ],
       "overallStatus": "pass",
@@ -322,13 +274,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 617
-        },
-        {
-          "command": "sui move test",
-          "status": "pass",
-          "output": "INCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING regulated_coin_example\nRunning Move unit tests\nTest result: OK. Total tests: 0; passed: 0; failed: 0\n",
-          "durationMs": 3924
+          "durationMs": 878
         }
       ],
       "overallStatus": "pass",
@@ -356,14 +302,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "olved 1300, reused 0, downloaded 288, added 333\nProgress: resolved 1300, reused 0, downloaded 393, added 463\nProgress: resolved 1300, reused 0, downloaded 570, added 647\nProgress: resolved 1300, reused 0, downloaded 606, added 688\nProgress: resolved 1300, reused 0, downloaded 699, added 785\nProgress: resolved 1300, reused 0, downloaded 1097, added 1186\nProgress: resolved 1300, reused 0, downloaded 1207, added 1300, done\n.../node_modules/@swc/core postinstall$ node postinstall.js\n.../node_modules/@prisma/engines postinstall$ node scripts/postinstall.js\n.../node_modules/unrs-resolver postinstall$ napi-postinstall unrs-resolver 1.7.2 check\n.../esbuild@0.25.4/node_modules/esbuild postinstall$ node install.js\n.../esbuild@0.21.5/node_modules/esbuild postinstall$ node install.js\n.../node_modules/@swc/core postinstall: Done\n.../node_modules/@parcel/watcher install$ node scripts/build-from-source.js\n.../node_modules/unrs-resolver postinstall: Done\n.../node_modules/@parcel/watcher install: Done\n.../node_modules/msgpackr-extract install$ node-gyp-build-optional-packages\n.../esbuild@0.21.5/node_modules/esbuild postinstall: Done\n.../esbuild@0.25.4/node_modules/esbuild postinstall: Done\n.../node_modules/msgpackr-extract install: Done\n.../node_modules/@prisma/engines postinstall: Done\n.../prisma@5.16.2/node_modules/prisma preinstall$ node scripts/preinstall-entry.js\n.../prisma@5.16.2/node_modules/prisma preinstall: Done\n.../.pnpm/lmdb@2.8.5/node_modules/lmdb install$ node-gyp-build-optional-packages\n.../node_modules/@prisma/client postinstall$ node scripts/postinstall.js\n.../.pnpm/lmdb@2.8.5/node_modules/lmdb install: Done\n.../node_modules/@prisma/client postinstall: prisma:warn We could not find your Prisma schema in the default locations (see: https://pris.ly/d/prisma-schema-location).\n.../node_modules/@prisma/client postinstall: If you have a Prisma schema file in a custom path, you will need to run\n.../node_modules/@prisma/client postinstall: `prisma generate --schema=./path/to/your/schema.prisma` to generate Prisma Client.\n.../node_modules/@prisma/client postinstall: If you do not have a Prisma schema file yet, you can ignore this message.\n.../node_modules/@prisma/client postinstall: Done\n\ndevDependencies:\n+ @changesets/cli 2.29.4\n+ @ianvs/prettier-plugin-sort-imports 4.4.1\n+ @manypkg/cli 0.21.4\n+ @mysten/prettier-plugin-move 0.3.5\n+ @tanstack/eslint-plugin-query 5.74.7\n+ @typescript-eslint/eslint-plugin 6.21.0\n+ @typescript-eslint/parser 6.21.0\n+ concurrently 8.2.2\n+ eslint 8.57.1\n+ eslint-config-prettier 8.10.0\n+ eslint-config-react-app 7.0.1\n+ eslint-import-resolver-typescript 3.10.1\n+ eslint-plugin-header 3.1.1\n+ eslint-plugin-import 2.31.0\n+ eslint-plugin-prettier 5.4.0\n+ eslint-plugin-require-extensions 0.1.3\n+ eslint-plugin-tsdoc 0.2.17\n+ eslint-plugin-unused-imports 3.2.0\n+ graphql-config 5.1.5\n+ js-yaml 4.1.1\n+ prettier 3.5.3\n+ prettier-plugin-tailwindcss 0.6.11\n+ tsx 4.19.4\n+ turbo 2.5.3\n+ typescript 5.8.3\n+ unist-util-visit 5.1.0\n\nDone in 10.5s\n",
-          "durationMs": 12317
+          "output": "olved 1300, reused 0, downloaded 345, added 397\nProgress: resolved 1300, reused 0, downloaded 541, added 626\nProgress: resolved 1300, reused 0, downloaded 571, added 644\nProgress: resolved 1300, reused 0, downloaded 676, added 764\nProgress: resolved 1300, reused 0, downloaded 887, added 975\nProgress: resolved 1300, reused 0, downloaded 1107, added 1195\nProgress: resolved 1300, reused 0, downloaded 1207, added 1300, done\n.../node_modules/@swc/core postinstall$ node postinstall.js\n.../node_modules/@prisma/engines postinstall$ node scripts/postinstall.js\n.../node_modules/unrs-resolver postinstall$ napi-postinstall unrs-resolver 1.7.2 check\n.../esbuild@0.21.5/node_modules/esbuild postinstall$ node install.js\n.../esbuild@0.25.4/node_modules/esbuild postinstall$ node install.js\n.../node_modules/@swc/core postinstall: Done\n.../node_modules/@parcel/watcher install$ node scripts/build-from-source.js\n.../node_modules/unrs-resolver postinstall: Done\n.../esbuild@0.25.4/node_modules/esbuild postinstall: Done\n.../node_modules/@parcel/watcher install: Done\n.../node_modules/msgpackr-extract install$ node-gyp-build-optional-packages\n.../esbuild@0.21.5/node_modules/esbuild postinstall: Done\n.../node_modules/msgpackr-extract install: Done\n.../node_modules/@prisma/engines postinstall: Done\n.../prisma@5.16.2/node_modules/prisma preinstall$ node scripts/preinstall-entry.js\n.../prisma@5.16.2/node_modules/prisma preinstall: Done\n.../node_modules/@prisma/client postinstall$ node scripts/postinstall.js\n.../.pnpm/lmdb@2.8.5/node_modules/lmdb install$ node-gyp-build-optional-packages\n.../.pnpm/lmdb@2.8.5/node_modules/lmdb install: Done\n.../node_modules/@prisma/client postinstall: prisma:warn We could not find your Prisma schema in the default locations (see: https://pris.ly/d/prisma-schema-location).\n.../node_modules/@prisma/client postinstall: If you have a Prisma schema file in a custom path, you will need to run\n.../node_modules/@prisma/client postinstall: `prisma generate --schema=./path/to/your/schema.prisma` to generate Prisma Client.\n.../node_modules/@prisma/client postinstall: If you do not have a Prisma schema file yet, you can ignore this message.\n.../node_modules/@prisma/client postinstall: Done\n\ndevDependencies:\n+ @changesets/cli 2.29.4\n+ @ianvs/prettier-plugin-sort-imports 4.4.1\n+ @manypkg/cli 0.21.4\n+ @mysten/prettier-plugin-move 0.3.5\n+ @tanstack/eslint-plugin-query 5.74.7\n+ @typescript-eslint/eslint-plugin 6.21.0\n+ @typescript-eslint/parser 6.21.0\n+ concurrently 8.2.2\n+ eslint 8.57.1\n+ eslint-config-prettier 8.10.0\n+ eslint-config-react-app 7.0.1\n+ eslint-import-resolver-typescript 3.10.1\n+ eslint-plugin-header 3.1.1\n+ eslint-plugin-import 2.31.0\n+ eslint-plugin-prettier 5.4.0\n+ eslint-plugin-require-extensions 0.1.3\n+ eslint-plugin-tsdoc 0.2.17\n+ eslint-plugin-unused-imports 3.2.0\n+ graphql-config 5.1.5\n+ js-yaml 4.1.1\n+ prettier 3.5.3\n+ prettier-plugin-tailwindcss 0.6.11\n+ tsx 4.19.4\n+ turbo 2.5.3\n+ typescript 5.8.3\n+ unist-util-visit 5.1.0\n\nDone in 11.1s\n",
+          "durationMs": 12547
         },
         {
           "command": "tsc --noEmit",
           "status": "fail",
           "output": "src/config.ts(4,24): error TS2792: Cannot find module 'dotenv'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?\nsrc/config.ts(7,27): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/config.ts(8,28): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/config.ts(9,30): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/config.ts(10,33): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/config.ts(12,32): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/config.ts(13,28): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/config.ts(16,37): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/config.ts(17,35): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/config.ts(21,26): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/main.ts(4,25): error TS2792: Cannot find module '@mysten/sui/client'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?\nsrc/main.ts(12,27): error TS2792: Cannot find module '@mysten/sui/transactions'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?\nsrc/main.ts(13,23): error TS2792: Cannot find module 'commander'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?\nsrc/main.ts(14,30): error TS2792: Cannot find module '@mysten/sui/keypairs/ed25519'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?",
-          "durationMs": 629
+          "durationMs": 644
         }
       ],
       "overallStatus": "fail",
@@ -394,13 +340,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 426
-        },
-        {
-          "command": "sui move test",
-          "status": "pass",
-          "output": "INCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING testnet_soulbound_nft\nRunning Move unit tests\nTest result: OK. Total tests: 0; passed: 0; failed: 0\n",
-          "durationMs": 3998
+          "durationMs": 568
         }
       ],
       "overallStatus": "pass",
@@ -429,13 +369,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 12394
-        },
-        {
-          "command": "sui move test",
-          "status": "fail",
-          "output": "tate: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:38.501633Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:38.656899Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:38.820251Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:38.976495Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:39.132708Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:39.291020Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n\next but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_remove_extension ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_rent_with_extension ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_rent_with_not_enough_coins ──────\n│ Test did not error as expected. Expected test to abort with code 2 originating in the module nft_rental::rentables_ext but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_rent_with_overflow ──────\n│ Test did not error as expected. Expected test to abort with code 6 originating in the module nft_rental::rentables_ext but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_rent_without_extension ──────\n│ Test did not error as expected. Expected test to abort with code 0 originating in the module nft_rental::rentables_ext but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_return_val ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_return_val_without_extension ──────\n│ Test did not error as expected. Expected test to abort with code 0 originating in the module nft_rental::rentables_ext but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_return_val_wrong_kiosk ──────\n│ Test did not error as expected. Expected test to abort with code 3 originating in the module nft_rental::rentables_ext but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_setup_renting ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_take_non_existed_item ──────\n│ Test did not error as expected. Expected test to abort with code 5 originating in the module nft_rental::rentables_ext but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\nTest result: FAILED. Total tests: 27; passed: 0; failed: 27",
-          "durationMs": 8786
+          "durationMs": 12106
         }
       ],
       "overallStatus": "pass",
@@ -465,13 +399,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 472
-        },
-        {
-          "command": "sui move test",
-          "status": "fail",
-          "output": "tate: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:44.950834Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:45.106906Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:45.263612Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:45.420619Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:45.577155Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:45.733301Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n\nil ──────\n│ Test did not error as expected. Expected test to abort with code 0 originating in the module examples::denylist_rule but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_limiter_to_coin_allowed_pass ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_limiter_to_coin_exceeded_fail ──────\n│ Test did not error as expected. Expected test to abort with code 0 originating in the module examples::limiter_rule but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_limiter_transfer_allowed_pass ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_limiter_transfer_to_not_allowed_fail ──────\n│ Test did not error as expected. Expected test to abort with code 0 originating in the module examples::limiter_rule but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\nFailures in examples::simple_token_tests:\n\n┌── test_denylist_from_coin_fail ──────\n│ Test did not error as expected. Expected test to abort with code 0 originating in the module examples::denylist_rule but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_denylist_spend_fail ──────\n│ Test did not error as expected. Expected test to abort with code 0 originating in the module examples::denylist_rule but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_denylist_to_coin_fail ──────\n│ Test did not error as expected. Expected test to abort with code 0 originating in the module examples::denylist_rule but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_denylist_transfer_fail ──────\n│ Test did not error as expected. Expected test to abort with code 0 originating in the module examples::denylist_rule but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_denylist_transfer_to_recipient_fail ──────\n│ Test did not error as expected. Expected test to abort with code 0 originating in the module examples::denylist_rule but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\nTest result: FAILED. Total tests: 22; passed: 0; failed: 22",
-          "durationMs": 5971
+          "durationMs": 977
         }
       ],
       "overallStatus": "pass",
@@ -503,13 +431,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 506
-        },
-        {
-          "command": "sui move test",
-          "status": "fail",
-          "output": "tate: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:50.792797Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:50.812589Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:50.947070Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:50.968772Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:51.101033Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:01:51.123652Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n\nRROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\nFailures in escrow::owned:\n\n┌── test_mismatch_object ──────\n│ Test did not error as expected. Expected test to abort with code 1 originating in the module escrow::owned but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_mismatch_sender ──────\n│ Test did not error as expected. Expected test to abort with code 0 originating in the module escrow::owned but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_object_tamper ──────\n│ Test did not error as expected. Expected test to abort with code 1 originating in the module escrow::owned but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_return_to_sender ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_successful_swap ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\nFailures in escrow::shared:\n\n┌── test_mismatch_object ──────\n│ Test did not error as expected. Expected test to abort with code 1 originating in the module escrow::shared but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_mismatch_sender ──────\n│ Test did not error as expected. Expected test to abort with code 0 originating in the module escrow::shared but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_object_tamper ──────\n│ Test did not error as expected. Expected test to abort with code 1 originating in the module escrow::shared but instead it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_return_to_sender ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_successful_swap ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\nTest result: FAILED. Total tests: 13; passed: 1; failed: 12",
-          "durationMs": 4883
+          "durationMs": 456
         }
       ],
       "overallStatus": "pass",
@@ -552,7 +474,7 @@
           "command": "pnpm run build",
           "status": "pass",
           "output": "\n> deepbook-spot-examples@0.0.1 build /tmp/sui/examples/deepbook-spot\n> tsc --noEmit\n\n",
-          "durationMs": 1513
+          "durationMs": 1479
         }
       ],
       "overallStatus": "pass",
@@ -595,7 +517,7 @@
           "command": "pnpm run build",
           "status": "pass",
           "output": "\n> deepbook-margin-examples@0.0.1 build /tmp/sui/examples/deepbook-margin\n> tsc --noEmit\n\n",
-          "durationMs": 1584
+          "durationMs": 1568
         }
       ],
       "overallStatus": "pass",
@@ -635,7 +557,7 @@
           "command": "pnpm run build",
           "status": "pass",
           "output": "\n> deepbook-predict-examples@0.0.1 build /tmp/sui/examples/deepbook-predict\n> tsc --noEmit\n\n",
-          "durationMs": 1566
+          "durationMs": 1543
         }
       ],
       "overallStatus": "pass",
@@ -666,13 +588,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 423
-        },
-        {
-          "command": "sui move test",
-          "status": "fail",
-          "output": "[NOTE] Dependencies on Sui, MoveStdlib, Bridge, DeepBook, and SuiSystem are automatically added, but this feature is disabled for your package because you have explicitly included dependencies on Sui. Consider removing these dependencies from `Move.toml`.\n2026-07-28T14:02:08.082115Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:02:08.236526Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:02:08.391918Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:02:08.546519Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n2026-07-28T14:02:08.700552Z ERROR move_vm_runtime::shared::logging: [VM] Unexpected verifier/deserialization error! This likely means there is code stored on chain that is unverifiable!\nError: VMError { major_status: MISSING_DEPENDENCY, sub_status: None, message: None, exec_state: None, location: Module(ModuleId { address: 0000000000000000000000000000000000000000000000000000000000000002, name: Identifier(\"object\") }), indices: [(FunctionHandle, 2)], offsets: [] }\n\nINCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING color_object\nRunning Move unit tests\n[ FAIL    ] color_object::example::test_copy_into\n[ FAIL    ] color_object::example::test_create\n[ FAIL    ] color_object::example::test_delete\n[ FAIL    ] color_object::example::test_immutable\n[ FAIL    ] color_object::example::test_transfer\n\nTest failures:\n\nFailures in color_object::example:\n\n┌── test_copy_into ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_create ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_delete ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_immutable ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\n\n┌── test_transfer ──────\n│ INTERNAL TEST ERROR: INTERNAL VM INVARIANT VIOLATION.\n│ Test was not expected to error, but it gave a UNEXPECTED_VERIFIER_ERROR (code 2017) error originating in the module sui::object rooted here\n└──────────────────\n\nTest result: FAILED. Total tests: 5; passed: 0; failed: 5",
-          "durationMs": 4755
+          "durationMs": 489
         }
       ],
       "overallStatus": "pass",
@@ -703,8 +619,8 @@
         {
           "command": "bun install",
           "status": "pass",
-          "output": "bun install v1.3.14 (0d9b296a)\n\n+ @eslint/compat@1.4.1\n+ @ianvs/prettier-plugin-sort-imports@4.7.1\n+ @tony.ganchev/eslint-plugin-header@3.2.4\n+ @typescript-eslint/eslint-plugin@8.56.1\n+ @typescript-eslint/parser@8.56.1\n+ concurrently@9.2.1\n+ eslint@9.39.3\n+ eslint-plugin-header@3.1.1\n+ globals@16.5.0\n+ prettier@3.8.1\n+ vitest@4.0.18\n\n673 packages installed [3.99s]\n",
-          "durationMs": 3994
+          "output": "bun install v1.3.14 (0d9b296a)\n\n+ @eslint/compat@1.4.1\n+ @ianvs/prettier-plugin-sort-imports@4.7.1\n+ @tony.ganchev/eslint-plugin-header@3.2.4\n+ @typescript-eslint/eslint-plugin@8.56.1\n+ @typescript-eslint/parser@8.56.1\n+ concurrently@9.2.1\n+ eslint@9.39.3\n+ eslint-plugin-header@3.1.1\n+ globals@16.5.0\n+ prettier@3.8.1\n+ vitest@4.0.18\n\n673 packages installed [3.69s]\n",
+          "durationMs": 3696
         },
         {
           "command": "bun run build (workspace)",
@@ -743,12 +659,11 @@
         {
           "command": "pnpm install",
           "status": "fail",
-          "output": "? Verifying lockfile against supply-chain policies (281 entries)...\n✓ Lockfile passes supply-chain policies (281 entries in 2.1s)\n[ERR_PNPM_OUTDATED_LOCKFILE] Cannot install with \"frozen-lockfile\" because pnpm-lock.yaml is not up to date with <ROOT>/package.json\n\nNote that in CI environments this setting is true by default. If you still need to run install in such cases, use \"pnpm install --no-frozen-lockfile\"\n\n  Failure reason:\n  specifiers in the lockfile don't match specifiers in package.json:\n* 1 dependencies were added: zod@^4.3.6",
-          "durationMs": 2617
+          "output": "? Verifying lockfile against supply-chain policies (281 entries)...\n✓ Lockfile passes supply-chain policies (281 entries in 2s)\n[ERR_PNPM_OUTDATED_LOCKFILE] Cannot install with \"frozen-lockfile\" because pnpm-lock.yaml is not up to date with <ROOT>/package.json\n\nNote that in CI environments this setting is true by default. If you still need to run install in such cases, use \"pnpm install --no-frozen-lockfile\"\n\n  Failure reason:\n  specifiers in the lockfile don't match specifiers in package.json:\n* 1 dependencies were added: zod@^4.3.6",
+          "durationMs": 2521
         }
       ],
       "overallStatus": "fail",
-      "failureReason": "ed to run install in such cases, use \"pnpm install --no-frozen-lockfile\"\n\n  Failure reason:\n  specifiers in the lockfile don't match specifiers in package.json:\n* 1 dependencies were added: zod@^4.3.6",
       "versionInfo": {
         "dependencies": {
           "@mysten/sui": "^1.38.0",
@@ -774,12 +689,11 @@
         {
           "command": "pnpm install",
           "status": "fail",
-          "output": "✓ Lockfile passes supply-chain policies (verified 477ms ago)\n[ERR_PNPM_OUTDATED_LOCKFILE] Cannot install with \"frozen-lockfile\" because pnpm-lock.yaml is not up to date with <ROOT>/package.json\n\nNote that in CI environments this setting is true by default. If you still need to run install in such cases, use \"pnpm install --no-frozen-lockfile\"\n\n  Failure reason:\n  specifiers in the lockfile don't match specifiers in package.json:\n* 1 dependencies were added: zod@^4.3.6",
-          "durationMs": 421
+          "output": "✓ Lockfile passes supply-chain policies (verified 428ms ago)\n[ERR_PNPM_OUTDATED_LOCKFILE] Cannot install with \"frozen-lockfile\" because pnpm-lock.yaml is not up to date with <ROOT>/package.json\n\nNote that in CI environments this setting is true by default. If you still need to run install in such cases, use \"pnpm install --no-frozen-lockfile\"\n\n  Failure reason:\n  specifiers in the lockfile don't match specifiers in package.json:\n* 1 dependencies were added: zod@^4.3.6",
+          "durationMs": 406
         }
       ],
       "overallStatus": "fail",
-      "failureReason": "ed to run install in such cases, use \"pnpm install --no-frozen-lockfile\"\n\n  Failure reason:\n  specifiers in the lockfile don't match specifiers in package.json:\n* 1 dependencies were added: zod@^4.3.6",
       "versionInfo": {
         "dependencies": {
           "@mysten/sui": "^1.38.0",
@@ -806,14 +720,14 @@
         {
           "command": "npm install",
           "status": "pass",
-          "output": "\nadded 411 packages, and audited 412 packages in 25s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n17 vulnerabilities (5 moderate, 12 high)\n\nTo address issues that do not require attention, run:\n  npm audit fix\n\nTo address all issues (including breaking changes), run:\n  npm audit fix --force\n\nRun `npm audit` for details.\n",
-          "durationMs": 24591
+          "output": "\nadded 411 packages, and audited 412 packages in 26s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n17 vulnerabilities (5 moderate, 12 high)\n\nTo address issues that do not require attention, run:\n  npm audit fix\n\nTo address all issues (including breaking changes), run:\n  npm audit fix --force\n\nRun `npm audit` for details.\n",
+          "durationMs": 26124
         },
         {
           "command": "npm run build",
           "status": "pass",
-          "output": "\n> frontend@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 888 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.57 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.80 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-JEqbeqXL.js   \u001b[39m\u001b[1m\u001b[33m797.37 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 265.47 kB\u001b[22m\n\u001b[32m✓ built in 2.67s\u001b[39m\n",
-          "durationMs": 5079
+          "output": "\n> frontend@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 888 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.57 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.80 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-JEqbeqXL.js   \u001b[39m\u001b[1m\u001b[33m797.37 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 265.47 kB\u001b[22m\n\u001b[32m✓ built in 2.86s\u001b[39m\n",
+          "durationMs": 5421
         }
       ],
       "overallStatus": "pass",
@@ -847,19 +761,13 @@
           "command": "npm install",
           "status": "pass",
           "output": "\nadded 49 packages, and audited 50 packages in 2s\n\n8 packages are looking for funding\n  run `npm fund` for details\n\n2 vulnerabilities (1 low, 1 moderate)\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
-          "durationMs": 1752
+          "durationMs": 1660
         },
         {
           "command": "npm run build",
           "status": "pass",
           "output": "\n> sdk-upload-relay-verification@1.0.0 build\n> tsc\n\n",
-          "durationMs": 1293
-        },
-        {
-          "command": "npm test",
-          "status": "fail",
-          "output": "❌ ERROR: PASSPHRASE environment variable is not set!\n\nPlease set your wallet passphrase using a .env file:\n\n  1) Copy the template\n     cp .env.example .env\n\n  2) Edit .env and set your passphrase\n     PASSPHRASE=\"your twelve word passphrase here\"\n\nFor Docker, the container mounts and reads the same .env file.\n\n\n❌ ERROR: PASSPHRASE environment variable is not set!\n\nPlease set your wallet passphrase using a .env file:\n\n  1) Copy the template\n     cp .env.example .env\n\n  2) Edit .env and set your passphrase\n     PASSPHRASE=\"your twelve word passphrase here\"\n\nFor Docker, the container mounts and reads the same .env file.\n\n\n❌ ERROR: PASSPHRASE environment variable is not set!\n\nPlease set your wallet passphrase using a .env file:\n\n  1) Copy the template\n     cp .env.example .env\n\n  2) Edit .env and set your passphrase\n     PASSPHRASE=\"your twelve word passphrase here\"\n\nFor Docker, the container mounts and reads the same .env file.\n\n\n❌ ERROR: PASSPHRASE environment variable is not set!\n\nPlease set your wallet passphrase using a .env file:\n\n  1) Copy the template\n     cp .env.example .env\n\n  2) Edit .env and set your passphrase\n     PASSPHRASE=\"your twelve word passphrase here\"\n\nFor Docker, the container mounts and reads the same .env file.\n\n\n❌ ERROR: PASSPHRASE environment variable is not set!\n\nPlease set your wallet passphrase using a .env file:\n\n  1) Copy the template\n     cp .env.example .env\n\n  2) Edit .env and set your passphrase\n     PASSPHRASE=\"your twelve word passphrase here\"\n\nFor Docker, the container mounts and reads the same .env file.\n\n\n❌ ERROR: PASSPHRASE environment variable is not set!\n\nPlease set your wallet passphrase using a .env file:\n\n  1) Copy the template\n     cp .env.example .env\n\n  2) Edit .env and set your passphrase\n     PASSPHRASE=\"your twelve word passphrase here\"\n\nFor Docker, the container mounts and reads the same .env file.\n\n\n❌ ERROR: PASSPHRASE environment variable is not set!\n\nPlease set your wallet passphrase using a .env file:\n\n  1) Copy the template\n     cp .env.example .env\n\n  2) Edit .env and set your passphrase\n     PASSPHRASE=\"your twelve word passphrase here\"\n\nFor Docker, the container mounts and reads the same .env file.\n\n\n\n> sdk-upload-relay-verification@1.0.0 test\n> tsx src/run-all.ts\n\n🚀 Starting SDK Upload Relay Code Verification\n\n============================================================\n\nRunning tests sequentially to avoid transaction conflicts...\n\n📤 Upload Examples\n----------------------------------------\n[dotenv@17.2.3] injecting env (0) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops\n\n  → Running: Basic Upload...\n✅ Environment validation passed: Running on testnet\n  ❌ Basic Upload failed: PASSPHRASE environment variable is required\n\n  → Running: Upload with Relay...\n✅ Environment validation passed: Running on testnet\n  ❌ Upload with Relay failed: PASSPHRASE environment variable is required\n✅ Environment validation passed: Running on testnet\n\n  → Running: Hands-On Lab...\n  ❌ Hands-On Lab failed: PASSPHRASE environment variable is required\n\n📥 Download Examples\n----------------------------------------\n✅ Environment validation passed: Running on testnet\n\n  → Running: Download (with upload)...\n✅ Environment validation passed: Running on testnet\n  ❌ Download (with upload) failed: PASSPHRASE environment variable is required\n\n🔄 Retry Patterns\n----------------------------------------\n✅ Environment validation passed: Running on testnet\n\n  → Running: Retry Patterns...\n  ❌ Retry Patterns failed: PASSPHRASE environment variable is required\n\n⚠️ Partial Failures\n----------------------------------------\n✅ Environment validation passed: Running on testnet\n\n  → Running: Partial Failures...\n  ❌ Partial Failures failed: PASSPHRASE environment variable is required\n\n🔍 Integrity Checks\n----------------------------------------\n✅ Environment validation passed: Running on testnet\n\n  → Running: Integrity Checks...\n  ❌ Integrity Checks failed: PASSPHRASE environment variable is required\n\n============================================================\n\n📊 Test Results Summary\n\n❌ Basic Upload (0.00s)\n   Error: PASSPHRASE environment variable is required\n❌ Upload with Relay (0.00s)\n   Error: PASSPHRASE environment variable is required\n❌ Hands-On Lab (0.00s)\n   Error: PASSPHRASE environment variable is required\n❌ Download (with upload) (0.00s)\n   Error: PASSPHRASE environment variable is required\n❌ Retry Patterns (0.00s)\n   Error: PASSPHRASE environment variable is required\n❌ Partial Failures (0.00s)\n   Error: PASSPHRASE environment variable is required\n❌ Integrity Checks (0.00s)\n   Error: PASSPHRASE environment variable is required\n\n------------------------------------------------------------\nTotal: 7 tests\nPassed: 0\nFailed: 7\nTotal Duration: 0.01s\n------------------------------------------------------------\n\n⚠️  Some tests failed. This may be expected in test environments.\n   Network issues or node availability can cause failures.",
-          "durationMs": 18731
+          "durationMs": 1283
         }
       ],
       "overallStatus": "pass",
@@ -892,14 +800,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "✓ Lockfile passes supply-chain policies (verified 583ms ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../esbuild@0.27.1/node_modules/esbuild postinstall$ node install.js\n.../esbuild@0.27.1/node_modules/esbuild postinstall: Done\nDone in 637ms using pnpm v11.17.0\n",
-          "durationMs": 2199
+          "output": "✓ Lockfile passes supply-chain policies (verified 485ms ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../esbuild@0.27.1/node_modules/esbuild postinstall$ node install.js\n.../esbuild@0.27.1/node_modules/esbuild postinstall: Done\nDone in 565ms using pnpm v11.17.0\n",
+          "durationMs": 2240
         },
         {
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1348
+          "durationMs": 1352
         }
       ],
       "overallStatus": "pass",
@@ -931,14 +839,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +42\n++++++++++++++++++++++++++++++++++++++++++\nProgress: resolved 42, reused 0, downloaded 42, added 42, done\n\ndependencies:\n+ @mysten/sui 1.38.0\n+ @mysten/walrus 0.7.0\n+ dotenv 17.2.3\n+ undici 7.16.0\n\ndevDependencies:\n+ @types/node 24.6.1\n+ ts-node 10.9.2\n+ typescript 5.9.3\n\nDone in 878ms using pnpm v10.11.1\n",
-          "durationMs": 2096
+          "output": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +42\n++++++++++++++++++++++++++++++++++++++++++\nProgress: resolved 42, reused 0, downloaded 42, added 42, done\n\ndependencies:\n+ @mysten/sui 1.38.0\n+ @mysten/walrus 0.7.0\n+ dotenv 17.2.3\n+ undici 7.16.0\n\ndevDependencies:\n+ @types/node 24.6.1\n+ ts-node 10.9.2\n+ typescript 5.9.3\n\nDone in 1s using pnpm v10.11.1\n",
+          "durationMs": 2323
         },
         {
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1281
+          "durationMs": 1297
         }
       ],
       "overallStatus": "pass",
@@ -970,13 +878,13 @@
           "command": "npm install",
           "status": "pass",
           "output": "\nadded 32 packages, and audited 33 packages in 1s\n\n8 packages are looking for funding\n  run `npm fund` for details\n\n1 moderate severity vulnerability\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
-          "durationMs": 1449
+          "durationMs": 1430
         },
         {
           "command": "npm run build",
           "status": "pass",
           "output": "\n> walrus-quilts-hands-on@1.0.0 build\n> tsc\n\n",
-          "durationMs": 1474
+          "durationMs": 1415
         }
       ],
       "overallStatus": "pass",
@@ -1013,8 +921,8 @@
         {
           "command": "npm run build",
           "status": "pass",
-          "output": "\n> frontend@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 888 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.57 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.80 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-JEqbeqXL.js   \u001b[39m\u001b[1m\u001b[33m797.37 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 265.47 kB\u001b[22m\n\u001b[32m✓ built in 2.74s\u001b[39m\n",
-          "durationMs": 5073
+          "output": "\n> frontend@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 888 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.57 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.80 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-JEqbeqXL.js   \u001b[39m\u001b[1m\u001b[33m797.37 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 265.47 kB\u001b[22m\n\u001b[32m✓ built in 2.86s\u001b[39m\n",
+          "durationMs": 5181
         }
       ],
       "overallStatus": "pass",
@@ -1046,8 +954,8 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/payment-kit/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/payment-kit/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/suins/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/suins/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/walrus/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/walrus/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n\ndevDependencies:\n+ @arethetypeswrong/cli 0.18.3\n+ @changesets/cli 2.31.0\n+ @ianvs/prettier-plugin-sort-imports 4.7.1\n+ @manypkg/cli 0.25.1\n+ @testcontainers/postgresql 12.0.2\n+ concurrently 10.0.3\n+ graphql-config 5.1.6\n+ oxlint 1.47.0\n+ oxlint-tsgolint 0.23.0\n+ prettier 3.8.4\n+ prettier-plugin-tailwindcss 0.8.0\n+ testcontainers 12.0.2\n+ tsdown 0.22.2\n+ tsx 4.22.4\n+ turbo 2.9.18\n+ typescript 6.0.3\n\nDone in 12.4s using pnpm v10.33.0\n",
-          "durationMs": 13583
+          "output": ".external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/pas/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/pas/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/suins/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/suins/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/walrus/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/walrus/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n\ndevDependencies:\n+ @arethetypeswrong/cli 0.18.3\n+ @changesets/cli 2.31.0\n+ @ianvs/prettier-plugin-sort-imports 4.7.1\n+ @manypkg/cli 0.25.1\n+ @testcontainers/postgresql 12.0.2\n+ concurrently 10.0.3\n+ graphql-config 5.1.6\n+ oxlint 1.47.0\n+ oxlint-tsgolint 0.23.0\n+ prettier 3.8.4\n+ prettier-plugin-tailwindcss 0.8.0\n+ testcontainers 12.0.2\n+ tsdown 0.22.2\n+ tsx 4.22.4\n+ turbo 2.9.18\n+ typescript 6.0.3\n\nDone in 13.1s using pnpm v10.33.0\n",
+          "durationMs": 14250
         },
         {
           "command": "pnpm run build (workspace)",
@@ -1112,13 +1020,13 @@
           "command": "npm install",
           "status": "pass",
           "output": "\nadded 419 packages, and audited 420 packages in 10s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n20 vulnerabilities (5 moderate, 15 high)\n\nTo address issues that do not require attention, run:\n  npm audit fix\n\nTo address all issues possible (including breaking changes), run:\n  npm audit fix --force\n\nSome issues need review, and may require choosing\na different dependency.\n\nRun `npm audit` for details.\n",
-          "durationMs": 10241
+          "durationMs": 9981
         },
         {
           "command": "npm run build",
           "status": "pass",
-          "output": "\n> messaging-sdk-example@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 910 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.40 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.73 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-CGRm6a5C.js   \u001b[39m\u001b[1m\u001b[33m826.04 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 269.60 kB\u001b[22m\n\u001b[32m✓ built in 2.75s\u001b[39m\n",
-          "durationMs": 5253
+          "output": "\n> messaging-sdk-example@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 910 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.40 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.73 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-CGRm6a5C.js   \u001b[39m\u001b[1m\u001b[33m826.04 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 269.60 kB\u001b[22m\n\u001b[32m✓ built in 2.85s\u001b[39m\n",
+          "durationMs": 5346
         }
       ],
       "overallStatus": "pass",
@@ -1155,13 +1063,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 12942
-        },
-        {
-          "command": "sui move test",
-          "status": "pass",
-          "output": "INCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING posts\nRunning Move unit tests\nTest result: OK. Total tests: 0; passed: 0; failed: 0\n",
-          "durationMs": 4003
+          "durationMs": 9559
         }
       ],
       "overallStatus": "pass",
@@ -1192,13 +1094,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 8136
-        },
-        {
-          "command": "sui move test",
-          "status": "pass",
-          "output": "INCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING seal_demo\nRunning Move unit tests\nTest result: OK. Total tests: 0; passed: 0; failed: 0\n",
-          "durationMs": 3923
+          "durationMs": 7651
         }
       ],
       "overallStatus": "pass",
@@ -1227,14 +1123,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "✓ Lockfile passes supply-chain policies (verified 1s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../node_modules/@tailwindcss/oxide postinstall$ node ./scripts/install.js\n.../sharp@0.34.4/node_modules/sharp install$ node install/check.js\n.../node_modules/@tailwindcss/oxide postinstall: Done\n.../sharp@0.34.4/node_modules/sharp install: Done\nDone in 970ms using pnpm v11.17.0\n",
-          "durationMs": 4785
+          "output": "✓ Lockfile passes supply-chain policies (verified 2s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../node_modules/@tailwindcss/oxide postinstall$ node ./scripts/install.js\n.../sharp@0.34.4/node_modules/sharp install$ node install/check.js\n.../node_modules/@tailwindcss/oxide postinstall: Done\n.../sharp@0.34.4/node_modules/sharp install: Done\nDone in 900ms using pnpm v11.17.0\n",
+          "durationMs": 5170
         },
         {
           "command": "pnpm run build",
           "status": "pass",
-          "output": "⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache\nAttention: Next.js now collects completely anonymous telemetry regarding usage.\nThis information is used to shape Next.js' roadmap and prioritize features.\nYou can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:\nhttps://nextjs.org/telemetry\n\n   ▲ Next.js 15.5.4 (Turbopack)\n   - Experiments (use with caution):\n     · serverComponentsExternalPackages\n\n   Creating an optimized production build ...\n ✓ Finished writing to disk in 7ms\n ✓ Compiled successfully in 4.6s\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/8) ...\n   Generating static pages (2/8) \r\n   Generating static pages (4/8) \r\n   Generating static pages (6/8) \r\n ✓ Generating static pages (8/8)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                         Size  First Load JS\n┌ ○ /                            41.3 kB         742 kB\n├ ○ /_not-found                      0 B         700 kB\n├ ƒ /api/store-encrypted-blob        0 B            0 B\n├ ƒ /api/test-nacl-session           0 B            0 B\n└ ○ /test-nacl-seal-session      5.17 kB         705 kB\n+ First Load JS shared by all     709 kB\n  ├ chunks/0348a51373c2a3cf.js   59.2 kB\n  ├ chunks/041a31ac94f24ce5.js    583 kB\n  ├ chunks/0d10da20dfdd0930.js   20.6 kB\n  ├ chunks/7d4cb355fdb07a3d.js   17.2 kB\n  └ other shared chunks (total)    29 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
-          "durationMs": 17495
+          "output": "⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache\nAttention: Next.js now collects completely anonymous telemetry regarding usage.\nThis information is used to shape Next.js' roadmap and prioritize features.\nYou can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:\nhttps://nextjs.org/telemetry\n\n   ▲ Next.js 15.5.4 (Turbopack)\n   - Experiments (use with caution):\n     · serverComponentsExternalPackages\n\n   Creating an optimized production build ...\n ✓ Finished writing to disk in 9ms\n ✓ Compiled successfully in 4.4s\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/8) ...\n   Generating static pages (2/8) \r\n   Generating static pages (4/8) \r\n   Generating static pages (6/8) \r\n ✓ Generating static pages (8/8)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                         Size  First Load JS\n┌ ○ /                            41.3 kB         742 kB\n├ ○ /_not-found                      0 B         700 kB\n├ ƒ /api/store-encrypted-blob        0 B            0 B\n├ ƒ /api/test-nacl-session           0 B            0 B\n└ ○ /test-nacl-seal-session      5.17 kB         705 kB\n+ First Load JS shared by all     709 kB\n  ├ chunks/0348a51373c2a3cf.js   59.2 kB\n  ├ chunks/041a31ac94f24ce5.js    583 kB\n  ├ chunks/0d10da20dfdd0930.js   20.6 kB\n  ├ chunks/7d4cb355fdb07a3d.js   17.2 kB\n  └ other shared chunks (total)    29 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+          "durationMs": 17036
         }
       ],
       "overallStatus": "pass",
@@ -1267,13 +1163,13 @@
           "command": "npm install",
           "status": "pass",
           "output": "\nadded 30 packages, and audited 31 packages in 1s\n\n9 packages are looking for funding\n  run `npm fund` for details\n\n2 vulnerabilities (1 low, 1 moderate)\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
-          "durationMs": 1309
+          "durationMs": 1291
         },
         {
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1340
+          "durationMs": 1355
         }
       ],
       "overallStatus": "pass",
@@ -1307,13 +1203,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 18432
-        },
-        {
-          "command": "sui move test",
-          "status": "pass",
-          "output": "ission\n[ PASS    ] sui_stack_messaging::messaging_tests::create_group_attaches_metadata\n[ PASS    ] sui_stack_messaging::suins_manager_tests::unset_suins_reverse_lookup_without_permission_fails\n[ PASS    ] sui_stack_messaging::seal_policies_tests::seal_approve_reader_mismatched_encryption_history_fails\n[ PASS    ] sui_stack_messaging::messaging_tests::create_group_creates_group_and_encryption_history\n[ PASS    ] sui_stack_messaging::seal_policies_tests::seal_approve_reader_non_member_fails\n[ PASS    ] sui_stack_messaging::messaging_tests::create_group_with_different_uuids\n[ PASS    ] sui_stack_messaging::seal_policies_tests::seal_approve_reader_short_id_fails\n[ PASS    ] sui_stack_messaging::messaging_tests::create_group_with_initial_members\n[ PASS    ] sui_stack_messaging::seal_policies_tests::seal_approve_reader_valid_identity_and_permission\n[ PASS    ] sui_stack_messaging::messaging_tests::create_group_with_initial_members_including_creator\n[ PASS    ] sui_stack_messaging::seal_policies_tests::seal_approve_reader_with_rotated_key_version\n[ PASS    ] sui_stack_messaging::messaging_tests::create_group_with_oversized_dek_fails\n[ PASS    ] sui_stack_messaging::messaging_tests::encryption_history_encrypted_key_invalid_version_fails\n[ PASS    ] sui_stack_messaging::seal_policies_tests::seal_approve_reader_without_permission_fails\n[ PASS    ] sui_stack_messaging::messaging_tests::encryption_history_encrypted_key_returns_correct_version\n[ PASS    ] sui_stack_messaging::messaging_tests::insert_and_remove_group_data\n[ PASS    ] sui_stack_messaging::messaging_tests::insert_group_data_on_archived_group_fails\n[ PASS    ] sui_stack_messaging::messaging_tests::leave_non_member_fails\n[ PASS    ] sui_stack_messaging::messaging_tests::leave_on_archived_group_fails\n[ PASS    ] sui_stack_messaging::messaging_tests::leave_permissions_admin_fails\n[ PASS    ] sui_stack_messaging::messaging_tests::leave_removes_member\n[ PASS    ] sui_stack_messaging::messaging_tests::package_version_returns_constant\n[ PASS    ] sui_stack_messaging::messaging_tests::rotate_encryption_key_on_archived_group_fails\n[ PASS    ] sui_stack_messaging::messaging_tests::rotate_encryption_key_with_mismatched_encryption_history_fails\n[ PASS    ] sui_stack_messaging::messaging_tests::rotate_encryption_key_with_oversized_dek_fails\n[ PASS    ] sui_stack_messaging::messaging_tests::rotate_encryption_key_with_permission\n[ PASS    ] sui_stack_messaging::messaging_tests::rotate_encryption_key_without_permission_fails\n[ PASS    ] sui_stack_messaging::messaging_tests::set_group_name_fails_without_permission\n[ PASS    ] sui_stack_messaging::messaging_tests::set_group_name_on_archived_group_fails\n[ PASS    ] sui_stack_messaging::messaging_tests::set_group_name_succeeds_with_metadata_admin\n[ PASS    ] sui_stack_messaging::messaging_tests::uuid_getter_returns_correct_value\n[ PASS    ] sui_stack_messaging::messaging_tests::version_returns_current_version\nTest result: OK. Total tests: 38; passed: 38; failed: 0\n",
-          "durationMs": 5016
+          "durationMs": 17698
         }
       ],
       "overallStatus": "pass",
@@ -1342,14 +1232,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "✓ Lockfile passes supply-chain policies (verified 1s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../esbuild@0.25.12/node_modules/esbuild postinstall$ node install.js\n.../node_modules/protobufjs postinstall$ node scripts/postinstall\n.../node_modules/msgpackr-extract install$ node-gyp-build-optional-packages\n.../node_modules/protobufjs postinstall: Done\n.../esbuild@0.25.12/node_modules/esbuild postinstall: Done\n.../node_modules/msgpackr-extract install: Done\nDone in 1.4s using pnpm v11.17.0\n",
-          "durationMs": 5914
+          "output": "✓ Lockfile passes supply-chain policies (verified 1s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../esbuild@0.25.12/node_modules/esbuild postinstall$ node install.js\n.../node_modules/protobufjs postinstall$ node scripts/postinstall\n.../node_modules/msgpackr-extract install$ node-gyp-build-optional-packages\n.../node_modules/protobufjs postinstall: Done\n.../esbuild@0.25.12/node_modules/esbuild postinstall: Done\n.../node_modules/msgpackr-extract install: Done\nDone in 1s using pnpm v11.17.0\n",
+          "durationMs": 5734
         },
         {
           "command": "pnpm run build",
           "status": "pass",
-          "output": "\u001b[36mvite v6.4.1 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 722 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  0.40 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.27 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CmLFi6yS.css  \u001b[39m\u001b[1m\u001b[2m 25.04 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   5.17 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-C7z-chHA.js   \u001b[39m\u001b[1m\u001b[33m932.75 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 280.50 kB\u001b[22m\n\u001b[32m✓ built in 2.43s\u001b[39m\n",
-          "durationMs": 5438
+          "output": "\u001b[36mvite v6.4.1 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 722 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  0.40 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.27 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CmLFi6yS.css  \u001b[39m\u001b[1m\u001b[2m 25.04 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   5.17 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-C7z-chHA.js   \u001b[39m\u001b[1m\u001b[33m932.75 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 280.50 kB\u001b[22m\n\u001b[32m✓ built in 2.55s\u001b[39m\n",
+          "durationMs": 5568
         }
       ],
       "overallStatus": "pass",
@@ -1388,13 +1278,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 7958
-        },
-        {
-          "command": "sui move test",
-          "status": "pass",
-          "output": "INCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING ticketing-poc\nRunning Move unit tests\n[ PASS    ] ticketing_poc::loyalty_tests::mint_loyalty\n[ PASS    ] ticketing_poc::loyalty_tests::updates_loyalty_points\n[ PASS    ] ticketing_poc::loyalty_tests::updates_loyalty_points_domain_mismatch\n[ PASS    ] ticketing_poc::loyalty_tests::updates_loyalty_points_loyalty_id_mismatch\n[ PASS    ] ticketing_poc::key_registry_tests::assert_sender_is_key_owner\n[ PASS    ] ticketing_poc::ticket_tests::creates_ticket\n[ PASS    ] ticketing_poc::key_registry_tests::assert_sender_is_key_owner_fails\n[ PASS    ] ticketing_poc::ticket_tests::creates_ticket_invalid_signature\n[ PASS    ] ticketing_poc::key_registry_tests::cleanup_nonces\n[ PASS    ] ticketing_poc::ticket_tests::creates_ticket_nonce_already_used\n[ PASS    ] ticketing_poc::key_registry_tests::cleanup_nonces_unauthorized\n[ PASS    ] ticketing_poc::key_registry_tests::derive_address_from_pk\n[ PASS    ] ticketing_poc::ticket_tests::creates_ticket_permit_domain_mismatch\n[ PASS    ] ticketing_poc::key_registry_tests::set_pk\n[ PASS    ] ticketing_poc::ticket_tests::creates_ticket_permit_owner_mismatch\n[ PASS    ] ticketing_poc::key_registry_tests::set_pk_invalid_length\n[ PASS    ] ticketing_poc::ticket_tests::updates_ticket_stage\nTest result: OK. Total tests: 17; passed: 17; failed: 0\n",
-          "durationMs": 4695
+          "durationMs": 7494
         }
       ],
       "overallStatus": "pass",
@@ -1420,14 +1304,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "✓ Lockfile passes supply-chain policies (verified 2s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../node_modules/protobufjs postinstall$ node scripts/postinstall\n.../node_modules/unrs-resolver postinstall$ napi-postinstall unrs-resolver 1.11.1 check\n.../sharp@0.33.5/node_modules/sharp install$ node install/check\n.../node_modules/protobufjs postinstall: Done\n.../node_modules/unrs-resolver postinstall: Done\n.../sharp@0.33.5/node_modules/sharp install: Done\nDone in 2.1s using pnpm v11.17.0\n",
-          "durationMs": 10201
+          "output": "✓ Lockfile passes supply-chain policies (verified 2s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../node_modules/protobufjs postinstall$ node scripts/postinstall\n.../node_modules/unrs-resolver postinstall$ napi-postinstall unrs-resolver 1.11.1 check\n.../sharp@0.33.5/node_modules/sharp install$ node install/check\n.../node_modules/protobufjs postinstall: Done\n.../node_modules/unrs-resolver postinstall: Done\n.../sharp@0.33.5/node_modules/sharp install: Done\nDone in 2.2s using pnpm v11.17.0\n",
+          "durationMs": 9339
         },
         {
           "command": "pnpm run build",
           "status": "pass",
           "output": "c/app/hooks/useNotifyForTicketUpdates.ts\n49:6  Warning: React Hook useEffect has missing dependencies: 'handleChooseTicketForUpdate' and 'handleNotifyTicketUpdate'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/app/hooks/useUpdateTicketStage.ts\n48:6  Warning: React Hook useEffect has missing dependencies: 'searchParams' and 'ticket.stage'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n48:7  Warning: React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked.  react-hooks/exhaustive-deps\n\n./src/app/profile/page.tsx\n57:6  Warning: React Hook useEffect has missing dependencies: 'searchParams' and 'tabs'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n57:7  Warning: React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked.  react-hooks/exhaustive-deps\n\ninfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules\n   Collecting page data ...\n   Generating static pages (0/18) ...\n   Generating static pages (4/18) \r\n   Generating static pages (8/18) \r\n   Generating static pages (13/18) \r\n ✓ Generating static pages (18/18)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                              Size     First Load JS\n┌ ○ /                                    24.9 kB         258 kB\n├ ○ /_not-found                          983 B           107 kB\n├ ƒ /api/accounts                        160 B           106 kB\n├ ƒ /api/clear                           160 B           106 kB\n├ ƒ /api/execute                         160 B           106 kB\n├ ƒ /api/health                          160 B           106 kB\n├ ƒ /api/permit/mint-point               160 B           106 kB\n├ ƒ /api/permit/mint-ticket              160 B           106 kB\n├ ƒ /api/sponsor                         160 B           106 kB\n├ ƒ /api/stage/mint                      160 B           106 kB\n├ ƒ /api/userinfo/get/salt               160 B           106 kB\n├ ƒ /api/visits                          160 B           106 kB\n├ ○ /auth                                553 B           185 kB\n├ ƒ /events/[id]                         4.88 kB         140 kB\n├ ƒ /events/[id]/seats                   8.97 kB         248 kB\n├ ○ /profile                             8.69 kB         257 kB\n├ ○ /search                              4.56 kB         207 kB\n├ ○ /tickets                             5.18 kB         223 kB\n└ ƒ /tickets/[id]                        9.11 kB         260 kB\n+ First Load JS shared by all            106 kB\n  ├ chunks/1152a06d-b2755ba54cb884a3.js  52.9 kB\n  ├ chunks/587-673b3d4453d44bf5.js       50.8 kB\n  └ other shared chunks (total)          1.95 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
-          "durationMs": 50447
+          "durationMs": 50617
         }
       ],
       "overallStatus": "pass",
@@ -1461,7 +1345,7 @@
           "command": "pnpm run build",
           "status": "pass",
           "output": "c/app/hooks/useNotifyForTicketUpdates.ts\n49:6  Warning: React Hook useEffect has missing dependencies: 'handleChooseTicketForUpdate' and 'handleNotifyTicketUpdate'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/app/hooks/useUpdateTicketStage.ts\n48:6  Warning: React Hook useEffect has missing dependencies: 'searchParams' and 'ticket.stage'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n48:7  Warning: React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked.  react-hooks/exhaustive-deps\n\n./src/app/profile/page.tsx\n57:6  Warning: React Hook useEffect has missing dependencies: 'searchParams' and 'tabs'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n57:7  Warning: React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked.  react-hooks/exhaustive-deps\n\ninfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules\n   Collecting page data ...\n   Generating static pages (0/18) ...\n   Generating static pages (4/18) \r\n   Generating static pages (8/18) \r\n   Generating static pages (13/18) \r\n ✓ Generating static pages (18/18)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                              Size     First Load JS\n┌ ○ /                                    24.9 kB         258 kB\n├ ○ /_not-found                          983 B           107 kB\n├ ƒ /api/accounts                        160 B           106 kB\n├ ƒ /api/clear                           160 B           106 kB\n├ ƒ /api/execute                         160 B           106 kB\n├ ƒ /api/health                          160 B           106 kB\n├ ƒ /api/permit/mint-point               160 B           106 kB\n├ ƒ /api/permit/mint-ticket              160 B           106 kB\n├ ƒ /api/sponsor                         160 B           106 kB\n├ ƒ /api/stage/mint                      160 B           106 kB\n├ ƒ /api/userinfo/get/salt               160 B           106 kB\n├ ƒ /api/visits                          160 B           106 kB\n├ ○ /auth                                553 B           185 kB\n├ ƒ /events/[id]                         4.88 kB         140 kB\n├ ƒ /events/[id]/seats                   8.97 kB         248 kB\n├ ○ /profile                             8.69 kB         257 kB\n├ ○ /search                              4.56 kB         207 kB\n├ ○ /tickets                             5.18 kB         223 kB\n└ ƒ /tickets/[id]                        9.11 kB         260 kB\n+ First Load JS shared by all            106 kB\n  ├ chunks/1152a06d-b2755ba54cb884a3.js  52.9 kB\n  ├ chunks/587-673b3d4453d44bf5.js       50.8 kB\n  └ other shared chunks (total)          1.95 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
-          "durationMs": 31526
+          "durationMs": 32117
         }
       ],
       "overallStatus": "pass",
@@ -1495,13 +1379,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 1078
-        },
-        {
-          "command": "sui move test",
-          "status": "pass",
-          "output": "diamonds_7_on_empty\n[ PASS    ] solitaire::test_solitaire::from_column_to_pile_invalid_order_hearts_3_on_hearts_A\n[ PASS    ] solitaire::test_solitaire::from_column_to_pile_invalid_pile_index\n[ PASS    ] solitaire::test_solitaire::from_column_to_pile_invalid_place_on_king\n[ PASS    ] solitaire::test_solitaire::from_column_to_pile_valid_hearts_2_on_hearts_A\n[ PASS    ] solitaire::test_solitaire::from_column_to_pile_valid_hearts_A_on_empty\n[ PASS    ] solitaire::test_solitaire::from_deck_to_column_invalid_color_hearts_4_on_hearts_5\n[ PASS    ] solitaire::test_solitaire::from_deck_to_column_invalid_order_diamonds_Q_on_empty\n[ PASS    ] solitaire::test_solitaire::from_deck_to_column_invalid_order_spades_8_on_hearts_5\n[ PASS    ] solitaire::test_solitaire::from_deck_to_column_invalid_place_on_ace\n[ PASS    ] solitaire::test_solitaire::from_deck_to_column_invalid_unauthorized_player\n[ PASS    ] solitaire::test_solitaire::from_deck_to_column_no_available_card\n[ PASS    ] solitaire::test_solitaire::from_deck_to_column_valid_diamonds_K_on_empty\n[ PASS    ] solitaire::test_solitaire::from_deck_to_column_valid_spades_8_on_hearts_9\n[ PASS    ] solitaire::test_solitaire::from_deck_to_pile_invalid_class_clubs_2_on_hearts_A\n[ PASS    ] solitaire::test_solitaire::from_deck_to_pile_invalid_order_diamonds_7_on_empty\n[ PASS    ] solitaire::test_solitaire::from_deck_to_pile_invalid_order_hearts_3_on_hearts_A\n[ PASS    ] solitaire::test_solitaire::from_deck_to_pile_no_available_card\n[ PASS    ] solitaire::test_solitaire::from_deck_to_pile_valid_hearts_2_on_hearts_A\n[ PASS    ] solitaire::test_solitaire::from_deck_to_pile_valid_hearts_A_on_empty\n[ PASS    ] solitaire::test_solitaire::from_pile_to_column_invalid_column_index\n[ PASS    ] solitaire::test_solitaire::from_pile_to_column_invalid_pile_index\n[ PASS    ] solitaire::test_solitaire::from_pile_to_column_invalid_place_on_ace\n[ PASS    ] solitaire::test_solitaire::from_pile_to_column_invalid_spades_K_on_hearts_A\n[ PASS    ] solitaire::test_solitaire::from_pile_to_column_valid_clubs_2_on_diamonds_3\n[ PASS    ] solitaire::test_solitaire::init_easy_game_valid\n[ PASS    ] solitaire::test_solitaire::init_normal_game_valid\n[ PASS    ] solitaire::test_solitaire::invalid_turn_deck_card\n[ PASS    ] solitaire::test_solitaire::open_deck_card_invalid_out_of_cards\n[ PASS    ] solitaire::test_solitaire::open_deck_card_invalid_unauthorized_player\n[ PASS    ] solitaire::test_solitaire::open_deck_card_valid\n[ PASS    ] solitaire::test_solitaire::reveal_card_valid\n[ PASS    ] solitaire::test_solitaire::rotate_deck_and_reveal_all_cards\n[ PASS    ] solitaire::test_solitaire::rotate_open_deck_cards_invalid_unauthorized_player\n[ PASS    ] solitaire::test_solitaire::test_hidden_card_reveal_from_column_to_column\n[ PASS    ] solitaire::test_solitaire::test_hidden_card_reveal_from_column_to_pile\n[ PASS    ] solitaire::test_solitaire::turn_deck_card_valid_reveal_all_and_iterate_2_times\nTest result: OK. Total tests: 58; passed: 58; failed: 0\n",
-          "durationMs": 4535
+          "durationMs": 661
         }
       ],
       "overallStatus": "pass",
@@ -1528,14 +1406,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +910\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\nProgress: resolved 910, reused 287, downloaded 87, added 234\nProgress: resolved 910, reused 287, downloaded 300, added 583\nProgress: resolved 910, reused 287, downloaded 395, added 658\nProgress: resolved 910, reused 287, downloaded 579, added 864\nProgress: resolved 910, reused 287, downloaded 620, added 909\nProgress: resolved 910, reused 287, downloaded 621, added 910, done\n\ndependencies:\n+ @dnd-kit/core 6.3.1\n+ @hookform/resolvers 5.2.1\n+ @mysten/codegen 0.5.0\n+ @mysten/dapp-kit 0.17.7\n+ @mysten/enoki 0.12.0\n+ @mysten/sui 1.38.0\n+ @radix-ui/react-accordion 1.2.12\n+ @radix-ui/react-dialog 1.1.15\n+ @radix-ui/react-dropdown-menu 2.1.16\n+ @radix-ui/react-icons 1.3.2\n+ @radix-ui/react-label 2.1.7\n+ @radix-ui/react-radio-group 1.3.8\n+ @radix-ui/react-scroll-area 1.2.10\n+ @radix-ui/react-select 2.2.6\n+ @radix-ui/react-slot 1.2.3\n+ @tanstack/react-query 5.87.4\n+ @types/node 24.3.0\n+ @types/react 19.1.12\n+ @types/react-dom 19.1.9\n+ axios 1.11.0\n+ bignumber.js 9.3.1\n+ bufferutil 4.0.9\n+ class-variance-authority 0.7.1\n+ clsx 2.1.1\n+ encoding 0.1.13\n+ eslint 9.34.0\n+ eslint-config-next 15.5.15\n+ jwt-decode 4.0.0\n+ lucide-react 0.542.0\n+ next 15.5.15\n+ next-pwa 5.6.0\n+ react 19.1.1\n+ react-dom 19.1.1\n+ react-hook-form 7.62.0\n+ react-hot-toast 2.6.0\n+ react-slick 0.31.0\n+ server-only 0.0.1\n+ slick-carousel 1.8.1\n+ tailwind-merge 3.3.1\n+ tailwindcss-animate 1.0.7\n+ typescript 5.9.2\n+ utf-8-validate 6.0.5\n+ zod 4.1.7\n\ndevDependencies:\n+ @types/react-slick 0.23.13\n+ autoprefixer 10.4.21\n+ postcss 8.5.6\n+ tailwindcss 3.4.17\n\n╭ Warning ─────────────────────────────────────────────────────────────────────╮\n│                                                                              │\n│   Ignored build scripts: bufferutil, protobufjs, sharp, unrs-resolver,       │\n│   utf-8-validate.                                                            │\n│   Run \"pnpm approve-builds\" to pick which dependencies should be allowed     │\n│   to run scripts.                                                            │\n│                                                                              │\n╰──────────────────────────────────────────────────────────────────────────────╯\n\nDone in 5.9s using pnpm v10.10.0\n",
-          "durationMs": 7011
+          "output": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +910\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\nProgress: resolved 910, reused 287, downloaded 29, added 16\nProgress: resolved 910, reused 287, downloaded 157, added 414\nProgress: resolved 910, reused 287, downloaded 305, added 575\nProgress: resolved 910, reused 287, downloaded 390, added 626\nProgress: resolved 910, reused 287, downloaded 605, added 894\nProgress: resolved 910, reused 287, downloaded 621, added 910, done\n\ndependencies:\n+ @dnd-kit/core 6.3.1\n+ @hookform/resolvers 5.2.1\n+ @mysten/codegen 0.5.0\n+ @mysten/dapp-kit 0.17.7\n+ @mysten/enoki 0.12.0\n+ @mysten/sui 1.38.0\n+ @radix-ui/react-accordion 1.2.12\n+ @radix-ui/react-dialog 1.1.15\n+ @radix-ui/react-dropdown-menu 2.1.16\n+ @radix-ui/react-icons 1.3.2\n+ @radix-ui/react-label 2.1.7\n+ @radix-ui/react-radio-group 1.3.8\n+ @radix-ui/react-scroll-area 1.2.10\n+ @radix-ui/react-select 2.2.6\n+ @radix-ui/react-slot 1.2.3\n+ @tanstack/react-query 5.87.4\n+ @types/node 24.3.0\n+ @types/react 19.1.12\n+ @types/react-dom 19.1.9\n+ axios 1.11.0\n+ bignumber.js 9.3.1\n+ bufferutil 4.0.9\n+ class-variance-authority 0.7.1\n+ clsx 2.1.1\n+ encoding 0.1.13\n+ eslint 9.34.0\n+ eslint-config-next 15.5.15\n+ jwt-decode 4.0.0\n+ lucide-react 0.542.0\n+ next 15.5.15\n+ next-pwa 5.6.0\n+ react 19.1.1\n+ react-dom 19.1.1\n+ react-hook-form 7.62.0\n+ react-hot-toast 2.6.0\n+ react-slick 0.31.0\n+ server-only 0.0.1\n+ slick-carousel 1.8.1\n+ tailwind-merge 3.3.1\n+ tailwindcss-animate 1.0.7\n+ typescript 5.9.2\n+ utf-8-validate 6.0.5\n+ zod 4.1.7\n\ndevDependencies:\n+ @types/react-slick 0.23.13\n+ autoprefixer 10.4.21\n+ postcss 8.5.6\n+ tailwindcss 3.4.17\n\n╭ Warning ─────────────────────────────────────────────────────────────────────╮\n│                                                                              │\n│   Ignored build scripts: bufferutil, protobufjs, sharp, unrs-resolver,       │\n│   utf-8-validate.                                                            │\n│   Run \"pnpm approve-builds\" to pick which dependencies should be allowed     │\n│   to run scripts.                                                            │\n│                                                                              │\n╰──────────────────────────────────────────────────────────────────────────────╯\n\nDone in 6.6s using pnpm v10.10.0\n",
+          "durationMs": 7906
         },
         {
           "command": "pnpm run build",
           "status": "pass",
-          "output": "ap and prioritize features.\nYou can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:\nhttps://nextjs.org/telemetry\n\n   ▲ Next.js 15.5.15\n\n   Creating an optimized production build ...\n> [PWA] Compile server\n> [PWA] Compile server\n> [PWA] Compile client (static)\n> [PWA] Auto register service worker with: /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--solitaire--main/app/node_modules/.pnpm/next-pwa@5.6.0_@babel+core@7.28.4_next@15.5.15_@babel+core@7.28.4_react-dom@19.1.1_reac_ca58a66723231942211cd6498f0cd02d/node_modules/next-pwa/register.js\n> [PWA] Service worker: /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--solitaire--main/app/public/sw.js\n> [PWA]   url: /sw.js\n> [PWA]   scope: /\n ✓ Compiled successfully in 19.3s\n   Linting and checking validity of types ...\n\n./src/app/game/layout.tsx\n21:6  Warning: React Hook useEffect has a missing dependency: 'router'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/forms/LoginForm.tsx\n29:6  Warning: React Hook useEffect has a missing dependency: 'router'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/gameBoard/GameBoard.tsx\n84:6  Warning: React Hook useEffect has a missing dependency: 'wonModal'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/gameBoard/WonModal.tsx\n90:6  Warning: React Hook useEffect has missing dependencies: 'gameId' and 'suiClient'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n\ninfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules\n   Collecting page data ...\n   Generating static pages (0/8) ...\n   Generating static pages (2/8) \r\nlayout.tsx is on server: false\npage.tsx is on server: false\nlayout.tsx is on server: false\nlayout.tsx is on server: false\n   Generating static pages (4/8) \r\n   Generating static pages (6/8) \r\n ✓ Generating static pages (8/8)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                                 Size  First Load JS\n┌ ○ /                                      842 B         243 kB\n├ ○ /_not-found                            137 B         103 kB\n├ ƒ /api/execute                           137 B         103 kB\n├ ƒ /api/health                            137 B         103 kB\n├ ƒ /api/sponsor                           137 B         103 kB\n└ ○ /game                                39.8 kB         280 kB\n+ First Load JS shared by all             102 kB\n  ├ chunks/207-27a5d686923a4f91.js       46.3 kB\n  ├ chunks/f3bdebb4-750393fb459063d0.js  54.2 kB\n  └ other shared chunks (total)          1.93 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
-          "durationMs": 38303
+          "output": "ap and prioritize features.\nYou can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:\nhttps://nextjs.org/telemetry\n\n   ▲ Next.js 15.5.15\n\n   Creating an optimized production build ...\n> [PWA] Compile server\n> [PWA] Compile server\n> [PWA] Compile client (static)\n> [PWA] Auto register service worker with: /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--solitaire--main/app/node_modules/.pnpm/next-pwa@5.6.0_@babel+core@7.28.4_next@15.5.15_@babel+core@7.28.4_react-dom@19.1.1_reac_ca58a66723231942211cd6498f0cd02d/node_modules/next-pwa/register.js\n> [PWA] Service worker: /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--solitaire--main/app/public/sw.js\n> [PWA]   url: /sw.js\n> [PWA]   scope: /\n ✓ Compiled successfully in 18.7s\n   Linting and checking validity of types ...\n\n./src/app/game/layout.tsx\n21:6  Warning: React Hook useEffect has a missing dependency: 'router'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/forms/LoginForm.tsx\n29:6  Warning: React Hook useEffect has a missing dependency: 'router'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/gameBoard/GameBoard.tsx\n84:6  Warning: React Hook useEffect has a missing dependency: 'wonModal'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/gameBoard/WonModal.tsx\n90:6  Warning: React Hook useEffect has missing dependencies: 'gameId' and 'suiClient'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n\ninfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules\n   Collecting page data ...\n   Generating static pages (0/8) ...\n   Generating static pages (2/8) \r\nlayout.tsx is on server: false\nlayout.tsx is on server: false\npage.tsx is on server: false\nlayout.tsx is on server: false\n   Generating static pages (4/8) \r\n   Generating static pages (6/8) \r\n ✓ Generating static pages (8/8)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                                 Size  First Load JS\n┌ ○ /                                      842 B         243 kB\n├ ○ /_not-found                            137 B         103 kB\n├ ƒ /api/execute                           137 B         103 kB\n├ ƒ /api/health                            137 B         103 kB\n├ ƒ /api/sponsor                           137 B         103 kB\n└ ○ /game                                39.8 kB         280 kB\n+ First Load JS shared by all             102 kB\n  ├ chunks/207-27a5d686923a4f91.js       46.3 kB\n  ├ chunks/f3bdebb4-750393fb459063d0.js  54.2 kB\n  └ other shared chunks (total)          1.93 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+          "durationMs": 36814
         }
       ],
       "overallStatus": "pass",
@@ -1567,14 +1445,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "✓ Lockfile passes supply-chain policies (verified 2s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../node_modules/@swc/core postinstall$ node postinstall.js\n.../node_modules/@tailwindcss/oxide postinstall$ node ./scripts/install.js\n.../esbuild@0.25.5/node_modules/esbuild postinstall$ node install.js\n.../node_modules/@swc/core postinstall: Done\n.../esbuild@0.25.5/node_modules/esbuild postinstall: Done\n.../node_modules/@tailwindcss/oxide postinstall: Done\nDone in 1.6s using pnpm v11.17.0\n",
-          "durationMs": 7630
+          "output": "✓ Lockfile passes supply-chain policies (verified 1s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../esbuild@0.25.5/node_modules/esbuild postinstall$ node install.js\n.../node_modules/@tailwindcss/oxide postinstall$ node ./scripts/install.js\n.../node_modules/@swc/core postinstall$ node postinstall.js\n.../node_modules/@swc/core postinstall: Done\n.../esbuild@0.25.5/node_modules/esbuild postinstall: Done\n.../node_modules/@tailwindcss/oxide postinstall: Done\nDone in 1.6s using pnpm v11.17.0\n",
+          "durationMs": 6695
         },
         {
           "command": "pnpm run build",
           "status": "pass",
-          "output": "\u001b[36mvite v6.3.5 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 2322 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                           \u001b[39m\u001b[1m\u001b[2m    1.51 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.78 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[32mwalrus_wasm_bg-KCYZ1fvy.wasm  \u001b[39m\u001b[1m\u001b[2m  558.13 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip: 304.78 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CGERj4EO.css            \u001b[39m\u001b[1m\u001b[2m  725.73 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  88.92 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-BtoI2cod.js             \u001b[39m\u001b[1m\u001b[33m1,173.23 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 289.16 kB\u001b[22m\n\u001b[32m✓ built in 3.66s\u001b[39m\n",
-          "durationMs": 6801
+          "output": "\u001b[36mvite v6.3.5 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 2322 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                           \u001b[39m\u001b[1m\u001b[2m    1.51 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.78 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[32mwalrus_wasm_bg-KCYZ1fvy.wasm  \u001b[39m\u001b[1m\u001b[2m  558.13 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip: 304.78 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CGERj4EO.css            \u001b[39m\u001b[1m\u001b[2m  725.73 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  88.92 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-BtoI2cod.js             \u001b[39m\u001b[1m\u001b[33m1,173.23 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 289.16 kB\u001b[22m\n\u001b[32m✓ built in 3.87s\u001b[39m\n",
+          "durationMs": 6963
         }
       ],
       "overallStatus": "pass",
@@ -1586,106 +1464,6 @@
           "typescript": "^5.8.3"
         },
         "packageManager": "pnpm"
-      },
-      "patched": false
-    },
-    {
-      "id": "MystenLabs/sui-move-bootcamp@solution/I1/silver",
-      "type": "move",
-      "source": "external",
-      "origin": "MystenLabs/sui-move-bootcamp@solution",
-      "packageRoot": "I1/silver",
-      "files": [
-        "I1/silver/sources/silver.move"
-      ],
-      "referencedBy": [
-        "docs/content/onchain-finance/fungible-tokens/create-a-fungible-token-coin.mdx"
-      ],
-      "steps": [
-        {
-          "command": "sui move build",
-          "status": "pass",
-          "output": "",
-          "durationMs": 7581
-        },
-        {
-          "command": "sui move test",
-          "status": "fail",
-          "output": "ing to 'u64'\n   │\n   = To avoid this warning, add an explicit type annotation, e.g., '<num>u64'\n   = This warning can be suppressed with '#[allow(untyped_literal)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09003]: unused assignment\n   ┌─ ./sources/silver.move:75:10\n   │\n75 │     let (mut tcap, metadata) = create_silver_currency(\n   │          ^^^^^^^^ Unused assignment for variable 'tcap'. Consider removing, replacing with '_', or prefixing with '_' (e.g., '_tcap')\n   │\n   = This warning can be suppressed with '#[allow(unused_assignment)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09012]: unused 'mut' modifiers\n   ┌─ ./sources/silver.move:75:14\n   │\n75 │     let (mut tcap, metadata) = create_silver_currency(\n   │          --- ^^^^ The variable 'tcap' is never used mutably\n   │          │    \n   │          Consider removing the 'mut' declaration here\n   │\n   = This warning can be suppressed with '#[allow(unused_let_mut)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09003]: unused assignment\n   ┌─ ./sources/silver.move:75:20\n   │\n75 │     let (mut tcap, metadata) = create_silver_currency(\n   │                    ^^^^^^^^ Unused assignment for variable 'metadata'. Consider removing, replacing with '_', or prefixing with '_' (e.g., '_metadata')\n   │\n   = This warning can be suppressed with '#[allow(unused_assignment)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09002]: unused variable\n   ┌─ ./sources/silver.move:81:9\n   │\n81 │     let coin: Coin<SILVER> = todo!();\n   │         ^^^^ Unused local variable 'coin'. Consider removing or prefixing with an underscore: '_coin'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W04037]: deprecated usage\n   ┌─ ./sources/silver.move:86:17\n   │\n86 │     test_utils::destroy(tcap);\n   │                 ^^^^^^^ The function 'sui::test_utils::destroy' is deprecated: Use `std::unit_test::destroy` instead\n   │\n   = This warning can be suppressed with '#[allow(deprecated_usage)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W04037]: deprecated usage\n   ┌─ ./sources/silver.move:87:17\n   │\n87 │     test_utils::destroy(metadata);\n   │                 ^^^^^^^ The function 'sui::test_utils::destroy' is deprecated: Use `std::unit_test::destroy` instead\n   │\n   = This warning can be suppressed with '#[allow(deprecated_usage)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09005]: dead or unreachable code\n   ┌─ ./sources/silver.move:92:5\n   │\n92 │     abort(ETodo)\n   │     ^^^^^^^^^^^^ Expected a value. Any code surrounding or after this expression will not be reached\n   │\n   = This warning can be suppressed with '#[allow(dead_code)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\n\nINCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING silver\nRunning Move unit tests\n[ FAIL    ] silver::silver::burn\n[ FAIL    ] silver::silver::create_currency\n[ FAIL    ] silver::silver::mint\n\nTest failures:\n\nFailures in silver::silver:\n\n┌── burn ──────\n│ error[E11001]: test failure\n│    ┌─ ./sources/silver.move:92:5\n│    │\n│ 23 │ fun create_silver_currency(\n│    │     ---------------------- In this function in silver::silver\n│    ·\n│ 92 │     abort(ETodo)\n│    │     ^^^^^^^^^^^^ Test was not expected to error, but it aborted with code 0 originating in the module silver::silver rooted here\n│ \n│ \n│ stack trace\n│ \tsilver::burn(./sources/silver.move:75-78)\n│ \n└──────────────────\n\n\n┌── create_currency ──────\n│ error[E11001]: test failure\n│    ┌─ ./sources/silver.move:92:5\n│    │\n│ 23 │ fun create_silver_currency(\n│    │     ---------------------- In this function in silver::silver\n│    ·\n│ 92 │     abort(ETodo)\n│    │     ^^^^^^^^^^^^ Test was not expected to error, but it aborted with code 0 originating in the module silver::silver rooted here\n│ \n│ \n│ stack trace\n│ \tsilver::create_currency(./sources/silver.move:37-40)\n│ \n└──────────────────\n\n\n┌── mint ──────\n│ error[E11001]: test failure\n│    ┌─ ./sources/silver.move:92:5\n│    │\n│ 23 │ fun create_silver_currency(\n│    │     ---------------------- In this function in silver::silver\n│    ·\n│ 92 │     abort(ETodo)\n│    │     ^^^^^^^^^^^^ Test was not expected to error, but it aborted with code 0 originating in the module silver::silver rooted here\n│ \n│ \n│ stack trace\n│ \tsilver::mint(./sources/silver.move:55-58)\n│ \n└──────────────────\n\nTest result: FAILED. Total tests: 3; passed: 0; failed: 3",
-          "durationMs": 2694
-        }
-      ],
-      "overallStatus": "pass",
-      "versionInfo": {
-        "edition": "2024",
-        "dependencies": {}
-      },
-      "patched": false
-    },
-    {
-      "id": "MystenLabs/sui-move-bootcamp@solution/I3/king_credits",
-      "type": "move",
-      "source": "external",
-      "origin": "MystenLabs/sui-move-bootcamp@solution",
-      "packageRoot": "I3/king_credits",
-      "files": [
-        "I3/king_credits/sources/king_credits.move",
-        "I3/king_credits/sources/crown_council_rule.move"
-      ],
-      "referencedBy": [
-        "docs/content/onchain-finance/examples-patterns/in-game-currency.mdx"
-      ],
-      "steps": [
-        {
-          "command": "sui move build",
-          "status": "pass",
-          "output": "",
-          "durationMs": 646
-        },
-        {
-          "command": "sui move test",
-          "status": "fail",
-          "output": "│\n42 │     policy: &mut TokenPolicy<T>,\n   │     ^^^^^^ Unused parameter 'policy'. Consider removing or prefixing with an underscore: '_policy'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09002]: unused variable\n   ┌─ ./sources/crown_council_rule.move:43:5\n   │\n43 │     cap: &TokenPolicyCap<T>,\n   │     ^^^ Unused parameter 'cap'. Consider removing or prefixing with an underscore: '_cap'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09002]: unused variable\n   ┌─ ./sources/crown_council_rule.move:44:5\n   │\n44 │     member_addr: address,\n   │     ^^^^^^^^^^^ Unused parameter 'member_addr'. Consider removing or prefixing with an underscore: '_member_addr'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09002]: unused variable\n   ┌─ ./sources/crown_council_rule.move:51:5\n   │\n51 │     request: &mut ActionRequest<T>,\n   │     ^^^^^^^ Unused parameter 'request'. Consider removing or prefixing with an underscore: '_request'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09002]: unused variable\n   ┌─ ./sources/crown_council_rule.move:52:5\n   │\n52 │     policy: &TokenPolicy<T>,\n   │     ^^^^^^ Unused parameter 'policy'. Consider removing or prefixing with an underscore: '_policy'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09002]: unused variable\n   ┌─ ./sources/crown_council_rule.move:53:5\n   │\n53 │     ctx: &mut TxContext\n   │     ^^^ Unused parameter 'ctx'. Consider removing or prefixing with an underscore: '_ctx'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W04037]: deprecated usage\n   ┌─ ./sources/crown_council_rule.move:81:28\n   │\n81 │     assert!(config.members.size() == 2);\n   │                            ^^^^ The method 'size' resolves to the function 'sui::vec_set::size' which is deprecated: Renamed to `length` for consistency.\n   │\n   = This warning can be suppressed with '#[allow(deprecated_usage)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W04037]: deprecated usage\n   ┌─ ./sources/crown_council_rule.move:86:28\n   │\n86 │     assert!(config.members.size() == 1);\n   │                            ^^^^ The method 'size' resolves to the function 'sui::vec_set::size' which is deprecated: Renamed to `length` for consistency.\n   │\n   = This warning can be suppressed with '#[allow(deprecated_usage)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\n\nINCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING king_credits\nRunning Move unit tests\n[ FAIL    ] king_credits::king_credits::test_transfer\n[ FAIL    ] king_credits::crown_council_rule::test_edit_council\n\nTest failures:\n\nFailures in king_credits::crown_council_rule:\n\n┌── test_edit_council ──────\n│ error[E11001]: test failure\n│    ┌─ ./sources/crown_council_rule.move:60:5\n│    │\n│ 21 │ public fun add_rule_config<T>(\n│    │            --------------- In this function in king_credits::crown_council_rule\n│    ·\n│ 60 │     abort(ETodo)\n│    │     ^^^^^^^^^^^^ Test was not expected to error, but it aborted with code 256 originating in the module king_credits::crown_council_rule rooted here\n│ \n│ \n│ stack trace\n│ \tcrown_council_rule::test_edit_council(./sources/crown_council_rule.move:72)\n│ \n└──────────────────\n\nFailures in king_credits::king_credits:\n\n┌── test_transfer ──────\n│ error[E11001]: test failure\n│    ┌─ ./sources/king_credits.move:33:5\n│    │\n│ 20 │ fun init(otw: KING_CREDITS, ctx: &mut TxContext) {\n│    │     ---- In this function in king_credits::king_credits\n│    ·\n│ 33 │     abort(ETodo)\n│    │     ^^^^^^^^^^^^ Test was not expected to error, but it aborted with code 256 originating in the module king_credits::king_credits rooted here\n│ \n│ \n│ stack trace\n│ \tking_credits::test_transfer(./sources/king_credits.move:52)\n│ \n└──────────────────\n\nTest result: FAILED. Total tests: 2; passed: 0; failed: 2",
-          "durationMs": 2709
-        }
-      ],
-      "overallStatus": "pass",
-      "versionInfo": {
-        "edition": "2024",
-        "dependencies": {}
-      },
-      "patched": false
-    },
-    {
-      "id": "MystenLabs/sui-move-bootcamp@solution/I2/fixed_supply",
-      "type": "move",
-      "source": "external",
-      "origin": "MystenLabs/sui-move-bootcamp@solution",
-      "packageRoot": "I2/fixed_supply",
-      "files": [
-        "I2/fixed_supply/sources/silver.move"
-      ],
-      "referencedBy": [
-        "docs/content/onchain-finance/examples-patterns/fixed-supply.mdx"
-      ],
-      "steps": [
-        {
-          "command": "sui move build",
-          "status": "pass",
-          "output": "",
-          "durationMs": 741
-        },
-        {
-          "command": "sui move test",
-          "status": "fail",
-          "output": "warning[W09002]: unused variable\n   ┌─ ./sources/silver.move:25:10\n   │\n25 │     let (tcap, metadata) = create_silver_currency(otw, ctx);\n   │          ^^^^ Unused local variable 'tcap'. Consider removing or prefixing with an underscore: '_tcap'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W04037]: deprecated usage\n   ┌─ ./sources/silver.move:39:11\n   │\n39 │     coin::create_currency<SILVER>(\n   │           ^^^^^^^^^^^^^^^ The function 'sui::coin::create_currency' is deprecated: Use `coin_registry::new_currency_with_otw` instead\n   │\n   = This warning can be suppressed with '#[allow(deprecated_usage)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\n\nINCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING fixed_supply\nRunning Move unit tests\n[ FAIL    ] fixed_supply::silver::test_init\n\nTest failures:\n\nFailures in fixed_supply::silver:\n\n┌── test_init ──────\n│ error[E11001]: test failure\n│    ┌─ ./sources/silver.move:51:5\n│    │\n│ 24 │ fun init(otw: SILVER, ctx: &mut TxContext) {\n│    │     ---- In this function in fixed_supply::silver\n│    ·\n│ 51 │     abort(ETodo)\n│    │     ^^^^^^^^^^^^ Test was not expected to error, but it aborted with code 0 originating in the module fixed_supply::silver rooted here\n│ \n│ \n│ stack trace\n│ \tsilver::test_init(./sources/silver.move:62)\n│ \n└──────────────────\n\nTest result: FAILED. Total tests: 1; passed: 0; failed: 1",
-          "durationMs": 2584
-        }
-      ],
-      "overallStatus": "pass",
-      "versionInfo": {
-        "edition": "2024",
-        "dependencies": {}
       },
       "patched": false
     },
@@ -1706,13 +1484,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 7595
-        },
-        {
-          "command": "sui move test",
-          "status": "pass",
-          "output": "INCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING hello_world\nRunning Move unit tests\nTest result: OK. Total tests: 0; passed: 0; failed: 0\n",
-          "durationMs": 3406
+          "durationMs": 7004
         }
       ],
       "overallStatus": "pass",
@@ -1741,13 +1513,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 721
-        },
-        {
-          "command": "sui move test",
-          "status": "pass",
-          "output": "INCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING hello_world\nRunning Move unit tests\nTest result: OK. Total tests: 0; passed: 0; failed: 0\n",
-          "durationMs": 3463
+          "durationMs": 693
         }
       ],
       "overallStatus": "pass",
@@ -1779,14 +1545,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "✓ Lockfile passes supply-chain policies (verified 1s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../esbuild@0.25.9/node_modules/esbuild postinstall$ node install.js\n.../node_modules/@swc/core postinstall$ node postinstall.js\n.../esbuild@0.25.9/node_modules/esbuild postinstall: Done\n.../node_modules/@swc/core postinstall: Done\nDone in 1.2s using pnpm v11.17.0\n",
-          "durationMs": 4885
+          "output": "✓ Lockfile passes supply-chain policies (verified 1s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../node_modules/@swc/core postinstall$ node postinstall.js\n.../esbuild@0.25.9/node_modules/esbuild postinstall$ node install.js\n.../node_modules/@swc/core postinstall: Done\n.../esbuild@0.25.9/node_modules/esbuild postinstall: Done\nDone in 1.2s using pnpm v11.17.0\n",
+          "durationMs": 4685
         },
         {
           "command": "pnpm run build",
           "status": "pass",
-          "output": "\u001b[36mvite v7.1.4 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 812 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.23 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.64 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-Cs5nhfe8.css  \u001b[39m\u001b[1m\u001b[2m689.24 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  80.92 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-Df_K52sv.js   \u001b[39m\u001b[1m\u001b[33m666.55 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 205.75 kB\u001b[22m\n\u001b[32m✓ built in 2.31s\u001b[39m\n",
-          "durationMs": 4573
+          "output": "\u001b[36mvite v7.1.4 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 812 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.23 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.64 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-Cs5nhfe8.css  \u001b[39m\u001b[1m\u001b[2m689.24 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  80.92 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-Df_K52sv.js   \u001b[39m\u001b[1m\u001b[33m666.55 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 205.75 kB\u001b[22m\n\u001b[32m✓ built in 2.36s\u001b[39m\n",
+          "durationMs": 4658
         }
       ],
       "overallStatus": "pass",
@@ -1819,13 +1585,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 813
-        },
-        {
-          "command": "sui move test",
-          "status": "fail",
-          "output": "er ('const', 'fun', or 'struct')\n\nwarning[W04039]: unable to determine literal's type\n   ┌─ ./tests/hero_tests.move:46:22\n   │\n46 │     let xp_stamina = 2;\n   │                      ^ Could not determine a concrete type for this numeric literal, so defaulting to 'u64'\n   │\n   = To avoid this warning, add an explicit type annotation, e.g., '<num>u64'\n   = This warning can be suppressed with '#[allow(untyped_literal)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nerror[E03003]: unbound module member\n   ┌─ ./tests/hero_tests.move:50:5\n   │\n50 │     acl::init_for_testing(scenario.ctx());\n   │     ^^^^^^^^^^^^^^^^^^^^^ Invalid module access. Unbound function 'init_for_testing' in module 'scenario::acl'\n\nwarning[W09002]: unused variable\n   ┌─ ./tests/xp_tome_tests.move:11:9\n   │\n11 │     let hero_owner = @0x22222;\n   │         ^^^^^^^^^^ Unused local variable 'hero_owner'. Consider removing or prefixing with an underscore: '_hero_owner'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09002]: unused variable\n   ┌─ ./tests/xp_tome_tests.move:12:9\n   │\n12 │     let health = 20;\n   │         ^^^^^^ Unused local variable 'health'. Consider removing or prefixing with an underscore: '_health'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W04039]: unable to determine literal's type\n   ┌─ ./tests/xp_tome_tests.move:12:18\n   │\n12 │     let health = 20;\n   │                  ^^ Could not determine a concrete type for this numeric literal, so defaulting to 'u64'\n   │\n   = To avoid this warning, add an explicit type annotation, e.g., '<num>u64'\n   = This warning can be suppressed with '#[allow(untyped_literal)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09002]: unused variable\n   ┌─ ./tests/xp_tome_tests.move:13:9\n   │\n13 │     let stamina = 5;\n   │         ^^^^^^^ Unused local variable 'stamina'. Consider removing or prefixing with an underscore: '_stamina'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W04039]: unable to determine literal's type\n   ┌─ ./tests/xp_tome_tests.move:13:19\n   │\n13 │     let stamina = 5;\n   │                   ^ Could not determine a concrete type for this numeric literal, so defaulting to 'u64'\n   │\n   = To avoid this warning, add an explicit type annotation, e.g., '<num>u64'\n   = This warning can be suppressed with '#[allow(untyped_literal)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nerror[E03003]: unbound module member\n   ┌─ ./tests/xp_tome_tests.move:17:5\n   │\n17 │     acl::init_for_testing(scenario.ctx());\n   │     ^^^^^^^^^^^^^^^^^^^^^ Invalid module access. Unbound function 'init_for_testing' in module 'scenario::acl'\n\n\nINCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING scenario",
-          "durationMs": 881
+          "durationMs": 7345
         }
       ],
       "overallStatus": "pass",
@@ -1853,13 +1613,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 740
-        },
-        {
-          "command": "sui move test",
-          "status": "fail",
-          "output": "er ('const', 'fun', or 'struct')\n\nwarning[W04039]: unable to determine literal's type\n   ┌─ ./tests/hero_tests.move:46:22\n   │\n46 │     let xp_stamina = 2;\n   │                      ^ Could not determine a concrete type for this numeric literal, so defaulting to 'u64'\n   │\n   = To avoid this warning, add an explicit type annotation, e.g., '<num>u64'\n   = This warning can be suppressed with '#[allow(untyped_literal)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nerror[E03003]: unbound module member\n   ┌─ ./tests/hero_tests.move:50:5\n   │\n50 │     acl::init_for_testing(scenario.ctx());\n   │     ^^^^^^^^^^^^^^^^^^^^^ Invalid module access. Unbound function 'init_for_testing' in module 'scenario::acl'\n\nwarning[W09002]: unused variable\n   ┌─ ./tests/xp_tome_tests.move:11:9\n   │\n11 │     let hero_owner = @0x22222;\n   │         ^^^^^^^^^^ Unused local variable 'hero_owner'. Consider removing or prefixing with an underscore: '_hero_owner'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09002]: unused variable\n   ┌─ ./tests/xp_tome_tests.move:12:9\n   │\n12 │     let health = 20;\n   │         ^^^^^^ Unused local variable 'health'. Consider removing or prefixing with an underscore: '_health'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W04039]: unable to determine literal's type\n   ┌─ ./tests/xp_tome_tests.move:12:18\n   │\n12 │     let health = 20;\n   │                  ^^ Could not determine a concrete type for this numeric literal, so defaulting to 'u64'\n   │\n   = To avoid this warning, add an explicit type annotation, e.g., '<num>u64'\n   = This warning can be suppressed with '#[allow(untyped_literal)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09002]: unused variable\n   ┌─ ./tests/xp_tome_tests.move:13:9\n   │\n13 │     let stamina = 5;\n   │         ^^^^^^^ Unused local variable 'stamina'. Consider removing or prefixing with an underscore: '_stamina'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W04039]: unable to determine literal's type\n   ┌─ ./tests/xp_tome_tests.move:13:19\n   │\n13 │     let stamina = 5;\n   │                   ^ Could not determine a concrete type for this numeric literal, so defaulting to 'u64'\n   │\n   = To avoid this warning, add an explicit type annotation, e.g., '<num>u64'\n   = This warning can be suppressed with '#[allow(untyped_literal)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nerror[E03003]: unbound module member\n   ┌─ ./tests/xp_tome_tests.move:17:5\n   │\n17 │     acl::init_for_testing(scenario.ctx());\n   │     ^^^^^^^^^^^^^^^^^^^^^ Invalid module access. Unbound function 'init_for_testing' in module 'scenario::acl'\n\n\nINCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING scenario",
-          "durationMs": 747
+          "durationMs": 607
         }
       ],
       "overallStatus": "pass",
@@ -1887,13 +1641,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 622
-        },
-        {
-          "command": "sui move test",
-          "status": "pass",
-          "output": "INCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING plinko\nRunning Move unit tests\n[ PASS    ] plinko::house_data_tests::claim_fees\n[ PASS    ] plinko::house_data_tests::invalid_claim_fees\n[ PASS    ] plinko::plinko_tests::insuficient_house_balance\n[ PASS    ] plinko::house_data_tests::invalid_withdraw\n[ PASS    ] plinko::house_data_tests::top_up\n[ PASS    ] plinko::plinko_tests::invalid_game_id\n[ PASS    ] plinko::house_data_tests::update_max_stake\n[ PASS    ] plinko::plinko_tests::player_high_stake\n[ PASS    ] plinko::house_data_tests::update_min_stake\n[ PASS    ] plinko::plinko_tests::player_low_stake\n[ PASS    ] plinko::house_data_tests::update_multiplier_vector\n[ PASS    ] plinko::house_data_tests::withdraw\n[ PASS    ] plinko::plinko_tests::player_valid_selections\nTest result: OK. Total tests: 13; passed: 13; failed: 0\n",
-          "durationMs": 4294
+          "durationMs": 756
         }
       ],
       "overallStatus": "pass",
@@ -1919,14 +1667,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "✓ Lockfile passes supply-chain policies (verified 5s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../node_modules/protobufjs postinstall$ node scripts/postinstall\n.../node_modules/utf-8-validate install$ node-gyp-build\n.../node_modules/bufferutil install$ node-gyp-build\n.../node_modules/protobufjs postinstall: Done\n.../node_modules/bufferutil install: Done\n.../node_modules/utf-8-validate install: Done\nDone in 2.1s using pnpm v11.17.0\n",
-          "durationMs": 10028
+          "output": "✓ Lockfile passes supply-chain policies (verified 3s ago)\nLockfile is up to date, resolution step is skipped\nAlready up to date\n\n.../node_modules/protobufjs postinstall$ node scripts/postinstall\n.../node_modules/utf-8-validate install$ node-gyp-build\n.../node_modules/bufferutil install$ node-gyp-build\n.../node_modules/protobufjs postinstall: Done\n.../node_modules/bufferutil install: Done\n.../node_modules/utf-8-validate install: Done\nDone in 1.9s using pnpm v11.17.0\n",
+          "durationMs": 8237
         },
         {
           "command": "pnpm run build",
           "status": "pass",
           "output": " them or remove the dependency array.  react-hooks/exhaustive-deps\n488:6  Warning: React Hook useEffect has missing dependencies: 'bucketColors', 'multipliersNumbers', and 'setPopupIsVisible'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n504:6  Warning: React Hook useEffect has a missing dependency: 'expectedMultipliers'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/PlinkoSettings.tsx\n184:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element\n\n./src/components/PopUpPicker.tsx\n76:6  Warning: React Hook useEffect has missing dependencies: 'betSizeOptions', 'halfVisibleItems', and 'numberOfBallsOptions'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/contexts/BalanceContext.tsx\n49:6  Warning: React Hook useEffect has a missing dependency: 'handleRefreshBalance'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\ninfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules\n- info Collecting page data...\n- info Generating static pages (0/10)\n- info Generating static pages (2/10)\n- info Generating static pages (4/10)\n- info Generating static pages (7/10)\n- info Generating static pages (10/10)\n- info Finalizing page optimization...\n\nRoute (app)                                Size     First Load JS\n┌ ○ /                                      1.2 kB          181 kB\n├ ○ /_not-found                            0 B                0 B\n├ λ /api/execute                           0 B                0 B\n├ λ /api/game/plinko/end                   0 B                0 B\n├ ○ /api/health                            0 B                0 B\n├ λ /api/sponsor                           0 B                0 B\n├ λ /api/visits                            0 B                0 B\n└ ○ /play                                  34.7 kB         197 kB\n+ First Load JS shared by all              77.7 kB\n  ├ chunks/849-c92b0b30eb228fed.js         25.2 kB\n  ├ chunks/e9b4cd7a-ce9ab42d18b3907b.js    50.6 kB\n  ├ chunks/main-app-8291a015ab5053cc.js    215 B\n  └ chunks/webpack-58feb7106e621104.js     1.75 kB\n\nRoute (pages)                              Size     First Load JS\n─ ○ /404                                   180 B          77.8 kB\n+ First Load JS shared by all              77.6 kB\n  ├ chunks/framework-510ec8ffd65e1d01.js   45 kB\n  ├ chunks/main-b598a46d5a99b69c.js        30.6 kB\n  ├ chunks/pages/_app-08c50647b1f4665f.js  194 B\n  └ chunks/webpack-58feb7106e621104.js     1.75 kB\n\nλ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)\n○  (Static)  automatically rendered as static HTML (uses no initial props)\n\n",
-          "durationMs": 40230
+          "durationMs": 39546
         }
       ],
       "overallStatus": "pass",
@@ -1960,7 +1708,7 @@
           "command": "pnpm run build",
           "status": "pass",
           "output": " them or remove the dependency array.  react-hooks/exhaustive-deps\n488:6  Warning: React Hook useEffect has missing dependencies: 'bucketColors', 'multipliersNumbers', and 'setPopupIsVisible'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n504:6  Warning: React Hook useEffect has a missing dependency: 'expectedMultipliers'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/PlinkoSettings.tsx\n184:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element\n\n./src/components/PopUpPicker.tsx\n76:6  Warning: React Hook useEffect has missing dependencies: 'betSizeOptions', 'halfVisibleItems', and 'numberOfBallsOptions'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/contexts/BalanceContext.tsx\n49:6  Warning: React Hook useEffect has a missing dependency: 'handleRefreshBalance'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\ninfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules\n- info Collecting page data...\n- info Generating static pages (0/10)\n- info Generating static pages (2/10)\n- info Generating static pages (4/10)\n- info Generating static pages (7/10)\n- info Generating static pages (10/10)\n- info Finalizing page optimization...\n\nRoute (app)                                Size     First Load JS\n┌ ○ /                                      1.2 kB          181 kB\n├ ○ /_not-found                            0 B                0 B\n├ λ /api/execute                           0 B                0 B\n├ λ /api/game/plinko/end                   0 B                0 B\n├ ○ /api/health                            0 B                0 B\n├ λ /api/sponsor                           0 B                0 B\n├ λ /api/visits                            0 B                0 B\n└ ○ /play                                  34.7 kB         197 kB\n+ First Load JS shared by all              77.7 kB\n  ├ chunks/849-c92b0b30eb228fed.js         25.2 kB\n  ├ chunks/e9b4cd7a-ce9ab42d18b3907b.js    50.6 kB\n  ├ chunks/main-app-2be74fb973cc61e4.js    212 B\n  └ chunks/webpack-58feb7106e621104.js     1.75 kB\n\nRoute (pages)                              Size     First Load JS\n─ ○ /404                                   180 B          77.8 kB\n+ First Load JS shared by all              77.6 kB\n  ├ chunks/framework-510ec8ffd65e1d01.js   45 kB\n  ├ chunks/main-b598a46d5a99b69c.js        30.6 kB\n  ├ chunks/pages/_app-08c50647b1f4665f.js  194 B\n  └ chunks/webpack-58feb7106e621104.js     1.75 kB\n\nλ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)\n○  (Static)  automatically rendered as static HTML (uses no initial props)\n\n",
-          "durationMs": 23782
+          "durationMs": 24573
         }
       ],
       "overallStatus": "pass",
@@ -1994,14 +1742,14 @@
         {
           "command": "npm install",
           "status": "pass",
-          "output": "\nadded 24 packages, and audited 25 packages in 709ms\n\n6 packages are looking for funding\n  run `npm fund` for details\n\n1 high severity vulnerability\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
-          "durationMs": 764
+          "output": "\nadded 24 packages, and audited 25 packages in 621ms\n\n6 packages are looking for funding\n  run `npm fund` for details\n\n1 high severity vulnerability\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
+          "durationMs": 680
         },
         {
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1123
+          "durationMs": 1112
         }
       ],
       "overallStatus": "pass",
@@ -2025,13 +1773,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 760
-        },
-        {
-          "command": "sui move test",
-          "status": "pass",
-          "output": "INCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Sui\nBUILDING indexer_sample\nRunning Move unit tests\nTest result: OK. Total tests: 0; passed: 0; failed: 0\n",
-          "durationMs": 2615
+          "durationMs": 698
         }
       ],
       "overallStatus": "pass",
@@ -2058,19 +1800,13 @@
           "command": "npm install",
           "status": "pass",
           "output": "\nadded 354 packages, and audited 355 packages in 3s\n\n52 packages are looking for funding\n  run `npm fund` for details\n\n10 vulnerabilities (2 low, 7 high, 1 critical)\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
-          "durationMs": 3286
+          "durationMs": 3223
         },
         {
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1257
-        },
-        {
-          "command": "npm test",
-          "status": "fail",
-          "output": "FAIL tests/registerUser.test.ts\n  User Registration Tests\n    ✕ should successfully register a new user (1 ms)\n\n  ● User Registration Tests › should successfully register a new user\n\n    PACKAGE_ID and USERS_COUNTER_OBJECT_ID must be set in environment\n\n    \u001b[0m \u001b[90m 22 |\u001b[39m\n     \u001b[90m 23 |\u001b[39m     \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mpackageId \u001b[33m||\u001b[39m \u001b[33m!\u001b[39musersCounterObjectId) {\n    \u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 |\u001b[39m       \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\n     \u001b[90m    |\u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n     \u001b[90m 25 |\u001b[39m         \u001b[32m\"PACKAGE_ID and USERS_COUNTER_OBJECT_ID must be set in environment\"\u001b[39m\n     \u001b[90m 26 |\u001b[39m       )\u001b[33m;\u001b[39m\n     \u001b[90m 27 |\u001b[39m     }\u001b[0m\n\n      at Object.<anonymous> (tests/registerUser.test.ts:24:13)\n\nTest Suites: 1 failed, 1 total\nTests:       1 failed, 1 total\nSnapshots:   0 total\nTime:        1.659 s\nRan all test suites.\n\n\n> backend@1.0.0 test\n> jest\n\n  console.log\n    [dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }\n\n      at _log (node_modules/dotenv/lib/main.js:142:11)",
-          "durationMs": 2062
+          "durationMs": 1289
         }
       ],
       "overallStatus": "pass",
@@ -2100,13 +1836,7 @@
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1202
-        },
-        {
-          "command": "npm test",
-          "status": "fail",
-          "output": "FAIL tests/registerUser.test.ts\n  User Registration Tests\n    ✕ should successfully register a new user (1 ms)\n\n  ● User Registration Tests › should successfully register a new user\n\n    PACKAGE_ID and USERS_COUNTER_OBJECT_ID must be set in environment\n\n    \u001b[0m \u001b[90m 22 |\u001b[39m\n     \u001b[90m 23 |\u001b[39m     \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mpackageId \u001b[33m||\u001b[39m \u001b[33m!\u001b[39musersCounterObjectId) {\n    \u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 |\u001b[39m       \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\n     \u001b[90m    |\u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n     \u001b[90m 25 |\u001b[39m         \u001b[32m\"PACKAGE_ID and USERS_COUNTER_OBJECT_ID must be set in environment\"\u001b[39m\n     \u001b[90m 26 |\u001b[39m       )\u001b[33m;\u001b[39m\n     \u001b[90m 27 |\u001b[39m     }\u001b[0m\n\n      at Object.<anonymous> (tests/registerUser.test.ts:24:13)\n\nTest Suites: 1 failed, 1 total\nTests:       1 failed, 1 total\nSnapshots:   0 total\nTime:        1.435 s, estimated 2 s\nRan all test suites.\n\n\n> backend@1.0.0 test\n> jest\n\n  console.log\n    [dotenv@17.2.3] injecting env (0) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`\n\n      at _log (node_modules/dotenv/lib/main.js:142:11)",
-          "durationMs": 1771
+          "durationMs": 1229
         }
       ],
       "overallStatus": "pass",
@@ -2136,13 +1866,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 948
-        },
-        {
-          "command": "sui move test",
-          "status": "fail",
-          "output": "^^^^^^ Unused parameter 'parent'. Consider removing or prefixing with an underscore: '_parent'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09002]: unused variable\n   ┌─ ./sources/objects.move:55:32\n   │\n55 │ public fun new_derived_address(parent: &mut ParentObject, key: address): DerivedObjectAddress {\n   │                                ^^^^^^ Unused parameter 'parent'. Consider removing or prefixing with an underscore: '_parent'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09002]: unused variable\n   ┌─ ./sources/objects.move:55:59\n   │\n55 │ public fun new_derived_address(parent: &mut ParentObject, key: address): DerivedObjectAddress {\n   │                                                           ^^^ Unused parameter 'key'. Consider removing or prefixing with an underscore: '_key'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09002]: unused variable\n   ┌─ ./sources/objects.move:62:31\n   │\n62 │ public fun new_derived_string(parent: &mut ParentObject, key: String): DerivedObjectString {\n   │                               ^^^^^^ Unused parameter 'parent'. Consider removing or prefixing with an underscore: '_parent'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09002]: unused variable\n   ┌─ ./sources/objects.move:62:58\n   │\n62 │ public fun new_derived_string(parent: &mut ParentObject, key: String): DerivedObjectString {\n   │                                                          ^^^ Unused parameter 'key'. Consider removing or prefixing with an underscore: '_key'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09002]: unused variable\n   ┌─ ./sources/objects.move:70:31\n   │\n70 │ public fun new_derived_struct(parent: &mut ParentObject, addr: address): DerivedObjectStruct {\n   │                               ^^^^^^ Unused parameter 'parent'. Consider removing or prefixing with an underscore: '_parent'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\nwarning[W09002]: unused variable\n   ┌─ ./sources/objects.move:70:58\n   │\n70 │ public fun new_derived_struct(parent: &mut ParentObject, addr: address): DerivedObjectStruct {\n   │                                                          ^^^^ Unused parameter 'addr'. Consider removing or prefixing with an underscore: '_addr'\n   │\n   = This warning can be suppressed with '#[allow(unused_variable)]' applied to the 'module' or module member ('const', 'fun', or 'struct')\n\n\nBUILDING derived_objects\nRunning Move unit tests\n[ FAIL    ] derived_objects::derived_objects_tests::test_derived_address\n[ FAIL    ] derived_objects::derived_objects_tests::test_derived_incremental\n[ FAIL    ] derived_objects::derived_objects_tests::test_derived_string\n[ FAIL    ] derived_objects::derived_objects_tests::test_derived_struct\n\nTest failures:\n\nFailures in derived_objects::derived_objects_tests:\n\n┌── test_derived_address ──────\n│ error[E11001]: test failure\n│    ┌─ ./sources/objects.move:58:5\n│    │\n│ 55 │ public fun new_derived_address(parent: &mut ParentObject, key: address): DerivedObjectAddress {\n│    │            ------------------- In this function in derived_objects::objects\n│    ·\n│ 58 │     abort 0\n│    │     ^^^^^^^ Test was not expected to error, but it aborted with code 0 originating in the module derived_objects::objects rooted here\n│ \n│ \n│ stack trace\n│ \tderived_objects_tests::test_derived_address(./tests/derived_objects_tests.move:60)\n│ \n└──────────────────\n\n\n┌── test_derived_incremental ────── (seed = 6179743676363637530)\n│ error[E11001]: test failure\n│    ┌─ ./sources/objects.move:51:5\n│    │\n│ 48 │ public fun new_derived_incremental(parent: &mut ParentObject): DerivedObjectIncremental {\n│    │            ----------------------- In this function in derived_objects::objects\n│    ·\n│ 51 │     abort 0\n│    │     ^^^^^^^ Test was not expected to error, but it aborted with code 0 originating in the module derived_objects::objects rooted here\n│ \n│ \n│ stack trace\n│ \tderived_objects_tests::test_derived_incremental(./tests/derived_objects_tests.move:29)\n│ \n│ This test uses randomly generated inputs. Rerun with `test test_derived_incremental --seed 6179743676363637530` to recreate this test failure.\n│ \n└──────────────────\n\n\n┌── test_derived_string ──────\n│ error[E11001]: test failure\n│    ┌─ ./sources/objects.move:65:5\n│    │\n│ 62 │ public fun new_derived_string(parent: &mut ParentObject, key: String): DerivedObjectString {\n│    │            ------------------ In this function in derived_objects::objects\n│    ·\n│ 65 │     abort 0\n│    │     ^^^^^^^ Test was not expected to error, but it aborted with code 0 originating in the module derived_objects::objects rooted here\n│ \n│ \n│ stack trace\n│ \tderived_objects_tests::test_derived_string(./tests/derived_objects_tests.move:84)\n│ \n└──────────────────\n\n\n┌── test_derived_struct ──────\n│ error[E11001]: test failure\n│    ┌─ ./sources/objects.move:73:5\n│    │\n│ 70 │ public fun new_derived_struct(parent: &mut ParentObject, addr: address): DerivedObjectStruct {\n│    │            ------------------ In this function in derived_objects::objects\n│    ·\n│ 73 │     abort 0\n│    │     ^^^^^^^ Test was not expected to error, but it aborted with code 0 originating in the module derived_objects::objects rooted here\n│ \n│ \n│ stack trace\n│ \tderived_objects_tests::test_derived_struct(./tests/derived_objects_tests.move:108)\n│ \n└──────────────────\n\nTest result: FAILED. Total tests: 4; passed: 0; failed: 4",
-          "durationMs": 4248
+          "durationMs": 1460
         }
       ],
       "overallStatus": "pass",
@@ -2168,20 +1892,14 @@
         {
           "command": "npm install",
           "status": "pass",
-          "output": "\nadded 69 packages, and audited 70 packages in 7s\n\n22 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n",
-          "durationMs": 6740
+          "output": "\nadded 69 packages, and audited 70 packages in 8s\n\n22 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n",
+          "durationMs": 8552
         },
         {
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1304
-        },
-        {
-          "command": "npm test",
-          "status": "fail",
-          "output": "\u001b[31m⎯⎯⎯⎯⎯⎯\u001b[39m\u001b[1m\u001b[41m Failed Suites 1 \u001b[49m\u001b[22m\u001b[31m⎯⎯⎯⎯⎯⎯⎯\u001b[39m\n\n\u001b[41m\u001b[1m FAIL \u001b[22m\u001b[49m tests/derive.test.ts\u001b[2m [ tests/derive.test.ts ]\u001b[22m\n\u001b[31m\u001b[1mError\u001b[22m: Unknown network: undefined\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m getJsonRpcFullnodeUrl node_modules/@mysten/sui/src/jsonRpc/network.ts:\u001b[2m19:9\u001b[22m\u001b[39m\n\u001b[36m \u001b[2m❯\u001b[22m src/suiClient.ts:\u001b[2m5:14\u001b[22m\u001b[39m\n    \u001b[90m  3|\u001b[39m\n    \u001b[90m  4|\u001b[39m \u001b[35mexport\u001b[39m \u001b[35mconst\u001b[39m suiClient \u001b[33m=\u001b[39m \u001b[35mnew\u001b[39m \u001b[33mSuiGrpcClient\u001b[39m({\n    \u001b[90m  5|\u001b[39m     baseUrl: getJsonRpcFullnodeUrl(process.env.NETWORK as \"mainnet\" | …\n    \u001b[90m   |\u001b[39m              \u001b[31m^\u001b[39m\n    \u001b[90m  6|\u001b[39m     network\u001b[33m:\u001b[39m process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mNETWORK\u001b[39m \u001b[35mas\u001b[39m string\u001b[33m,\u001b[39m\n    \u001b[90m  7|\u001b[39m })\u001b[33m;\u001b[39m\n\u001b[90m \u001b[2m❯\u001b[22m tests/derive.utils.ts:\u001b[2m4:1\u001b[22m\u001b[39m\n\n\u001b[31m\u001b[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\u001b[22m\u001b[39m\n\n\n\n> test\n> vitest run\n\n\n\u001b[1m\u001b[30m\u001b[46m RUN \u001b[49m\u001b[39m\u001b[22m \u001b[36mv4.1.10 \u001b[39m\u001b[90m/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--sui-move-bootcamp--solution/C5/ts\u001b[39m\n\n \u001b[31m❯\u001b[39m tests/derive.test.ts \u001b[2m(\u001b[22m\u001b[2m0 test\u001b[22m\u001b[2m)\u001b[22m\n\n\u001b[2m Test Files \u001b[22m \u001b[1m\u001b[31m1 failed\u001b[39m\u001b[22m\u001b[90m (1)\u001b[39m\n\u001b[2m      Tests \u001b[22m \u001b[2mno tests\u001b[22m\n\u001b[2m   Start at \u001b[22m 14:13:23\n\u001b[2m   Duration \u001b[22m 338ms\u001b[2m (transform 43ms, setup 0ms, import 0ms, tests 0ms, environment 0ms)\u001b[22m\n\n\n::error file=/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--sui-move-bootcamp--solution/C5/ts/src/suiClient.ts,title=tests/derive.test.ts,line=5,column=14::Error: Unknown network: undefined%0A ❯ getJsonRpcFullnodeUrl node_modules/@mysten/sui/src/jsonRpc/network.ts:19:9%0A ❯ src/suiClient.ts:5:14%0A ❯ tests/derive.utils.ts:4:1%0A%0A",
-          "durationMs": 684
+          "durationMs": 1330
         }
       ],
       "overallStatus": "pass",
@@ -2212,7 +1930,7 @@
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1030
+          "durationMs": 1039
         }
       ],
       "overallStatus": "pass",
@@ -2236,11 +1954,93 @@
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1049
+          "durationMs": 1063
         }
       ],
       "overallStatus": "pass",
       "versionInfo": {},
+      "patched": false
+    },
+    {
+      "id": "MystenLabs/sui-move-bootcamp@solution/I1/silver",
+      "type": "move",
+      "source": "external",
+      "origin": "MystenLabs/sui-move-bootcamp@solution",
+      "packageRoot": "I1/silver",
+      "files": [
+        "I1/silver/sources/silver.move"
+      ],
+      "referencedBy": [
+        "docs/content/onchain-finance/fungible-tokens/create-a-fungible-token-coin.mdx"
+      ],
+      "steps": [
+        {
+          "command": "sui move build",
+          "status": "pass",
+          "output": "",
+          "durationMs": 798
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "edition": "2024",
+        "dependencies": {}
+      },
+      "patched": false
+    },
+    {
+      "id": "MystenLabs/sui-move-bootcamp@solution/I3/king_credits",
+      "type": "move",
+      "source": "external",
+      "origin": "MystenLabs/sui-move-bootcamp@solution",
+      "packageRoot": "I3/king_credits",
+      "files": [
+        "I3/king_credits/sources/king_credits.move",
+        "I3/king_credits/sources/crown_council_rule.move"
+      ],
+      "referencedBy": [
+        "docs/content/onchain-finance/examples-patterns/in-game-currency.mdx"
+      ],
+      "steps": [
+        {
+          "command": "sui move build",
+          "status": "pass",
+          "output": "",
+          "durationMs": 731
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "edition": "2024",
+        "dependencies": {}
+      },
+      "patched": false
+    },
+    {
+      "id": "MystenLabs/sui-move-bootcamp@solution/I2/fixed_supply",
+      "type": "move",
+      "source": "external",
+      "origin": "MystenLabs/sui-move-bootcamp@solution",
+      "packageRoot": "I2/fixed_supply",
+      "files": [
+        "I2/fixed_supply/sources/silver.move"
+      ],
+      "referencedBy": [
+        "docs/content/onchain-finance/examples-patterns/fixed-supply.mdx"
+      ],
+      "steps": [
+        {
+          "command": "sui move build",
+          "status": "pass",
+          "output": "",
+          "durationMs": 1067
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "edition": "2024",
+        "dependencies": {}
+      },
       "patched": false
     },
     {
@@ -2322,13 +2122,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 2639
-        },
-        {
-          "command": "sui move test",
-          "status": "pass",
-          "output": "t_removing_not_whitelisted_stablecoin_e\n[ PASS    ] deepbook::pool_tests::test_self_matching_cancel_maker_ask\n[ PASS    ] deepbook::pool_tests::test_self_matching_cancel_maker_bid\n[ PASS    ] deepbook::pool_tests::test_self_matching_cancel_taker_ask\n[ PASS    ] deepbook::pool_tests::test_self_matching_cancel_taker_bid\n[ PASS    ] deepbook::pool_tests::test_swap_exact_amount_ask_bid\n[ PASS    ] deepbook::pool_tests::test_swap_exact_amount_ask_bid_with_manager\n[ PASS    ] deepbook::pool_tests::test_swap_exact_amount_bid_ask\n[ PASS    ] deepbook::pool_tests::test_swap_exact_amount_bid_ask_with_manager\n[ PASS    ] deepbook::pool_tests::test_swap_exact_amount_with_input_ask_bid\n[ PASS    ] deepbook::pool_tests::test_swap_exact_amount_with_input_bid_ask\n[ PASS    ] deepbook::pool_tests::test_swap_exact_not_fully_filled_ask_low_qty_ok\n[ PASS    ] deepbook::pool_tests::test_swap_exact_not_fully_filled_ask_min_e\n[ PASS    ] deepbook::pool_tests::test_swap_exact_not_fully_filled_ask_ok\n[ PASS    ] deepbook::pool_tests::test_swap_exact_not_fully_filled_ask_with_manager_low_qty_ok\n[ PASS    ] deepbook::pool_tests::test_swap_exact_not_fully_filled_ask_with_manager_min_e\n[ PASS    ] deepbook::pool_tests::test_swap_exact_not_fully_filled_ask_with_manager_ok\n[ PASS    ] deepbook::pool_tests::test_swap_exact_not_fully_filled_bid_low_qty_ok\n[ PASS    ] deepbook::pool_tests::test_swap_exact_not_fully_filled_bid_min_e\n[ PASS    ] deepbook::pool_tests::test_swap_exact_not_fully_filled_bid_ok\n[ PASS    ] deepbook::pool_tests::test_swap_exact_not_fully_filled_bid_with_manager_low_qty_ok\n[ PASS    ] deepbook::pool_tests::test_swap_exact_not_fully_filled_bid_with_manager_min_e\n[ PASS    ] deepbook::pool_tests::test_swap_exact_not_fully_filled_bid_with_manager_ok\n[ PASS    ] deepbook::pool_tests::test_swap_exact_not_fully_filled_maker_partial_ask_ok\n[ PASS    ] deepbook::pool_tests::test_swap_exact_not_fully_filled_maker_partial_ask_with_manager_ok\n[ PASS    ] deepbook::pool_tests::test_swap_exact_not_fully_filled_maker_partial_bid_ok\n[ PASS    ] deepbook::pool_tests::test_swap_exact_not_fully_filled_maker_partial_bid_with_manager_ok\n[ PASS    ] deepbook::pool_tests::test_swap_with_manager_zero_base_out_ok\n[ PASS    ] deepbook::pool_tests::test_swap_with_manager_zero_quote_out_ok\n[ PASS    ] deepbook::pool_tests::test_unregister_pool_ok\n[ PASS    ] deepbook::pool_tests::test_update_deepbook_referral_multiplier_e\n[ PASS    ] deepbook::pool_tests::test_update_deepbook_referral_multiplier_wrong_owner\n[ PASS    ] deepbook::pool_tests::test_update_pool_book_params_ok\n[ PASS    ] deepbook::pool_tests::test_update_pool_book_params_small_lot_e\n[ PASS    ] deepbook::pool_tests::test_update_pool_book_params_tick_e\n[ PASS    ] deepbook::pool_tests::test_update_pool_book_params_trade_e\n[ PASS    ] deepbook::pool_tests::test_update_pool_book_params_update_e\n[ PASS    ] deepbook::pool_tests::test_using_unregistered_as_reference\nTest result: OK. Total tests: 397; passed: 397; failed: 0\n",
-          "durationMs": 6444
+          "durationMs": 2710
         }
       ],
       "overallStatus": "pass",
@@ -2370,13 +2164,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 24559
-        },
-        {
-          "command": "sui move test",
-          "status": "pass",
-          "output": "_bid_requires_base_debt\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_place_reduce_only_limit_order_incorrect_pool\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_place_reduce_only_limit_order_not_reduce_only\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_place_reduce_only_limit_order_not_reduce_only_quantity_ask\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_place_reduce_only_limit_order_ok\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_place_reduce_only_limit_order_ok_ask\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_place_reduce_only_limit_order_v2_unregistered_pool\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_place_reduce_only_market_order_bid_requires_base_debt\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_place_reduce_only_market_order_incorrect_pool\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_place_reduce_only_market_order_not_reduce_only\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_place_reduce_only_market_order_not_reduce_only_quantity_ask\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_place_reduce_only_market_order_ok\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_place_reduce_only_market_order_ok_ask\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_place_reduce_only_market_order_v2_unregistered_pool\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_set_max_order_ttl_too_high\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_set_max_order_ttl_too_low\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_set_max_price_age_too_high\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_set_max_price_age_too_low\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_set_tolerance_too_high\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_set_tolerance_too_low\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_set_tolerance_within_bounds_ok\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_stake_ok\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_stake_with_deep_margin_manager\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_submit_proposal_ok\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_tolerance_decrease_changes_bounds\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_tolerance_decrease_rejects_order_e2e\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_tolerance_increase_changes_bounds\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_unstake_ok\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_vote_ok\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_withdraw_settled_amounts_ok\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_withdraw_settled_amounts_permissionless_incorrect_pool_e\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_withdraw_settled_amounts_permissionless_no_balance_e\n[ PASS    ] deepbook_margin::pool_proxy_tests::test_withdraw_settled_amounts_permissionless_ok\n[ PASS    ] deepbook_margin::pool_proxy_tests::update_risk_params_shrinking_buffer_below_tolerance_aborts\nTest result: OK. Total tests: 372; passed: 372; failed: 0\n",
-          "durationMs": 8594
+          "durationMs": 20734
         }
       ],
       "overallStatus": "pass",
@@ -2407,13 +2195,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 21386
-        },
-        {
-          "command": "sui move test",
-          "status": "pass",
-          "output": "INCLUDING DEPENDENCY MoveStdlib\nINCLUDING DEPENDENCY Pyth\nINCLUDING DEPENDENCY Sui\nINCLUDING DEPENDENCY Wormhole\nINCLUDING DEPENDENCY deepbook\nINCLUDING DEPENDENCY deepbook_margin\nINCLUDING DEPENDENCY token\nBUILDING margin_liquidation\nRunning Move unit tests\n[ PASS    ] margin_liquidation::liquidation_vault_tests::authorize_duplicate_trader_fail\n[ PASS    ] margin_liquidation::liquidation_vault_tests::authorize_trader_works\n[ PASS    ] margin_liquidation::liquidation_vault_tests::balance_uninitialized_returns_zero\n[ PASS    ] margin_liquidation::liquidation_vault_tests::deauthorize_nonexistent_trader_fail\n[ PASS    ] margin_liquidation::liquidation_vault_tests::deauthorize_trader_works\n[ PASS    ] margin_liquidation::liquidation_vault_tests::deauthorize_without_any_traders_fail\n[ PASS    ] margin_liquidation::liquidation_vault_tests::deauthorized_trader_cannot_trade_fail\n[ PASS    ] margin_liquidation::liquidation_vault_tests::deposit_and_check_balance\n[ PASS    ] margin_liquidation::liquidation_vault_tests::deposit_multiple_accumulates\n[ PASS    ] margin_liquidation::liquidation_vault_tests::deposit_multiple_asset_types\n[ PASS    ] margin_liquidation::liquidation_vault_tests::swap_base_authorized_trader_passes\n[ PASS    ] margin_liquidation::liquidation_vault_tests::swap_base_unauthorized_trader_fail\n[ PASS    ] margin_liquidation::liquidation_vault_tests::withdraw_empty_vault_fail\n[ PASS    ] margin_liquidation::liquidation_vault_tests::withdraw_exceeds_balance_fail\n[ PASS    ] margin_liquidation::liquidation_vault_tests::withdraw_full_balance\n[ PASS    ] margin_liquidation::liquidation_vault_tests::withdraw_reduces_balance\nTest result: OK. Total tests: 16; passed: 16; failed: 0\n",
-          "durationMs": 6664
+          "durationMs": 20836
         }
       ],
       "overallStatus": "pass",
@@ -2608,13 +2390,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 14862
-        },
-        {
-          "command": "sui move test",
-          "status": "pass",
-          "output": "e\n[ PASS    ] deepbook_predict::strike_payout_tree_tests::settled_liability_zero_below_winning_range\n[ PASS    ] deepbook_predict::strike_payout_tree_tests::two_disjoint_ranges_only_count_max_overlap\n[ PASS    ] deepbook_predict::strike_payout_tree_tests::two_overlapping_ranges_sum_backing\n[ PASS    ] deepbook_predict::liquidation_book_tests::insert_over_page_capacity_splits_and_preserves_candidate_order\n[ PASS    ] deepbook_predict::liquidation_book_tests::insert_same_active_order_twice_aborts\n[ PASS    ] deepbook_predict::settlement_flow_tests::try_settle_rejects_old_pyth_after_propbook_rebind\n[ PASS    ] deepbook_predict::pricing_guard_tests::surface_with_basis_above_max_aborts\n[ PASS    ] deepbook_predict::pricing_guard_tests::surface_with_basis_at_exact_factor_admits\n[ PASS    ] deepbook_predict::settlement_flow_tests::try_settle_uses_rebound_pyth_after_exact_backfill\n[ PASS    ] deepbook_predict::pricing_guard_tests::surface_with_basis_one_above_exact_factor_aborts\n[ PASS    ] deepbook_predict::settlement_flow_tests::try_settle_with_wrong_pyth_feed_aborts\n[ PASS    ] deepbook_predict::pricing_guard_tests::surface_with_forward_above_spot_ceiling_aborts\n[ PASS    ] deepbook_predict::settlement_flow_tests::try_settle_without_exact_expiry_spot_returns_false_without_mutation\n[ PASS    ] deepbook_predict::pricing_guard_tests::surface_with_svi_a_above_max_aborts\n[ PASS    ] deepbook_predict::pricing_guard_tests::surface_with_svi_b_above_max_aborts\n[ PASS    ] deepbook_predict::liquidation_boundary_tests::redeem_live_target_liquidates_order_missed_by_budgeted_sweep\n[ PASS    ] deepbook_predict::pricing_guard_tests::surface_with_svi_m_above_max_aborts\n[ PASS    ] deepbook_predict::settlement_flow_tests::unstake_deep_returns_all_staked_custody\n[ PASS    ] deepbook_predict::pricing_guard_tests::surface_with_svi_rho_above_one_aborts\n[ PASS    ] deepbook_predict::pricing_guard_tests::surface_with_svi_sigma_above_max_aborts\n[ PASS    ] deepbook_predict::pricing_guard_tests::surface_with_svi_sigma_below_min_aborts\n[ PASS    ] deepbook_predict::pricing_guard_tests::terminal_roll_down_to_zero_aborts_before_expiry\n[ PASS    ] deepbook_predict::pricing_guard_tests::w_prime_keeps_the_rolled_b_precision\n[ PASS    ] deepbook_predict::pricing_guard_tests::zero_total_variance_aborts_at_load\n[ PASS    ] deepbook_predict::liquidation_book_tests::one_x_orders_do_not_count_toward_active_leveraged_order_cap\n[ PASS    ] deepbook_predict::liquidation_book_tests::passive_tail_scan_resumes_and_wraps_after_watermark\n[ PASS    ] deepbook_predict::liquidation_book_tests::remove_from_empty_book_aborts\n[ PASS    ] deepbook_predict::liquidation_book_tests::remove_uninserted_order_from_nonempty_book_aborts\n[ PASS    ] deepbook_predict::liquidation_book_tests::removing_active_leveraged_order_frees_cap_slot\n[ PASS    ] deepbook_predict::liquidation_book_tests::removing_from_small_left_page_merges_pages_without_losing_orders\nTest result: OK. Total tests: 457; passed: 457; failed: 0\n",
-          "durationMs": 8081
+          "durationMs": 14450
         }
       ],
       "overallStatus": "pass",
@@ -2633,5 +2409,5 @@
       "patched": false
     }
   ],
-  "totalDurationMs": 888576
+  "totalDurationMs": 710483
 }
