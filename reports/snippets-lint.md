@@ -2,28 +2,28 @@
 
 | Metric | Value |
 |--------|-------|
-| MDX files scanned | 415 |
-| Total code blocks | 1758 |
-| Compilable (Move/TS/Rust) | 509 |
+| MDX files scanned | 416 |
+| Total code blocks | 1795 |
+| Compilable (Move/TS/Rust) | 517 |
 | Covered by validated packages | 10 |
-| Uncovered | 499 |
-| Shell/config blocks (skipped) | 1249 |
+| Uncovered | 507 |
+| Shell/config blocks (skipped) | 1278 |
 
 ## Uncovered Snippets
 
 | # | File | Line | Language | Lines | Preview |
 |---|------|------|----------|-------|---------|
-| 1 | [references/release-notes](https://docs.sui.io/references/release-notes) | L734 | move | 7 | `module ex::m;` |
-| 2 | [references/release-notes](https://docs.sui.io/references/release-notes) | L746 | move | 4 | `// Invalid PTB` |
-| 3 | [references/release-notes](https://docs.sui.io/references/release-notes) | L755 | move | 4 | `// Valid PTB` |
-| 4 | [references/release-notes](https://docs.sui.io/references/release-notes) | L773 | move | 27 | `module flash::loan;` |
-| 5 | [references/release-notes](https://docs.sui.io/references/release-notes) | L841 | move | 16 | `// Invalid PTB` |
-| 6 | [references/release-notes](https://docs.sui.io/references/release-notes) | L862 | move | 11 | `// Invalid PTB` |
-| 7 | [references/object-display-syntax](https://docs.sui.io/references/object-display-syntax) | L348 | move | 5 | `enum Status {` |
-| 8 | [references/gaming](https://docs.sui.io/references/gaming) | L182 | move | 8 | `public struct Asset has key, store {` |
-| 9 | [references/gaming](https://docs.sui.io/references/gaming) | L195 | jsx | 4 | `Display` |
-| 10 | [snippets/coin-standards](https://docs.sui.io/snippets/coin-standards) | L25 | ts | 11 | `const tx = new Transaction();` |
-| 11 | [snippets/coin-standards](https://docs.sui.io/snippets/coin-standards) | L48 | rust | 18 | `let mut ptb = ProgrammableTransactionBuilder::new();` |
+| 1 | [snippets/coin-standards](https://docs.sui.io/snippets/coin-standards) | L25 | ts | 11 | `const tx = new Transaction();` |
+| 2 | [snippets/coin-standards](https://docs.sui.io/snippets/coin-standards) | L48 | rust | 18 | `let mut ptb = ProgrammableTransactionBuilder::new();` |
+| 3 | [references/release-notes](https://docs.sui.io/references/release-notes) | L734 | move | 7 | `module ex::m;` |
+| 4 | [references/release-notes](https://docs.sui.io/references/release-notes) | L746 | move | 4 | `// Invalid PTB` |
+| 5 | [references/release-notes](https://docs.sui.io/references/release-notes) | L755 | move | 4 | `// Valid PTB` |
+| 6 | [references/release-notes](https://docs.sui.io/references/release-notes) | L773 | move | 27 | `module flash::loan;` |
+| 7 | [references/release-notes](https://docs.sui.io/references/release-notes) | L841 | move | 16 | `// Invalid PTB` |
+| 8 | [references/release-notes](https://docs.sui.io/references/release-notes) | L862 | move | 11 | `// Invalid PTB` |
+| 9 | [references/object-display-syntax](https://docs.sui.io/references/object-display-syntax) | L348 | move | 5 | `enum Status {` |
+| 10 | [references/gaming](https://docs.sui.io/references/gaming) | L182 | move | 8 | `public struct Asset has key, store {` |
+| 11 | [references/gaming](https://docs.sui.io/references/gaming) | L195 | jsx | 4 | `Display` |
 | 12 | [onchain-finance/payment-kit](https://docs.sui.io/onchain-finance/payment-kit) | L171 | move | 7 | `module sui::payment_kit;` |
 | 13 | [onchain-finance/payment-kit](https://docs.sui.io/onchain-finance/payment-kit) | L197 | move | 11 | `module sui::payment_kit;` |
 | 14 | [onchain-finance/payment-kit](https://docs.sui.io/onchain-finance/payment-kit) | L239 | move | 7 | `module sui::payment_kit;` |
@@ -45,9 +45,9 @@
 | 30 | [sui-stack/zklogin-integration/integration-guide](https://docs.sui.io/sui-stack/zklogin-integration/integration-guide) | L84 | typescript | 13 | `import { Ed25519Keypair } from '@mysten/sui/keypairs/ed25519` |
 | 31 | [sui-stack/zklogin-integration/integration-guide](https://docs.sui.io/sui-stack/zklogin-integration/integration-guide) | L247 | typescript | 6 | `import { decodeJwt } from '@mysten/sui/zklogin';` |
 | 32 | [sui-stack/zklogin-integration/integration-guide](https://docs.sui.io/sui-stack/zklogin-integration/integration-guide) | L287 | typescript | 5 | `import { jwtToAddress } from '@mysten/sui/zklogin';` |
-| 33 | [sui-stack/zklogin-integration/integration-guide](https://docs.sui.io/sui-stack/zklogin-integration/integration-guide) | L303 | typescript | 5 | `import { getExtendedEphemeralPublicKey } from '@mysten/sui/z` |
-| 34 | [sui-stack/zklogin-integration/integration-guide](https://docs.sui.io/sui-stack/zklogin-integration/integration-guide) | L389 | typescript | 9 | `import { getZkLoginSignature } from '@mysten/sui/zklogin';` |
-| 35 | [sui-stack/zklogin-integration/integration-guide](https://docs.sui.io/sui-stack/zklogin-integration/integration-guide) | L529 | typescript | 18 | `import { ZkLoginSigner } from '@mysten/sui/zklogin';` |
+| 33 | [sui-stack/zklogin-integration/integration-guide](https://docs.sui.io/sui-stack/zklogin-integration/integration-guide) | L313 | typescript | 5 | `import { getExtendedEphemeralPublicKey } from '@mysten/sui/z` |
+| 34 | [sui-stack/zklogin-integration/integration-guide](https://docs.sui.io/sui-stack/zklogin-integration/integration-guide) | L399 | typescript | 9 | `import { getZkLoginSignature } from '@mysten/sui/zklogin';` |
+| 35 | [sui-stack/zklogin-integration/integration-guide](https://docs.sui.io/sui-stack/zklogin-integration/integration-guide) | L539 | typescript | 18 | `import { ZkLoginSigner } from '@mysten/sui/zklogin';` |
 | 36 | [sui-stack/zklogin-integration/developer-account](https://docs.sui.io/sui-stack/zklogin-integration/developer-account) | L73 | typescript | 13 | `const REDIRECT_URI = '<YOUR_SITE_URL>';` |
 | 37 | [sui-stack/walrus/sui-stack-walrus](https://docs.sui.io/sui-stack/walrus/sui-stack-walrus) | L254 | ts | 7 | `import { SuiGrpcClient } from '@mysten/sui/grpc';` |
 | 38 | [sui-stack/walrus/sui-stack-walrus](https://docs.sui.io/sui-stack/walrus/sui-stack-walrus) | L468 | ts | 7 | `const { data } = useSuiClientQuery('getOwnedObjects', {` |
@@ -124,8 +124,8 @@
 | 109 | [onchain-finance/closed-loop-token/token-policy](https://docs.sui.io/onchain-finance/closed-loop-token/token-policy) | L73 | move | 7 | `// module sui::token` |
 | 110 | [onchain-finance/closed-loop-token/token-policy](https://docs.sui.io/onchain-finance/closed-loop-token/token-policy) | L106 | move | 7 | `// module: sui::token` |
 | 111 | [onchain-finance/closed-loop-token/token-policy](https://docs.sui.io/onchain-finance/closed-loop-token/token-policy) | L122 | move | 6 | `// module sui::token` |
-| 112 | [onchain-finance/closed-loop-token/spending](https://docs.sui.io/onchain-finance/closed-loop-token/spending) | L60 | move | 2 | `// module sui::token` |
-| 113 | [onchain-finance/closed-loop-token/spending](https://docs.sui.io/onchain-finance/closed-loop-token/spending) | L78 | move | 18 | `/// Rule-like witness to stamp the ActionRequest` |
+| 112 | [onchain-finance/closed-loop-token/spending](https://docs.sui.io/onchain-finance/closed-loop-token/spending) | L62 | move | 2 | `// module sui::token` |
+| 113 | [onchain-finance/closed-loop-token/spending](https://docs.sui.io/onchain-finance/closed-loop-token/spending) | L80 | move | 18 | `/// Rule-like witness to stamp the ActionRequest` |
 | 114 | [onchain-finance/closed-loop-token/rules](https://docs.sui.io/onchain-finance/closed-loop-token/rules) | L55 | move | 2 | `/// The Rule type` |
 | 115 | [onchain-finance/closed-loop-token/rules](https://docs.sui.io/onchain-finance/closed-loop-token/rules) | L70 | move | 17 | `module example::pass_rule {` |
 | 116 | [onchain-finance/closed-loop-token/rules](https://docs.sui.io/onchain-finance/closed-loop-token/rules) | L117 | move | 8 | `// module: sui::token` |
@@ -326,44 +326,44 @@
 | 311 | [onchain-finance/deepbook/deepbook-margin-sdk/deepbook-margin-sdk](https://docs.sui.io/onchain-finance/deepbook/deepbook-margin-sdk/deepbook-margin-sdk) | L310 | tsx | 63 | `import { deepbook, type DeepBookClient } from '@mysten/deepb` |
 | 312 | [onchain-finance/deepbook/deepbook-margin-sdk/deepbook-margin-sdk](https://docs.sui.io/onchain-finance/deepbook/deepbook-margin-sdk/deepbook-margin-sdk) | L380 | tsx | 41 | `import { Transaction } from '@mysten/sui/transactions';` |
 | 313 | [onchain-finance/deepbook/deepbook-margin-sdk/deepbook-margin-sdk](https://docs.sui.io/onchain-finance/deepbook/deepbook-margin-sdk/deepbook-margin-sdk) | L428 | tsx | 12 | `// Set a referral for a margin manager (pool-specific)` |
-| 314 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L107 | move | 5 | `// Send a Balance<T> to an address balance` |
-| 315 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L121 | tsx | 9 | `const tx = new Transaction();` |
-| 316 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L135 | tsx | 5 | `const [balance] = tx.moveCall({` |
-| 317 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L145 | tsx | 5 | `const [coin] = tx.moveCall({` |
-| 318 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L159 | typescript | 4 | `import { Transaction } from '@mysten/sui/transactions';` |
-| 319 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L170 | typescript | 21 | `import { Transaction } from '@mysten/sui/transactions';` |
-| 320 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L204 | rust | 7 | `use sui_types::transaction::{FundsWithdrawalArg, WithdrawalT` |
-| 321 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L221 | rust | 18 | `let mut builder = ProgrammableTransactionBuilder::new();` |
-| 322 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L248 | move | 5 | `// Split a sub-withdrawal from an existing withdrawal` |
-| 323 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L262 | typescript | 2 | `const tx = new Transaction();` |
-| 324 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L269 | rust | 18 | `TransactionData::V1(TransactionDataV1 {` |
-| 325 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L300 | rust | 5 | `// Random nonce` |
-| 326 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L313 | typescript | 23 | `const network = 'testnet';` |
-| 327 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L356 | typescript | 22 | `// 1. User builds and signs the transaction first` |
-| 328 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L389 | tsx | 8 | `const { balance } = await grpcClient.getBalance({` |
-| 329 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L460 | rust | 7 | `use sui_types::balance_change::{derive_balance_changes, Bala` |
-| 330 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L484 | rust | 22 | `use sui_types::effects::TransactionEffectsAPI;` |
-| 331 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L511 | rust | 5 | `pub struct BalanceChange {` |
-| 332 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L535 | typescript | 8 | `import { Transaction } from '@mysten/sui/transactions';` |
-| 333 | [onchain-finance/asset-custody/address-balances/migrate-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/migrate-address-balances) | L121 | rust | 7 | `use sui_types::balance_change::{derive_balance_changes, Bala` |
-| 334 | [onchain-finance/asset-custody/address-balances/migrate-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/migrate-address-balances) | L139 | rust | 3 | `use sui_types::effects::TransactionEffectsAPI;` |
-| 335 | [onchain-finance/asset-custody/wallets/zk-login-wallets](https://docs.sui.io/onchain-finance/asset-custody/wallets/zk-login-wallets) | L95 | typescript | 16 | `import { useCurrentAccount } from '@mysten/dapp-kit-react';` |
-| 336 | [onchain-finance/asset-custody/wallets/zk-login-wallets](https://docs.sui.io/onchain-finance/asset-custody/wallets/zk-login-wallets) | L213 | typescript | 15 | `import { Ed25519Keypair } from '@mysten/sui/keypairs/ed25519` |
-| 337 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L66 | tsx | 21 | `import { SUI_DEVNET_CHAIN, Wallet } from '@mysten/wallet-sta` |
-| 338 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L120 | tsx | 64 | `import {` |
-| 339 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L197 | tsx | 24 | `import { ReadonlyWalletAccount } from '@mysten/wallet-standa` |
-| 340 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L229 | tsx | 3 | `import { registerWallet } from '@mysten/wallet-standard';` |
-| 341 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L243 | tsx | 3 | `import { getWallets } from '@mysten/wallet-standard';` |
-| 342 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L274 | tsx | 1 | `await wallet.features['standard:connect'].connect();` |
-| 343 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L290 | tsx | 1 | `wallet.features['standard:disconnect'].disconnect();` |
-| 344 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L300 | tsx | 4 | `wallet.features['sui:signTransaction'].signTransaction({` |
-| 345 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L311 | tsx | 11 | `import { fromBase64 } from '@mysten/sui/utils';` |
-| 346 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L348 | tsx | 1 | `const unsubscribe = wallet.features['standard:events'].on('c` |
-| 347 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L356 | tsx | 5 | `{` |
-| 348 | [onchain-finance/asset-custody/wallets/suilink](https://docs.sui.io/onchain-finance/asset-custody/wallets/suilink) | L113 | typescript | 14 | `const SUILINK_PACKAGE_ID_ETH_SOL = '0xf857fa9df5811e6df2a024` |
-| 349 | [onchain-finance/asset-custody/wallets/suilink](https://docs.sui.io/onchain-finance/asset-custody/wallets/suilink) | L136 | typescript | 5 | `{` |
-| 350 | [onchain-finance/asset-custody/wallets/suilink](https://docs.sui.io/onchain-finance/asset-custody/wallets/suilink) | L146 | typescript | 16 | `for (const link of ethSolSuiLinks.objects) {` |
-| 351 | [onchain-finance/asset-custody/wallets/self-custody](https://docs.sui.io/onchain-finance/asset-custody/wallets/self-custody) | L215 | typescript | 6 | `export const dAppKit = createDAppKit({` |
+| 314 | [onchain-finance/asset-custody/wallets/zk-login-wallets](https://docs.sui.io/onchain-finance/asset-custody/wallets/zk-login-wallets) | L95 | typescript | 16 | `import { useCurrentAccount } from '@mysten/dapp-kit-react';` |
+| 315 | [onchain-finance/asset-custody/wallets/zk-login-wallets](https://docs.sui.io/onchain-finance/asset-custody/wallets/zk-login-wallets) | L213 | typescript | 15 | `import { Ed25519Keypair } from '@mysten/sui/keypairs/ed25519` |
+| 316 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L66 | tsx | 21 | `import { SUI_DEVNET_CHAIN, Wallet } from '@mysten/wallet-sta` |
+| 317 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L120 | tsx | 64 | `import {` |
+| 318 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L197 | tsx | 24 | `import { ReadonlyWalletAccount } from '@mysten/wallet-standa` |
+| 319 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L229 | tsx | 3 | `import { registerWallet } from '@mysten/wallet-standard';` |
+| 320 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L243 | tsx | 3 | `import { getWallets } from '@mysten/wallet-standard';` |
+| 321 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L274 | tsx | 1 | `await wallet.features['standard:connect'].connect();` |
+| 322 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L290 | tsx | 1 | `wallet.features['standard:disconnect'].disconnect();` |
+| 323 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L300 | tsx | 4 | `wallet.features['sui:signTransaction'].signTransaction({` |
+| 324 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L311 | tsx | 11 | `import { fromBase64 } from '@mysten/sui/utils';` |
+| 325 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L348 | tsx | 1 | `const unsubscribe = wallet.features['standard:events'].on('c` |
+| 326 | [onchain-finance/asset-custody/wallets/wallet-standard](https://docs.sui.io/onchain-finance/asset-custody/wallets/wallet-standard) | L356 | tsx | 5 | `{` |
+| 327 | [onchain-finance/asset-custody/wallets/suilink](https://docs.sui.io/onchain-finance/asset-custody/wallets/suilink) | L113 | typescript | 14 | `const SUILINK_PACKAGE_ID_ETH_SOL = '0xf857fa9df5811e6df2a024` |
+| 328 | [onchain-finance/asset-custody/wallets/suilink](https://docs.sui.io/onchain-finance/asset-custody/wallets/suilink) | L136 | typescript | 5 | `{` |
+| 329 | [onchain-finance/asset-custody/wallets/suilink](https://docs.sui.io/onchain-finance/asset-custody/wallets/suilink) | L146 | typescript | 16 | `for (const link of ethSolSuiLinks.objects) {` |
+| 330 | [onchain-finance/asset-custody/wallets/self-custody](https://docs.sui.io/onchain-finance/asset-custody/wallets/self-custody) | L215 | typescript | 6 | `export const dAppKit = createDAppKit({` |
+| 331 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L107 | move | 5 | `// Send a Balance<T> to an address balance` |
+| 332 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L121 | tsx | 9 | `const tx = new Transaction();` |
+| 333 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L135 | tsx | 5 | `const [balance] = tx.moveCall({` |
+| 334 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L145 | tsx | 5 | `const [coin] = tx.moveCall({` |
+| 335 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L159 | typescript | 4 | `import { Transaction } from '@mysten/sui/transactions';` |
+| 336 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L170 | typescript | 21 | `import { Transaction } from '@mysten/sui/transactions';` |
+| 337 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L204 | rust | 7 | `use sui_types::transaction::{FundsWithdrawalArg, WithdrawalT` |
+| 338 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L221 | rust | 18 | `let mut builder = ProgrammableTransactionBuilder::new();` |
+| 339 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L248 | move | 5 | `// Split a sub-withdrawal from an existing withdrawal` |
+| 340 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L262 | typescript | 2 | `const tx = new Transaction();` |
+| 341 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L269 | rust | 18 | `TransactionData::V1(TransactionDataV1 {` |
+| 342 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L300 | rust | 5 | `// Random nonce` |
+| 343 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L313 | typescript | 23 | `const network = 'testnet';` |
+| 344 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L356 | typescript | 22 | `// 1. User builds and signs the transaction first` |
+| 345 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L389 | tsx | 8 | `const { balance } = await grpcClient.getBalance({` |
+| 346 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L460 | rust | 7 | `use sui_types::balance_change::{derive_balance_changes, Bala` |
+| 347 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L484 | rust | 22 | `use sui_types::effects::TransactionEffectsAPI;` |
+| 348 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L511 | rust | 5 | `pub struct BalanceChange {` |
+| 349 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L535 | typescript | 8 | `import { Transaction } from '@mysten/sui/transactions';` |
+| 350 | [onchain-finance/asset-custody/address-balances/migrate-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/migrate-address-balances) | L121 | rust | 7 | `use sui_types::balance_change::{derive_balance_changes, Bala` |
+| 351 | [onchain-finance/asset-custody/address-balances/migrate-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/migrate-address-balances) | L139 | rust | 3 | `use sui_types::effects::TransactionEffectsAPI;` |
 | 352 | [develop/transactions/transaction-auth/intent-signing](https://docs.sui.io/develop/transactions/transaction-auth/intent-signing) | L69 | rust | 4 | `pub struct IntentMessage<T> {` |
 | 353 | [develop/transactions/transaction-auth/intent-signing](https://docs.sui.io/develop/transactions/transaction-auth/intent-signing) | L78 | rust | 5 | `pub struct Intent {` |
 | 354 | [develop/transactions/transaction-auth/intent-signing](https://docs.sui.io/develop/transactions/transaction-auth/intent-signing) | L104 | rust | 3 | `let intent = Intent::default();` |
@@ -458,7 +458,7 @@
 | 443 | [develop/objects/display/using-display](https://docs.sui.io/develop/objects/display/using-display) | L116 | move | 12 | `module sui::devnet_nft;` |
 | 444 | [develop/objects/display/using-display](https://docs.sui.io/develop/objects/display/using-display) | L138 | move | 10 | `module capy::capy_items;` |
 | 445 | [develop/objects/display/using-display](https://docs.sui.io/develop/objects/display/using-display) | L158 | move | 5 | `module capy::utility;` |
-| 446 | [develop/accessing-data/grpc/using-grpc](https://docs.sui.io/develop/accessing-data/grpc/using-grpc) | L362 | ts | 44 | `import * as grpc from '@grpc/grpc-js';` |
+| 446 | [develop/accessing-data/grpc/using-grpc](https://docs.sui.io/develop/accessing-data/grpc/using-grpc) | L430 | ts | 44 | `import * as grpc from '@grpc/grpc-js';` |
 | 447 | [develop/accessing-data/grpc/grpc-migration-cookbook](https://docs.sui.io/develop/accessing-data/grpc/grpc-migration-cookbook) | L96 | ts | 6 | `import { SuiGrpcClient } from '@mysten/sui/grpc';` |
 | 448 | [develop/accessing-data/grpc/grpc-migration-cookbook](https://docs.sui.io/develop/accessing-data/grpc/grpc-migration-cookbook) | L131 | ts | 8 | `const { object } = await client.core.getObject({` |
 | 449 | [develop/accessing-data/grpc/grpc-migration-cookbook](https://docs.sui.io/develop/accessing-data/grpc/grpc-migration-cookbook) | L184 | ts | 12 | `const { objects } = await client.core.getObjects({` |
@@ -512,12 +512,20 @@
 | 497 | [sui-stack/suins/developer/sdk/querying](https://docs.sui.io/sui-stack/suins/developer/sdk/querying) | L33 | js | 18 | `const nameRecord = await suinsClient.getNameRecord('demo.sui` |
 | 498 | [sui-stack/suins/developer/sdk/querying](https://docs.sui.io/sui-stack/suins/developer/sdk/querying) | L58 | js | 10 | `const priceList = await suinsClient.getPriceList();` |
 | 499 | [sui-stack/suins/developer/sdk/querying](https://docs.sui.io/sui-stack/suins/developer/sdk/querying) | L75 | js | 10 | `const renewalPriceList = await suinsClient.getRenewalPriceLi` |
+| 500 | [onchain-finance/deepbook/deepbook-predict/contract-information/vault](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/vault) | L67 | move | 5 | `public fun balance(vault: &Vault): u64` |
+| 501 | [onchain-finance/deepbook/deepbook-predict/contract-information/vault](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/vault) | L116 | move | 3 | `public fun accepted_quotes(predict: &Predict): &VecSet<TypeN` |
+| 502 | [onchain-finance/deepbook/deepbook-predict/contract-information/predict-manager](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/predict-manager) | L79 | move | 6 | `public fun owner(self: &PredictManager): address` |
+| 503 | [onchain-finance/deepbook/deepbook-predict/contract-information/predict-manager](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/predict-manager) | L90 | move | 1 | `public fun create_manager(ctx: &mut TxContext): ID` |
+| 504 | [onchain-finance/deepbook/deepbook-predict/contract-information/market-keys](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/market-keys) | L77 | move | 3 | `public fun up(oracle_id: ID, expiry: u64, strike: u64): Mark` |
+| 505 | [onchain-finance/deepbook/deepbook-predict/contract-information/market-keys](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/market-keys) | L89 | move | 5 | `public fun oracle_id(key: &MarketKey): ID` |
+| 506 | [onchain-finance/deepbook/deepbook-predict/contract-information/market-keys](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/market-keys) | L111 | move | 5 | `let key = market_key::up(` |
+| 507 | [onchain-finance/deepbook/deepbook-predict/contract-information/market-keys](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/market-keys) | L166 | move | 5 | `public fun new(oracle_id: ID, expiry: u64, lower_strike: u64` |
 
 ## Covered Snippets
 
 | # | File | Line | Language | Covered By |
 |---|------|------|----------|------------|
-| 1 | [sui-stack/zklogin-integration/integration-guide](https://docs.sui.io/sui-stack/zklogin-integration/integration-guide) | L484 | typescript | examples/ptb-cookbook |
+| 1 | [sui-stack/zklogin-integration/integration-guide](https://docs.sui.io/sui-stack/zklogin-integration/integration-guide) | L494 | typescript | examples/ptb-cookbook |
 | 2 | [onchain-finance/fungible-tokens/create-a-fungible-token](https://docs.sui.io/onchain-finance/fungible-tokens/create-a-fungible-token) | L115 | move | examples/move/coin |
 | 3 | [develop/transaction-payment/sponsor-txn](https://docs.sui.io/develop/transaction-payment/sponsor-txn) | L238 | typescript | examples/ptb-cookbook |
 | 4 | [onchain-finance/deepbook/deepbookv3-sdk/flash-loans](https://docs.sui.io/onchain-finance/deepbook/deepbookv3-sdk/flash-loans) | L83 | tsx | examples/deepbook-spot |
