@@ -2,12 +2,12 @@
 
 | Metric | Value |
 |--------|-------|
-| MDX files scanned | 416 |
-| Total code blocks | 1795 |
+| MDX files scanned | 417 |
+| Total code blocks | 1798 |
 | Compilable (Move/TS/Rust) | 517 |
 | Covered by validated packages | 10 |
 | Uncovered | 507 |
-| Shell/config blocks (skipped) | 1278 |
+| Shell/config blocks (skipped) | 1281 |
 
 ## Uncovered Snippets
 
@@ -132,7 +132,7 @@
 | 117 | [onchain-finance/closed-loop-token/rules](https://docs.sui.io/onchain-finance/closed-loop-token/rules) | L132 | move | 4 | `// module: sui::token` |
 | 118 | [onchain-finance/closed-loop-token/rules](https://docs.sui.io/onchain-finance/closed-loop-token/rules) | L143 | move | 4 | `// module: sui::token` |
 | 119 | [onchain-finance/closed-loop-token/rules](https://docs.sui.io/onchain-finance/closed-loop-token/rules) | L154 | move | 6 | `// module: sui::token` |
-| 120 | [onchain-finance/closed-loop-token/index](https://docs.sui.io/onchain-finance/closed-loop-token/index) | L67 | move | 5 | `// defined in `sui::coin`` |
+| 120 | [onchain-finance/closed-loop-token/index](https://docs.sui.io/onchain-finance/closed-loop-token/index) | L68 | move | 5 | `// defined in `sui::coin`` |
 | 121 | [onchain-finance/closed-loop-token/action-request](https://docs.sui.io/onchain-finance/closed-loop-token/action-request) | L76 | move | 4 | `// module: sui::token` |
 | 122 | [onchain-finance/closed-loop-token/action-request](https://docs.sui.io/onchain-finance/closed-loop-token/action-request) | L103 | move | 6 | `// module: sui::token` |
 | 123 | [onchain-finance/closed-loop-token/action-request](https://docs.sui.io/onchain-finance/closed-loop-token/action-request) | L114 | js | 27 | `let tx = new Transaction();` |
@@ -551,8 +551,8 @@
 | [sui-stack/walrus/sui-stack-walrus-sites](https://docs.sui.io/sui-stack/walrus/sui-stack-walrus-sites) | L95 | `struct Resource` |
 | [onchain-finance/kiosk/kiosk-apps](https://docs.sui.io/onchain-finance/kiosk/kiosk-apps) | L83 | `struct KioskName` |
 | [onchain-finance/closed-loop-token/rules](https://docs.sui.io/onchain-finance/closed-loop-token/rules) | L56 | `struct Rule` |
-| [onchain-finance/closed-loop-token/index](https://docs.sui.io/onchain-finance/closed-loop-token/index) | L68 | `struct Coin` |
-| [onchain-finance/closed-loop-token/index](https://docs.sui.io/onchain-finance/closed-loop-token/index) | L71 | `struct Token` |
+| [onchain-finance/closed-loop-token/index](https://docs.sui.io/onchain-finance/closed-loop-token/index) | L69 | `struct Coin` |
+| [onchain-finance/closed-loop-token/index](https://docs.sui.io/onchain-finance/closed-loop-token/index) | L72 | `struct Token` |
 | [develop/publish-upgrade-packages/custom-policies](https://docs.sui.io/develop/publish-upgrade-packages/custom-policies) | L441 | `struct Event` |
 | [develop/cryptography/hashing](https://docs.sui.io/develop/cryptography/hashing) | L74 | `struct Output` |
 | [develop/cryptography/hashing](https://docs.sui.io/develop/cryptography/hashing) | L101 | `struct Output` |
