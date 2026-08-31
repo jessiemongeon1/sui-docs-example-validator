@@ -2,11 +2,11 @@
 
 | Metric | Value |
 |--------|-------|
-| MDX files scanned | 417 |
-| Total code blocks | 1798 |
-| Compilable (Move/TS/Rust) | 517 |
+| MDX files scanned | 416 |
+| Total code blocks | 1801 |
+| Compilable (Move/TS/Rust) | 520 |
 | Covered by validated packages | 10 |
-| Uncovered | 507 |
+| Uncovered | 510 |
 | Shell/config blocks (skipped) | 1281 |
 
 ## Uncovered Snippets
@@ -342,7 +342,7 @@
 | 327 | [onchain-finance/asset-custody/wallets/suilink](https://docs.sui.io/onchain-finance/asset-custody/wallets/suilink) | L113 | typescript | 14 | `const SUILINK_PACKAGE_ID_ETH_SOL = '0xf857fa9df5811e6df2a024` |
 | 328 | [onchain-finance/asset-custody/wallets/suilink](https://docs.sui.io/onchain-finance/asset-custody/wallets/suilink) | L136 | typescript | 5 | `{` |
 | 329 | [onchain-finance/asset-custody/wallets/suilink](https://docs.sui.io/onchain-finance/asset-custody/wallets/suilink) | L146 | typescript | 16 | `for (const link of ethSolSuiLinks.objects) {` |
-| 330 | [onchain-finance/asset-custody/wallets/self-custody](https://docs.sui.io/onchain-finance/asset-custody/wallets/self-custody) | L215 | typescript | 6 | `export const dAppKit = createDAppKit({` |
+| 330 | [onchain-finance/asset-custody/wallets/self-custody](https://docs.sui.io/onchain-finance/asset-custody/wallets/self-custody) | L198 | typescript | 6 | `export const dAppKit = createDAppKit({` |
 | 331 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L107 | move | 5 | `// Send a Balance<T> to an address balance` |
 | 332 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L121 | tsx | 9 | `const tx = new Transaction();` |
 | 333 | [onchain-finance/asset-custody/address-balances/using-address-balances](https://docs.sui.io/onchain-finance/asset-custody/address-balances/using-address-balances) | L135 | tsx | 5 | `const [balance] = tx.moveCall({` |
@@ -497,29 +497,32 @@
 | 482 | [develop/accessing-data/custom-indexer/bring-your-own-store](https://docs.sui.io/develop/accessing-data/custom-indexer/bring-your-own-store) | L102 | rust | 22 | `#[async_trait]` |
 | 483 | [develop/accessing-data/custom-indexer/bring-your-own-store](https://docs.sui.io/develop/accessing-data/custom-indexer/bring-your-own-store) | L135 | rust | 53 | `use sui_indexer_alt_framework::{Indexer, IndexerArgs};` |
 | 484 | [develop/accessing-data/custom-indexer/bring-your-own-store](https://docs.sui.io/develop/accessing-data/custom-indexer/bring-your-own-store) | L247 | rust | 11 | `// Move smart contract` |
-| 485 | [sui-stack/suins/developer/sdk/transactions](https://docs.sui.io/sui-stack/suins/developer/sdk/transactions) | L37 | js | 25 | `const register = async (name: string, years: number) => {` |
-| 486 | [sui-stack/suins/developer/sdk/transactions](https://docs.sui.io/sui-stack/suins/developer/sdk/transactions) | L67 | js | 21 | `const renew = async (nftId: string, name: string, years: num` |
-| 487 | [sui-stack/suins/developer/sdk/transactions](https://docs.sui.io/sui-stack/suins/developer/sdk/transactions) | L95 | js | 15 | `const setTargetAddress = async (nftId: string, address: stri` |
-| 488 | [sui-stack/suins/developer/sdk/transactions](https://docs.sui.io/sui-stack/suins/developer/sdk/transactions) | L117 | js | 13 | `const setDefault = async (name: string) => {` |
-| 489 | [sui-stack/suins/developer/sdk/transactions](https://docs.sui.io/sui-stack/suins/developer/sdk/transactions) | L139 | js | 31 | `const setUserData = async (nft: string, avatar: string, cont` |
-| 490 | [sui-stack/suins/developer/sdk/transactions](https://docs.sui.io/sui-stack/suins/developer/sdk/transactions) | L177 | js | 14 | `const burnExpired = async (nftId: string) => {` |
-| 491 | [sui-stack/suins/developer/sdk/transactions](https://docs.sui.io/sui-stack/suins/developer/sdk/transactions) | L199 | js | 37 | `// Years must be between 1-5.` |
-| 492 | [sui-stack/suins/developer/sdk/subnames](https://docs.sui.io/sui-stack/suins/developer/sdk/subnames) | L32 | js | 26 | `const createSubname = async (subName: string, parentNftId: s` |
-| 493 | [sui-stack/suins/developer/sdk/subnames](https://docs.sui.io/sui-stack/suins/developer/sdk/subnames) | L65 | js | 16 | `const editSetup = async (name: string, parentNftId: string, ` |
-| 494 | [sui-stack/suins/developer/sdk/subnames](https://docs.sui.io/sui-stack/suins/developer/sdk/subnames) | L88 | js | 14 | `const extendExpiration = async (nftId: string, expirationMs:` |
-| 495 | [sui-stack/suins/developer/sdk/subnames](https://docs.sui.io/sui-stack/suins/developer/sdk/subnames) | L109 | js | 19 | `const createLeafSubname = async (name: string, parentNftId: ` |
-| 496 | [sui-stack/suins/developer/sdk/subnames](https://docs.sui.io/sui-stack/suins/developer/sdk/subnames) | L133 | js | 16 | `const removeLeafSubname = async (name: string, parentNftId: ` |
-| 497 | [sui-stack/suins/developer/sdk/querying](https://docs.sui.io/sui-stack/suins/developer/sdk/querying) | L33 | js | 18 | `const nameRecord = await suinsClient.getNameRecord('demo.sui` |
-| 498 | [sui-stack/suins/developer/sdk/querying](https://docs.sui.io/sui-stack/suins/developer/sdk/querying) | L58 | js | 10 | `const priceList = await suinsClient.getPriceList();` |
-| 499 | [sui-stack/suins/developer/sdk/querying](https://docs.sui.io/sui-stack/suins/developer/sdk/querying) | L75 | js | 10 | `const renewalPriceList = await suinsClient.getRenewalPriceLi` |
-| 500 | [onchain-finance/deepbook/deepbook-predict/contract-information/vault](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/vault) | L67 | move | 5 | `public fun balance(vault: &Vault): u64` |
-| 501 | [onchain-finance/deepbook/deepbook-predict/contract-information/vault](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/vault) | L116 | move | 3 | `public fun accepted_quotes(predict: &Predict): &VecSet<TypeN` |
-| 502 | [onchain-finance/deepbook/deepbook-predict/contract-information/predict-manager](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/predict-manager) | L79 | move | 6 | `public fun owner(self: &PredictManager): address` |
-| 503 | [onchain-finance/deepbook/deepbook-predict/contract-information/predict-manager](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/predict-manager) | L90 | move | 1 | `public fun create_manager(ctx: &mut TxContext): ID` |
-| 504 | [onchain-finance/deepbook/deepbook-predict/contract-information/market-keys](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/market-keys) | L77 | move | 3 | `public fun up(oracle_id: ID, expiry: u64, strike: u64): Mark` |
-| 505 | [onchain-finance/deepbook/deepbook-predict/contract-information/market-keys](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/market-keys) | L89 | move | 5 | `public fun oracle_id(key: &MarketKey): ID` |
-| 506 | [onchain-finance/deepbook/deepbook-predict/contract-information/market-keys](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/market-keys) | L111 | move | 5 | `let key = market_key::up(` |
-| 507 | [onchain-finance/deepbook/deepbook-predict/contract-information/market-keys](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/market-keys) | L166 | move | 5 | `public fun new(oracle_id: ID, expiry: u64, lower_strike: u64` |
+| 485 | [sui-stack/suins/developer/sdk/transactions](https://docs.sui.io/sui-stack/suins/developer/sdk/transactions) | L43 | js | 7 | `const suinsClient = new SuinsClient({` |
+| 486 | [sui-stack/suins/developer/sdk/transactions](https://docs.sui.io/sui-stack/suins/developer/sdk/transactions) | L57 | js | 5 | `const connection = new SuiPriceServiceConnection('https://py` |
+| 487 | [sui-stack/suins/developer/sdk/transactions](https://docs.sui.io/sui-stack/suins/developer/sdk/transactions) | L67 | js | 7 | `const pythClient = new SuiPythClient(` |
+| 488 | [sui-stack/suins/developer/sdk/transactions](https://docs.sui.io/sui-stack/suins/developer/sdk/transactions) | L85 | js | 25 | `const register = async (name: string, years: number) => {` |
+| 489 | [sui-stack/suins/developer/sdk/transactions](https://docs.sui.io/sui-stack/suins/developer/sdk/transactions) | L115 | js | 21 | `const renew = async (nftId: string, name: string, years: num` |
+| 490 | [sui-stack/suins/developer/sdk/transactions](https://docs.sui.io/sui-stack/suins/developer/sdk/transactions) | L143 | js | 15 | `const setTargetAddress = async (nftId: string, address: stri` |
+| 491 | [sui-stack/suins/developer/sdk/transactions](https://docs.sui.io/sui-stack/suins/developer/sdk/transactions) | L165 | js | 13 | `const setDefault = async (name: string) => {` |
+| 492 | [sui-stack/suins/developer/sdk/transactions](https://docs.sui.io/sui-stack/suins/developer/sdk/transactions) | L187 | js | 31 | `const setUserData = async (nft: string, avatar: string, cont` |
+| 493 | [sui-stack/suins/developer/sdk/transactions](https://docs.sui.io/sui-stack/suins/developer/sdk/transactions) | L225 | js | 14 | `const burnExpired = async (nftId: string) => {` |
+| 494 | [sui-stack/suins/developer/sdk/transactions](https://docs.sui.io/sui-stack/suins/developer/sdk/transactions) | L247 | js | 37 | `// Years must be between 1-5.` |
+| 495 | [sui-stack/suins/developer/sdk/subnames](https://docs.sui.io/sui-stack/suins/developer/sdk/subnames) | L32 | js | 26 | `const createSubname = async (subName: string, parentNftId: s` |
+| 496 | [sui-stack/suins/developer/sdk/subnames](https://docs.sui.io/sui-stack/suins/developer/sdk/subnames) | L65 | js | 16 | `const editSetup = async (name: string, parentNftId: string, ` |
+| 497 | [sui-stack/suins/developer/sdk/subnames](https://docs.sui.io/sui-stack/suins/developer/sdk/subnames) | L88 | js | 14 | `const extendExpiration = async (nftId: string, expirationMs:` |
+| 498 | [sui-stack/suins/developer/sdk/subnames](https://docs.sui.io/sui-stack/suins/developer/sdk/subnames) | L109 | js | 19 | `const createLeafSubname = async (name: string, parentNftId: ` |
+| 499 | [sui-stack/suins/developer/sdk/subnames](https://docs.sui.io/sui-stack/suins/developer/sdk/subnames) | L133 | js | 16 | `const removeLeafSubname = async (name: string, parentNftId: ` |
+| 500 | [sui-stack/suins/developer/sdk/querying](https://docs.sui.io/sui-stack/suins/developer/sdk/querying) | L33 | js | 18 | `const nameRecord = await suinsClient.getNameRecord('demo.sui` |
+| 501 | [sui-stack/suins/developer/sdk/querying](https://docs.sui.io/sui-stack/suins/developer/sdk/querying) | L58 | js | 10 | `const priceList = await suinsClient.getPriceList();` |
+| 502 | [sui-stack/suins/developer/sdk/querying](https://docs.sui.io/sui-stack/suins/developer/sdk/querying) | L75 | js | 10 | `const renewalPriceList = await suinsClient.getRenewalPriceLi` |
+| 503 | [onchain-finance/deepbook/deepbook-predict/contract-information/vault](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/vault) | L67 | move | 5 | `public fun balance(vault: &Vault): u64` |
+| 504 | [onchain-finance/deepbook/deepbook-predict/contract-information/vault](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/vault) | L116 | move | 3 | `public fun accepted_quotes(predict: &Predict): &VecSet<TypeN` |
+| 505 | [onchain-finance/deepbook/deepbook-predict/contract-information/predict-manager](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/predict-manager) | L79 | move | 6 | `public fun owner(self: &PredictManager): address` |
+| 506 | [onchain-finance/deepbook/deepbook-predict/contract-information/predict-manager](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/predict-manager) | L90 | move | 1 | `public fun create_manager(ctx: &mut TxContext): ID` |
+| 507 | [onchain-finance/deepbook/deepbook-predict/contract-information/market-keys](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/market-keys) | L77 | move | 3 | `public fun up(oracle_id: ID, expiry: u64, strike: u64): Mark` |
+| 508 | [onchain-finance/deepbook/deepbook-predict/contract-information/market-keys](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/market-keys) | L89 | move | 5 | `public fun oracle_id(key: &MarketKey): ID` |
+| 509 | [onchain-finance/deepbook/deepbook-predict/contract-information/market-keys](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/market-keys) | L111 | move | 5 | `let key = market_key::up(` |
+| 510 | [onchain-finance/deepbook/deepbook-predict/contract-information/market-keys](https://docs.sui.io/onchain-finance/deepbook/deepbook-predict/contract-information/market-keys) | L166 | move | 5 | `public fun new(oracle_id: ID, expiry: u64, lower_strike: u64` |
 
 ## Covered Snippets
 
