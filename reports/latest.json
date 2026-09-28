@@ -1,14 +1,14 @@
 {
   "mode": "strict",
   "versions": {
-    "sui": "sui 1.80.0-ceaaff1cc84c",
+    "sui": "sui 1.80.1-671ba71e69c7",
     "mvr": "mvr 0.1.0-d85f8ad92add",
     "bun": "1.4.2",
     "node": "v22.23.2",
     "npm": "10.9.8",
     "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
     "cargo": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
-    "pnpm": "12.5.1"
+    "pnpm": "12.6.0"
   },
   "results": [
     {
@@ -27,8 +27,8 @@
         {
           "command": "sui move build",
           "status": "pass",
-          "output": "No sui config found in `/home/runner/.sui/sui_config/client.yaml`, create one [Y/n]?\nGenerated new keypair and alias for address with scheme \"ed25519\" [elastic-emerald: 0xedeed350dc5991505a984295aaf91fb17fb350d0682491fa87ea6621a2b37f45]\n  secret recovery phrase : [power wild seven narrow annual spell early second prefer earth crane grunt]\nCreated \"/home/runner/.sui/sui_config/client.yaml\"\nSet active environment to testnet\n",
-          "durationMs": 792
+          "output": "No sui config found in `/home/runner/.sui/sui_config/client.yaml`, create one [Y/n]?\nGenerated new keypair and alias for address with scheme \"ed25519\" [lucid-emerald: 0x3cf083090aff0d0bee08bb7a800be819326d8172ad77f041e7fec62af8bfd65e]\n  secret recovery phrase : [cycle right nasty latin pink claim arm dinosaur powder dance cement cloud]\nCreated \"/home/runner/.sui/sui_config/client.yaml\"\nSet active environment to testnet\n",
+          "durationMs": 830
         }
       ],
       "overallStatus": "pass",
@@ -58,7 +58,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 617
+          "durationMs": 550
         }
       ],
       "overallStatus": "pass",
@@ -88,7 +88,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 620
+          "durationMs": 557
         }
       ],
       "overallStatus": "pass",
@@ -122,14 +122,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "olved 1302, reused 0, downloaded 346, added 398\nProgress: resolved 1302, reused 0, downloaded 456, added 537\nProgress: resolved 1302, reused 0, downloaded 589, added 672\nProgress: resolved 1302, reused 0, downloaded 652, added 726\nProgress: resolved 1302, reused 0, downloaded 866, added 951\nProgress: resolved 1302, reused 0, downloaded 1162, added 1252\nProgress: resolved 1302, reused 0, downloaded 1209, added 1302, done\n.../node_modules/@swc/core postinstall$ node postinstall.js\n.../node_modules/@prisma/engines postinstall$ node scripts/postinstall.js\n.../node_modules/unrs-resolver postinstall$ napi-postinstall unrs-resolver 1.7.2 check\n.../esbuild@0.21.5/node_modules/esbuild postinstall$ node install.js\n.../esbuild@0.25.4/node_modules/esbuild postinstall$ node install.js\n.../node_modules/@swc/core postinstall: Done\n.../node_modules/unrs-resolver postinstall: Done\n.../node_modules/@parcel/watcher install$ node scripts/build-from-source.js\n.../esbuild@0.21.5/node_modules/esbuild postinstall: Done\n.../node_modules/msgpackr-extract install$ node-gyp-build-optional-packages\n.../node_modules/@parcel/watcher install: Done\n.../esbuild@0.25.4/node_modules/esbuild postinstall: Done\n.../node_modules/msgpackr-extract install: Done\n.../node_modules/@prisma/engines postinstall: Done\n.../prisma@5.16.2/node_modules/prisma preinstall$ node scripts/preinstall-entry.js\n.../prisma@5.16.2/node_modules/prisma preinstall: Done\n.../node_modules/@prisma/client postinstall$ node scripts/postinstall.js\n.../.pnpm/lmdb@2.8.5/node_modules/lmdb install$ node-gyp-build-optional-packages\n.../.pnpm/lmdb@2.8.5/node_modules/lmdb install: Done\n.../node_modules/@prisma/client postinstall: prisma:warn We could not find your Prisma schema in the default locations (see: https://pris.ly/d/prisma-schema-location).\n.../node_modules/@prisma/client postinstall: If you have a Prisma schema file in a custom path, you will need to run\n.../node_modules/@prisma/client postinstall: `prisma generate --schema=./path/to/your/schema.prisma` to generate Prisma Client.\n.../node_modules/@prisma/client postinstall: If you do not have a Prisma schema file yet, you can ignore this message.\n.../node_modules/@prisma/client postinstall: Done\n\ndevDependencies:\n+ @changesets/cli 2.29.4\n+ @ianvs/prettier-plugin-sort-imports 4.4.1\n+ @manypkg/cli 0.21.4\n+ @mysten/prettier-plugin-move 0.3.5\n+ @tanstack/eslint-plugin-query 5.74.7\n+ @typescript-eslint/eslint-plugin 6.21.0\n+ @typescript-eslint/parser 6.21.0\n+ concurrently 8.2.2\n+ eslint 8.57.1\n+ eslint-config-prettier 8.10.0\n+ eslint-config-react-app 7.0.1\n+ eslint-import-resolver-typescript 3.10.1\n+ eslint-plugin-header 3.1.1\n+ eslint-plugin-import 2.31.0\n+ eslint-plugin-prettier 5.4.0\n+ eslint-plugin-require-extensions 0.1.3\n+ eslint-plugin-tsdoc 0.2.17\n+ eslint-plugin-unused-imports 3.2.0\n+ graphql-config 5.1.5\n+ js-yaml 4.1.1\n+ prettier 3.5.3\n+ prettier-plugin-tailwindcss 0.6.11\n+ tsx 4.19.4\n+ turbo 2.5.3\n+ typescript 5.8.3\n+ unist-util-visit 5.1.0\n\nDone in 11.5s\n",
-          "durationMs": 14416
+          "output": "olved 1302, reused 0, downloaded 284, added 322\nProgress: resolved 1302, reused 0, downloaded 347, added 394\nProgress: resolved 1302, reused 0, downloaded 491, added 561\nProgress: resolved 1302, reused 0, downloaded 641, added 723\nProgress: resolved 1302, reused 0, downloaded 947, added 1027\nProgress: resolved 1302, reused 0, downloaded 1208, added 1300\nProgress: resolved 1302, reused 0, downloaded 1209, added 1302, done\n.../node_modules/@swc/core postinstall$ node postinstall.js\n.../node_modules/@prisma/engines postinstall$ node scripts/postinstall.js\n.../node_modules/unrs-resolver postinstall$ napi-postinstall unrs-resolver 1.7.2 check\n.../esbuild@0.25.4/node_modules/esbuild postinstall$ node install.js\n.../node_modules/@swc/core postinstall: Done\n.../esbuild@0.21.5/node_modules/esbuild postinstall$ node install.js\n.../node_modules/unrs-resolver postinstall: Done\n.../node_modules/@parcel/watcher install$ node scripts/build-from-source.js\n.../esbuild@0.25.4/node_modules/esbuild postinstall: Done\n.../node_modules/msgpackr-extract install$ node-gyp-build-optional-packages\n.../esbuild@0.21.5/node_modules/esbuild postinstall: Done\n.../node_modules/@parcel/watcher install: Done\n.../node_modules/msgpackr-extract install: Done\n.../node_modules/@prisma/engines postinstall: Done\n.../prisma@5.16.2/node_modules/prisma preinstall$ node scripts/preinstall-entry.js\n.../prisma@5.16.2/node_modules/prisma preinstall: Done\n.../.pnpm/lmdb@2.8.5/node_modules/lmdb install$ node-gyp-build-optional-packages\n.../node_modules/@prisma/client postinstall$ node scripts/postinstall.js\n.../.pnpm/lmdb@2.8.5/node_modules/lmdb install: Done\n.../node_modules/@prisma/client postinstall: prisma:warn We could not find your Prisma schema in the default locations (see: https://pris.ly/d/prisma-schema-location).\n.../node_modules/@prisma/client postinstall: If you have a Prisma schema file in a custom path, you will need to run\n.../node_modules/@prisma/client postinstall: `prisma generate --schema=./path/to/your/schema.prisma` to generate Prisma Client.\n.../node_modules/@prisma/client postinstall: If you do not have a Prisma schema file yet, you can ignore this message.\n.../node_modules/@prisma/client postinstall: Done\n\ndevDependencies:\n+ @changesets/cli 2.29.4\n+ @ianvs/prettier-plugin-sort-imports 4.4.1\n+ @manypkg/cli 0.21.4\n+ @mysten/prettier-plugin-move 0.3.5\n+ @tanstack/eslint-plugin-query 5.74.7\n+ @typescript-eslint/eslint-plugin 6.21.0\n+ @typescript-eslint/parser 6.21.0\n+ concurrently 8.2.2\n+ eslint 8.57.1\n+ eslint-config-prettier 8.10.0\n+ eslint-config-react-app 7.0.1\n+ eslint-import-resolver-typescript 3.10.1\n+ eslint-plugin-header 3.1.1\n+ eslint-plugin-import 2.31.0\n+ eslint-plugin-prettier 5.4.0\n+ eslint-plugin-require-extensions 0.1.3\n+ eslint-plugin-tsdoc 0.2.17\n+ eslint-plugin-unused-imports 3.2.0\n+ graphql-config 5.1.5\n+ js-yaml 4.1.1\n+ prettier 3.5.3\n+ prettier-plugin-tailwindcss 0.6.11\n+ tsx 4.19.4\n+ turbo 2.5.3\n+ typescript 5.8.3\n+ unist-util-visit 5.1.0\n\nDone in 9.9s\n",
+          "durationMs": 11678
         },
         {
           "command": "pnpm run build",
           "status": "pass",
-          "output": "\n> ptb-cookbook-examples@0.0.1 build /tmp/sui/examples/ptb-cookbook\n> tsc --noEmit\n\n",
-          "durationMs": 1182
+          "output": "",
+          "durationMs": 1123
         }
       ],
       "overallStatus": "pass",
@@ -138,7 +138,7 @@
           "@mysten/sui": "2.22.1",
           "typescript": "^5.5.3"
         },
-        "packageManager": "bun"
+        "packageManager": "pnpm"
       },
       "patched": false
     },
@@ -159,7 +159,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 671
+          "durationMs": 552
         }
       ],
       "overallStatus": "pass",
@@ -191,7 +191,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 706
+          "durationMs": 560
         }
       ],
       "overallStatus": "pass",
@@ -220,7 +220,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 683
+          "durationMs": 603
         }
       ],
       "overallStatus": "pass",
@@ -252,7 +252,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 19326
+          "durationMs": 21676
         }
       ],
       "overallStatus": "pass",
@@ -285,8 +285,8 @@
         {
           "command": "pnpm run build",
           "status": "pass",
-          "output": "\n> oracle-adapter-consumer@0.0.1 build /tmp/sui/examples/oracle-adapter/ts\n> tsc --noEmit\n\n",
-          "durationMs": 1665
+          "output": "",
+          "durationMs": 1394
         }
       ],
       "overallStatus": "pass",
@@ -295,7 +295,7 @@
           "@mysten/sui": "^1.30.0",
           "typescript": "^5.5.3"
         },
-        "packageManager": "bun"
+        "packageManager": "pnpm"
       },
       "patched": false
     },
@@ -321,7 +321,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 562
+          "durationMs": 743
         }
       ],
       "overallStatus": "pass",
@@ -356,7 +356,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 669
+          "durationMs": 536
         }
       ],
       "overallStatus": "pass",
@@ -385,7 +385,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 489
+          "durationMs": 647
         }
       ],
       "overallStatus": "pass",
@@ -414,7 +414,7 @@
           "command": "tsc --noEmit",
           "status": "fail",
           "output": "src/config.ts(4,24): error TS2792: Cannot find module 'dotenv'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?\nsrc/config.ts(7,27): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/config.ts(8,28): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/config.ts(9,30): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/config.ts(10,33): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/config.ts(12,32): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/config.ts(13,28): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/config.ts(16,37): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/config.ts(17,35): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/config.ts(21,26): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.\nsrc/main.ts(4,25): error TS2792: Cannot find module '@mysten/sui/client'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?\nsrc/main.ts(12,27): error TS2792: Cannot find module '@mysten/sui/transactions'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?\nsrc/main.ts(13,23): error TS2792: Cannot find module 'commander'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?\nsrc/main.ts(14,30): error TS2792: Cannot find module '@mysten/sui/keypairs/ed25519'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?",
-          "durationMs": 740
+          "durationMs": 862
         }
       ],
       "overallStatus": "fail",
@@ -445,7 +445,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 641
+          "durationMs": 655
         }
       ],
       "overallStatus": "pass",
@@ -474,7 +474,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 13001
+          "durationMs": 11394
         }
       ],
       "overallStatus": "pass",
@@ -504,7 +504,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 510
+          "durationMs": 556
         }
       ],
       "overallStatus": "pass",
@@ -536,7 +536,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 636
+          "durationMs": 563
         }
       ],
       "overallStatus": "pass",
@@ -578,8 +578,8 @@
         {
           "command": "pnpm run build",
           "status": "pass",
-          "output": "\n> deepbook-spot-examples@0.0.1 build /tmp/sui/examples/deepbook-spot\n> tsc --noEmit\n\n",
-          "durationMs": 1129
+          "output": "",
+          "durationMs": 1125
         }
       ],
       "overallStatus": "pass",
@@ -589,7 +589,7 @@
           "@mysten/sui": "2.22.1",
           "typescript": "^5.5.3"
         },
-        "packageManager": "bun"
+        "packageManager": "pnpm"
       },
       "patched": false
     },
@@ -623,8 +623,8 @@
         {
           "command": "pnpm run build",
           "status": "pass",
-          "output": "\n> deepbook-margin-examples@0.0.1 build /tmp/sui/examples/deepbook-margin\n> tsc --noEmit\n\n",
-          "durationMs": 1217
+          "output": "",
+          "durationMs": 1336
         }
       ],
       "overallStatus": "pass",
@@ -634,7 +634,7 @@
           "@mysten/sui": "2.22.1",
           "typescript": "^5.5.3"
         },
-        "packageManager": "bun"
+        "packageManager": "pnpm"
       },
       "patched": false
     },
@@ -675,8 +675,8 @@
         {
           "command": "pnpm run build",
           "status": "pass",
-          "output": "\n> deepbook-predict-examples@0.0.1 build /tmp/sui/examples/deepbook-predict\n> tsc --noEmit\n\n",
-          "durationMs": 1243
+          "output": "",
+          "durationMs": 1336
         }
       ],
       "overallStatus": "pass",
@@ -686,7 +686,7 @@
           "@mysten/sui": "^2.30.0",
           "typescript": "^5.5.3"
         },
-        "packageManager": "bun"
+        "packageManager": "pnpm"
       },
       "patched": false
     },
@@ -708,7 +708,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 501
+          "durationMs": 576
         }
       ],
       "overallStatus": "pass",
@@ -739,8 +739,8 @@
         {
           "command": "bun install",
           "status": "pass",
-          "output": "bun install v1.4.2 (744846f84)\n\n+ @eslint/compat@1.4.1\n+ @ianvs/prettier-plugin-sort-imports@4.7.1\n+ @tony.ganchev/eslint-plugin-header@3.2.4\n+ @typescript-eslint/eslint-plugin@8.56.1\n+ @typescript-eslint/parser@8.56.1\n+ concurrently@9.2.1\n+ eslint@9.39.3\n+ eslint-plugin-header@3.1.1\n+ globals@16.5.0\n+ prettier@3.8.1\n+ vitest@4.0.18\n\n673 packages installed [2.81s]\n",
-          "durationMs": 2812
+          "output": "bun install v1.4.2 (744846f84)\n\n+ @eslint/compat@1.4.1\n+ @ianvs/prettier-plugin-sort-imports@4.7.1\n+ @tony.ganchev/eslint-plugin-header@3.2.4\n+ @typescript-eslint/eslint-plugin@8.56.1\n+ @typescript-eslint/parser@8.56.1\n+ concurrently@9.2.1\n+ eslint@9.39.3\n+ eslint-plugin-header@3.1.1\n+ globals@16.5.0\n+ prettier@3.8.1\n+ vitest@4.0.18\n\n673 packages installed [2.89s]\n",
+          "durationMs": 2901
         },
         {
           "command": "bun run build (workspace)",
@@ -780,7 +780,7 @@
           "command": "pnpm install",
           "status": "fail",
           "output": "Error: ERR_PNPM_OUTDATED_LOCKFILE\n\n  × installing dependencies\n  ╰─▶ Cannot install with \"frozen-lockfile\" because pnpm-lock.yaml is not up\n      to date with package.json.\n      \n        Failure reason:\n        specifiers in the lockfile don't match specifiers in package.json:\n      * in importers[\".\"]:\n      * 1 dependency was added: zod@^4.3.6\n  help: Regenerate the lockfile with `pnpm install --lockfile-only` so that\n        pnpm-lock.yaml reflects the current package.json, then re-run `pnpm\n        install --frozen-lockfile`.",
-          "durationMs": 23
+          "durationMs": 29
         }
       ],
       "overallStatus": "fail",
@@ -810,7 +810,7 @@
           "command": "pnpm install",
           "status": "fail",
           "output": "Error: ERR_PNPM_OUTDATED_LOCKFILE\n\n  × installing dependencies\n  ╰─▶ Cannot install with \"frozen-lockfile\" because pnpm-lock.yaml is not up\n      to date with package.json.\n      \n        Failure reason:\n        specifiers in the lockfile don't match specifiers in package.json:\n      * in importers[\".\"]:\n      * 1 dependency was added: zod@^4.3.6\n  help: Regenerate the lockfile with `pnpm install --lockfile-only` so that\n        pnpm-lock.yaml reflects the current package.json, then re-run `pnpm\n        install --frozen-lockfile`.",
-          "durationMs": 23
+          "durationMs": 28
         }
       ],
       "overallStatus": "fail",
@@ -824,95 +824,6 @@
       "patched": false
     },
     {
-      "id": "MystenLabs/messaging-sdk-example@main/frontend/src",
-      "type": "typescript",
-      "source": "external",
-      "origin": "MystenLabs/messaging-sdk-example@main",
-      "packageRoot": "frontend/src",
-      "files": [
-        "frontend/src/hooks/useUserSubname.ts"
-      ],
-      "referencedBy": [
-        "docs/content/sui-stack/suins/sui-stack-suins.mdx"
-      ],
-      "steps": [
-        {
-          "command": "npm install",
-          "status": "pass",
-          "output": "\nadded 424 packages, and audited 425 packages in 28s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n15 vulnerabilities (5 moderate, 10 high)\n\nTo address issues that do not require attention, run:\n  npm audit fix\n\nSome issues need review, and may require choosing\na different dependency.\n\nRun `npm audit` for details.\n",
-          "durationMs": 27780
-        },
-        {
-          "command": "npm run build",
-          "status": "pass",
-          "output": "\n> messaging-sdk-example@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 900 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.40 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.73 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-CpyQXytW.js   \u001b[39m\u001b[1m\u001b[33m824.95 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 269.43 kB\u001b[22m\n\u001b[32m✓ built in 3.23s\u001b[39m\n",
-          "durationMs": 6338
-        }
-      ],
-      "overallStatus": "pass",
-      "versionInfo": {
-        "dependencies": {
-          "@mysten/bcs": "^1.9.2",
-          "@mysten/dapp-kit": "^0.19.8",
-          "@mysten/enoki": "^0.12.10",
-          "@mysten/messaging": "^0.0.3",
-          "@mysten/seal": "^0.9.3",
-          "@mysten/sui": "^1.44.0",
-          "@mysten/sui-grpc": "^0.2.2",
-          "@mysten/walrus": "^0.8.3",
-          "typescript": "^5.9.2"
-        },
-        "packageManager": "npm"
-      },
-      "patched": false
-    },
-    {
-      "id": "MystenLabs/onlyfins-example-app@main/frontend/src",
-      "type": "typescript",
-      "source": "external",
-      "origin": "MystenLabs/onlyfins-example-app@main",
-      "packageRoot": "frontend/src",
-      "files": [
-        "frontend/src/lib/seal-client.ts",
-        "frontend/src/hooks/usePayForContent.ts",
-        "frontend/src/hooks/usePostDecryption.ts",
-        "frontend/src/components/Feed.tsx",
-        "frontend/src/utils/post-transform.ts",
-        "frontend/src/utils/walrus-fetch.ts"
-      ],
-      "referencedBy": [
-        "docs/content/sui-stack/seal/sui-stack-seal.mdx",
-        "docs/content/sui-stack/walrus/sui-stack-walrus.mdx",
-        "docs/content/sui-stack/walrus/only-fins.mdx"
-      ],
-      "steps": [
-        {
-          "command": "npm install",
-          "status": "pass",
-          "output": "\nadded 416 packages, and audited 417 packages in 10s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n12 vulnerabilities (5 moderate, 7 high)\n\nTo address issues that do not require attention, run:\n  npm audit fix\n\nTo address all issues (including breaking changes), run:\n  npm audit fix --force\n\nRun `npm audit` for details.\n",
-          "durationMs": 10508
-        },
-        {
-          "command": "npm run build",
-          "status": "pass",
-          "output": "\n> frontend@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 878 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.57 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.80 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-MIwlQwCT.js   \u001b[39m\u001b[1m\u001b[33m796.27 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 265.31 kB\u001b[22m\n\u001b[32m✓ built in 3.24s\u001b[39m\n",
-          "durationMs": 6168
-        }
-      ],
-      "overallStatus": "pass",
-      "versionInfo": {
-        "dependencies": {
-          "@mysten/dapp-kit": "0.19.11",
-          "@mysten/enoki": "^0.12.14",
-          "@mysten/seal": "^0.9.6",
-          "@mysten/sui": "1.45.2",
-          "typescript": "^5.9.2"
-        },
-        "packageManager": "npm"
-      },
-      "patched": false
-    },
-    {
       "id": "MystenLabs/onlyfins-example-app@main/frontend",
       "type": "typescript",
       "source": "external",
@@ -922,15 +833,21 @@
         "frontend/src/constants.ts"
       ],
       "referencedBy": [
-        "docs/content/sui-stack/seal/sui-stack-seal.mdx",
-        "docs/content/sui-stack/walrus/sui-stack-walrus.mdx"
+        "docs/content/sui-stack/walrus/sui-stack-walrus.mdx",
+        "docs/content/sui-stack/seal/sui-stack-seal.mdx"
       ],
       "steps": [
         {
+          "command": "npm install",
+          "status": "pass",
+          "output": "\nadded 416 packages, and audited 417 packages in 22s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n12 vulnerabilities (5 moderate, 7 high)\n\nTo address issues that do not require attention, run:\n  npm audit fix\n\nTo address all issues (including breaking changes), run:\n  npm audit fix --force\n\nRun `npm audit` for details.\n",
+          "durationMs": 22398
+        },
+        {
           "command": "npm run build",
           "status": "pass",
-          "output": "\n> frontend@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 878 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.57 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.80 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-MIwlQwCT.js   \u001b[39m\u001b[1m\u001b[33m796.27 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 265.31 kB\u001b[22m\n\u001b[32m✓ built in 3.22s\u001b[39m\n",
-          "durationMs": 5933
+          "output": "\n> frontend@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 878 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.57 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.80 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-BPQ787fz.js   \u001b[39m\u001b[1m\u001b[33m796.29 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 265.32 kB\u001b[22m\n\u001b[32m✓ built in 3.68s\u001b[39m\n",
+          "durationMs": 7014
         }
       ],
       "overallStatus": "pass",
@@ -941,184 +858,6 @@
           "@mysten/seal": "^0.9.6",
           "@mysten/sui": "1.45.2",
           "typescript": "^5.9.2"
-        },
-        "packageManager": "npm"
-      },
-      "patched": false
-    },
-    {
-      "id": "MystenLabs/onlyfins-example-app@main/frontend/move",
-      "type": "move",
-      "source": "external",
-      "origin": "MystenLabs/onlyfins-example-app@main",
-      "packageRoot": "frontend/move",
-      "files": [
-        "frontend/move/sources/posts.move"
-      ],
-      "referencedBy": [
-        "docs/content/sui-stack/seal/sui-stack-seal.mdx"
-      ],
-      "steps": [
-        {
-          "command": "sui move build",
-          "status": "pass",
-          "output": "",
-          "durationMs": 2525
-        }
-      ],
-      "overallStatus": "pass",
-      "versionInfo": {
-        "edition": "2024.beta",
-        "dependencies": {
-          "Sui": "framework/testnet"
-        }
-      },
-      "patched": false
-    },
-    {
-      "id": "MystenLabs/sui-move-bootcamp@main/K5/seal-demo/move",
-      "type": "move",
-      "source": "external",
-      "origin": "MystenLabs/sui-move-bootcamp@main",
-      "packageRoot": "K5/seal-demo/move",
-      "files": [
-        "K5/seal-demo/move/sources/private_seal.move",
-        "K5/seal-demo/move/sources/timelock_seal.move",
-        "K5/seal-demo/move/sources/allowlist_seal.move"
-      ],
-      "referencedBy": [
-        "docs/content/sui-stack/seal/sui-stack-seal.mdx"
-      ],
-      "steps": [
-        {
-          "command": "sui move build",
-          "status": "pass",
-          "output": "",
-          "durationMs": 7273
-        }
-      ],
-      "overallStatus": "pass",
-      "versionInfo": {
-        "edition": "2024",
-        "dependencies": {}
-      },
-      "patched": false
-    },
-    {
-      "id": "MystenLabs/onlyfins-example-app@main/backend",
-      "type": "typescript",
-      "source": "external",
-      "origin": "MystenLabs/onlyfins-example-app@main",
-      "packageRoot": "backend",
-      "files": [
-        "backend/src/encryptImages.ts",
-        "backend/src/config.ts",
-        "backend/src/createPosts.ts"
-      ],
-      "referencedBy": [
-        "docs/content/sui-stack/seal/sui-stack-seal.mdx",
-        "docs/content/sui-stack/walrus/sui-stack-walrus.mdx"
-      ],
-      "steps": [
-        {
-          "command": "pnpm install",
-          "status": "pass",
-          "output": "Already up to date\nDone in 1ms using pnpm v12.5.1\n",
-          "durationMs": 925
-        },
-        {
-          "command": "tsc --noEmit",
-          "status": "pass",
-          "output": "",
-          "durationMs": 1577
-        }
-      ],
-      "overallStatus": "pass",
-      "versionInfo": {
-        "dependencies": {
-          "@mysten/seal": "^0.9.6",
-          "@mysten/sui": "^1.45.2",
-          "typescript": "^5.9.2"
-        },
-        "packageManager": "pnpm"
-      },
-      "patched": false
-    },
-    {
-      "id": "MystenLabs/walrus-pocs@main/walrus-seal/app/src",
-      "type": "typescript",
-      "source": "external",
-      "origin": "MystenLabs/walrus-pocs@main",
-      "packageRoot": "walrus-seal/app/src",
-      "files": [
-        "walrus-seal/app/src/hooks/useSealEncrypt.ts",
-        "walrus-seal/app/src/utils/sealUtils.ts",
-        "walrus-seal/app/src/hooks/useSealSession.ts",
-        "walrus-seal/app/src/hooks/useSealDecrypt.ts"
-      ],
-      "referencedBy": [
-        "docs/content/sui-stack/seal/sui-stack-seal.mdx"
-      ],
-      "steps": [
-        {
-          "command": "pnpm install",
-          "status": "pass",
-          "output": "Already up to date\nDone in 1ms using pnpm v12.5.1\n",
-          "durationMs": 2559
-        },
-        {
-          "command": "pnpm run build",
-          "status": "pass",
-          "output": "⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache\nAttention: Next.js now collects completely anonymous telemetry regarding usage.\nThis information is used to shape Next.js' roadmap and prioritize features.\nYou can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:\nhttps://nextjs.org/telemetry\n\n   ▲ Next.js 15.5.4 (Turbopack)\n   - Experiments (use with caution):\n     · serverComponentsExternalPackages\n\n   Creating an optimized production build ...\n ✓ Finished writing to disk in 7ms\n ✓ Compiled successfully in 5.2s\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/8) ...\n   Generating static pages (2/8) \r\n   Generating static pages (4/8) \r\n   Generating static pages (6/8) \r\n ✓ Generating static pages (8/8)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                         Size  First Load JS\n┌ ○ /                            41.3 kB         742 kB\n├ ○ /_not-found                      0 B         700 kB\n├ ƒ /api/store-encrypted-blob        0 B            0 B\n├ ƒ /api/test-nacl-session           0 B            0 B\n└ ○ /test-nacl-seal-session      5.17 kB         705 kB\n+ First Load JS shared by all     709 kB\n  ├ chunks/0348a51373c2a3cf.js   59.2 kB\n  ├ chunks/041a31ac94f24ce5.js    583 kB\n  ├ chunks/0d10da20dfdd0930.js   20.6 kB\n  ├ chunks/7d4cb355fdb07a3d.js   17.2 kB\n  └ other shared chunks (total)    29 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
-          "durationMs": 20083
-        }
-      ],
-      "overallStatus": "pass",
-      "versionInfo": {
-        "dependencies": {
-          "@mysten/bcs": "^1.8.0",
-          "@mysten/dapp-kit": "^0.18.0",
-          "@mysten/seal": "^0.8.1",
-          "@mysten/sui": "^1.38.0",
-          "typescript": "^5"
-        },
-        "packageManager": "pnpm"
-      },
-      "patched": false
-    },
-    {
-      "id": "MystenLabs/sui-move-bootcamp@main/K5/seal-demo/ts",
-      "type": "typescript",
-      "source": "external",
-      "origin": "MystenLabs/sui-move-bootcamp@main",
-      "packageRoot": "K5/seal-demo/ts",
-      "files": [
-        "K5/seal-demo/ts/src/index.ts"
-      ],
-      "referencedBy": [
-        "docs/content/sui-stack/seal/sui-stack-seal.mdx"
-      ],
-      "steps": [
-        {
-          "command": "npm install",
-          "status": "pass",
-          "output": "\nadded 30 packages, and audited 31 packages in 2s\n\n9 packages are looking for funding\n  run `npm fund` for details\n\n2 vulnerabilities (1 low, 1 moderate)\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
-          "durationMs": 1608
-        },
-        {
-          "command": "tsc --noEmit",
-          "status": "pass",
-          "output": "",
-          "durationMs": 1558
-        }
-      ],
-      "overallStatus": "pass",
-      "versionInfo": {
-        "dependencies": {
-          "@mysten/bcs": "^2.0.3",
-          "@mysten/seal": "^1.1.1",
-          "@mysten/sui": "^2.16.0",
-          "typescript": "^5.7.0"
         },
         "packageManager": "npm"
       },
@@ -1142,13 +881,13 @@
           "command": "npm install",
           "status": "pass",
           "output": "\nadded 49 packages, and audited 50 packages in 2s\n\n8 packages are looking for funding\n  run `npm fund` for details\n\n2 vulnerabilities (1 low, 1 moderate)\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
-          "durationMs": 1897
+          "durationMs": 2393
         },
         {
           "command": "npm run build",
           "status": "pass",
           "output": "\n> sdk-upload-relay-verification@1.0.0 build\n> tsc\n\n",
-          "durationMs": 1493
+          "durationMs": 1723
         }
       ],
       "overallStatus": "pass",
@@ -1159,6 +898,46 @@
           "typescript": "^5.9.3"
         },
         "packageManager": "npm"
+      },
+      "patched": false
+    },
+    {
+      "id": "MystenLabs/onlyfins-example-app@main/backend",
+      "type": "typescript",
+      "source": "external",
+      "origin": "MystenLabs/onlyfins-example-app@main",
+      "packageRoot": "backend",
+      "files": [
+        "backend/src/config.ts",
+        "backend/src/createPosts.ts",
+        "backend/src/encryptImages.ts"
+      ],
+      "referencedBy": [
+        "docs/content/sui-stack/walrus/sui-stack-walrus.mdx",
+        "docs/content/sui-stack/seal/sui-stack-seal.mdx"
+      ],
+      "steps": [
+        {
+          "command": "pnpm install",
+          "status": "pass",
+          "output": "Already up to date\nDone in 2ms using pnpm v12.6.0\n",
+          "durationMs": 791
+        },
+        {
+          "command": "tsc --noEmit",
+          "status": "pass",
+          "output": "",
+          "durationMs": 1785
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "dependencies": {
+          "@mysten/seal": "^0.9.6",
+          "@mysten/sui": "^1.45.2",
+          "typescript": "^5.9.2"
+        },
+        "packageManager": "pnpm"
       },
       "patched": false
     },
@@ -1180,14 +959,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +42\n++++++++++++++++++++++++++++++++++++++++++\nProgress: resolved 42, reused 0, downloaded 42, added 42, done\n\ndependencies:\n+ @mysten/sui 1.38.0\n+ @mysten/walrus 0.7.0\n+ dotenv 17.2.3\n+ undici 7.16.0\n\ndevDependencies:\n+ @types/node 24.6.1\n+ ts-node 10.9.2\n+ typescript 5.9.3\n\nDone in 823ms using pnpm v10.11.1\n",
-          "durationMs": 2371
+          "output": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +42\n++++++++++++++++++++++++++++++++++++++++++\nProgress: resolved 42, reused 0, downloaded 42, added 42, done\n\ndependencies:\n+ @mysten/sui 1.38.0\n+ @mysten/walrus 0.7.0\n+ dotenv 17.2.3\n+ undici 7.16.0\n\ndevDependencies:\n+ @types/node 24.6.1\n+ ts-node 10.9.2\n+ typescript 5.9.3\n\nDone in 827ms using pnpm v10.11.1\n",
+          "durationMs": 1618
         },
         {
           "command": "tsc --noEmit",
           "status": "pass",
           "output": "",
-          "durationMs": 1727
+          "durationMs": 1736
         }
       ],
       "overallStatus": "pass",
@@ -1219,13 +998,13 @@
           "command": "npm install",
           "status": "pass",
           "output": "\nadded 32 packages, and audited 33 packages in 2s\n\n8 packages are looking for funding\n  run `npm fund` for details\n\n1 moderate severity vulnerability\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
-          "durationMs": 1757
+          "durationMs": 2057
         },
         {
           "command": "npm run build",
           "status": "pass",
           "output": "\n> walrus-quilts-hands-on@1.0.0 build\n> tsc\n\n",
-          "durationMs": 1711
+          "durationMs": 1880
         }
       ],
       "overallStatus": "pass",
@@ -1234,6 +1013,46 @@
           "@mysten/sui": "^1.45.0",
           "@mysten/walrus": "^0.8.4",
           "typescript": "^5.3.3"
+        },
+        "packageManager": "npm"
+      },
+      "patched": false
+    },
+    {
+      "id": "MystenLabs/onlyfins-example-app@main/frontend/src",
+      "type": "typescript",
+      "source": "external",
+      "origin": "MystenLabs/onlyfins-example-app@main",
+      "packageRoot": "frontend/src",
+      "files": [
+        "frontend/src/components/Feed.tsx",
+        "frontend/src/utils/post-transform.ts",
+        "frontend/src/utils/walrus-fetch.ts",
+        "frontend/src/hooks/usePayForContent.ts",
+        "frontend/src/hooks/usePostDecryption.ts",
+        "frontend/src/lib/seal-client.ts"
+      ],
+      "referencedBy": [
+        "docs/content/sui-stack/walrus/sui-stack-walrus.mdx",
+        "docs/content/sui-stack/walrus/only-fins.mdx",
+        "docs/content/sui-stack/seal/sui-stack-seal.mdx"
+      ],
+      "steps": [
+        {
+          "command": "npm run build",
+          "status": "pass",
+          "output": "\n> frontend@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 878 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.57 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.80 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-BPQ787fz.js   \u001b[39m\u001b[1m\u001b[33m796.29 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 265.32 kB\u001b[22m\n\u001b[32m✓ built in 3.65s\u001b[39m\n",
+          "durationMs": 6788
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "dependencies": {
+          "@mysten/dapp-kit": "0.19.11",
+          "@mysten/enoki": "^0.12.14",
+          "@mysten/seal": "^0.9.6",
+          "@mysten/sui": "1.45.2",
+          "typescript": "^5.9.2"
         },
         "packageManager": "npm"
       },
@@ -1256,7 +1075,7 @@
           "command": "pnpm install",
           "status": "pass",
           "output": "nLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/payment-kit/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/payment-kit/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/suins/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/suins/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/walrus/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/walrus/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main/packages/codegen/dist/bin/bash-complete.mjs'\n\ndevDependencies:\n+ @arethetypeswrong/cli 0.18.5\n+ @changesets/cli 2.31.1\n+ @ianvs/prettier-plugin-sort-imports 4.7.1\n+ @manypkg/cli 0.25.1\n+ @testcontainers/postgresql 12.1.0\n+ concurrently 10.0.5\n+ graphql-config 5.1.6\n+ oxlint 1.78.0\n+ oxlint-tsgolint 7.0.2001\n+ prettier 3.9.6\n+ prettier-plugin-tailwindcss 0.8.1\n+ testcontainers 12.1.0\n+ tsdown 0.22.14\n+ tsx 4.23.12\n+ turbo 2.10.10\n+ typescript 7.0.2\n\nDone in 14.1s using pnpm v10.33.0\n",
-          "durationMs": 15534
+          "durationMs": 14879
         },
         {
           "command": "pnpm run build (workspace)",
@@ -1305,6 +1124,244 @@
       "patched": false
     },
     {
+      "id": "playtron-os/playtron-sdk@main/node/examples",
+      "type": "typescript",
+      "source": "external",
+      "origin": "playtron-os/playtron-sdk@main",
+      "packageRoot": "node/examples",
+      "files": [
+        "node/examples/src/is-playtron.ts",
+        "node/examples/src/sui-address.ts"
+      ],
+      "referencedBy": [
+        "docs/content/sui-stack/suiplay0x1/integration.mdx"
+      ],
+      "steps": [
+        {
+          "command": "allowlist check",
+          "status": "fail",
+          "output": "playtron-os/playtron-sdk not in allowed-repos.json",
+          "durationMs": 0
+        }
+      ],
+      "overallStatus": "fail",
+      "failureReason": "Not in repo allowlist"
+    },
+    {
+      "id": "MystenLabs/ts-sdks@main/packages/dapp-kit/examples/react/simple",
+      "type": "typescript",
+      "source": "external",
+      "origin": "MystenLabs/ts-sdks@main",
+      "packageRoot": "packages/dapp-kit/examples/react/simple",
+      "files": [
+        "packages/dapp-kit/examples/react/simple/src/dApp-kit.ts",
+        "packages/dapp-kit/examples/react/simple/src/main.tsx",
+        "packages/dapp-kit/examples/react/simple/src/App.tsx"
+      ],
+      "referencedBy": [
+        "docs/content/sui-stack/suiplay0x1/integration.mdx"
+      ],
+      "steps": [
+        {
+          "command": "pnpm run build (workspace)",
+          "status": "pass",
+          "output": "Workspace build at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--main succeeded",
+          "durationMs": 0
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "dependencies": {
+          "@mysten/dapp-kit-react": "workspace:^",
+          "@mysten/sui": "workspace:^",
+          "typescript": "^7.0.2"
+        },
+        "packageManager": "npm"
+      },
+      "patched": false
+    },
+    {
+      "id": "MystenLabs/messaging-sdk-example@main/frontend/src",
+      "type": "typescript",
+      "source": "external",
+      "origin": "MystenLabs/messaging-sdk-example@main",
+      "packageRoot": "frontend/src",
+      "files": [
+        "frontend/src/hooks/useUserSubname.ts"
+      ],
+      "referencedBy": [
+        "docs/content/sui-stack/suins/sui-stack-suins.mdx"
+      ],
+      "steps": [
+        {
+          "command": "npm install",
+          "status": "pass",
+          "output": "\nadded 424 packages, and audited 425 packages in 13s\n\n66 packages are looking for funding\n  run `npm fund` for details\n\n15 vulnerabilities (5 moderate, 10 high)\n\nTo address issues that do not require attention, run:\n  npm audit fix\n\nSome issues need review, and may require choosing\na different dependency.\n\nRun `npm audit` for details.\n",
+          "durationMs": 13165
+        },
+        {
+          "command": "npm run build",
+          "status": "pass",
+          "output": "\n> messaging-sdk-example@0.0.0 build\n> tsc && vite build\n\n\u001b[36mvite v7.3.6 \u001b[32mbuilding client environment for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 900 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.40 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.73 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CHsczsYp.css  \u001b[39m\u001b[1m\u001b[2m706.71 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  84.18 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-L_BDYi9r.js   \u001b[39m\u001b[1m\u001b[33m824.96 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 269.44 kB\u001b[22m\n\u001b[32m✓ built in 3.68s\u001b[39m\n",
+          "durationMs": 6998
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "dependencies": {
+          "@mysten/bcs": "^1.9.2",
+          "@mysten/dapp-kit": "^0.19.8",
+          "@mysten/enoki": "^0.12.10",
+          "@mysten/messaging": "^0.0.3",
+          "@mysten/seal": "^0.9.3",
+          "@mysten/sui": "^1.44.0",
+          "@mysten/sui-grpc": "^0.2.2",
+          "@mysten/walrus": "^0.8.3",
+          "typescript": "^5.9.2"
+        },
+        "packageManager": "npm"
+      },
+      "patched": false
+    },
+    {
+      "id": "MystenLabs/onlyfins-example-app@main/frontend/move",
+      "type": "move",
+      "source": "external",
+      "origin": "MystenLabs/onlyfins-example-app@main",
+      "packageRoot": "frontend/move",
+      "files": [
+        "frontend/move/sources/posts.move"
+      ],
+      "referencedBy": [
+        "docs/content/sui-stack/seal/sui-stack-seal.mdx"
+      ],
+      "steps": [
+        {
+          "command": "sui move build",
+          "status": "pass",
+          "output": "",
+          "durationMs": 7775
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "edition": "2024.beta",
+        "dependencies": {
+          "Sui": "framework/testnet"
+        }
+      },
+      "patched": false
+    },
+    {
+      "id": "MystenLabs/sui-move-bootcamp@main/K5/seal-demo/move",
+      "type": "move",
+      "source": "external",
+      "origin": "MystenLabs/sui-move-bootcamp@main",
+      "packageRoot": "K5/seal-demo/move",
+      "files": [
+        "K5/seal-demo/move/sources/private_seal.move",
+        "K5/seal-demo/move/sources/timelock_seal.move",
+        "K5/seal-demo/move/sources/allowlist_seal.move"
+      ],
+      "referencedBy": [
+        "docs/content/sui-stack/seal/sui-stack-seal.mdx"
+      ],
+      "steps": [
+        {
+          "command": "sui move build",
+          "status": "pass",
+          "output": "",
+          "durationMs": 7654
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "edition": "2024",
+        "dependencies": {}
+      },
+      "patched": false
+    },
+    {
+      "id": "MystenLabs/walrus-pocs@main/walrus-seal/app/src",
+      "type": "typescript",
+      "source": "external",
+      "origin": "MystenLabs/walrus-pocs@main",
+      "packageRoot": "walrus-seal/app/src",
+      "files": [
+        "walrus-seal/app/src/hooks/useSealEncrypt.ts",
+        "walrus-seal/app/src/utils/sealUtils.ts",
+        "walrus-seal/app/src/hooks/useSealSession.ts",
+        "walrus-seal/app/src/hooks/useSealDecrypt.ts"
+      ],
+      "referencedBy": [
+        "docs/content/sui-stack/seal/sui-stack-seal.mdx"
+      ],
+      "steps": [
+        {
+          "command": "pnpm install",
+          "status": "pass",
+          "output": "Already up to date\nDone in 1ms using pnpm v12.6.0\n",
+          "durationMs": 2475
+        },
+        {
+          "command": "pnpm run build",
+          "status": "pass",
+          "output": "⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache\nAttention: Next.js now collects completely anonymous telemetry regarding usage.\nThis information is used to shape Next.js' roadmap and prioritize features.\nYou can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:\nhttps://nextjs.org/telemetry\n\n   ▲ Next.js 15.5.4 (Turbopack)\n   - Experiments (use with caution):\n     · serverComponentsExternalPackages\n\n   Creating an optimized production build ...\n ✓ Finished writing to disk in 9ms\n ✓ Compiled successfully in 5.9s\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/8) ...\n   Generating static pages (2/8) \r\n   Generating static pages (4/8) \r\n   Generating static pages (6/8) \r\n ✓ Generating static pages (8/8)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                         Size  First Load JS\n┌ ○ /                            41.3 kB         742 kB\n├ ○ /_not-found                      0 B         700 kB\n├ ƒ /api/store-encrypted-blob        0 B            0 B\n├ ƒ /api/test-nacl-session           0 B            0 B\n└ ○ /test-nacl-seal-session      5.17 kB         705 kB\n+ First Load JS shared by all     709 kB\n  ├ chunks/0348a51373c2a3cf.js   59.2 kB\n  ├ chunks/041a31ac94f24ce5.js    583 kB\n  ├ chunks/0d10da20dfdd0930.js   20.6 kB\n  ├ chunks/7d4cb355fdb07a3d.js   17.2 kB\n  └ other shared chunks (total)    29 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+          "durationMs": 22746
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "dependencies": {
+          "@mysten/bcs": "^1.8.0",
+          "@mysten/dapp-kit": "^0.18.0",
+          "@mysten/seal": "^0.8.1",
+          "@mysten/sui": "^1.38.0",
+          "typescript": "^5"
+        },
+        "packageManager": "pnpm"
+      },
+      "patched": false
+    },
+    {
+      "id": "MystenLabs/sui-move-bootcamp@main/K5/seal-demo/ts",
+      "type": "typescript",
+      "source": "external",
+      "origin": "MystenLabs/sui-move-bootcamp@main",
+      "packageRoot": "K5/seal-demo/ts",
+      "files": [
+        "K5/seal-demo/ts/src/index.ts"
+      ],
+      "referencedBy": [
+        "docs/content/sui-stack/seal/sui-stack-seal.mdx"
+      ],
+      "steps": [
+        {
+          "command": "npm install",
+          "status": "pass",
+          "output": "\nadded 30 packages, and audited 31 packages in 2s\n\n9 packages are looking for funding\n  run `npm fund` for details\n\n2 vulnerabilities (1 low, 1 moderate)\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
+          "durationMs": 1776
+        },
+        {
+          "command": "tsc --noEmit",
+          "status": "pass",
+          "output": "",
+          "durationMs": 1824
+        }
+      ],
+      "overallStatus": "pass",
+      "versionInfo": {
+        "dependencies": {
+          "@mysten/bcs": "^2.0.3",
+          "@mysten/seal": "^1.1.1",
+          "@mysten/sui": "^2.16.0",
+          "typescript": "^5.7.0"
+        },
+        "packageManager": "npm"
+      },
+      "patched": false
+    },
+    {
       "id": "MystenLabs/sui-stack-messaging@main/move/packages/sui_stack_messaging",
       "type": "move",
       "source": "external",
@@ -1323,7 +1380,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 17716
+          "durationMs": 15672
         }
       ],
       "overallStatus": "pass",
@@ -1352,14 +1409,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "Already up to date\nDone in 1ms using pnpm v12.5.1\n",
-          "durationMs": 2092
+          "output": "Already up to date\nDone in 1ms using pnpm v12.6.0\n",
+          "durationMs": 1972
         },
         {
           "command": "pnpm run build",
           "status": "pass",
-          "output": "\u001b[36mvite v6.4.1 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 722 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  0.40 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.27 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CmLFi6yS.css  \u001b[39m\u001b[1m\u001b[2m 25.04 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   5.17 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-C7z-chHA.js   \u001b[39m\u001b[1m\u001b[33m932.75 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 280.50 kB\u001b[22m\n\u001b[32m✓ built in 2.87s\u001b[39m\n",
-          "durationMs": 6081
+          "output": "\u001b[36mvite v6.4.1 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 722 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  0.40 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.27 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CmLFi6yS.css  \u001b[39m\u001b[1m\u001b[2m 25.04 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   5.17 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-C7z-chHA.js   \u001b[39m\u001b[1m\u001b[33m932.75 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 280.50 kB\u001b[22m\n\u001b[32m✓ built in 3.30s\u001b[39m\n",
+          "durationMs": 6964
         }
       ],
       "overallStatus": "pass",
@@ -1398,7 +1455,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 747
+          "durationMs": 926
         }
       ],
       "overallStatus": "pass",
@@ -1424,14 +1481,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "Already up to date\nDone in 2ms using pnpm v12.5.1\n",
-          "durationMs": 3811
+          "output": "Already up to date\nDone in 1ms using pnpm v12.6.0\n",
+          "durationMs": 4486
         },
         {
           "command": "pnpm run build",
           "status": "pass",
           "output": "c/app/hooks/useNotifyForTicketUpdates.ts\n49:6  Warning: React Hook useEffect has missing dependencies: 'handleChooseTicketForUpdate' and 'handleNotifyTicketUpdate'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/app/hooks/useUpdateTicketStage.ts\n48:6  Warning: React Hook useEffect has missing dependencies: 'searchParams' and 'ticket.stage'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n48:7  Warning: React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked.  react-hooks/exhaustive-deps\n\n./src/app/profile/page.tsx\n57:6  Warning: React Hook useEffect has missing dependencies: 'searchParams' and 'tabs'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n57:7  Warning: React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked.  react-hooks/exhaustive-deps\n\ninfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules\n   Collecting page data ...\n   Generating static pages (0/18) ...\n   Generating static pages (4/18) \r\n   Generating static pages (8/18) \r\n   Generating static pages (13/18) \r\n ✓ Generating static pages (18/18)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                              Size     First Load JS\n┌ ○ /                                    24.9 kB         258 kB\n├ ○ /_not-found                          983 B           107 kB\n├ ƒ /api/accounts                        160 B           106 kB\n├ ƒ /api/clear                           160 B           106 kB\n├ ƒ /api/execute                         160 B           106 kB\n├ ƒ /api/health                          160 B           106 kB\n├ ƒ /api/permit/mint-point               160 B           106 kB\n├ ƒ /api/permit/mint-ticket              160 B           106 kB\n├ ƒ /api/sponsor                         160 B           106 kB\n├ ƒ /api/stage/mint                      160 B           106 kB\n├ ƒ /api/userinfo/get/salt               160 B           106 kB\n├ ƒ /api/visits                          160 B           106 kB\n├ ○ /auth                                553 B           185 kB\n├ ƒ /events/[id]                         4.88 kB         140 kB\n├ ƒ /events/[id]/seats                   8.97 kB         248 kB\n├ ○ /profile                             8.69 kB         257 kB\n├ ○ /search                              4.56 kB         207 kB\n├ ○ /tickets                             5.18 kB         223 kB\n└ ƒ /tickets/[id]                        9.11 kB         260 kB\n+ First Load JS shared by all            106 kB\n  ├ chunks/1152a06d-b2755ba54cb884a3.js  52.9 kB\n  ├ chunks/587-673b3d4453d44bf5.js       50.8 kB\n  └ other shared chunks (total)          1.95 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
-          "durationMs": 60066
+          "durationMs": 68898
         }
       ],
       "overallStatus": "pass",
@@ -1465,7 +1522,7 @@
           "command": "pnpm run build",
           "status": "pass",
           "output": "c/app/hooks/useNotifyForTicketUpdates.ts\n49:6  Warning: React Hook useEffect has missing dependencies: 'handleChooseTicketForUpdate' and 'handleNotifyTicketUpdate'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/app/hooks/useUpdateTicketStage.ts\n48:6  Warning: React Hook useEffect has missing dependencies: 'searchParams' and 'ticket.stage'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n48:7  Warning: React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked.  react-hooks/exhaustive-deps\n\n./src/app/profile/page.tsx\n57:6  Warning: React Hook useEffect has missing dependencies: 'searchParams' and 'tabs'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n57:7  Warning: React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked.  react-hooks/exhaustive-deps\n\ninfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules\n   Collecting page data ...\n   Generating static pages (0/18) ...\n   Generating static pages (4/18) \r\n   Generating static pages (8/18) \r\n   Generating static pages (13/18) \r\n ✓ Generating static pages (18/18)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                              Size     First Load JS\n┌ ○ /                                    24.9 kB         258 kB\n├ ○ /_not-found                          983 B           107 kB\n├ ƒ /api/accounts                        160 B           106 kB\n├ ƒ /api/clear                           160 B           106 kB\n├ ƒ /api/execute                         160 B           106 kB\n├ ƒ /api/health                          160 B           106 kB\n├ ƒ /api/permit/mint-point               160 B           106 kB\n├ ƒ /api/permit/mint-ticket              160 B           106 kB\n├ ƒ /api/sponsor                         160 B           106 kB\n├ ƒ /api/stage/mint                      160 B           106 kB\n├ ƒ /api/userinfo/get/salt               160 B           106 kB\n├ ƒ /api/visits                          160 B           106 kB\n├ ○ /auth                                553 B           185 kB\n├ ƒ /events/[id]                         4.88 kB         140 kB\n├ ƒ /events/[id]/seats                   8.97 kB         248 kB\n├ ○ /profile                             8.69 kB         257 kB\n├ ○ /search                              4.56 kB         207 kB\n├ ○ /tickets                             5.18 kB         223 kB\n└ ƒ /tickets/[id]                        9.11 kB         260 kB\n+ First Load JS shared by all            106 kB\n  ├ chunks/1152a06d-b2755ba54cb884a3.js  52.9 kB\n  ├ chunks/587-673b3d4453d44bf5.js       50.8 kB\n  └ other shared chunks (total)          1.95 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
-          "durationMs": 38374
+          "durationMs": 42393
         }
       ],
       "overallStatus": "pass",
@@ -1499,7 +1556,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 842
+          "durationMs": 760
         }
       ],
       "overallStatus": "pass",
@@ -1526,14 +1583,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +910\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\nProgress: resolved 910, reused 269, downloaded 58, added 46\nProgress: resolved 910, reused 269, downloaded 219, added 483\nProgress: resolved 910, reused 269, downloaded 328, added 580\nProgress: resolved 910, reused 269, downloaded 341, added 584\nProgress: resolved 910, reused 269, downloaded 547, added 813\nProgress: resolved 910, reused 269, downloaded 639, added 910, done\n\ndependencies:\n+ @dnd-kit/core 6.3.1\n+ @hookform/resolvers 5.2.1\n+ @mysten/codegen 0.5.0\n+ @mysten/dapp-kit 0.17.7\n+ @mysten/enoki 0.12.0\n+ @mysten/sui 1.38.0\n+ @radix-ui/react-accordion 1.2.12\n+ @radix-ui/react-dialog 1.1.15\n+ @radix-ui/react-dropdown-menu 2.1.16\n+ @radix-ui/react-icons 1.3.2\n+ @radix-ui/react-label 2.1.7\n+ @radix-ui/react-radio-group 1.3.8\n+ @radix-ui/react-scroll-area 1.2.10\n+ @radix-ui/react-select 2.2.6\n+ @radix-ui/react-slot 1.2.3\n+ @tanstack/react-query 5.87.4\n+ @types/node 24.3.0\n+ @types/react 19.1.12\n+ @types/react-dom 19.1.9\n+ axios 1.11.0\n+ bignumber.js 9.3.1\n+ bufferutil 4.0.9\n+ class-variance-authority 0.7.1\n+ clsx 2.1.1\n+ encoding 0.1.13\n+ eslint 9.34.0\n+ eslint-config-next 15.5.15\n+ jwt-decode 4.0.0\n+ lucide-react 0.542.0\n+ next 15.5.15\n+ next-pwa 5.6.0\n+ react 19.1.1\n+ react-dom 19.1.1\n+ react-hook-form 7.62.0\n+ react-hot-toast 2.6.0\n+ react-slick 0.31.0\n+ server-only 0.0.1\n+ slick-carousel 1.8.1\n+ tailwind-merge 3.3.1\n+ tailwindcss-animate 1.0.7\n+ typescript 5.9.2\n+ utf-8-validate 6.0.5\n+ zod 4.1.7\n\ndevDependencies:\n+ @types/react-slick 0.23.13\n+ autoprefixer 10.4.21\n+ postcss 8.5.6\n+ tailwindcss 3.4.17\n\n╭ Warning ─────────────────────────────────────────────────────────────────────╮\n│                                                                              │\n│   Ignored build scripts: bufferutil, protobufjs, sharp, unrs-resolver,       │\n│   utf-8-validate.                                                            │\n│   Run \"pnpm approve-builds\" to pick which dependencies should be allowed     │\n│   to run scripts.                                                            │\n│                                                                              │\n╰──────────────────────────────────────────────────────────────────────────────╯\n\nDone in 6.2s using pnpm v10.10.0\n",
-          "durationMs": 7660
+          "output": "Lockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +910\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\nProgress: resolved 910, reused 269, downloaded 36, added 9\nProgress: resolved 910, reused 269, downloaded 295, added 177\nProgress: resolved 910, reused 269, downloaded 341, added 194\nProgress: resolved 910, reused 269, downloaded 365, added 202\nProgress: resolved 910, reused 269, downloaded 637, added 383\nProgress: resolved 910, reused 269, downloaded 639, added 910, done\n\ndependencies:\n+ @dnd-kit/core 6.3.1\n+ @hookform/resolvers 5.2.1\n+ @mysten/codegen 0.5.0\n+ @mysten/dapp-kit 0.17.7\n+ @mysten/enoki 0.12.0\n+ @mysten/sui 1.38.0\n+ @radix-ui/react-accordion 1.2.12\n+ @radix-ui/react-dialog 1.1.15\n+ @radix-ui/react-dropdown-menu 2.1.16\n+ @radix-ui/react-icons 1.3.2\n+ @radix-ui/react-label 2.1.7\n+ @radix-ui/react-radio-group 1.3.8\n+ @radix-ui/react-scroll-area 1.2.10\n+ @radix-ui/react-select 2.2.6\n+ @radix-ui/react-slot 1.2.3\n+ @tanstack/react-query 5.87.4\n+ @types/node 24.3.0\n+ @types/react 19.1.12\n+ @types/react-dom 19.1.9\n+ axios 1.11.0\n+ bignumber.js 9.3.1\n+ bufferutil 4.0.9\n+ class-variance-authority 0.7.1\n+ clsx 2.1.1\n+ encoding 0.1.13\n+ eslint 9.34.0\n+ eslint-config-next 15.5.15\n+ jwt-decode 4.0.0\n+ lucide-react 0.542.0\n+ next 15.5.15\n+ next-pwa 5.6.0\n+ react 19.1.1\n+ react-dom 19.1.1\n+ react-hook-form 7.62.0\n+ react-hot-toast 2.6.0\n+ react-slick 0.31.0\n+ server-only 0.0.1\n+ slick-carousel 1.8.1\n+ tailwind-merge 3.3.1\n+ tailwindcss-animate 1.0.7\n+ typescript 5.9.2\n+ utf-8-validate 6.0.5\n+ zod 4.1.7\n\ndevDependencies:\n+ @types/react-slick 0.23.13\n+ autoprefixer 10.4.21\n+ postcss 8.5.6\n+ tailwindcss 3.4.17\n\n╭ Warning ─────────────────────────────────────────────────────────────────────╮\n│                                                                              │\n│   Ignored build scripts: bufferutil, protobufjs, sharp, unrs-resolver,       │\n│   utf-8-validate.                                                            │\n│   Run \"pnpm approve-builds\" to pick which dependencies should be allowed     │\n│   to run scripts.                                                            │\n│                                                                              │\n╰──────────────────────────────────────────────────────────────────────────────╯\n\nDone in 6.5s using pnpm v10.10.0\n",
+          "durationMs": 7404
         },
         {
           "command": "pnpm run build",
           "status": "pass",
-          "output": "ap and prioritize features.\nYou can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:\nhttps://nextjs.org/telemetry\n\n   ▲ Next.js 15.5.15\n\n   Creating an optimized production build ...\n> [PWA] Compile server\n> [PWA] Compile server\n> [PWA] Compile client (static)\n> [PWA] Auto register service worker with: /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--solitaire--main/app/node_modules/.pnpm/next-pwa@5.6.0_@babel+core@7.28.4_next@15.5.15_@babel+core@7.28.4_react-dom@19.1.1_reac_ca58a66723231942211cd6498f0cd02d/node_modules/next-pwa/register.js\n> [PWA] Service worker: /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--solitaire--main/app/public/sw.js\n> [PWA]   url: /sw.js\n> [PWA]   scope: /\n ✓ Compiled successfully in 22.2s\n   Linting and checking validity of types ...\n\n./src/app/game/layout.tsx\n21:6  Warning: React Hook useEffect has a missing dependency: 'router'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/forms/LoginForm.tsx\n29:6  Warning: React Hook useEffect has a missing dependency: 'router'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/gameBoard/GameBoard.tsx\n84:6  Warning: React Hook useEffect has a missing dependency: 'wonModal'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/gameBoard/WonModal.tsx\n90:6  Warning: React Hook useEffect has missing dependencies: 'gameId' and 'suiClient'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n\ninfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules\n   Collecting page data ...\n   Generating static pages (0/8) ...\n   Generating static pages (2/8) \r\nlayout.tsx is on server: false\nlayout.tsx is on server: false\nlayout.tsx is on server: false\npage.tsx is on server: false\n   Generating static pages (4/8) \r\n   Generating static pages (6/8) \r\n ✓ Generating static pages (8/8)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                                 Size  First Load JS\n┌ ○ /                                      842 B         243 kB\n├ ○ /_not-found                            137 B         103 kB\n├ ƒ /api/execute                           137 B         103 kB\n├ ƒ /api/health                            137 B         103 kB\n├ ƒ /api/sponsor                           137 B         103 kB\n└ ○ /game                                39.8 kB         280 kB\n+ First Load JS shared by all             102 kB\n  ├ chunks/207-27a5d686923a4f91.js       46.3 kB\n  ├ chunks/f3bdebb4-750393fb459063d0.js  54.2 kB\n  └ other shared chunks (total)          1.93 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
-          "durationMs": 43831
+          "output": "ap and prioritize features.\nYou can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:\nhttps://nextjs.org/telemetry\n\n   ▲ Next.js 15.5.15\n\n   Creating an optimized production build ...\n> [PWA] Compile server\n> [PWA] Compile server\n> [PWA] Compile client (static)\n> [PWA] Auto register service worker with: /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--solitaire--main/app/node_modules/.pnpm/next-pwa@5.6.0_@babel+core@7.28.4_next@15.5.15_@babel+core@7.28.4_react-dom@19.1.1_reac_ca58a66723231942211cd6498f0cd02d/node_modules/next-pwa/register.js\n> [PWA] Service worker: /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--solitaire--main/app/public/sw.js\n> [PWA]   url: /sw.js\n> [PWA]   scope: /\n ✓ Compiled successfully in 26.8s\n   Linting and checking validity of types ...\n\n./src/app/game/layout.tsx\n21:6  Warning: React Hook useEffect has a missing dependency: 'router'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/forms/LoginForm.tsx\n29:6  Warning: React Hook useEffect has a missing dependency: 'router'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/gameBoard/GameBoard.tsx\n84:6  Warning: React Hook useEffect has a missing dependency: 'wonModal'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps\n\n./src/components/gameBoard/WonModal.tsx\n90:6  Warning: React Hook useEffect has missing dependencies: 'gameId' and 'suiClient'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps\n\ninfo  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules\n   Collecting page data ...\n   Generating static pages (0/8) ...\n   Generating static pages (2/8) \r\nlayout.tsx is on server: false\nlayout.tsx is on server: false\npage.tsx is on server: false\nlayout.tsx is on server: false\n   Generating static pages (4/8) \r\n   Generating static pages (6/8) \r\n ✓ Generating static pages (8/8)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                                 Size  First Load JS\n┌ ○ /                                      842 B         243 kB\n├ ○ /_not-found                            137 B         103 kB\n├ ƒ /api/execute                           137 B         103 kB\n├ ƒ /api/health                            137 B         103 kB\n├ ƒ /api/sponsor                           137 B         103 kB\n└ ○ /game                                39.8 kB         280 kB\n+ First Load JS shared by all             102 kB\n  ├ chunks/207-27a5d686923a4f91.js       46.3 kB\n  ├ chunks/f3bdebb4-750393fb459063d0.js  54.2 kB\n  └ other shared chunks (total)          1.93 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+          "durationMs": 51620
         }
       ],
       "overallStatus": "pass",
@@ -1565,14 +1622,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "Already up to date\nDone in 1ms using pnpm v12.5.1\n",
-          "durationMs": 3053
+          "output": "Already up to date\nDone in 2ms using pnpm v12.6.0\n",
+          "durationMs": 2299
         },
         {
           "command": "pnpm run build",
           "status": "pass",
-          "output": "\u001b[36mvite v6.3.5 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 2322 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                           \u001b[39m\u001b[1m\u001b[2m    1.51 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.78 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[32mwalrus_wasm_bg-KCYZ1fvy.wasm  \u001b[39m\u001b[1m\u001b[2m  558.13 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip: 304.78 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CGERj4EO.css            \u001b[39m\u001b[1m\u001b[2m  725.73 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  88.92 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-BtoI2cod.js             \u001b[39m\u001b[1m\u001b[33m1,173.23 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 289.16 kB\u001b[22m\n\u001b[32m✓ built in 4.36s\u001b[39m\n",
-          "durationMs": 7595
+          "output": "\u001b[36mvite v6.3.5 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 2322 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                           \u001b[39m\u001b[1m\u001b[2m    1.51 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.78 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[32mwalrus_wasm_bg-KCYZ1fvy.wasm  \u001b[39m\u001b[1m\u001b[2m  558.13 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip: 304.78 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-CGERj4EO.css            \u001b[39m\u001b[1m\u001b[2m  725.73 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  88.92 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-BtoI2cod.js             \u001b[39m\u001b[1m\u001b[33m1,173.23 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 289.16 kB\u001b[22m\n\u001b[32m✓ built in 4.98s\u001b[39m\n",
+          "durationMs": 8633
         }
       ],
       "overallStatus": "pass",
@@ -1605,7 +1662,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 7238
+          "durationMs": 6546
         }
       ],
       "overallStatus": "pass",
@@ -1635,7 +1692,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 6936
+          "durationMs": 5975
         }
       ],
       "overallStatus": "pass",
@@ -1662,7 +1719,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 622
+          "durationMs": 639
         }
       ],
       "overallStatus": "pass",
@@ -1690,7 +1747,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 762
+          "durationMs": 631
         }
       ],
       "overallStatus": "pass",
@@ -1717,7 +1774,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 727
+          "durationMs": 666
         }
       ],
       "overallStatus": "pass",
@@ -1749,14 +1806,14 @@
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "Already up to date\nDone in 1ms using pnpm v12.5.1\n",
-          "durationMs": 1990
+          "output": "Already up to date\nDone in 2ms using pnpm v12.6.0\n",
+          "durationMs": 1591
         },
         {
           "command": "pnpm run build",
           "status": "pass",
-          "output": "\u001b[36mvite v7.1.4 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 812 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.23 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.64 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-Cs5nhfe8.css  \u001b[39m\u001b[1m\u001b[2m689.24 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  80.92 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-Df_K52sv.js   \u001b[39m\u001b[1m\u001b[33m666.55 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 205.75 kB\u001b[22m\n\u001b[32m✓ built in 2.67s\u001b[39m\n",
-          "durationMs": 4927
+          "output": "\u001b[36mvite v7.1.4 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 812 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                 \u001b[39m\u001b[1m\u001b[2m  1.23 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.64 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[35mindex-Cs5nhfe8.css  \u001b[39m\u001b[1m\u001b[2m689.24 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  80.92 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[2massets/\u001b[22m\u001b[36mindex-Df_K52sv.js   \u001b[39m\u001b[1m\u001b[33m666.55 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 205.75 kB\u001b[22m\n\u001b[32m✓ built in 3.06s\u001b[39m\n",
+          "durationMs": 5635
         }
       ],
       "overallStatus": "pass",
@@ -1850,7 +1907,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 7898
+          "durationMs": 7993
         }
       ],
       "overallStatus": "pass",
@@ -1863,10 +1920,10 @@
       "patched": false
     },
     {
-      "id": "MystenLabs/ts-sdks@5eda7bd1c6b58cc553e6d4e6aa2e39ea3a7ac061/packages/deepbook-v3",
+      "id": "MystenLabs/ts-sdks@56d51645cd231010e39d96dd23583056c5266426/packages/deepbook-v3",
       "type": "typescript",
       "source": "external",
-      "origin": "MystenLabs/ts-sdks@5eda7bd1c6b58cc553e6d4e6aa2e39ea3a7ac061",
+      "origin": "MystenLabs/ts-sdks@56d51645cd231010e39d96dd23583056c5266426",
       "packageRoot": "packages/deepbook-v3",
       "files": [
         "packages/deepbook-v3/src/sessions.ts",
@@ -1882,6 +1939,7 @@
         "packages/deepbook-v3/src/predict/units.ts",
         "packages/deepbook-v3/src/predict/errors.ts",
         "packages/deepbook-v3/src/predict/tx/trade.ts",
+        "packages/deepbook-v3/src/predict/cost.ts",
         "packages/deepbook-v3/src/predict/tx/common.ts",
         "packages/deepbook-v3/src/account.ts"
       ],
@@ -1891,19 +1949,20 @@
         "docs/content/onchain-finance/deepbook/deepbook-predict-sdk/markets.mdx",
         "docs/content/onchain-finance/deepbook/deepbook-predict-sdk/liquidity.mdx",
         "docs/content/onchain-finance/deepbook/deepbook-predict-sdk/deepbook-predict-sdk.mdx",
+        "docs/content/onchain-finance/deepbook/deepbook-predict-sdk/cost.mdx",
         "docs/content/onchain-finance/deepbook/deepbook-predict-sdk/accounts.mdx"
       ],
       "steps": [
         {
           "command": "pnpm install",
           "status": "pass",
-          "output": "sults/.external-repos/MystenLabs--ts-sdks--5eda7bd1c6b58cc553e6d4e6aa2e39ea3a7ac061/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--5eda7bd1c6b58cc553e6d4e6aa2e39ea3a7ac061/packages/suins/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--5eda7bd1c6b58cc553e6d4e6aa2e39ea3a7ac061/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--5eda7bd1c6b58cc553e6d4e6aa2e39ea3a7ac061/packages/hashi/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--5eda7bd1c6b58cc553e6d4e6aa2e39ea3a7ac061/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--5eda7bd1c6b58cc553e6d4e6aa2e39ea3a7ac061/packages/hashi/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--5eda7bd1c6b58cc553e6d4e6aa2e39ea3a7ac061/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--5eda7bd1c6b58cc553e6d4e6aa2e39ea3a7ac061/packages/walrus/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--5eda7bd1c6b58cc553e6d4e6aa2e39ea3a7ac061/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--5eda7bd1c6b58cc553e6d4e6aa2e39ea3a7ac061/packages/walrus/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--5eda7bd1c6b58cc553e6d4e6aa2e39ea3a7ac061/packages/codegen/dist/bin/bash-complete.mjs'\n\ndevDependencies:\n+ @arethetypeswrong/cli 0.18.5\n+ @changesets/cli 2.31.1\n+ @ianvs/prettier-plugin-sort-imports 4.7.1\n+ @manypkg/cli 0.25.1\n+ @testcontainers/postgresql 12.1.0\n+ concurrently 10.0.5\n+ graphql-config 5.1.6\n+ oxlint 1.78.0\n+ oxlint-tsgolint 7.0.2001\n+ prettier 3.9.6\n+ prettier-plugin-tailwindcss 0.8.1\n+ testcontainers 12.1.0\n+ tsdown 0.22.14\n+ tsx 4.23.12\n+ turbo 2.10.10\n+ typescript 7.0.2\n\nDone in 5.3s using pnpm v10.33.0\n",
-          "durationMs": 5432
+          "output": "sults/.external-repos/MystenLabs--ts-sdks--56d51645cd231010e39d96dd23583056c5266426/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--56d51645cd231010e39d96dd23583056c5266426/packages/suins/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--56d51645cd231010e39d96dd23583056c5266426/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--56d51645cd231010e39d96dd23583056c5266426/packages/walrus/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--56d51645cd231010e39d96dd23583056c5266426/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--56d51645cd231010e39d96dd23583056c5266426/packages/walrus/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--56d51645cd231010e39d96dd23583056c5266426/packages/codegen/dist/bin/bash-complete.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--56d51645cd231010e39d96dd23583056c5266426/packages/hashi/node_modules/.bin/sui-ts-codegen. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--56d51645cd231010e39d96dd23583056c5266426/packages/codegen/dist/bin/cli.mjs'\n WARN  Failed to create bin at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--56d51645cd231010e39d96dd23583056c5266426/packages/hashi/node_modules/.bin/__sui-ts-codegen_bash_complete. ENOENT: no such file or directory, open '/home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--56d51645cd231010e39d96dd23583056c5266426/packages/codegen/dist/bin/bash-complete.mjs'\n\ndevDependencies:\n+ @arethetypeswrong/cli 0.18.5\n+ @changesets/cli 2.31.1\n+ @ianvs/prettier-plugin-sort-imports 4.7.1\n+ @manypkg/cli 0.25.1\n+ @testcontainers/postgresql 12.1.0\n+ concurrently 10.0.5\n+ graphql-config 5.1.6\n+ oxlint 1.78.0\n+ oxlint-tsgolint 7.0.2001\n+ prettier 3.9.6\n+ prettier-plugin-tailwindcss 0.8.1\n+ testcontainers 12.1.0\n+ tsdown 0.22.14\n+ tsx 4.23.12\n+ turbo 2.10.10\n+ typescript 7.0.2\n\nDone in 5.2s using pnpm v10.33.0\n",
+          "durationMs": 5352
         },
         {
           "command": "pnpm run build (workspace)",
           "status": "pass",
-          "output": "Workspace build at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--5eda7bd1c6b58cc553e6d4e6aa2e39ea3a7ac061 succeeded",
+          "output": "Workspace build at /home/runner/work/sui-docs-example-validator/sui-docs-example-validator/results/.external-repos/MystenLabs--ts-sdks--56d51645cd231010e39d96dd23583056c5266426 succeeded",
           "durationMs": 0
         }
       ],
@@ -1948,7 +2007,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 5430
+          "durationMs": 6692
         }
       ],
       "overallStatus": "pass",
@@ -1980,7 +2039,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 1648
+          "durationMs": 1632
         }
       ],
       "overallStatus": "pass",
@@ -2162,10 +2221,10 @@
       "patched": false
     },
     {
-      "id": "MystenLabs/deepbookv3@76b11922f3144be5bdaacb66c38c7c3524a02ff3/packages/predict",
+      "id": "MystenLabs/deepbookv3@abb4cfd93b2e51f7925941fe5d53b3fe70fc140c/packages/predict",
       "type": "move",
       "source": "external",
-      "origin": "MystenLabs/deepbookv3@76b11922f3144be5bdaacb66c38c7c3524a02ff3",
+      "origin": "MystenLabs/deepbookv3@abb4cfd93b2e51f7925941fe5d53b3fe70fc140c",
       "packageRoot": "packages/predict",
       "files": [
         "packages/predict/sources/plp/plp.move",
@@ -2200,7 +2259,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 4349
+          "durationMs": 4768
         }
       ],
       "overallStatus": "pass",
@@ -2218,10 +2277,10 @@
       "patched": false
     },
     {
-      "id": "MystenLabs/deepbookv3@76b11922f3144be5bdaacb66c38c7c3524a02ff3/packages/sessions",
+      "id": "MystenLabs/deepbookv3@abb4cfd93b2e51f7925941fe5d53b3fe70fc140c/packages/sessions",
       "type": "move",
       "source": "external",
-      "origin": "MystenLabs/deepbookv3@76b11922f3144be5bdaacb66c38c7c3524a02ff3",
+      "origin": "MystenLabs/deepbookv3@abb4cfd93b2e51f7925941fe5d53b3fe70fc140c",
       "packageRoot": "packages/sessions",
       "files": [
         "packages/sessions/sources/sessions.move",
@@ -2235,7 +2294,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 11637
+          "durationMs": 9854
         }
       ],
       "overallStatus": "pass",
@@ -2257,10 +2316,10 @@
       "patched": false
     },
     {
-      "id": "MystenLabs/deepbookv3@76b11922f3144be5bdaacb66c38c7c3524a02ff3/packages/account",
+      "id": "MystenLabs/deepbookv3@abb4cfd93b2e51f7925941fe5d53b3fe70fc140c/packages/account",
       "type": "move",
       "source": "external",
-      "origin": "MystenLabs/deepbookv3@76b11922f3144be5bdaacb66c38c7c3524a02ff3",
+      "origin": "MystenLabs/deepbookv3@abb4cfd93b2e51f7925941fe5d53b3fe70fc140c",
       "packageRoot": "packages/account",
       "files": [
         "packages/account/sources/account_registry.move",
@@ -2276,7 +2335,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 646
+          "durationMs": 698
         }
       ],
       "overallStatus": "pass",
@@ -2287,10 +2346,10 @@
       "patched": false
     },
     {
-      "id": "MystenLabs/deepbookv3@76b11922f3144be5bdaacb66c38c7c3524a02ff3/packages/propbook",
+      "id": "MystenLabs/deepbookv3@abb4cfd93b2e51f7925941fe5d53b3fe70fc140c/packages/propbook",
       "type": "move",
       "source": "external",
-      "origin": "MystenLabs/deepbookv3@76b11922f3144be5bdaacb66c38c7c3524a02ff3",
+      "origin": "MystenLabs/deepbookv3@abb4cfd93b2e51f7925941fe5d53b3fe70fc140c",
       "packageRoot": "packages/propbook",
       "files": [
         "packages/propbook/sources/registry.move",
@@ -2306,7 +2365,7 @@
           "command": "sui move build",
           "status": "pass",
           "output": "",
-          "durationMs": 1028
+          "durationMs": 1069
         }
       ],
       "overallStatus": "pass",
@@ -2322,5 +2381,5 @@
       "patched": false
     }
   ],
-  "totalDurationMs": 685363
+  "totalDurationMs": 720729
 }
