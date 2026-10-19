@@ -6,7 +6,7 @@
 
 | Metric | Value |
 |--------|-------|
-| Date | 2026-10-12T15:00:55.753Z |
+| Date | 2026-10-19T12:44:31.172Z |
 | Packages validated | 0 |
 | Passed | 0 |
 | Failed | 0 |
@@ -16,14 +16,14 @@
 
 | Tool | Version |
 |------|---------|
-| sui | sui 1.81.1-e04cf9aa915c |
+| sui | sui 1.82.1-987123842623 |
 | mvr | mvr 0.1.0-d85f8ad92add |
 | bun | 1.4.3 |
 | node | v22.23.3 |
 | npm | 10.9.9 |
-| rustc | rustc 1.99.0 (b940084d7 2026-09-28) |
-| cargo | cargo 1.99.0 (5f94df478 2026-08-27) |
-| pnpm | 12.11.2 |
+| rustc | rustc 1.99.1 (58cf8f9c3 2026-10-13) |
+| cargo | cargo 1.99.1 (5f94df478 2026-08-27) |
+| pnpm | 12.14.0 |
 
 ## All Results
 
